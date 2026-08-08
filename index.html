@@ -1781,7 +1781,7 @@ function cbMergeRaw(raw, fallbackPilar){
   return {added, updated};
 }
 // SATU KLIK: tarik semua ide langsung dari file yang ikut ter-deploy (alamat yang sama) — tanpa buka folder lokal.
-const NOTION_SYNC_FILES = ['impor-notion-content-bank.json', 'impor-notion-trivia-tambahan.json'];
+const NOTION_SYNC_FILES = ['impor-notion-content-bank.json', 'impor-notion-trivia-tambahan.json', 'impor-notion-log-mingguan.json'];
 async function autoSyncNotion(btn){
   const label = btn ? btn.innerHTML : '';
   if(btn){ btn.disabled = true; btn.innerHTML = '<span class="spinner"></span> Menyinkron...'; }
