@@ -1,0 +1,45 @@
+name: Sinkron Notion
+
+# Menarik semua materi dari Notion lalu memperbarui berkas impor-notion-*.json.
+# Berjalan otomatis tiap 3 jam, dan bisa dijalankan manual lewat tombol "Run workflow".
+# Setelah berkasnya berubah, GitHub Pages menerbitkannya sendiri — jadi tombol
+# "🔄 Sinkron dari Notion" di aplikasi langsung mendapat data terbaru.
+
+on:
+  schedule:
+    - cron: '17 */3 * * *'   # tiap 3 jam (menit ke-17, waktu UTC)
+  workflow_dispatch:          # tombol jalankan manual
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sinkron-notion
+  cancel-in-progress: false
+
+jobs:
+  tarik:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Tarik data dari Notion
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+        run: node scripts/tarik-notion.mjs
+
+      - name: Commit kalau ada perubahan
+        run: |
+          git config user.name  "Sinkron Notion"
+          git config user.email "actions@users.noreply.github.com"
+          git add impor-notion-*.json
+          if git diff --staged --quiet; then
+            echo "Tidak ada perubahan — tidak perlu commit."
+          else
+            git commit -m "Sinkron otomatis dari Notion"
+            git push
+          fi
