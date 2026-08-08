@@ -919,7 +919,12 @@
         <label>Anthropic API Key</label>
         <input type="password" id="setKey" placeholder="sk-ant-...">
         <p class="hint">Belum punya? Buat di <a href="https://platform.claude.com/" target="_blank">platform.claude.com</a> → API Keys.</p>
-        <p class="hint">🔒 Cukup dimasukkan <b>sekali</b>: key tersimpan di browser ini dan otomatis dipakai terus — tidak perlu diisi ulang tiap buka. Agar tetap ingat, gunakan <b>satu alamat yang sama</b> (situs live-mu, bukan file lokal) di browser yang sama. Kalau nanti membersihkan data browser, cukup tempel ulang sekali. Tombol <b>💾 Backup Semua Data</b> di menu Otomatisasi juga menyimpan key ini.</p>
+        <p class="hint">🔒 Cukup dimasukkan <b>sekali</b>: key tersimpan berlapis di browser ini dan otomatis dipakai terus — tidak perlu diisi ulang tiap buka, dan tidak hilang saat aplikasi diperbarui. Agar tetap ingat, gunakan <b>satu alamat yang sama</b> (situs live-mu, bukan file lokal) di browser yang sama. Tombol <b>💾 Backup Semua Data</b> di menu Otomatisasi juga menyimpan key ini.</p>
+        <div class="voice-box" style="padding:12px 14px; margin:10px 0">
+          <b style="font-size:13px">🔐 Perlindungan API Key</b>
+          <div id="keyGuard" style="font-size:12.5px; color:var(--muted); margin-top:6px"></div>
+          <p class="hint" style="margin-bottom:0">Key disalin otomatis ke beberapa tempat penyimpanan di perangkat ini, dan dipulihkan sendiri kalau salah satunya hilang. Yang <b>tetap</b> bisa menghapusnya: kamu membersihkan data situs lewat pengaturan browser, memakai mode penyamaran, atau berpindah ke <b>alamat situs / browser / perangkat lain</b> (penyimpanan browser selalu terikat pada satu alamat). Untuk kasus itu, jaring pengamannya adalah <b>☁️ Sinkron Cloud</b> di bawah.</p>
+        </div>
         <div class="grid2">
           <div>
             <label>Model</label>
@@ -941,6 +946,7 @@
         <div class="row">
           <button class="btn" onclick="saveSettings()">💾 Simpan</button>
           <button class="btn sec" onclick="testAPI()">🧪 Tes Koneksi</button>
+          <button class="btn sm danger" onclick="hapusApiKey()" title="Hapus API key dari perangkat ini">🗑️ Hapus API Key</button>
         </div>
         <div class="out" id="setOut"></div>
       </div>
@@ -1038,7 +1044,71 @@ let workspaces = store.get('workspaces', null);
     if(!workspaces.some(w=>w.id===activeWs)){ activeWs = workspaces[0].id; store.set('activeWs', activeWs); }
   }
 })();
+/* ═══════════════════ BRANKAS API KEY (anti-hilang) ═══════════════════
+   API key disimpan BERLAPIS supaya tidak hilang walau sistem/aplikasi berubah:
+     lapis 1 · bp_settings          — tempat utama (ikut Sinkron Cloud)
+     lapis 2 · bp_apikey            — cadangan khusus. NAMA INI JANGAN PERNAH DIUBAH,
+                                      apa pun perubahan kode di masa depan.
+     lapis 3 · IndexedDB            — bertahan walau localStorage terhapus sebagian
+   Ditambah: izin penyimpanan permanen ke browser (navigator.storage.persist) supaya
+   browser tidak membuang data saat ruang menipis / lama tak dibuka (mis. Safari iOS),
+   dan PEMULIHAN OTOMATIS saat aplikasi dimuat kalau lapis utama kosong.
+   Key hanya keluar dari perangkat ini ke api.anthropic.com, atau ke cloud dalam bentuk
+   TERENKRIPSI lewat Sinkron Cloud. Tidak pernah disimpan di cookie (cookie akan ikut
+   terkirim ke server hosting setiap kali halaman dibuka). */
+const KEY_BACKUP_LS = 'bp_apikey';               // ⚠️ nama tetap selamanya
+const VAULT_DB = 'lynsbrand_vault', VAULT_STORE = 'kv', VAULT_ID = 'apikey';
+function _idbOpen(){
+  return new Promise((res, rej)=>{
+    try{
+      const rq = indexedDB.open(VAULT_DB, 1);
+      rq.onupgradeneeded = ()=>{ const db = rq.result; if(!db.objectStoreNames.contains(VAULT_STORE)) db.createObjectStore(VAULT_STORE); };
+      rq.onsuccess = ()=> res(rq.result);
+      rq.onerror   = ()=> rej(rq.error);
+    }catch(e){ rej(e); }
+  });
+}
+async function _idbSet(k, v){
+  try{
+    const db = await _idbOpen();
+    await new Promise((res, rej)=>{ const tx = db.transaction(VAULT_STORE, 'readwrite'); tx.objectStore(VAULT_STORE).put(v, k); tx.oncomplete = res; tx.onerror = ()=>rej(tx.error); });
+  }catch(e){}
+}
+async function _idbGet(k){
+  try{
+    const db = await _idbOpen();
+    return await new Promise((res, rej)=>{ const tx = db.transaction(VAULT_STORE, 'readonly'); const rq = tx.objectStore(VAULT_STORE).get(k); rq.onsuccess = ()=>res(rq.result||''); rq.onerror = ()=>rej(rq.error); });
+  }catch(e){ return ''; }
+}
+// Simpan key ke SEMUA lapisan cadangan. Dipanggil tiap kali key masuk/berubah.
+function vaultSave(key){
+  if(!key) return;
+  try{ localStorage.setItem(KEY_BACKUP_LS, key); }catch(e){}
+  _idbSet(VAULT_ID, key);
+  vaultPersist();
+}
+// Minta browser TIDAK membuang data situs ini (sekali cukup; aman kalau ditolak).
+async function vaultPersist(){
+  try{
+    if(navigator.storage && navigator.storage.persist){
+      const sudah = navigator.storage.persisted ? await navigator.storage.persisted() : false;
+      if(!sudah) await navigator.storage.persist();
+    }
+  }catch(e){}
+}
+// Hapus key dari SEMUA lapisan — hanya dipakai kalau user sengaja menghapusnya.
+function vaultClear(){
+  try{ localStorage.removeItem(KEY_BACKUP_LS); }catch(e){}
+  _idbSet(VAULT_ID, '');
+}
 let settings = store.get('settings', {key:'', model:'claude-opus-4-8', lang:'Indonesia'});
+// Pemulihan lapis 2 (serentak, sebelum aplikasi jalan) — kalau tempat utama kosong.
+if(!settings.key){
+  try{
+    const cad = localStorage.getItem(KEY_BACKUP_LS) || '';
+    if(cad){ settings.key = cad; store.set('settings', settings); }
+  }catch(e){}
+}
 let profile  = store.get('profile', null);
 let voice    = store.get('voice', null);
 let designProfile = store.get('design', null);
@@ -1172,8 +1242,9 @@ async function byokSave(){
   const btn = $('btnByokSave'); btn.disabled = true; btn.innerHTML = '<span class="spinner"></span> Menguji...';
   const out = $('byokOut'); out.textContent = 'Menguji koneksi ke api.anthropic.com...';
   settings.key = key; store.set('settings', settings);   // key langsung disimpan & TETAP tersimpan, apa pun hasil tesnya
+  vaultSave(key);                                        // + cadangan berlapis (localStorage & IndexedDB)
   $('setKey').value = key;
-  updateApiStatus();
+  updateApiStatus(); renderKeyGuard();
   try{
     const r = await callClaude([{role:'user', content:'Balas hanya dengan: OK'}], {maxTokens:16, system:'Kamu penguji koneksi.'});
     out.textContent = '✅ Koneksi berhasil & key tersimpan! Cukup sekali ini — nanti tidak perlu isi ulang di browser ini. 🌸';
@@ -1194,6 +1265,23 @@ function showLanding(){
 document.querySelector('.sidebar .logo').style.cursor = 'pointer';
 document.querySelector('.sidebar .logo').title = 'Kembali ke beranda';
 document.querySelector('.sidebar .logo').onclick = showLanding;
+/* Brankas key saat aplikasi dimuat:
+   - kalau key ADA (termasuk hasil Pulihkan dari Cloud) → pastikan semua lapis cadangan terisi
+   - kalau key TIDAK ada → coba pulihkan dari IndexedDB (lapis 3, perlu async)
+   Barulah tawarkan modal BYOK, supaya user tidak diminta menempel ulang key yang sebenarnya
+   masih tersimpan di salah satu lapisan. */
+(async function bootKeyVault(){
+  if(settings.key){ vaultSave(settings.key); return; }
+  const dariIdb = await _idbGet(VAULT_ID);
+  if(dariIdb){
+    settings.key = dariIdb; store.set('settings', settings);
+    try{ localStorage.setItem(KEY_BACKUP_LS, dariIdb); }catch(e){}
+    if($('setKey')) $('setKey').value = dariIdb;
+    updateApiStatus(); renderKeyGuard();
+    if($('byokModal') && $('byokModal').classList.contains('show')) byokClose();
+    toast('🔐 API key dipulihkan otomatis dari cadangan di perangkat ini', 4000);
+  }
+})();
 // Kunjungan pertama → tampilkan landing; selanjutnya langsung ke aplikasi (tawarkan setup BYOK jika belum ada key)
 if(!store.get('seenLanding', false)) showLanding();
 else if(!settings.key) byokShow();
@@ -1256,12 +1344,50 @@ function loadSettings(){
   $('whUrl').value = webhook.url || '';
   $('whAuto').checked = !!webhook.auto;
   updateApiStatus();
+  renderKeyGuard();
 }
 function saveSettings(){
-  settings = {key: $('setKey').value.trim(), model: $('setModel').value, lang: $('setLang').value};
+  // Kolom key kosong TIDAK boleh menghapus key yang sudah tersimpan — kolom bisa saja
+  // belum terisi (mis. tes koneksi dipanggil sebelum halaman Pengaturan dibuka).
+  // Untuk benar-benar menghapus, pakai tombol "Hapus API Key".
+  const diketik = $('setKey').value.trim();
+  const key = diketik || settings.key || '';
+  settings = {key, model: $('setModel').value, lang: $('setLang').value};
   store.set('settings', settings);
-  updateApiStatus();
+  if(key) vaultSave(key);
+  $('setKey').value = key;
+  updateApiStatus(); renderKeyGuard();
   toast('✅ Pengaturan disimpan');
+}
+function hapusApiKey(){
+  if(!settings.key){ toast('Belum ada API key yang tersimpan'); return; }
+  if(!confirm('Hapus API key dari perangkat ini (termasuk semua cadangannya)?\n\nData lain (profil, kalender, bank materi) TIDAK ikut terhapus.')) return;
+  settings.key = ''; store.set('settings', settings);
+  vaultClear();
+  $('setKey').value = '';
+  updateApiStatus(); renderKeyGuard();
+  toast('API key dihapus dari perangkat ini');
+}
+// Status perlindungan key: berapa lapis cadangan aktif & apakah penyimpanan permanen menyala.
+async function renderKeyGuard(){
+  const el = $('keyGuard'); if(!el) return;
+  if(!settings.key){
+    el.innerHTML = '<span class="dot no"></span> Belum ada API key. Setelah dimasukkan sekali, key otomatis dicadangkan berlapis agar tidak hilang.';
+    return;
+  }
+  let ls = false, idb = false, permanen = false;
+  try{ ls = !!localStorage.getItem(KEY_BACKUP_LS); }catch(e){}
+  idb = !!(await _idbGet(VAULT_ID));
+  try{ permanen = (navigator.storage && navigator.storage.persisted) ? await navigator.storage.persisted() : false; }catch(e){}
+  const ya = '✅', tidak = '⬜';
+  el.innerHTML =
+    `<span class="dot ok"></span><b>Key terlindungi di ${1 + (ls?1:0) + (idb?1:0)} lapis</b>` +
+    `<div style="margin-top:6px; line-height:1.9">` +
+    `${ya} Penyimpanan utama (ikut Sinkron Cloud)<br>` +
+    `${ls?ya:tidak} Cadangan localStorage${ls?'':' — belum aktif, klik 💾 Simpan sekali'}<br>` +
+    `${idb?ya:tidak} Cadangan IndexedDB${idb?'':' — belum aktif, klik 💾 Simpan sekali'}<br>` +
+    `${permanen?ya:tidak} Penyimpanan permanen browser${permanen?' (browser tidak akan membuang data ini)':' — browser belum memberi izin; aktifkan Sinkron Cloud sebagai jaring pengaman'}` +
+    `</div>`;
 }
 function updateApiStatus(){
   $('apiStatus').innerHTML = settings.key
@@ -1280,7 +1406,8 @@ function saveMemory(){ memory = $('memText').value; store.set('memory', memory);
 function resetAll(){
   if(!confirm('Yakin hapus SEMUA data dari SEMUA akun (profil, suara, kalender, chat, template, pengaturan & API key)? Ini mengosongkan seluruh aplikasi dan tidak bisa dibatalkan.\n\n💡 Untuk menghapus satu akun saja, pakai menu "🗂️ Kelola Akun".')) return;
   Object.keys(localStorage).filter(k=>k.startsWith('bp_')).forEach(k=>localStorage.removeItem(k));
-  location.reload();
+  vaultClear();   // ikut kosongkan brankas key, kalau tidak key akan pulih sendiri saat reload
+  setTimeout(()=>location.reload(), 250);
 }
 
 /* ═══════════════════ PROFIL ═══════════════════ */
