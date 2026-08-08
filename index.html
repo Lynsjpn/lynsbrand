@@ -101,6 +101,14 @@
   .cal-item .title{flex:1; font-size:14px; font-weight:600;}
   .cal-item .plat{font-size:11.5px; color:var(--muted); background:var(--bg3); padding:3px 9px; border-radius:99px; font-weight:700;}
   .cal-item.overdue{border-color:rgba(224,124,150,.5);}
+  /* Bank Materi — pegangan seret & tombol naik/turun */
+  .cb-card{transition:box-shadow .12s, opacity .12s;}
+  .cb-grip{cursor:grab; user-select:none; color:var(--muted); font-size:17px; line-height:1; padding:2px 4px; border-radius:6px;}
+  .cb-grip:hover{background:var(--bg3); color:var(--accent);}
+  .cb-grip:active{cursor:grabbing;}
+  .cb-nudge{background:none; border:none; cursor:pointer; color:var(--muted); font-size:10px; line-height:1; padding:2px 4px; border-radius:5px;}
+  .cb-nudge:hover:not(:disabled){background:var(--bg3); color:var(--accent);}
+  .cb-nudge:disabled{opacity:.25; cursor:default;}
 
   /* chat */
   .chat-wrap{display:flex; flex-direction:column; height:calc(100vh - 190px); min-height:400px;}
@@ -865,6 +873,10 @@
         </div>
         <label>Cari</label>
         <input type="text" id="cbSearch" placeholder="cari judul, hook, atau catatan..." oninput="renderContentBank()">
+        <div class="row" style="justify-content:space-between; align-items:center; gap:10px">
+          <span class="hint" style="margin:0">↕️ Seret pegangan <b>⠿</b> di kiri kartu untuk mengatur urutan, atau pakai tombol <b>▲▼</b>. Urutanmu tersimpan otomatis.</span>
+          <button class="btn sm sec" id="cbOrderReset" onclick="cbResetOrder()" style="display:none">↕️ Urut otomatis lagi</button>
+        </div>
         <details style="margin-top:12px">
           <summary style="cursor:pointer; font-weight:700; font-size:13px; color:var(--muted)">➕ Tambah materi manual</summary>
           <div class="grid2" style="margin-top:10px">
@@ -1746,6 +1758,10 @@ function cbExtractRaw(data){
 function cbMergeRaw(raw, fallbackPilar){
   const byId = new Map(), byJudul = new Map();
   contentBank.forEach(x=>{ if(x.notion_id) byId.set(x.notion_id, x); byJudul.set((x.judul||'').trim().toLowerCase(), x); });
+  // Kalau user sudah mengatur urutan sendiri, ide baru dari Notion ditaruh di PALING BAWAH
+  // supaya urutan manualnya tidak teracak.
+  const manual = cbIsManual();
+  let ordBerikut = manual ? Math.max(-1, ...contentBank.map(x=>x.ord??-1)) + 1 : 0;
   let added=0, updated=0;
   raw.forEach(r=>{
     const n = cbNormalize(r, fallbackPilar);
@@ -1758,6 +1774,7 @@ function cbMergeRaw(raw, fallbackPilar){
       updated++;
     } else {
       const item = { id: uid(), ...n };
+      if(manual) item.ord = ordBerikut++;
       contentBank.push(item);
       if(item.notion_id) byId.set(item.notion_id, item);
       byJudul.set(item.judul.trim().toLowerCase(), item);
@@ -1808,6 +1825,7 @@ function syncContentBank(input){
   rd.readAsText(file);
 }
 function cbSummary(){
+  const rb = $('cbOrderReset'); if(rb) rb.style.display = cbIsManual() ? 'inline-flex' : 'none';
   const el = $('cbSummary'); if(!el) return;
   const by = p => contentBank.filter(x=>x.pilar===p).length;
   el.innerHTML = `<b>${contentBank.length} materi</b> · Pilar 1: ${by('Pilar 1 · Distrik & Ranking')} · Pilar 2: ${by('Pilar 2 · 雑学 / 豆知識')} · Pilar 3: ${by('Pilar 3 · Hidup & Kerja')}`;
@@ -1822,13 +1840,20 @@ function renderContentBank(){
     (!fp || x.pilar===fp) && (!fs || (x.status||'Ide')===fs) && (!fpr || x.prioritas===fpr) &&
     (!q || (x.judul+' '+x.hook+' '+x.catatan).toLowerCase().includes(q))
   );
-  const prioRank = {Tinggi:0, Sedang:1, Rendah:2};
-  list.sort((a,b)=> (a.pilar||'').localeCompare(b.pilar||'') || (prioRank[a.prioritas]??3)-(prioRank[b.prioritas]??3) || (a.judul||'').localeCompare(b.judul||''));
+  list.sort(cbIsManual() ? cbCmpManual : cbCmpAuto);
   if(!list.length){ wrap.innerHTML = '<div class="card"><p class="hint">Tidak ada materi yang cocok dengan filter/pencarian ini.</p></div>'; return; }
-  wrap.innerHTML = list.map(x=>{
+  cbVisibleIds = list.map(x=>x.id);   // dipakai tombol ▲▼ agar bergerak sesuai yang terlihat
+  wrap.innerHTML = list.map((x, i)=>{
     const badge = {Ide:'ide',Draft:'draft',Siap:'siap',Terjadwal:'siap',Tayang:'siap'}[x.status||'Ide']||'ide';
-    return `<div class="card" style="padding:14px 16px">
+    return `<div class="card cb-card" style="padding:14px 16px"
+        ondragstart="cbDragStart(event,'${x.id}')" ondragover="cbDragOver(event,'${x.id}')"
+        ondragleave="cbDragLeave(event)" ondrop="cbDrop(event,'${x.id}')" ondragend="cbDragEnd(event)">
       <div style="display:flex; gap:10px; align-items:flex-start; flex-wrap:wrap">
+        <div style="display:flex; flex-direction:column; align-items:center; gap:2px; padding-top:2px">
+          <span class="cb-grip" title="Seret untuk memindahkan urutan" onmousedown="cbGrip(this,true)" onmouseup="cbGrip(this,false)">⠿</span>
+          <button class="cb-nudge" title="Naikkan" ${i===0?'disabled':''} onclick="cbNudge('${x.id}',-1)">▲</button>
+          <button class="cb-nudge" title="Turunkan" ${i===list.length-1?'disabled':''} onclick="cbNudge('${x.id}',1)">▼</button>
+        </div>
         <div style="flex:1; min-width:220px">
           <div style="font-weight:700; color:var(--text); line-height:1.35">${esc(x.judul)}</div>
           <div style="margin:6px 0; display:flex; gap:6px; flex-wrap:wrap; font-size:11px">
@@ -1866,8 +1891,10 @@ function delBankItem(id){
 function addBankItem(){
   const judul = ($('cbNewJudul').value||'').trim();
   if(!judul){ toast('Isi judulnya dulu'); return; }
-  contentBank.push({ id:uid(), notion_id:'', judul, pilar:$('cbNewPilar').value, status:$('cbNewStatus').value,
-    format:$('cbNewFormat').value, prioritas:$('cbNewPrio').value, hook:($('cbNewHook').value||'').trim(), catatan:($('cbNewCatatan').value||'').trim(), source:'manual' });
+  const baru = { id:uid(), notion_id:'', judul, pilar:$('cbNewPilar').value, status:$('cbNewStatus').value,
+    format:$('cbNewFormat').value, prioritas:$('cbNewPrio').value, hook:($('cbNewHook').value||'').trim(), catatan:($('cbNewCatatan').value||'').trim(), source:'manual' };
+  if(cbIsManual()) baru.ord = Math.max(-1, ...contentBank.map(x=>x.ord??-1)) + 1;   // taruh paling bawah
+  contentBank.push(baru);
   store.set('contentbank', contentBank);
   ['cbNewJudul','cbNewHook','cbNewCatatan'].forEach(i=>$(i).value='');
   renderContentBank();
@@ -1897,6 +1924,74 @@ function bankToCalendar(id){
    Semua hasil (naskah, analisis, brief desain) disimpan permanen di item bank,
    jadi ikut multi-akun & Sinkron Cloud. Sinkron dari Notion tidak menimpanya
    (cbMergeRaw hanya menyentuh field asal Notion). */
+/* ── URUTAN MANUAL (seret / ▲▼) ──────────────────────────────────────────────
+   Selama belum pernah diseret, daftar memakai urutan otomatis (pilar → prioritas →
+   judul). Begitu diseret sekali, SEMUA materi diberi nomor urut `ord` dan daftar
+   memakai urutan itu seterusnya — tersimpan permanen bersama materinya, jadi ikut
+   multi-akun & Sinkron Cloud. Tombol "Urut otomatis lagi" menghapus semua `ord`. */
+let cbVisibleIds = [];
+let cbDragId = null;
+const CB_PRIO_RANK = {Tinggi:0, Sedang:1, Rendah:2};
+function cbCmpAuto(a,b){ return (a.pilar||'').localeCompare(b.pilar||'') || (CB_PRIO_RANK[a.prioritas]??3)-(CB_PRIO_RANK[b.prioritas]??3) || (a.judul||'').localeCompare(b.judul||''); }
+function cbCmpManual(a,b){ return (a.ord??0)-(b.ord??0); }
+function cbIsManual(){ return contentBank.length>0 && contentBank.every(x=>typeof x.ord==='number'); }
+// Seluruh materi dalam urutan tampilan sekarang (tanpa filter) — dasar untuk memindah.
+function cbOrderedAll(){ return contentBank.slice().sort(cbIsManual() ? cbCmpManual : cbCmpAuto); }
+// Pindahkan satu materi ke sebelum/sesudah materi lain, lalu beri nomor ulang semuanya.
+function cbMove(dragId, targetId, after){
+  if(!dragId || dragId===targetId) return;
+  const all = cbOrderedAll();
+  const from = all.findIndex(x=>x.id===dragId); if(from<0) return;
+  const [item] = all.splice(from,1);
+  let to = all.findIndex(x=>x.id===targetId);
+  if(to<0) to = all.length; else if(after) to += 1;
+  all.splice(to, 0, item);
+  all.forEach((x,i)=> x.ord = i);           // penomoran ulang = urutan manual aktif
+  cbSave(); renderContentBank();
+}
+// ▲▼ bergerak satu langkah mengikuti daftar yang TERLIHAT (menghormati filter/pencarian).
+function cbNudge(id, arah){
+  const i = cbVisibleIds.indexOf(id); if(i<0) return;
+  const target = cbVisibleIds[i + arah]; if(!target) return;
+  cbMove(id, target, arah > 0);
+}
+function cbResetOrder(){
+  if(!cbIsManual()){ toast('Urutan sudah otomatis'); return; }
+  if(!confirm('Kembalikan ke urutan otomatis (pilar → prioritas → judul)? Urutan manual hasil seretmu akan hilang.')) return;
+  contentBank.forEach(x=>{ delete x.ord; });
+  cbSave(); renderContentBank();
+  toast('↕️ Kembali ke urutan otomatis');
+}
+// Kartu baru bisa diseret hanya saat pegangan ⠿ ditekan — supaya teks tetap bisa disorot.
+function cbGrip(el, on){ const c = el.closest('.cb-card'); if(c) c.draggable = on; }
+function cbDragStart(e, id){
+  cbDragId = id;
+  e.dataTransfer.effectAllowed = 'move';
+  try{ e.dataTransfer.setData('text/plain', id); }catch(_){}
+  e.currentTarget.style.opacity = '.45';
+}
+function cbDragOver(e, id){
+  if(!cbDragId || cbDragId===id) return;
+  e.preventDefault(); e.dataTransfer.dropEffect = 'move';
+  const c = e.currentTarget, r = c.getBoundingClientRect();
+  const bawah = (e.clientY - r.top) > r.height/2;
+  c.style.boxShadow = bawah ? '0 3px 0 -1px var(--accent)' : '0 -3px 0 -1px var(--accent)';
+}
+function cbDragLeave(e){ e.currentTarget.style.boxShadow = ''; }
+function cbDrop(e, id){
+  e.preventDefault();
+  const c = e.currentTarget, r = c.getBoundingClientRect();
+  const bawah = (e.clientY - r.top) > r.height/2;
+  c.style.boxShadow = ''; c.draggable = false;
+  const d = cbDragId; cbDragId = null;
+  if(d && d!==id) cbMove(d, id, bawah);
+}
+function cbDragEnd(e){
+  cbDragId = null;
+  e.currentTarget.draggable = false;
+  e.currentTarget.style.opacity = ''; e.currentTarget.style.boxShadow = '';
+  document.querySelectorAll('.cb-card').forEach(c=>{ c.style.boxShadow=''; c.style.opacity=''; });
+}
 let cbOpen = null;   // {id, tab} — panel yang sedang terbuka
 const CB_DS_FORMATS = ['Instagram Feed (1080×1350)','Instagram Square (1080×1080)','Instagram/TikTok Story-Reels (1080×1920)','Carousel Instagram (1080×1350, multi-slide)','X Post (1600×900)','LinkedIn (1200×627)','YouTube Thumbnail (1280×720)'];
 function cbFind(id){ return contentBank.find(c=>c.id===id); }
