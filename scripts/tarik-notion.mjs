@@ -128,6 +128,8 @@ function keItem(page, db) {
     prioritas: PRIO[ambil(p, 'Prioritas', 'Priority')] || 'Sedang',
     hook: ambil(p, 'Hook / CTA', 'Hook (ID)', 'Hook'),
     catatan: bagian.join('\n\n'),
+    dibuat: page.created_time || '',        // dipakai untuk urutan "terbaru / terlama"
+    diubah: page.last_edited_time || '',
     source: db.source,
   };
 }

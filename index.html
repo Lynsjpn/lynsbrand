@@ -868,11 +868,23 @@
           <div><label>Status</label><select id="cbFilterStatus" onchange="renderContentBank()"><option value="">Semua status</option><option>Ide</option><option>Draft</option><option>Siap</option><option>Terjadwal</option><option>Tayang</option></select></div>
           <div><label>Prioritas</label><select id="cbFilterPrio" onchange="renderContentBank()"><option value="">Semua prioritas</option><option>Tinggi</option><option>Sedang</option><option>Rendah</option></select></div>
         </div>
+        <div class="grid2" style="gap:10px">
+          <div><label>Jenis Materi</label><select id="cbFilterFormat" onchange="renderContentBank()"><option value="">Semua jenis</option><option>Carousel</option><option>Video / Reel</option><option>Single</option></select></div>
+          <div><label>Urutkan</label><select id="cbSort" onchange="cbSetSort(this.value)">
+            <option value="pilar">Pilar → prioritas → judul (bawaan)</option>
+            <option value="baru">🆕 Terbaru dulu</option>
+            <option value="lama">🕰️ Terlama dulu</option>
+            <option value="prioritas">🔥 Prioritas tertinggi dulu</option>
+            <option value="format">🎬 Jenis materi</option>
+            <option value="judul">🔤 Judul A–Z</option>
+            <option value="manual">⠿ Urutan sendiri (hasil seret)</option>
+          </select></div>
+        </div>
         <label>Cari</label>
         <input type="text" id="cbSearch" placeholder="cari judul, hook, atau catatan..." oninput="renderContentBank()">
         <div class="row" style="justify-content:space-between; align-items:center; gap:10px">
-          <span class="hint" style="margin:0">↕️ Seret pegangan <b>⠿</b> di kiri kartu untuk mengatur urutan, atau pakai tombol <b>▲▼</b>. Urutanmu tersimpan otomatis.</span>
-          <button class="btn sm sec" id="cbOrderReset" onclick="cbResetOrder()" style="display:none">↕️ Urut otomatis lagi</button>
+          <span class="hint" style="margin:0" id="cbOrderHint">↕️ Seret pegangan <b>⠿</b> di kiri kartu untuk mengatur urutan sendiri, atau pakai tombol <b>▲▼</b>. Urutanmu tersimpan otomatis.</span>
+          <button class="btn sm sec" id="cbOrderReset" onclick="cbResetOrder()" style="display:none">↕️ Hapus urutan manual</button>
         </div>
         <details style="margin-top:12px">
           <summary style="cursor:pointer; font-weight:700; font-size:13px; color:var(--muted)">➕ Tambah materi manual</summary>
@@ -1742,7 +1754,8 @@ function cbNormalize(it, fallbackPilar){
   }
   // bentuk bank langsung
   return { notion_id:(it.notion_id||'').trim(), judul: it.judul||'', pilar: canonicalPilar(it.pilar||fallbackPilar), status: it.status||'Ide',
-    format: it.format||'Carousel', prioritas: it.prioritas||'Sedang', hook: it.hook||'', catatan: it.catatan||'', source: it.source||'manual' };
+    format: it.format||'Carousel', prioritas: it.prioritas||'Sedang', hook: it.hook||'', catatan: it.catatan||'',
+    dibuat: it.dibuat||'', diubah: it.diubah||'', source: it.source||'manual' };
 }
 // Ambil array ide mentah dari berbagai bentuk data file/ekspor
 function cbExtractRaw(data){
@@ -1766,6 +1779,8 @@ function cbMergeRaw(raw, fallbackPilar){
     let ex = (n.notion_id && byId.get(n.notion_id)) || byJudul.get(n.judul.trim().toLowerCase());
     if(ex){
       Object.assign(ex, { judul:n.judul, pilar:n.pilar, format:n.format, prioritas:n.prioritas, hook:n.hook, catatan:n.catatan, source:n.source });
+      if(n.dibuat) ex.dibuat = n.dibuat;
+      if(n.diubah) ex.diubah = n.diubah;
       if(n.notion_id) ex.notion_id = n.notion_id;
       if((ex.status||'Ide')==='Ide') ex.status = n.status;   // jangan timpa progres lokal
       updated++;
@@ -1823,6 +1838,17 @@ function syncContentBank(input){
 }
 function cbSummary(){
   const rb = $('cbOrderReset'); if(rb) rb.style.display = cbIsManual() ? 'inline-flex' : 'none';
+  const hint = $('cbOrderHint');
+  if(hint){
+    if(cbSortMode==='baru' || cbSortMode==='lama'){
+      const tanpa = contentBank.filter(x=>!cbWaktu(x)).length;
+      hint.innerHTML = '🗓️ Diurutkan berdasarkan <b>tanggal materi dibuat di Notion</b>.'
+        + (tanpa ? ` <b>${tanpa} materi</b> belum punya tanggal (ditambah manual atau ditarik sebelum fitur ini) — ditaruh di paling bawah.` : '')
+        + ' Menyeret kartu akan pindah ke mode urutan sendiri.';
+    } else {
+      hint.innerHTML = '↕️ Seret pegangan <b>⠿</b> di kiri kartu untuk mengatur urutan sendiri, atau pakai tombol <b>▲▼</b>. Urutanmu tersimpan otomatis.';
+    }
+  }
   const el = $('cbSummary'); if(!el) return;
   const by = p => contentBank.filter(x=>x.pilar===p).length;
   el.innerHTML = `<b>${contentBank.length} materi</b> · Pilar 1: ${by('Pilar 1 · Distrik & Ranking')} · Pilar 2: ${by('Pilar 2 · 雑学 / 豆知識')} · Pilar 3: ${by('Pilar 3 · Hidup & Kerja')}`;
@@ -1832,12 +1858,15 @@ function renderContentBank(){
   const wrap = $('cbList'); if(!wrap) return;
   if(!contentBank.length){ wrap.innerHTML = '<div class="card"><p class="hint">Bank materi masih kosong. Cukup klik <b>🔄 Sinkron dari Notion</b> di atas — semua idemu (±88) akan tertarik otomatis, tanpa buka folder.</p></div>'; return; }
   const fp = $('cbFilterPilar').value, fs = $('cbFilterStatus').value, fpr = $('cbFilterPrio').value;
+  const ff = ($('cbFilterFormat')||{}).value || '';
   const q = ($('cbSearch').value||'').trim().toLowerCase();
   let list = contentBank.filter(x=>
     (!fp || x.pilar===fp) && (!fs || (x.status||'Ide')===fs) && (!fpr || x.prioritas===fpr) &&
+    (!ff || (x.format||'')===ff) &&
     (!q || (x.judul+' '+x.hook+' '+x.catatan).toLowerCase().includes(q))
   );
-  list.sort(cbIsManual() ? cbCmpManual : cbCmpAuto);
+  if($('cbSort')) $('cbSort').value = cbSortMode;
+  list.sort(cbCmpAktif());
   if(!list.length){ wrap.innerHTML = '<div class="card"><p class="hint">Tidak ada materi yang cocok dengan filter/pencarian ini.</p></div>'; return; }
   cbVisibleIds = list.map(x=>x.id);   // dipakai tombol ▲▼ agar bergerak sesuai yang terlihat
   wrap.innerHTML = list.map((x, i)=>{
@@ -1889,7 +1918,8 @@ function addBankItem(){
   const judul = ($('cbNewJudul').value||'').trim();
   if(!judul){ toast('Isi judulnya dulu'); return; }
   const baru = { id:uid(), notion_id:'', judul, pilar:$('cbNewPilar').value, status:$('cbNewStatus').value,
-    format:$('cbNewFormat').value, prioritas:$('cbNewPrio').value, hook:($('cbNewHook').value||'').trim(), catatan:($('cbNewCatatan').value||'').trim(), source:'manual' };
+    format:$('cbNewFormat').value, prioritas:$('cbNewPrio').value, hook:($('cbNewHook').value||'').trim(), catatan:($('cbNewCatatan').value||'').trim(),
+    dibuat: new Date().toISOString(), source:'manual' };
   if(cbIsManual()) baru.ord = Math.max(-1, ...contentBank.map(x=>x.ord??-1)) + 1;   // taruh paling bawah
   contentBank.push(baru);
   store.set('contentbank', contentBank);
@@ -1929,11 +1959,34 @@ function bankToCalendar(id){
 let cbVisibleIds = [];
 let cbDragId = null;
 const CB_PRIO_RANK = {Tinggi:0, Sedang:1, Rendah:2};
-function cbCmpAuto(a,b){ return (a.pilar||'').localeCompare(b.pilar||'') || (CB_PRIO_RANK[a.prioritas]??3)-(CB_PRIO_RANK[b.prioritas]??3) || (a.judul||'').localeCompare(b.judul||''); }
+const CB_FMT_RANK  = {'Carousel':0, 'Video / Reel':1, 'Single':2};
+function cbJudul(a,b){ return (a.judul||'').localeCompare(b.judul||'', 'id'); }
+// Tanggal materi dibuat di Notion (atau saat ditambah manual). 0 = tidak diketahui.
+function cbWaktu(x){ return Date.parse(x.dibuat || '') || 0; }
+function cbCmpAuto(a,b){ return (a.pilar||'').localeCompare(b.pilar||'') || (CB_PRIO_RANK[a.prioritas]??3)-(CB_PRIO_RANK[b.prioritas]??3) || cbJudul(a,b); }
 function cbCmpManual(a,b){ return (a.ord??0)-(b.ord??0); }
+// Materi tanpa tanggal selalu ditaruh di BAWAH, baik saat urut terbaru maupun terlama,
+// supaya tidak menyamar jadi "paling tua" hanya karena tanggalnya belum ada.
+const CB_SORTERS = {
+  manual:    cbCmpManual,
+  pilar:     cbCmpAuto,
+  baru:      (a,b)=>{ const ta=cbWaktu(a), tb=cbWaktu(b); if(!ta||!tb) return (tb?1:0)-(ta?1:0) || cbJudul(a,b); return tb-ta || cbJudul(a,b); },
+  lama:      (a,b)=>{ const ta=cbWaktu(a), tb=cbWaktu(b); if(!ta||!tb) return (tb?1:0)-(ta?1:0) || cbJudul(a,b); return ta-tb || cbJudul(a,b); },
+  prioritas: (a,b)=> (CB_PRIO_RANK[a.prioritas]??3)-(CB_PRIO_RANK[b.prioritas]??3) || cbJudul(a,b),
+  format:    (a,b)=> (CB_FMT_RANK[a.format]??3)-(CB_FMT_RANK[b.format]??3) || cbJudul(a,b),
+  judul:     cbJudul,
+};
+let cbSortMode = store.get('cbsort', null) || 'pilar';
+function cbSetSort(v){ cbSortMode = v; store.set('cbsort', v); renderContentBank(); }
+function cbCmpAktif(){ return CB_SORTERS[cbSortMode] || cbCmpAuto; }
 function cbIsManual(){ return contentBank.length>0 && contentBank.every(x=>typeof x.ord==='number'); }
 // Seluruh materi dalam urutan tampilan sekarang (tanpa filter) — dasar untuk memindah.
-function cbOrderedAll(){ return contentBank.slice().sort(cbIsManual() ? cbCmpManual : cbCmpAuto); }
+// Kalau belum ada urutan manual, dasarnya = pengurutan yang SEDANG DILIHAT, supaya
+// hasil seret tidak membuat daftar melompat ke susunan lain.
+function cbOrderedAll(){
+  const dasar = cbIsManual() ? cbCmpManual : (cbSortMode==='manual' ? cbCmpAuto : cbCmpAktif());
+  return contentBank.slice().sort(dasar);
+}
 // Pindahkan satu materi ke sebelum/sesudah materi lain, lalu beri nomor ulang semuanya.
 function cbMove(dragId, targetId, after){
   if(!dragId || dragId===targetId) return;
@@ -1944,6 +1997,9 @@ function cbMove(dragId, targetId, after){
   if(to<0) to = all.length; else if(after) to += 1;
   all.splice(to, 0, item);
   all.forEach((x,i)=> x.ord = i);           // penomoran ulang = urutan manual aktif
+  // Menyeret otomatis memindahkan tampilan ke mode "urutan sendiri" — kalau tidak,
+  // hasil seretnya tidak akan terlihat karena daftar masih diurutkan cara lain.
+  if(cbSortMode !== 'manual'){ cbSortMode = 'manual'; store.set('cbsort', 'manual'); }
   cbSave(); renderContentBank();
 }
 // ▲▼ bergerak satu langkah mengikuti daftar yang TERLIHAT (menghormati filter/pencarian).
@@ -1953,11 +2009,12 @@ function cbNudge(id, arah){
   cbMove(id, target, arah > 0);
 }
 function cbResetOrder(){
-  if(!cbIsManual()){ toast('Urutan sudah otomatis'); return; }
-  if(!confirm('Kembalikan ke urutan otomatis (pilar → prioritas → judul)? Urutan manual hasil seretmu akan hilang.')) return;
+  if(!cbIsManual()){ toast('Belum ada urutan manual'); return; }
+  if(!confirm('Hapus urutan manual hasil seretmu? Daftar akan kembali memakai pengurutan yang dipilih di kotak "Urutkan".')) return;
   contentBank.forEach(x=>{ delete x.ord; });
+  if(cbSortMode === 'manual'){ cbSortMode = 'pilar'; store.set('cbsort', 'pilar'); }
   cbSave(); renderContentBank();
-  toast('↕️ Kembali ke urutan otomatis');
+  toast('↕️ Urutan manual dihapus');
 }
 // Kartu baru bisa diseret hanya saat pegangan ⠿ ditekan — supaya teks tetap bisa disorot.
 function cbGrip(el, on){ const c = el.closest('.cb-card'); if(c) c.draggable = on; }
