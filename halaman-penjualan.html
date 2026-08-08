@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LYNSBrand AI — Kenali Dirimu, Berkaryalah dengan Otentik</title>
+<meta name="description" content="Aplikasi personal branding & deteksi kepribadian milikmu sendiri. Sekali bayar, tanpa langganan, data 100% di perangkatmu.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox='0%200%20100%20100'%20xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient%20id='g'%20x1='0'%20y1='0'%20x2='1'%20y2='1'%3E%3Cstop%20offset='0'%20stop-color='%23F2A0BE'/%3E%3Cstop%20offset='1'%20stop-color='%23A98BDF'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg%20fill='url(%23g)'%3E%3Cpath%20d='M50%2046%20C40%2040%2032%2026%2036%2015%20C38.5%208.5%2047%208%2049%2014%20L50%2017%20L51%2014%20C53%208%2061.5%208.5%2064%2015%20C68%2026%2060%2040%2050%2046%20Z'/%3E%3Cpath%20d='M50%2046%20C40%2040%2032%2026%2036%2015%20C38.5%208.5%2047%208%2049%2014%20L50%2017%20L51%2014%20C53%208%2061.5%208.5%2064%2015%20C68%2026%2060%2040%2050%2046%20Z'%20transform='rotate(72%2050%2050)'/%3E%3Cpath%20d='M50%2046%20C40%2040%2032%2026%2036%2015%20C38.5%208.5%2047%208%2049%2014%20L50%2017%20L51%2014%20C53%208%2061.5%208.5%2064%2015%20C68%2026%2060%2040%2050%2046%20Z'%20transform='rotate(144%2050%2050)'/%3E%3Cpath%20d='M50%2046%20C40%2040%2032%2026%2036%2015%20C38.5%208.5%2047%208%2049%2014%20L50%2017%20L51%2014%20C53%208%2061.5%208.5%2064%2015%20C68%2026%2060%2040%2050%2046%20Z'%20transform='rotate(216%2050%2050)'/%3E%3Cpath%20d='M50%2046%20C40%2040%2032%2026%2036%2015%20C38.5%208.5%2047%208%2049%2014%20L50%2017%20L51%2014%20C53%208%2061.5%208.5%2064%2015%20C68%2026%2060%2040%2050%2046%20Z'%20transform='rotate(288%2050%2050)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#faf6f0; --bg2:#ffffff; --bg3:#f4ecf2; --border:#e9dde3;
+    --text:#5a4d5e; --muted:#a294a6; --accent:#b18ce0; --accent2:#6fbfa0;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:'Segoe UI',system-ui,sans-serif; background:var(--bg); color:var(--text); line-height:1.6;}
+  a{color:var(--accent);}
+  .nav{position:sticky; top:0; display:flex; align-items:center; gap:24px; padding:16px 6vw; background:rgba(250,246,240,.88); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); z-index:5;}
+  .logo{font-size:19px; font-weight:800; margin-right:auto; white-space:nowrap;}
+  .logo span{font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif; font-size:24px; font-weight:600; letter-spacing:.3px; background:linear-gradient(90deg,#E39CBC,var(--accent)); -webkit-background-clip:text; background-clip:text; color:transparent;}
+  .nav a{color:var(--muted); text-decoration:none; font-size:14px; font-weight:600;}
+  .nav a:hover{color:var(--text);}
+  .btn{display:inline-block; background:linear-gradient(90deg,var(--accent),#d3a4d8); color:#fff; border:none; border-radius:14px; padding:15px 32px; font-size:15.5px; font-weight:700; cursor:pointer; text-decoration:none; box-shadow:0 10px 26px rgba(177,140,224,.35); transition:.15s;}
+  .btn:hover{filter:brightness(1.06);}
+  .btn.sec{background:var(--bg3); color:var(--text); border:1px solid var(--border); box-shadow:none;}
+  .hero{position:relative; text-align:center; padding:90px 6vw 70px; overflow:hidden;}
+  .blob{position:absolute; border-radius:50%; filter:blur(70px); opacity:.5; pointer-events:none;}
+  .b1{width:420px; height:420px; background:#e8d5f5; top:-120px; left:-90px;}
+  .b2{width:380px; height:380px; background:#d2ecdf; bottom:-140px; right:-70px;}
+  h1{font-family:Georgia,serif; font-size:clamp(32px,5vw,54px); letter-spacing:-1px; line-height:1.18; max-width:800px; margin:0 auto 20px; position:relative;}
+  h1 em{font-style:italic; background:linear-gradient(90deg,var(--accent),#d98cb8); -webkit-background-clip:text; background-clip:text; color:transparent;}
+  .hero p{font-size:17px; color:var(--muted); max-width:620px; margin:0 auto 32px; position:relative;}
+  .badge{display:inline-block; font-size:12.5px; font-weight:700; color:#8a63c0; background:rgba(177,140,224,.14); border:1px solid rgba(177,140,224,.3); border-radius:99px; padding:7px 16px; margin-bottom:20px; position:relative;}
+  .sec{padding:64px 6vw; max-width:1060px; margin:0 auto;}
+  h2{font-family:Georgia,serif; font-size:clamp(24px,3.2vw,36px); text-align:center; margin-bottom:10px; letter-spacing:-.5px;}
+  .sub{text-align:center; color:var(--muted); font-size:15px; margin-bottom:40px;}
+  .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px;}
+  .card{background:var(--bg2); border:1px solid var(--border); border-radius:18px; padding:26px;}
+  .card .ic{font-size:26px; margin-bottom:10px;}
+  .card h4{font-size:15.5px; margin-bottom:8px;}
+  .card p{font-size:13.5px; color:var(--muted);}
+  /* pricing */
+  .plans{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; align-items:stretch;}
+  .plan{background:var(--bg2); border:1px solid var(--border); border-radius:22px; padding:32px 28px; display:flex; flex-direction:column; position:relative;}
+  .plan.hot{border:2px solid var(--accent); box-shadow:0 18px 44px rgba(177,140,224,.22);}
+  .plan .tag{position:absolute; top:-14px; left:50%; transform:translateX(-50%); background:linear-gradient(90deg,var(--accent),#d3a4d8); color:#fff; font-size:11.5px; font-weight:800; padding:5px 16px; border-radius:99px; letter-spacing:.5px;}
+  .plan h3{font-size:17px; margin-bottom:4px;}
+  .plan .price{font-family:Georgia,serif; font-size:34px; font-weight:700; margin:10px 0 2px;}
+  .plan .price small{font-size:13px; color:var(--muted); font-weight:400; font-family:'Segoe UI',sans-serif;}
+  .plan .strike{color:var(--muted); text-decoration:line-through; font-size:14px;}
+  .plan ul{list-style:none; margin:18px 0 24px; font-size:13.5px; line-height:2.15; flex:1;}
+  .plan ul li::before{content:'✓  '; color:var(--accent2); font-weight:800;}
+  .plan .btn{text-align:center;}
+  /* faq */
+  details{background:var(--bg2); border:1px solid var(--border); border-radius:14px; padding:18px 22px; margin-bottom:10px;}
+  summary{cursor:pointer; font-weight:700; font-size:14.5px;}
+  details p{margin-top:10px; font-size:13.5px; color:var(--muted);}
+  /* window tabs */
+  .win-tabs{display:flex; gap:10px; justify-content:center; margin-bottom:28px; flex-wrap:wrap;}
+  .win-tab{padding:13px 24px; border-radius:99px; border:1px solid var(--border); background:var(--bg2); cursor:pointer; font-weight:700; font-size:14px; color:var(--muted); transition:.15s;}
+  .win-tab:hover{border-color:var(--accent);}
+  .win-tab.on{background:linear-gradient(90deg,var(--accent),#d3a4d8); color:#fff; border-color:var(--accent); box-shadow:0 8px 20px rgba(177,140,224,.3);}
+  /* form trial branding */
+  .f-label{display:block; font-size:12px; font-weight:700; color:var(--muted); margin:14px 0 6px; text-transform:uppercase; letter-spacing:.4px;}
+  .f-in{width:100%; background:var(--bg); border:1px solid var(--border); border-radius:10px; color:var(--text); padding:11px 13px; font-size:14px; font-family:inherit; outline:none;}
+  .f-in:focus{border-color:var(--accent);}
+  textarea.f-in{resize:vertical; min-height:80px; line-height:1.55;}
+  .brand-out{background:var(--bg); border:1px solid var(--border); border-radius:12px; padding:18px; font-size:14px; line-height:1.7; white-space:pre-wrap; margin-top:16px; display:none;}
+  .spin{display:inline-block; width:14px; height:14px; border:2px solid rgba(255,255,255,.4); border-top-color:#fff; border-radius:50%; animation:sp .7s linear infinite; vertical-align:-2px;}
+  @keyframes sp{to{transform:rotate(360deg);}}
+  /* quiz */
+  .q-item{background:var(--bg2); border:1px solid var(--border); border-radius:16px; padding:20px 22px; margin-bottom:12px;}
+  .q-item.unanswered{border-color:#e07c96;}
+  .q-item p{font-size:14.5px; font-weight:600; margin-bottom:14px;}
+  .q-scale{display:flex; align-items:center; gap:8px; justify-content:space-between;}
+  .q-scale .lbl{font-size:11px; color:var(--muted); min-width:60px;}
+  .q-scale .lbl.r{text-align:right;}
+  .q-dots{display:flex; gap:10px; flex:1; justify-content:center;}
+  .q-dot{width:36px; height:36px; border-radius:50%; border:2px solid var(--border); background:var(--bg2); cursor:pointer; transition:.15s; display:grid; place-items:center; font-size:12px; color:var(--muted); font-weight:700;}
+  .q-dot:hover{border-color:var(--accent);}
+  .q-dot.on{background:linear-gradient(135deg,var(--accent),#d3a4d8); border-color:var(--accent); color:#fff;}
+  .q-bar-row{display:flex; align-items:center; gap:10px; margin:8px 0;}
+  .q-bar-row .bl{min-width:170px; font-size:13px; font-weight:600;}
+  .q-bar-track{flex:1; height:12px; border-radius:99px; background:var(--bg3); overflow:hidden;}
+  .q-bar-fill{height:100%; border-radius:99px; background:linear-gradient(90deg,var(--accent),var(--accent2)); transition:width .8s ease;}
+  .q-bar-row .bv{min-width:38px; text-align:right; font-size:12.5px; font-weight:700; color:var(--muted);}
+  .quote{text-align:center; padding:64px 6vw; background:linear-gradient(135deg,rgba(177,140,224,.08),rgba(111,191,160,.07));}
+  .quote blockquote{font-family:Georgia,serif; font-style:italic; font-size:clamp(19px,2.6vw,26px); max-width:680px; margin:0 auto 12px;}
+  .foot{text-align:center; padding:40px 6vw 56px; color:var(--muted); font-size:13px; line-height:2;}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="logo"><svg viewBox="0 0 100 100" width="30" height="30" style="vertical-align:-8px; margin-right:4px"><defs><linearGradient id="skrG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F2A0BE"/><stop offset="1" stop-color="#A98BDF"/></linearGradient></defs><g fill="url(#skrG)"><path d="M50 38 C40 32 32 20 36 10 C38.5 4.5 47 4 49 9 L50 12 L51 9 C53 4 61.5 4.5 64 10 C68 20 60 32 50 38 Z"/><path d="M50 38 C40 32 32 20 36 10 C38.5 4.5 47 4 49 9 L50 12 L51 9 C53 4 61.5 4.5 64 10 C68 20 60 32 50 38 Z" transform="rotate(72 50 50)"/><path d="M50 38 C40 32 32 20 36 10 C38.5 4.5 47 4 49 9 L50 12 L51 9 C53 4 61.5 4.5 64 10 C68 20 60 32 50 38 Z" transform="rotate(144 50 50)"/><path d="M50 38 C40 32 32 20 36 10 C38.5 4.5 47 4 49 9 L50 12 L51 9 C53 4 61.5 4.5 64 10 C68 20 60 32 50 38 Z" transform="rotate(216 50 50)"/><path d="M50 38 C40 32 32 20 36 10 C38.5 4.5 47 4 49 9 L50 12 L51 9 C53 4 61.5 4.5 64 10 C68 20 60 32 50 38 Z" transform="rotate(288 50 50)"/></g><g stroke="url(#skrG)" stroke-width="2" fill="none" stroke-linecap="round"><path d="M50 45 L51.18 48.38 L54.76 48.45 L51.9 50.62 L52.94 54.05 L50 52 L47.06 54.05 L48.1 50.62 L45.24 48.45 L48.82 48.38 Z"/><line x1="53.53" y1="45.15" x2="57.64" y2="39.48"/><line x1="55.71" y1="51.85" x2="62.36" y2="54.02"/><line x1="50" y1="56" x2="50" y2="63"/><line x1="44.29" y1="51.85" x2="37.64" y2="54.02"/><line x1="46.47" y1="45.15" x2="42.36" y2="39.48"/></g><g fill="url(#skrG)"><circle cx="57.64" cy="39.48" r="2.4"/><circle cx="62.36" cy="54.02" r="2.4"/><circle cx="50" cy="63" r="2.4"/><circle cx="37.64" cy="54.02" r="2.4"/><circle cx="42.36" cy="39.48" r="2.4"/></g></svg><span>LYNSBrand AI</span></div>
+  <a href="#coba">Kenali Dirimu</a>
+  <a href="#contoh">Lihat Contohnya</a>
+  <a href="#fitur">Fitur</a>
+  <a href="#harga">Paket & Layanan</a>
+  <a href="#faq">Tanya Jawab</a>
+  <a href="index.html">🌸 Buka Aplikasi</a>
+  <a class="btn" style="padding:10px 20px; font-size:13.5px" href="#coba">🧠 Kenali Diriku</a>
+</nav>
+
+<section class="hero">
+  <div class="blob b1"></div><div class="blob b2"></div>
+  <div class="badge">✦ 3 menit · tanpa daftar · tanpa syarat apa pun</div>
+  <h1>Seberapa kenal kamu<br>dengan <em>dirimu sendiri?</em></h1>
+  <p>Banyak orang membangun akun SNS dengan meniru orang lain — lalu berhenti karena lelah menjadi "bukan dirinya". LYNSBrand mengajakmu dari arah sebaliknya: <b>kenali kepribadian dan karaktermu dulu</b>, lalu temukan cara berkarya yang memang cocok untukmu — termasuk seperti apa SNS-mu seharusnya. Mulai dari tes kecil di bawah ini. Santai saja — yang perlu kamu bawa cuma rasa penasaran.</p>
+  <a class="btn" href="#coba">🧠 Kenali Diriku Sekarang</a>
+  <a class="btn sec" href="#contoh" style="margin-left:10px">Lihat Contoh Hasilnya</a>
+</section>
+
+<!-- ══ TES GRATIS (dihitung lokal, tanpa AI, tanpa biaya) ══ -->
+<section class="sec" id="coba" style="max-width:760px">
+  <h2>Mulai dari sini</h2>
+  <p class="sub">Dua pintu untuk mengenal dirimu. Pilih yang bikin kamu penasaran duluan — dua-duanya terbuka untuk siapa saja.</p>
+  <div class="win-tabs">
+    <div class="win-tab on" id="tabTes" onclick="switchWin('tes')">🧠 Kepribadian & Karakterku</div>
+    <div class="win-tab" id="tabBrand" onclick="switchWin('brand')">🚀 Seberapa "Kamu" Akun SNS-mu?</div>
+  </div>
+
+  <!-- ── Window 2: Analisis Branding (ditenagai AI via server trial) ── -->
+  <div id="win-brand" style="display:none">
+    <div class="card">
+      <h4 style="margin-bottom:4px">🚀 Seberapa "Kamu" Akun SNS-mu?</h4>
+      <p style="font-size:13px; color:var(--muted)">Pernah merasa akunmu bagus tapi rasanya "bukan kamu"? Tempel bio & 2–3 caption terakhirmu — AI akan membaca apakah akun itu sudah terdengar seperti dirimu atau masih seperti orang lain, lalu memberi 3 langkah kecil yang bisa kamu lakukan hari ini juga. <span style="color:var(--accent)">Kapasitas dibatasi per hari agar tetap bisa dinikmati semua orang.</span></p>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px">
+        <div>
+          <label class="f-label">Platform</label>
+          <select class="f-in" id="bPlat"><option>Instagram</option><option>TikTok</option><option>X (Twitter)</option><option>LinkedIn</option><option>Threads</option></select>
+        </div>
+        <div>
+          <label class="f-label">Username (opsional)</label>
+          <input class="f-in" id="bUser" placeholder="@akunkamu">
+        </div>
+      </div>
+      <label class="f-label">Bio akunmu</label>
+      <textarea class="f-in" id="bBio" placeholder="Salin-tempel bio profilmu di sini..."></textarea>
+      <label class="f-label">2–3 caption/post terakhirmu (pisahkan dengan ---)</label>
+      <textarea class="f-in" id="bCaps" style="min-height:120px" placeholder="Caption pertama...&#10;---&#10;Caption kedua..."></textarea>
+      <label class="f-label">Niche & tujuanmu (singkat)</label>
+      <input class="f-in" id="bNiche" placeholder="cth: konten buku & membaca, ingin dikenal sebagai kurator buku">
+      <div style="margin-top:18px">
+        <button class="btn" id="btnBrand" onclick="analisisBrand()">🔍 Baca Akunku</button>
+      </div>
+      <div class="brand-out" id="brandOut"></div>
+      <div id="brandUpsell" style="display:none; background:var(--bg3); border-radius:14px; padding:18px 20px; margin-top:16px; font-size:13.5px; line-height:1.8">
+        <b>Langkah kecil ini milikmu — tanpa syarat.</b> Kalau kamu ingin akunmu benar-benar terdengar seperti dirimu: LYNSBrand bisa mempelajari <b>suara menulismu</b> dari postinganmu, memetakan kepribadianmu dari tulisanmu sendiri, lalu membantumu membuat konten & desain yang otentik — dengan ritme yang cocok untuk energimu.
+        <div style="margin-top:12px"><a class="btn" href="#harga" style="padding:11px 22px; font-size:14px">🌸 Lanjutkan Perjalananku</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Window 1: Tes Kepribadian (dihitung lokal) ── -->
+  <div id="win-tes">
+  <p class="sub" style="margin-bottom:24px">10 pernyataan santai — tidak ada jawaban benar atau salah, jawab spontan saja. Di akhir kamu akan melihat peta kepribadianmu <b>dan seperti apa cara ber-SNS yang cocok untukmu</b>. Semuanya dihitung di perangkatmu sendiri, tidak dikirim ke mana pun.</p>
+  <div id="quiz"></div>
+  <div style="text-align:center; margin-top:22px">
+    <button class="btn" onclick="quizResult()">✨ Lihat Hasilku</button>
+  </div>
+  <div id="quizOut" style="display:none; margin-top:30px">
+    <div class="card" style="border:2px solid var(--accent); box-shadow:0 18px 44px rgba(177,140,224,.2)">
+      <h3 style="font-family:Georgia,serif; font-size:22px; text-align:center; margin-bottom:4px">Estimasi tipemu: <span id="qMbti" style="background:linear-gradient(90deg,var(--accent),#d98cb8); -webkit-background-clip:text; background-clip:text; color:transparent"></span></h3>
+      <p id="qDesc" style="text-align:center; font-size:14px; color:var(--muted); margin-bottom:20px"></p>
+      <div id="qBars"></div>
+      <div id="qSns"></div>
+      <div id="qLead" style="background:linear-gradient(135deg,rgba(177,140,224,.10),rgba(111,191,160,.08)); border:1px solid rgba(177,140,224,.35); border-radius:14px; padding:18px 20px; margin-top:22px; text-align:left">
+        <b>📩 Simpan hasil ini + panduan pribadi lanjutannya</b>
+        <p style="font-size:13px; color:var(--muted); margin:6px 0 12px">Tinggalkan emailmu — ringkasan hasil tes & panduan "berkarya sesuai kepribadianmu" akan dikirim ke sana, plus tips lanjutan secara berkala.</p>
+        <div style="display:grid; grid-template-columns:1fr 1.4fr; gap:10px">
+          <input class="f-in" id="ldNama" placeholder="Nama panggilanmu">
+          <input class="f-in" id="ldEmail" type="email" placeholder="email@kamu.com">
+        </div>
+        <div style="margin-top:12px; display:flex; gap:10px; align-items:center; flex-wrap:wrap">
+          <button class="btn" id="btnLead" onclick="submitLead()" style="padding:11px 22px; font-size:14px">📩 Kirim ke Emailku</button>
+          <span id="ldMsg" style="font-size:12.5px; color:var(--muted)"></span>
+        </div>
+        <p style="font-size:11px; color:var(--muted); margin-top:10px">Dengan mengirim, kamu setuju menerima email dari LYNSBrand (tips, update & penawaran). Berhenti berlangganan kapan pun lewat tautan di email.</p>
+      </div>
+      <div style="background:var(--bg3); border-radius:14px; padding:18px 20px; margin-top:20px; font-size:13.5px; line-height:1.8">
+        <b>Hasil ini baru permukaannya — dan itu sudah milikmu, tanpa syarat.</b>
+        Kalau kamu penasaran dengan lapisan yang lebih dalam — karaktermu terbaca dari <b>gaya tulisanmu sendiri</b>,
+        arah bakat & minatmu (RIASEC), sifat dan kebiasaan yang mungkin belum kamu sadari,
+        sampai <b>panduan suara brand</b> supaya kontenmu terdengar seperti kamu —
+        LYNSBrand menyiapkan perjalanan lengkapnya.
+      </div>
+      <div style="text-align:center; margin-top:20px">
+        <a class="btn" href="#harga">🌸 Lanjutkan Perjalananku</a>
+        <a class="btn sec" href="#contoh" style="margin-left:8px">Lihat Dulu Contohnya</a>
+      </div>
+    </div>
+  </div>
+  </div><!-- /win-tes -->
+</section>
+
+<!-- ══ CONTOH HASIL AI ══ -->
+<section class="sec" id="contoh">
+  <h2>Seperti apa hasil versi lengkapnya?</h2>
+  <p class="sub">Contoh nyata keluaran AI di aplikasi lengkap — semuanya disesuaikan dengan kepribadian & gaya bahasamu sendiri.</p>
+  <div class="grid">
+    <div class="card">
+      <div class="ic">🪞</div><h4>Refleksi Jurnal AI</h4>
+      <p style="font-style:italic; border-left:3px solid var(--accent); padding-left:12px; margin-top:8px">"Kamu menulis 'cuma capek biasa' — tapi ini ketiga kalinya minggu ini kamu menutup jurnal dengan kalimat itu. Sepertinya yang lelah bukan badanmu, tapi rasa tidak dihargai di tempat kerja. Pertanyaan untuk besok: kapan terakhir kali kamu bilang 'tidak'?"</p>
+    </div>
+    <div class="card">
+      <div class="ic">✍️</div><h4>Caption dengan Suaramu</h4>
+      <p style="font-style:italic; border-left:3px solid var(--accent2); padding-left:12px; margin-top:8px">"Dulu kupikir bangun jam 5 pagi itu kunci produktif. Ternyata? Aku cuma jadi zombie yang bangun lebih awal 😴 Yang benar-benar mengubah hidupku justru satu hal yang kuremehkan bertahun-tahun... (swipe →)"</p>
+    </div>
+    <div class="card">
+      <div class="ic">🎭</div><h4>Saran Branding Personal</h4>
+      <p style="font-style:italic; border-left:3px solid #d98cb8; padding-left:12px; margin-top:8px">"Dengan Extraversion 38 dan Openness 82, jangan paksakan diri jadi kreator yang live tiap hari — energimu akan habis. Format terbaikmu: tulisan mendalam & carousel reflektif. Posting 3x/minggu jauh lebih realistis untukmu daripada tiap hari."</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="fitur">
+  <h2>Satu aplikasi, dua perjalanan</h2>
+  <p class="sub">🧭 Self-Discovery — pahami dirimu · 🎨 Self-Expression — tuangkan lewat karya</p>
+  <div class="grid">
+    <div class="card"><div class="ic">🧠</div><h4>Lab Kepribadian</h4><p>Tes 12 pertanyaan adaptif + deteksi kepribadian dari tulisanmu: MBTI, Big Five (skor 0–100), DISC, Enneagram, sifat, habit & kecenderungan.</p></div>
+    <div class="card"><div class="ic">📓</div><h4>Jurnal Refleksi ber-AI</h4><p>Prompt harian sesuai kepribadianmu, refleksi yang membaca pola emosimu — untuk yang ingin berkarya tanpa media sosial.</p></div>
+    <div class="card"><div class="ic">🎙️</div><h4>Suara Brand</h4><p>AI mempelajari gaya menulismu dari postingan lama — setiap konten terdengar seperti kamu, bukan robot.</p></div>
+    <div class="card"><div class="ic">✨</div><h4>Generator Konten</h4><p>Ide, hook, caption, script video, thread, post LinkedIn, outline carousel — selaras kepribadian & suara brand-mu.</p></div>
+    <div class="card"><div class="ic">🎨</div><h4>Studio Desain + Canva</h4><p>Ekstrak DNA visual dari desain favoritmu, dapatkan rekomendasi desain lengkap, langsung dieksekusi di Canva.</p></div>
+    <div class="card"><div class="ic">⚡</div><h4>Otomatisasi SNS</h4><p>Kalender konten + publikasi otomatis via webhook Make/Zapier + ekspor CSV untuk Buffer.</p></div>
+  </div>
+</section>
+
+<section class="sec" id="harga">
+  <h2>Kalau kamu ingin melangkah lebih dalam</h2>
+  <p class="sub">Tanpa langganan, tanpa tekanan. Semua yang di atas selamanya bisa kamu pakai — paket di bawah ini untukmu yang ingin ditemani lebih jauh dalam perjalanannya. AI dibayar sesuai pemakaian langsung ke Anthropic (biasanya hanya beberapa sen per konten).</p>
+  <div class="plans">
+    <div class="plan">
+      <h3>🌱 Jelajah Bebas</h3>
+      <div class="price">Rp 0 <small>selamanya, tanpa syarat</small></div>
+      <ul>
+        <li>Tes kepribadian & karakter (di halaman ini)</li>
+        <li>Peta Big Five + estimasi MBTI + kecocokan SNS-mu</li>
+        <li>Analisis akun SNS-mu (kapasitas harian)</li>
+        <li>Tanpa daftar, tanpa email, tanpa kartu</li>
+      </ul>
+      <a class="btn sec" href="#coba">Mulai dari Sini</a>
+    </div>
+    <div class="plan">
+      <h3>🌱 Lisensi Personal</h3>
+      <div><span class="strike">Rp 249.000</span></div>
+      <div class="price">Rp 149.000 <small>sekali bayar</small></div>
+      <ul>
+        <li>Aplikasi LYNSBrand AI lengkap (semua fitur)</li>
+        <li>Panduan penggunaan langkah demi langkah</li>
+        <li>Panduan membuat API key & mengisi saldo</li>
+        <li>Update minor gratis selamanya</li>
+        <li>Lisensi 1 pengguna</li>
+      </ul>
+      <a class="btn" href="GANTI_LINK_PEMBAYARAN_PERSONAL">Beli Lisensi Personal</a>
+    </div>
+    <div class="plan hot">
+      <div class="tag">PALING LARIS</div>
+      <h3>🌸 Paket Setup Lengkap</h3>
+      <div><span class="strike">Rp 599.000</span></div>
+      <div class="price">Rp 399.000 <small>sekali bayar</small></div>
+      <ul>
+        <li>Semua isi Lisensi Personal</li>
+        <li>Sesi setup 1-on-1 via video call (60 menit)</li>
+        <li>Dipasangkan: API key, profil brand, suara brand</li>
+        <li>Setup otomatisasi Make.com → SNS-mu</li>
+        <li>12 template Canva pastel siap pakai</li>
+        <li>Dukungan chat prioritas 30 hari</li>
+      </ul>
+      <a class="btn" href="GANTI_LINK_PEMBAYARAN_SETUP">Ambil Paket Setup</a>
+    </div>
+    <div class="plan">
+      <h3>🤝 Konsultasi Branding</h3>
+      <div class="price">Rp 499.000 <small>per sesi 90 menit</small></div>
+      <ul>
+        <li>Bedah hasil tes kepribadianmu bersama</li>
+        <li>Rumuskan positioning & persona publikmu</li>
+        <li>Strategi konten 90 hari sesuai kepribadian</li>
+        <li>Rekaman sesi + ringkasan tertulis</li>
+        <li>Cocok digabung dengan paket mana pun</li>
+      </ul>
+      <a class="btn sec" href="GANTI_LINK_PEMBAYARAN_KONSULTASI">Jadwalkan Sesi</a>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="faq" style="max-width:760px">
+  <h2>Pertanyaan yang sering diajukan</h2>
+  <p class="sub"></p>
+  <details><summary>Apa maksudnya "BYOK" dan kenapa saya butuh API key sendiri?</summary>
+    <p>BYOK = Bring Your Own Key. Aplikasi ini tidak punya server perantara — browser-mu bicara langsung ke Anthropic (pembuat AI Claude) memakai API key milikmu. Artinya: datamu tidak pernah lewat pihak ketiga, tidak ada langganan bulanan ke kami, dan kamu hanya membayar AI sesuai pemakaian. Panduan membuat key (5 menit) sudah termasuk di semua paket.</p>
+  </details>
+  <details><summary>Berapa biaya pemakaian AI-nya?</summary>
+    <p>Kamu isi saldo di Anthropic mulai $5 (±Rp 80 ribu). Satu caption/script biasanya hanya beberapa sen — saldo $5 umumnya cukup untuk ratusan konten. Aplikasi juga menyediakan pilihan model hemat.</p>
+  </details>
+  <details><summary>Apakah ini langganan?</summary>
+    <p>Bukan. Sekali bayar, aplikasi jadi milikmu selamanya. Yang berbayar sesuai pemakaian hanyalah token AI ke Anthropic (bukan ke kami).</p>
+  </details>
+  <details><summary>Di mana data saya disimpan?</summary>
+    <p>Semuanya — jurnal, profil kepribadian, kalender konten, API key — tersimpan lokal di browser perangkatmu. Tidak ada yang diunggah ke server kami (karena memang tidak ada servernya). Fitur backup satu klik tersedia di dalam aplikasi.</p>
+  </details>
+  <details><summary>Apakah hasil tes kepribadiannya akurat?</summary>
+    <p>Aplikasi memakai kerangka psikometrik standar (Big Five, MBTI, DISC, Enneagram) dan menampilkan hasil sebagai spektrum dengan tingkat keyakinan — bukan label mutlak. Ini alat refleksi & pengembangan diri, bukan diagnosis psikologis profesional.</p>
+  </details>
+  <details><summary>Bagaimana saya menerima produknya setelah membayar?</summary>
+    <p>Kamu akan menerima file aplikasi + panduan lengkap via email/tautan unduhan, biasanya dalam beberapa menit setelah pembayaran terkonfirmasi.</p>
+  </details>
+</section>
+
+<section class="quote">
+  <blockquote>"Personal branding yang bertahan lama tidak dibangun dari tren — ia dibangun dari pemahaman diri."</blockquote>
+  <div style="margin-top:26px"><a class="btn" href="#harga">🌸 Mulai Perjalananmu Sekarang</a></div>
+</section>
+
+<footer class="foot">
+  🌸 <b>LYNSBrand AI</b> — Self-Discovery → Self-Expression<br>
+  <a href="index.html">Buka Aplikasi</a> · Pertanyaan sebelum membeli? Hubungi: <b>GANTI_KONTAK_KAMU</b> (email/WhatsApp/Instagram)<br>
+  © 2026 LYNSBrand. Lisensi personal — dilarang menyebarluaskan ulang aplikasi.
+</footer>
+
+<script>
+/* ══ Tes Kepribadian Kilat — dihitung 100% lokal di browser, tanpa server, tanpa AI ══ */
+const QUIZ = [
+  {dim:'E', t:'Aku mendapat energi justru saat bertemu dan mengobrol dengan banyak orang.'},
+  {dim:'E', t:'Aku lebih sering memulai percakapan daripada menunggu disapa.'},
+  {dim:'O', t:'Aku senang mencoba cara baru, meski cara lama masih berhasil.'},
+  {dim:'O', t:'Ide, kemungkinan, dan "bagaimana jika" lebih menarik bagiku daripada fakta praktis.'},
+  {dim:'C', t:'Aku membuat rencana dulu sebelum mulai mengerjakan sesuatu.'},
+  {dim:'C', t:'Bagiku tenggat waktu adalah janji yang harus ditepati, bukan sekadar saran.'},
+  {dim:'A', t:'Aku lebih memilih menjaga perasaan orang daripada memenangkan argumen.'},
+  {dim:'A', t:'Aku mudah menempatkan diri di posisi orang lain.'},
+  {dim:'N', t:'Aku sering memikirkan ulang keputusan yang sudah kuambil.'},
+  {dim:'N', t:'Suasana hatiku mudah terpengaruh oleh hal-hal kecil.'}
+];
+const DIM_LABEL = {E:'Extraversion (energi sosial)', O:'Openness (keterbukaan)', C:'Conscientiousness (kedisiplinan)', A:'Agreeableness (keramahan)', N:'Neuroticism (sensitivitas emosi)'};
+const answers = new Array(QUIZ.length).fill(0);
+
+function renderQuiz(){
+  document.getElementById('quiz').innerHTML = QUIZ.map((q,i)=>`
+    <div class="q-item" id="qi${i}">
+      <p>${i+1}. ${q.t}</p>
+      <div class="q-scale">
+        <span class="lbl">Sangat tidak setuju</span>
+        <div class="q-dots">${[1,2,3,4,5].map(v=>`<div class="q-dot" id="qd${i}_${v}" onclick="pick(${i},${v})">${v}</div>`).join('')}</div>
+        <span class="lbl r">Sangat setuju</span>
+      </div>
+    </div>`).join('');
+}
+function pick(i, v){
+  answers[i] = v;
+  for(let x=1; x<=5; x++) document.getElementById('qd'+i+'_'+x).classList.toggle('on', x===v);
+  document.getElementById('qi'+i).classList.remove('unanswered');
+}
+function quizResult(){
+  const missing = answers.map((a,i)=>a===0?i:-1).filter(i=>i>=0);
+  if(missing.length){
+    missing.forEach(i=>document.getElementById('qi'+i).classList.add('unanswered'));
+    document.getElementById('qi'+missing[0]).scrollIntoView({behavior:'smooth', block:'center'});
+    return;
+  }
+  const score = {};
+  ['E','O','C','A','N'].forEach(d=>{
+    const vals = QUIZ.map((q,i)=>q.dim===d?answers[i]:null).filter(v=>v!==null);
+    score[d] = Math.round(((vals.reduce((a,b)=>a+b,0)/vals.length)-1)/4*100);
+  });
+  // pemetaan Big Five → estimasi huruf MBTI (korelasi standar)
+  const mbti = (score.E>=50?'E':'I') + (score.O>=50?'N':'S') + (score.A>=50?'F':'T') + (score.C>=50?'J':'P');
+  const DESC = {
+    E:'kamu mengisi ulang energi lewat interaksi', I:'kamu mengisi ulang energi lewat waktu sendiri',
+    N:'kamu berpikir dalam gambaran besar & kemungkinan', S:'kamu berpijak pada hal konkret & nyata',
+    F:'keputusanmu dipandu nilai & perasaan orang', T:'keputusanmu dipandu logika & konsistensi',
+    J:'kamu nyaman dengan rencana & struktur', P:'kamu nyaman dengan spontanitas & pilihan terbuka'
+  };
+  window.__lastQuiz = {mbti, score};   // untuk dikirim bersama pendaftaran email
+  document.getElementById('qMbti').textContent = mbti;
+  document.getElementById('qDesc').textContent = 'Artinya: ' + DESC[mbti[0]] + ' · ' + DESC[mbti[1]] + ' · ' + DESC[mbti[2]] + ' · ' + DESC[mbti[3]] + '.';
+  document.getElementById('qBars').innerHTML = ['O','C','E','A','N'].map(d=>`
+    <div class="q-bar-row"><div class="bl">${DIM_LABEL[d]}</div><div class="q-bar-track"><div class="q-bar-fill" style="width:0%" data-w="${score[d]}%"></div></div><div class="bv">${score[d]}</div></div>`).join('');
+
+  // 📱 "Kalau ke SNS, seperti apa yang cocok?" — dihitung dari skor kepribadian
+  const sns = [];
+  if(score.E >= 60) sns.push('🎥 <b>Format tampil langsung adalah panggungmu</b> — video pendek, live, dan kolaborasi justru mengisi energimu. Rumah alami: TikTok, Reels, IG Live.');
+  else if(score.E <= 40) sns.push('✍️ <b>Kekuatanmu di kedalaman, bukan keriuhan</b> — tulisan, carousel, dan storytelling bisa dibuat dengan tenang tanpa harus tampil terus. Rumah alami: X/Threads, carousel Instagram, blog.');
+  else sns.push('🎭 <b>Kamu fleksibel dua arah</b> — campur konten tampil (video) dan konten tenang (tulisan/carousel) sesuai energimu minggu itu.');
+  if(score.O >= 60) sns.push('💡 Kontenmu paling hidup saat berbagi <b>ide, sudut pandang baru, dan eksperimen</b> — jangan mengurung diri di format "tips 1-2-3" terus-menerus.');
+  else sns.push('🛠️ Orang akan datang padamu untuk <b>hal yang praktis dan bisa langsung dipakai</b> — how-to, checklist, dan tips konkret adalah kekuatanmu.');
+  if(score.C >= 60) sns.push('📅 Kamu kuat dengan <b>seri & jadwal konsisten</b> — kalender konten mingguan akan jadi senjata utamamu.');
+  else sns.push('🌊 Jadwal kaku akan mematikanmu pelan-pelan — sistem yang cocok: <b>buat banyak saat semangat datang, lalu jadwalkan otomatis</b>.');
+  if(score.A >= 60) sns.push('💬 Kehangatanmu adalah aset — <b>membalas komentar dan membangun komunitas</b> bisa jadi pembeda terbesarmu dari akun lain.');
+  if(score.N >= 60) sns.push('🛡️ Jaga energimu: batasi waktu memantau angka & komentar, dan posting lewat penjadwal supaya kamu tidak terus menunggu reaksi.');
+  document.getElementById('qSns').innerHTML =
+    '<div style="margin-top:22px; border-top:1px dashed var(--border); padding-top:18px"><b style="font-size:15px">📱 Kalau kamu terjun ke SNS, seperti apa yang cocok?</b>' +
+    '<div style="font-size:13.5px; line-height:1.9; margin-top:10px; text-align:left">' + sns.map(s=>'• '+s).join('<br>') + '</div></div>';
+  const out = document.getElementById('quizOut');
+  out.style.display = 'block';
+  out.scrollIntoView({behavior:'smooth', block:'start'});
+  setTimeout(()=>document.querySelectorAll('.q-bar-fill').forEach(b=>b.style.width=b.dataset.w), 120);
+}
+renderQuiz();
+
+/* ══ Dua jendela tes ══ */
+function switchWin(w){
+  document.getElementById('win-tes').style.display = w==='tes' ? 'block' : 'none';
+  document.getElementById('win-brand').style.display = w==='brand' ? 'block' : 'none';
+  document.getElementById('tabTes').classList.toggle('on', w==='tes');
+  document.getElementById('tabBrand').classList.toggle('on', w==='brand');
+}
+
+/* ══ Pendaftaran email (lead) setelah hasil tes ══ */
+const REGISTER_ENDPOINT = 'https://pflqxswbfxrwcfyrgwkr.supabase.co/functions/v1/register';
+async function submitLead(){
+  const email = (document.getElementById('ldEmail').value||'').trim().toLowerCase();
+  const msg = document.getElementById('ldMsg');
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){ msg.textContent = '⚠️ Isi email yang valid dulu ya.'; return; }
+  const btn = document.getElementById('btnLead');
+  btn.disabled = true; btn.innerHTML = '<span class="spin"></span> Mengirim...';
+  try{
+    const res = await fetch(REGISTER_ENDPOINT, {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        email,
+        nama: (document.getElementById('ldNama').value||'').trim(),
+        source: 'quiz',
+        consent: true,
+        quiz: window.__lastQuiz || null
+      })
+    });
+    const out = await res.json();
+    if(res.ok && out.ok){
+      document.getElementById('qLead').innerHTML = '<b>🌸 Terima kasih! Hasil & panduanmu akan menyusul ke emailmu.</b><p style="font-size:13px; color:var(--muted); margin-top:6px">Sambil menunggu, jelajahi apa lagi yang bisa kamu temukan tentang dirimu di bawah ini.</p>';
+      localStorage.setItem('lb_lead', email);
+    } else {
+      msg.textContent = '❌ ' + (out.error==='LIMIT' ? 'Terlalu banyak percobaan — coba lagi besok.' : (out.error||'Gagal, coba lagi.'));
+    }
+  }catch(e){ msg.textContent = '❌ Tidak bisa terhubung — periksa koneksimu.'; }
+  btn.disabled = false; btn.innerHTML = '📩 Kirim ke Emailku';
+}
+
+/* ══ Analisis Branding — ditenagai AI lewat server trial (kuota dibatasi) ══ */
+const TRIAL_ENDPOINT = 'https://pflqxswbfxrwcfyrgwkr.supabase.co/functions/v1/trial-analyze';
+async function analisisBrand(){
+  const bio = document.getElementById('bBio').value.trim();
+  const caps = document.getElementById('bCaps').value.trim();
+  const out = document.getElementById('brandOut');
+  if(!bio && !caps){ out.style.display='block'; out.textContent='✍️ Isi dulu bio atau caption-mu ya.'; return; }
+  // batas lunak sisi browser: 2x per hari
+  const day = new Date().toISOString().slice(0,10);
+  const used = JSON.parse(localStorage.getItem('lb_trial')||'{}');
+  if(used.day === day && used.n >= 2){
+    out.style.display='block';
+    out.textContent = '🌸 Kuota trial gratismu untuk hari ini sudah terpakai. Coba lagi besok — atau buka versi lengkapnya untuk analisis tanpa batas dengan API key-mu sendiri.';
+    document.getElementById('brandUpsell').style.display='block';
+    return;
+  }
+  const btn = document.getElementById('btnBrand');
+  btn.disabled = true; btn.innerHTML = '<span class="spin"></span> Menganalisis (±15 detik)...';
+  out.style.display='block'; out.textContent = 'AI sedang membaca akunmu...';
+  try{
+    const res = await fetch(TRIAL_ENDPOINT, {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        platform: document.getElementById('bPlat').value,
+        username: document.getElementById('bUser').value.trim(),
+        bio, captions: caps,
+        niche: document.getElementById('bNiche').value.trim()
+      })
+    });
+    const data = await res.json();
+    if(!res.ok){
+      out.textContent = data.error === 'LIMIT'
+        ? '🌸 Kuota trial gratis hari ini sudah habis (dibatasi agar tetap gratis untuk semua). Coba lagi besok, atau buka versi lengkapnya untuk analisis tanpa batas.'
+        : '❌ ' + (data.error || 'Terjadi kesalahan. Coba lagi sebentar lagi.');
+    } else {
+      out.textContent = data.result;
+      localStorage.setItem('lb_trial', JSON.stringify({day, n: (used.day===day ? used.n : 0) + 1}));
+    }
+    document.getElementById('brandUpsell').style.display='block';
+  }catch(e){
+    out.textContent = '❌ Tidak bisa terhubung ke server analisis. Periksa koneksimu dan coba lagi.';
+  }
+  btn.disabled = false; btn.innerHTML = '🔍 Analisis Gratis Sekarang';
+}
+</script>
+</body>
+</html>

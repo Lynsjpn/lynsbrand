@@ -1,0 +1,3035 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="lynsbrand-build" content="2026-08-05">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LYNSBrand AI — Personal Branding, Kepribadian & Otomatisasi SNS</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox='0%200%20100%20100'%20xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient%20id='g'%20x1='0'%20y1='0'%20x2='1'%20y2='1'%3E%3Cstop%20offset='0'%20stop-color='%23F2A0BE'/%3E%3Cstop%20offset='1'%20stop-color='%23A98BDF'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg%20fill='url(%23g)'%3E%3Cpath%20d='M50%2046%20C40%2040%2032%2026%2036%2015%20C38.5%208.5%2047%208%2049%2014%20L50%2017%20L51%2014%20C53%208%2061.5%208.5%2064%2015%20C68%2026%2060%2040%2050%2046%20Z'/%3E%3Cpath%20d='M50%2046%20C40%2040%2032%2026%2036%2015%20C38.5%208.5%2047%208%2049%2014%20L50%2017%20L51%2014%20C53%208%2061.5%208.5%2064%2015%20C68%2026%2060%2040%2050%2046%20Z'%20transform='rotate(72%2050%2050)'/%3E%3Cpath%20d='M50%2046%20C40%2040%2032%2026%2036%2015%20C38.5%208.5%2047%208%2049%2014%20L50%2017%20L51%2014%20C53%208%2061.5%208.5%2064%2015%20C68%2026%2060%2040%2050%2046%20Z'%20transform='rotate(144%2050%2050)'/%3E%3Cpath%20d='M50%2046%20C40%2040%2032%2026%2036%2015%20C38.5%208.5%2047%208%2049%2014%20L50%2017%20L51%2014%20C53%208%2061.5%208.5%2064%2015%20C68%2026%2060%2040%2050%2046%20Z'%20transform='rotate(216%2050%2050)'/%3E%3Cpath%20d='M50%2046%20C40%2040%2032%2026%2036%2015%20C38.5%208.5%2047%208%2049%2014%20L50%2017%20L51%2014%20C53%208%2061.5%208.5%2064%2015%20C68%2026%2060%2040%2050%2046%20Z'%20transform='rotate(288%2050%2050)'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#faf6f0; --bg2:#ffffff; --bg3:#f4ecf2; --border:#e9dde3;
+    --text:#5a4d5e; --muted:#a294a6; --accent:#b18ce0; --accent2:#6fbfa0;
+    --danger:#e07c96; --warn:#d9a35c; --radius:14px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif; background:var(--bg); color:var(--text); height:100vh; overflow:hidden;}
+  .app{display:flex; height:100vh;}
+
+  /* ── Sidebar ─────────────────────────── */
+  .sidebar{width:240px; min-width:240px; background:var(--bg2); border-right:1px solid var(--border); display:flex; flex-direction:column; padding:20px 12px; overflow-y:auto;}
+  .nav-sec{font-size:10px; letter-spacing:1.2px; text-transform:uppercase; color:var(--muted); font-weight:800; padding:16px 12px 6px; user-select:none;}
+  .logo{font-size:20px; font-weight:800; padding:0 12px 20px; letter-spacing:-.5px;}
+  .logo span{font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif; font-size:24px; font-weight:600; letter-spacing:.3px; background:linear-gradient(90deg,#E39CBC,var(--accent)); -webkit-background-clip:text; background-clip:text; color:transparent;}
+  .logo small{display:block; font-size:10.5px; font-weight:500; color:var(--muted); margin-top:2px; letter-spacing:0;}
+  .nav-item{display:flex; align-items:center; gap:10px; padding:11px 12px; border-radius:10px; cursor:pointer; color:var(--muted); font-size:14px; font-weight:600; margin-bottom:2px; transition:.15s; user-select:none;}
+  .nav-item:hover{background:var(--bg3); color:var(--text);}
+  .nav-item.active{background:linear-gradient(90deg,rgba(177,140,224,.16),rgba(111,191,160,.10)); color:var(--text); box-shadow:inset 2px 0 0 var(--accent);}
+  .nav-item .ico{width:20px; text-align:center;}
+  .side-foot{margin-top:auto; padding:12px; font-size:11px; color:var(--muted); line-height:1.5;}
+  .dot{display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px;}
+  .dot.ok{background:var(--accent2);} .dot.no{background:var(--danger);}
+
+  /* ── Main ─────────────────────────── */
+  .main{flex:1; overflow-y:auto; padding:28px 34px; scroll-behavior:smooth;}
+  .view{display:none; max-width:1000px; margin:0 auto;}
+  .view.active{display:block;}
+  h1{font-size:24px; font-weight:800; margin-bottom:6px; letter-spacing:-.5px;}
+  .sub{color:var(--muted); font-size:14px; margin-bottom:24px; line-height:1.5;}
+  h3{font-size:15px; font-weight:700; margin-bottom:12px;}
+
+  .card{background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius); padding:20px; margin-bottom:18px;}
+  .grid2{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  .grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
+  @media(max-width:900px){.grid2,.grid3{grid-template-columns:1fr;}}
+
+  /* Pustaka Template Canva */
+  .tpl-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(215px,1fr)); gap:14px; margin-top:14px;}
+  .tpl-card{position:relative; display:flex; flex-direction:column; border:1px solid var(--border); border-radius:14px; overflow:hidden; background:var(--bg2); transition:.15s;}
+  .tpl-card:hover{border-color:var(--accent); transform:translateY(-2px); box-shadow:0 6px 18px rgba(177,140,224,.14);}
+  .tpl-cover{height:130px; display:flex; align-items:center; justify-content:center; font-size:40px;
+    background:linear-gradient(135deg,#f6d9de 0%,#fff9f6 55%,#f4ecf2 100%); border-bottom:1px solid var(--border);}
+  .tpl-body{padding:12px 13px 13px; display:flex; flex-direction:column; gap:9px; flex:1;}
+  .tpl-title{font-size:13px; font-weight:700; color:var(--text); line-height:1.35; flex:1;}
+  .tpl-acts{display:flex; gap:7px; flex-wrap:wrap;}
+  .tpl-del{position:absolute; top:7px; right:7px; width:24px; height:24px; border-radius:50%; border:none; cursor:pointer;
+    background:rgba(255,255,255,.85); color:var(--danger); font-size:13px; line-height:1; display:none;}
+  .tpl-card:hover .tpl-del{display:block;}
+
+  label{display:block; font-size:12.5px; font-weight:700; color:var(--muted); margin:12px 0 6px; text-transform:uppercase; letter-spacing:.4px;}
+  input[type=text],input[type=password],input[type=date],input[type=time],select,textarea{
+    width:100%; background:var(--bg); border:1px solid var(--border); border-radius:10px; color:var(--text);
+    padding:11px 13px; font-size:14px; font-family:inherit; outline:none; transition:.15s;
+  }
+  input:focus,select:focus,textarea:focus{border-color:var(--accent);}
+  textarea{resize:vertical; min-height:90px; line-height:1.55;}
+
+  .btn{display:inline-flex; align-items:center; gap:8px; background:linear-gradient(90deg,var(--accent),#d3a4d8); color:#fff; border:none; border-radius:10px;
+    padding:11px 20px; font-size:14px; font-weight:700; cursor:pointer; font-family:inherit; transition:.15s;}
+  .btn:hover{filter:brightness(1.06) saturate(1.15);}
+  .btn:disabled{opacity:.45; cursor:not-allowed;}
+  .btn.sec{background:var(--bg3); color:var(--text); border:1px solid var(--border);}
+  .btn.green{background:linear-gradient(90deg,var(--accent2),#93d4b8);}
+  .btn.danger{background:transparent; color:var(--danger); border:1px solid var(--danger);}
+  .btn.sm{padding:6px 12px; font-size:12.5px; border-radius:8px;}
+
+  .badge{display:inline-block; font-size:11px; font-weight:700; padding:3px 10px; border-radius:99px; letter-spacing:.3px;}
+  .badge.ide{background:#f0eaee; color:#948798;}
+  .badge.draft{background:#faeeda; color:#b0813e;}
+  .badge.siap{background:#ece2f8; color:#8a63c0;}
+  .badge.terbit{background:#def3e9; color:#3f9c78;}
+
+  .out{background:var(--bg); border:1px solid var(--border); border-radius:10px; padding:16px; font-size:14px; line-height:1.65; white-space:pre-wrap; word-wrap:break-word; margin-top:14px; min-height:60px; max-height:520px; overflow-y:auto;}
+  .out:empty{display:none;}
+  .out h1,.out h2,.out h3{margin:10px 0 6px; font-size:15px;}
+  .out b,.out strong{color:#463c4d;}
+
+  .spinner{display:inline-block; width:14px; height:14px; border:2px solid rgba(255,255,255,.3); border-top-color:#fff; border-radius:50%; animation:spin .7s linear infinite; vertical-align:-2px;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+
+  /* stats */
+  .stat{background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius); padding:18px;}
+  .stat .num{font-size:28px; font-weight:800; background:linear-gradient(90deg,var(--accent),var(--accent2)); -webkit-background-clip:text; background-clip:text; color:transparent;}
+  .stat .lbl{font-size:12px; color:var(--muted); margin-top:4px; font-weight:600;}
+
+  /* calendar list */
+  .cal-item{display:flex; align-items:center; gap:14px; background:var(--bg2); border:1px solid var(--border); border-radius:12px; padding:14px 16px; margin-bottom:10px;}
+  .cal-item .date{min-width:86px; font-size:12.5px; color:var(--muted); font-weight:700;}
+  .cal-item .title{flex:1; font-size:14px; font-weight:600;}
+  .cal-item .plat{font-size:11.5px; color:var(--muted); background:var(--bg3); padding:3px 9px; border-radius:99px; font-weight:700;}
+  .cal-item.overdue{border-color:rgba(224,124,150,.5);}
+
+  /* chat */
+  .chat-wrap{display:flex; flex-direction:column; height:calc(100vh - 190px); min-height:400px;}
+  .chat-log{flex:1; overflow-y:auto; padding:8px 4px; display:flex; flex-direction:column; gap:12px;}
+  .msg{max-width:80%; padding:12px 16px; border-radius:14px; font-size:14px; line-height:1.6; white-space:pre-wrap; word-wrap:break-word;}
+  .msg.user{align-self:flex-end; background:linear-gradient(135deg,var(--accent),#d3a4d8); color:#fff; border-bottom-right-radius:4px;}
+  .msg.ai{align-self:flex-start; background:var(--bg2); border:1px solid var(--border); border-bottom-left-radius:4px;}
+  .chat-input{display:flex; gap:10px; padding-top:14px;}
+  .chat-input textarea{min-height:52px; max-height:140px;}
+
+  .hint{font-size:12.5px; color:var(--muted); line-height:1.6; margin-top:8px;}
+  .hint a{color:var(--accent2);}
+  .row{display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-top:14px;}
+  .toast{position:fixed; bottom:24px; right:24px; background:#fff; border:1px solid var(--accent2); color:var(--text); padding:13px 20px; border-radius:12px; font-size:13.5px; font-weight:600; z-index:99; box-shadow:0 8px 30px rgba(90,77,94,.18); display:none;}
+  .pill-row{display:flex; gap:8px; flex-wrap:wrap; margin-top:6px;}
+  .pill{font-size:12px; padding:6px 13px; border-radius:99px; background:var(--bg3); border:1px solid var(--border); cursor:pointer; color:var(--muted); font-weight:600; transition:.15s;}
+  .pill.on{background:rgba(177,140,224,.15); border-color:var(--accent); color:#8a63c0;}
+  .voice-box{background:linear-gradient(135deg,rgba(177,140,224,.10),rgba(111,191,160,.07)); border:1px solid rgba(177,140,224,.35);}
+  .bar-row{display:flex; align-items:center; gap:10px; margin:7px 0;}
+  .bar-row .bl{min-width:150px; font-size:13px; font-weight:600;}
+  .bar-track{flex:1; height:10px; border-radius:99px; background:var(--bg3); overflow:hidden;}
+  .bar-fill{height:100%; border-radius:99px; background:linear-gradient(90deg,var(--accent),var(--accent2));}
+  .bar-row .bv{min-width:40px; text-align:right; font-size:12.5px; font-weight:700; color:var(--muted);}
+  details{margin-top:10px;} summary{cursor:pointer; font-size:13px; color:var(--muted); font-weight:600;}
+  ::-webkit-scrollbar{width:9px;} ::-webkit-scrollbar-thumb{background:var(--bg3); border-radius:9px;}
+
+  /* ── Landing Page (gaya website) ─────────────────── */
+  #landing{position:fixed; inset:0; overflow-y:auto; background:var(--bg); z-index:50; display:none;}
+  #landing.show{display:block;}
+  .ld-nav{position:sticky; top:0; display:flex; align-items:center; gap:26px; padding:16px 6vw; background:rgba(250,246,240,.85); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); z-index:5;}
+  .ld-nav .ld-logo{font-size:19px; font-weight:800; letter-spacing:-.4px; margin-right:auto; white-space:nowrap;}
+  .ld-nav .ld-logo span{font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif; font-size:24px; font-weight:600; letter-spacing:.3px; background:linear-gradient(90deg,#E39CBC,var(--accent)); -webkit-background-clip:text; background-clip:text; color:transparent;}
+  .ld-nav a{color:var(--muted); text-decoration:none; font-size:14px; font-weight:600; transition:.15s;}
+  .ld-nav a:hover{color:var(--text);}
+  .ld-hero{position:relative; text-align:center; padding:96px 6vw 80px; overflow:hidden;}
+  .blob{position:absolute; border-radius:50%; filter:blur(70px); opacity:.5; pointer-events:none;}
+  .blob.b1{width:420px; height:420px; background:#e8d5f5; top:-120px; left:-90px;}
+  .blob.b2{width:380px; height:380px; background:#d2ecdf; bottom:-140px; right:-70px;}
+  .blob.b3{width:300px; height:300px; background:#fbe3e0; top:40%; left:60%;}
+  .ld-hero h1{font-family:Georgia,'Times New Roman',serif; font-size:clamp(34px,5.2vw,60px); font-weight:700; letter-spacing:-1px; line-height:1.16; max-width:820px; margin:0 auto 22px; position:relative;}
+  .ld-hero h1 em{font-style:italic; background:linear-gradient(90deg,var(--accent),#d98cb8); -webkit-background-clip:text; background-clip:text; color:transparent;}
+  .ld-hero p{font-size:17px; color:var(--muted); max-width:600px; margin:0 auto 34px; line-height:1.7; position:relative;}
+  .ld-cta{display:inline-flex; gap:14px; flex-wrap:wrap; justify-content:center; position:relative;}
+  .ld-cta .btn{padding:15px 32px; font-size:15.5px; border-radius:14px; box-shadow:0 10px 26px rgba(177,140,224,.35);}
+  .ld-cta .btn.sec{box-shadow:none;}
+  .ld-badge{display:inline-block; font-size:12.5px; font-weight:700; color:#8a63c0; background:rgba(177,140,224,.14); border:1px solid rgba(177,140,224,.3); border-radius:99px; padding:7px 16px; margin-bottom:22px; position:relative;}
+  .ld-sec{padding:72px 6vw; max-width:1080px; margin:0 auto;}
+  .ld-sec h2{font-family:Georgia,serif; font-size:clamp(26px,3.4vw,38px); text-align:center; letter-spacing:-.6px; margin-bottom:10px;}
+  .ld-sec .ld-sub{text-align:center; color:var(--muted); font-size:15px; margin-bottom:44px; line-height:1.6;}
+  .ld-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:18px;}
+  .ld-card{background:var(--bg2); border:1px solid var(--border); border-radius:18px; padding:26px; transition:.2s;}
+  .ld-card:hover{transform:translateY(-4px); box-shadow:0 14px 34px rgba(90,77,94,.10); border-color:rgba(177,140,224,.4);}
+  .ld-card .ic{font-size:28px; margin-bottom:12px;}
+  .ld-card h4{font-size:16px; margin-bottom:8px;}
+  .ld-card p{font-size:13.5px; color:var(--muted); line-height:1.65;}
+  .ld-pillars{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+  @media(max-width:800px){.ld-pillars{grid-template-columns:1fr;}}
+  .ld-pillar{border-radius:20px; padding:34px 30px; border:1px solid var(--border);}
+  .ld-pillar.p1{background:linear-gradient(150deg,#f6eefb,#fdf9f3);}
+  .ld-pillar.p2{background:linear-gradient(150deg,#eaf6ef,#fdf9f3);}
+  .ld-pillar h3{font-family:Georgia,serif; font-size:22px; margin-bottom:10px;}
+  .ld-pillar p{font-size:14px; color:var(--muted); line-height:1.7; margin-bottom:14px;}
+  .ld-pillar ul{list-style:none; font-size:13.5px; line-height:2.1;}
+  .ld-steps{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:18px; counter-reset:step;}
+  .ld-step{background:var(--bg2); border:1px solid var(--border); border-radius:18px; padding:26px; position:relative;}
+  .ld-step::before{counter-increment:step; content:counter(step); position:absolute; top:-16px; left:22px; width:34px; height:34px; border-radius:50%; background:linear-gradient(135deg,var(--accent),#d3a4d8); color:#fff; font-weight:800; display:grid; place-items:center; font-size:15px; box-shadow:0 6px 14px rgba(177,140,224,.4);}
+  .ld-step h4{font-size:15px; margin:8px 0 8px;}
+  .ld-step p{font-size:13.5px; color:var(--muted); line-height:1.65;}
+  .ld-quote{text-align:center; padding:70px 6vw; background:linear-gradient(135deg,rgba(177,140,224,.08),rgba(111,191,160,.07));}
+  .ld-quote blockquote{font-family:Georgia,serif; font-style:italic; font-size:clamp(20px,2.8vw,28px); max-width:700px; margin:0 auto 14px; line-height:1.5;}
+  .ld-quote cite{font-size:13px; color:var(--muted); font-style:normal; font-weight:600;}
+  .ld-foot{text-align:center; padding:44px 6vw 60px; color:var(--muted); font-size:13px; line-height:2;}
+  .ld-foot a{color:var(--accent); text-decoration:none;}
+
+  /* ── Modal BYOK ── */
+  .modal-bg{position:fixed; inset:0; background:rgba(90,77,94,.38); backdrop-filter:blur(5px); z-index:70; display:none; place-items:center; padding:20px;}
+  .modal-bg.show{display:grid;}
+  .modal{background:var(--bg2); border:1px solid var(--border); border-radius:20px; padding:30px; max-width:520px; width:100%; max-height:90vh; overflow-y:auto; box-shadow:0 24px 60px rgba(90,77,94,.25);}
+  .modal h2{font-family:Georgia,serif; font-size:22px; margin-bottom:6px;}
+  .modal .steps{margin:16px 0; font-size:13.5px; line-height:1.7; color:var(--muted);}
+  .modal .steps b{color:var(--text);}
+  .modal .steps .stp{display:flex; gap:12px; margin-bottom:12px;}
+  .modal .steps .n{min-width:26px; height:26px; border-radius:50%; background:linear-gradient(135deg,var(--accent),#d3a4d8); color:#fff; font-weight:800; display:grid; place-items:center; font-size:13px;}
+</style>
+</head>
+<body>
+
+<!-- ══ LANDING PAGE (gaya website) ══ -->
+<div id="landing">
+  <nav class="ld-nav">
+    <div class="ld-logo"><svg viewBox="0 0 100 100" width="30" height="30" style="vertical-align:-8px; margin-right:4px"><defs><linearGradient id="skrG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F2A0BE"/><stop offset="1" stop-color="#A98BDF"/></linearGradient></defs><g fill="url(#skrG)"><path d="M50 38 C40 32 32 20 36 10 C38.5 4.5 47 4 49 9 L50 12 L51 9 C53 4 61.5 4.5 64 10 C68 20 60 32 50 38 Z"/><path d="M50 38 C40 32 32 20 36 10 C38.5 4.5 47 4 49 9 L50 12 L51 9 C53 4 61.5 4.5 64 10 C68 20 60 32 50 38 Z" transform="rotate(72 50 50)"/><path d="M50 38 C40 32 32 20 36 10 C38.5 4.5 47 4 49 9 L50 12 L51 9 C53 4 61.5 4.5 64 10 C68 20 60 32 50 38 Z" transform="rotate(144 50 50)"/><path d="M50 38 C40 32 32 20 36 10 C38.5 4.5 47 4 49 9 L50 12 L51 9 C53 4 61.5 4.5 64 10 C68 20 60 32 50 38 Z" transform="rotate(216 50 50)"/><path d="M50 38 C40 32 32 20 36 10 C38.5 4.5 47 4 49 9 L50 12 L51 9 C53 4 61.5 4.5 64 10 C68 20 60 32 50 38 Z" transform="rotate(288 50 50)"/></g><g stroke="url(#skrG)" stroke-width="2" fill="none" stroke-linecap="round"><path d="M50 45 L51.18 48.38 L54.76 48.45 L51.9 50.62 L52.94 54.05 L50 52 L47.06 54.05 L48.1 50.62 L45.24 48.45 L48.82 48.38 Z"/><line x1="53.53" y1="45.15" x2="57.64" y2="39.48"/><line x1="55.71" y1="51.85" x2="62.36" y2="54.02"/><line x1="50" y1="56" x2="50" y2="63"/><line x1="44.29" y1="51.85" x2="37.64" y2="54.02"/><line x1="46.47" y1="45.15" x2="42.36" y2="39.48"/></g><g fill="url(#skrG)"><circle cx="57.64" cy="39.48" r="2.4"/><circle cx="62.36" cy="54.02" r="2.4"/><circle cx="50" cy="63" r="2.4"/><circle cx="37.64" cy="54.02" r="2.4"/><circle cx="42.36" cy="39.48" r="2.4"/></g></svg><span>LYNSBrand AI</span></div>
+    <a href="#ld-pilar">Filosofi</a>
+    <a href="#ld-fitur">Fitur</a>
+    <a href="#ld-cara">Cara Kerja</a>
+    <a href="#ld-byok">BYOK</a>
+    <a href="halaman-penjualan.html">💎 Paket & Harga</a>
+    <button class="btn sm" onclick="enterApp()">Masuk Aplikasi →</button>
+  </nav>
+
+  <section class="ld-hero">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <div class="ld-badge">✦ 3 menit · tanpa daftar · tanpa syarat apa pun</div>
+    <h1>Seberapa kenal kamu<br>dengan <em>dirimu sendiri?</em></h1>
+    <p>Banyak orang membangun akun SNS dengan meniru orang lain — lalu berhenti karena lelah menjadi "bukan dirinya". LYNSBrand mengajakmu dari arah sebaliknya: <b>kenali kepribadian dan karaktermu dulu</b>, lalu temukan cara berkarya yang memang cocok untukmu — termasuk seperti apa SNS-mu seharusnya. Santai saja — yang perlu kamu bawa cuma rasa penasaran.</p>
+    <div class="ld-cta">
+      <button class="btn" onclick="enterApp()">🧠 Kenali Diriku Sekarang</button>
+      <button class="btn sec" onclick="document.getElementById('ld-pilar').scrollIntoView({behavior:'smooth'})">Lihat Dulu</button>
+    </div>
+  </section>
+
+  <section class="ld-sec" id="ld-pilar">
+    <h2>Dua pilar, satu perjalanan</h2>
+    <p class="ld-sub">Kebanyakan alat AI langsung menyuruhmu membuat konten. LYNSBrand memulai dari tempat yang benar: dirimu.</p>
+    <div class="ld-pillars">
+      <div class="ld-pillar p1">
+        <h3>🧭 Self-Discovery</h3>
+        <p>Pahami siapa kamu sebenarnya — lewat sains kepribadian, bukan tebakan.</p>
+        <ul>
+          <li>💬 Tes kepribadian 12 pertanyaan adaptif</li>
+          <li>✍️ Deteksi kepribadian dari gaya tulisanmu (metode LIWC)</li>
+          <li>🧬 Profil lengkap: MBTI · Big Five · DISC · Enneagram</li>
+          <li>🔁 Sifat, habit, kecenderungan & gaya komunikasi</li>
+        </ul>
+      </div>
+      <div class="ld-pillar p2">
+        <h3>🎨 Self-Expression</h3>
+        <p>Tuangkan pemahaman itu menjadi karya — dengan atau tanpa media sosial.</p>
+        <ul>
+          <li>📓 Jurnal refleksi dengan teman AI yang memahamimu</li>
+          <li>🎙️ Konten SNS dengan suara & gaya bahasamu sendiri</li>
+          <li>🎨 Desain post yang konsisten dengan identitas visualmu</li>
+          <li>⚡ Kalender & publikasi otomatis ke media sosial</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="ld-sec" id="ld-fitur">
+    <h2>Fitur unggulan</h2>
+    <p class="ld-sub">Semua yang kamu butuhkan, dalam satu tempat — data tersimpan di perangkatmu sendiri.</p>
+    <div class="ld-grid">
+      <div class="ld-card"><div class="ic">🧠</div><h4>Lab Kepribadian</h4><p>MBTI dengan tingkat keyakinan, Big Five dalam skor spektrum 0–100, DISC, dan Enneagram — dari tes adaptif atau analisis tulisanmu.</p></div>
+      <div class="ld-card"><div class="ic">🎙️</div><h4>Suara Brand</h4><p>AI mempelajari gaya menulismu dari postingan lama, sehingga setiap konten terdengar seperti kamu — bukan robot.</p></div>
+      <div class="ld-card"><div class="ic">📓</div><h4>Jurnal Refleksi</h4><p>Prompt harian yang disesuaikan kepribadianmu, refleksi AI yang membaca pola emosimu, dan jembatan opsional jurnal → konten.</p></div>
+      <div class="ld-card"><div class="ic">✨</div><h4>Generator Konten</h4><p>Ide, hook, caption, script video, thread, post LinkedIn, dan outline carousel — selaras kepribadian & suara brand-mu.</p></div>
+      <div class="ld-card"><div class="ic">🎨</div><h4>Studio Desain</h4><p>Bandingkan desain referensi, ekstrak DNA visualmu, dapatkan rekomendasi desain lengkap — terhubung langsung ke Canva.</p></div>
+      <div class="ld-card"><div class="ic">⚡</div><h4>Otomatisasi SNS</h4><p>Kalender konten, penjadwalan, dan publikasi otomatis lewat webhook Make/Zapier — plus ekspor CSV untuk Buffer.</p></div>
+    </div>
+  </section>
+
+  <section class="ld-sec" id="ld-cara">
+    <h2>Cara kerjanya</h2>
+    <p class="ld-sub">Empat langkah dari "siapa aku?" menjadi karya yang otentik.</p>
+    <div class="ld-steps">
+      <div class="ld-step"><h4>Kenali dirimu</h4><p>Ikuti tes kepribadian adaptif atau tempelkan tulisan-tulisanmu — AI menyusun profil kepribadian lengkapmu.</p></div>
+      <div class="ld-step"><h4>Latih suaramu</h4><p>AI mempelajari gaya bahasa dari postingan lamamu dan gaya visual dari desain yang kamu sukai.</p></div>
+      <div class="ld-step"><h4>Berkaryalah</h4><p>Menulis jurnal yang jujur, atau membuat konten & desain yang selaras dengan kepribadianmu.</p></div>
+      <div class="ld-step"><h4>Bagikan (jika mau)</h4><p>Jadwalkan di kalender dan publikasikan otomatis ke media sosial — atau simpan sebagai arsip pribadimu.</p></div>
+    </div>
+  </section>
+
+  <section class="ld-sec" id="ld-byok">
+    <h2>Kunci milikmu, kendali milikmu</h2>
+    <p class="ld-sub">LYNSBrand memakai model <b>BYOK (Bring Your Own Key)</b> — kamu terhubung langsung ke Anthropic dengan API key milikmu sendiri.</p>
+    <div class="ld-grid">
+      <div class="ld-card"><div class="ic">🔑</div><h4>API key milikmu sendiri</h4><p>Key dibuat di akun Anthropic-mu, disimpan hanya di browser-mu (localStorage), dan tidak pernah dikirim ke pihak mana pun selain api.anthropic.com.</p></div>
+      <div class="ld-card"><div class="ic">💻</div><h4>Tanpa server perantara</h4><p>Tidak ada server LYNSBrand di tengah. Browser-mu bicara langsung ke Anthropic — jurnal, profil kepribadian, dan kontenmu tidak pernah lewat pihak ketiga.</p></div>
+      <div class="ld-card"><div class="ic">💸</div><h4>Bayar sesuai pemakaian</h4><p>Tanpa langganan. Kamu hanya membayar token yang benar-benar kamu pakai, langsung ke Anthropic — biasanya hanya beberapa sen per konten.</p></div>
+    </div>
+  </section>
+
+  <section class="ld-quote">
+    <blockquote>"Personal branding yang bertahan lama tidak dibangun dari tren — ia dibangun dari pemahaman diri."</blockquote>
+    <cite>— Filosofi LYNSBrand AI</cite>
+    <div style="margin-top:30px">
+      <button class="btn" onclick="enterApp()">🌸 Mulai Perjalananmu — Semua di Perangkatmu</button>
+      <a class="btn sec" href="halaman-penjualan.html" style="margin-left:10px; text-decoration:none">💎 Lihat Paket, Tes Gratis & Layanan</a>
+    </div>
+  </section>
+
+  <footer class="ld-foot">
+    🌸 <b>LYNSBrand AI</b> — Self-Discovery → Self-Expression<br>
+    Berjalan 100% di perangkatmu · Data tersimpan lokal · Ditenagai Claude API<br>
+    Lisensi personal — terima kasih sudah mendukung LYNSBrand 💜 Dilarang menyebarluaskan ulang aplikasi ini.<br>
+    <a href="#" onclick="enterApp();return false">Masuk Aplikasi</a> · <a href="halaman-penjualan.html">Paket & Harga</a>
+  </footer>
+</div>
+
+<div class="app">
+  <!-- ══ SIDEBAR ══ -->
+  <div class="sidebar">
+    <div class="logo"><svg viewBox="0 0 100 100" width="32" height="32" style="vertical-align:-9px; margin-right:4px"><g fill="url(#skrG)"><path d="M50 38 C40 32 32 20 36 10 C38.5 4.5 47 4 49 9 L50 12 L51 9 C53 4 61.5 4.5 64 10 C68 20 60 32 50 38 Z"/><path d="M50 38 C40 32 32 20 36 10 C38.5 4.5 47 4 49 9 L50 12 L51 9 C53 4 61.5 4.5 64 10 C68 20 60 32 50 38 Z" transform="rotate(72 50 50)"/><path d="M50 38 C40 32 32 20 36 10 C38.5 4.5 47 4 49 9 L50 12 L51 9 C53 4 61.5 4.5 64 10 C68 20 60 32 50 38 Z" transform="rotate(144 50 50)"/><path d="M50 38 C40 32 32 20 36 10 C38.5 4.5 47 4 49 9 L50 12 L51 9 C53 4 61.5 4.5 64 10 C68 20 60 32 50 38 Z" transform="rotate(216 50 50)"/><path d="M50 38 C40 32 32 20 36 10 C38.5 4.5 47 4 49 9 L50 12 L51 9 C53 4 61.5 4.5 64 10 C68 20 60 32 50 38 Z" transform="rotate(288 50 50)"/></g><g stroke="url(#skrG)" stroke-width="2" fill="none" stroke-linecap="round"><path d="M50 45 L51.18 48.38 L54.76 48.45 L51.9 50.62 L52.94 54.05 L50 52 L47.06 54.05 L48.1 50.62 L45.24 48.45 L48.82 48.38 Z"/><line x1="53.53" y1="45.15" x2="57.64" y2="39.48"/><line x1="55.71" y1="51.85" x2="62.36" y2="54.02"/><line x1="50" y1="56" x2="50" y2="63"/><line x1="44.29" y1="51.85" x2="37.64" y2="54.02"/><line x1="46.47" y1="45.15" x2="42.36" y2="39.48"/></g><g fill="url(#skrG)"><circle cx="57.64" cy="39.48" r="2.4"/><circle cx="62.36" cy="54.02" r="2.4"/><circle cx="50" cy="63" r="2.4"/><circle cx="37.64" cy="54.02" r="2.4"/><circle cx="42.36" cy="39.48" r="2.4"/></g></svg><span>LYNSBrand AI</span><small>Personal Branding · Kepribadian · Otomatisasi SNS</small></div>
+    <div class="nav-item active" data-view="dashboard"><span class="ico">📊</span> Dashboard</div>
+
+    <div class="nav-sec">🧭 Self-Discovery</div>
+    <div class="nav-item" data-view="tes"><span class="ico">💬</span> Tes Kepribadian</div>
+    <div class="nav-item" data-view="tulisan"><span class="ico">✍️</span> Analisis Tulisan</div>
+    <div class="nav-item" data-view="psprofil"><span class="ico">🧬</span> Profil Kepribadian</div>
+    <div class="nav-item" data-view="layanan"><span class="ico">🌐</span> Layanan Tes Resmi</div>
+
+    <div class="nav-sec">🎨 Self-Expression</div>
+    <div class="nav-item" data-view="jurnal"><span class="ico">📓</span> Jurnal Refleksi</div>
+    <div class="nav-item" data-view="profil"><span class="ico">👤</span> Profil Brand</div>
+    <div class="nav-item" data-view="voice"><span class="ico">🎙️</span> Suara Brand</div>
+    <div class="nav-item" data-view="generator"><span class="ico">✨</span> Generator Konten</div>
+    <div class="nav-item" data-view="analisis"><span class="ico">🔍</span> Analisis Post</div>
+    <div class="nav-item" data-view="analisisakun"><span class="ico">📱</span> Analisis Akun IG</div>
+    <div class="nav-item" data-view="desain"><span class="ico">🎨</span> Studio Desain</div>
+    <div class="nav-item" data-view="bankmateri"><span class="ico">📚</span> Bank Materi</div>
+    <div class="nav-item" data-view="kalender"><span class="ico">📅</span> Kalender Konten</div>
+    <div class="nav-item" data-view="otomatisasi"><span class="ico">⚡</span> Otomatisasi</div>
+
+    <div class="nav-sec">✦</div>
+    <div class="nav-item" data-view="chat"><span class="ico">💬</span> Asisten AI</div>
+    <div class="nav-item" data-view="akunbrand"><span class="ico">🗂️</span> Kelola Akun</div>
+    <div class="nav-item" data-view="akun"><span class="ico">👤</span> Akun Saya</div>
+    <div class="nav-item" data-view="pengaturan"><span class="ico">⚙️</span> Pengaturan</div>
+    <a class="nav-item" href="./" style="text-decoration:none"><span class="ico">🏠</span> Halaman Utama</a>
+    <div class="side-foot">
+      <div id="wsActive" style="margin-bottom:6px; font-weight:700; color:var(--text)">🗂️ —</div>
+      <div id="apiStatus"><span class="dot no"></span>API key belum diatur</div>
+      <div style="margin-top:6px">Data tersimpan lokal di browser ini.</div>
+    </div>
+  </div>
+
+  <!-- ══ MAIN ══ -->
+  <div class="main">
+
+    <!-- ── DASHBOARD ── -->
+    <div class="view active" id="view-dashboard">
+      <h1>Selamat datang 👋</h1>
+      <p class="sub"><b>🧭 Self-Discovery</b> — pahami kepribadianmu dulu → <b>🎨 Self-Expression</b> — tuangkan idemu lewat berkarya: jurnal refleksi, atau konten & personal branding di media sosial.</p>
+      <div class="grid3">
+        <div class="stat"><div class="num" id="stIde">0</div><div class="lbl">Ide di kalender</div></div>
+        <div class="stat"><div class="num" id="stSiap">0</div><div class="lbl">Siap terbit</div></div>
+        <div class="stat"><div class="num" id="stTerbit">0</div><div class="lbl">Sudah terbit</div></div>
+      </div>
+      <div class="card" style="margin-top:18px">
+        <h3>✅ Checklist memulai</h3>
+        <div id="checklist" style="font-size:14px; line-height:2.1"></div>
+      </div>
+      <div class="card">
+        <h3>📌 Konten 7 hari ke depan</h3>
+        <div id="dashUpcoming"><p class="hint">Belum ada konten terjadwal. Buka <b>Kalender Konten</b> untuk merencanakan.</p></div>
+      </div>
+    </div>
+
+    <!-- ── PROFIL ── -->
+    <div class="view" id="view-profil">
+      <h1>👤 Profil Brand</h1>
+      <p class="sub">Fondasi personal branding kamu. Semua konten yang dihasilkan AI akan mengacu ke profil ini.</p>
+      <div class="card">
+        <div class="grid2">
+          <div><label>Nama / Nama Brand</label><input type="text" id="pfNama" placeholder="cth: Kemal — Coach Produktivitas"></div>
+          <div><label>Niche / Bidang</label><input type="text" id="pfNiche" placeholder="cth: produktivitas, bisnis online, kuliner"></div>
+        </div>
+        <label>Target Audiens</label>
+        <input type="text" id="pfAudiens" placeholder="cth: profesional muda 25-35 tahun yang ingin membangun side-hustle">
+        <label>Platform Utama</label>
+        <div class="pill-row" id="pfPlatforms"></div>
+        <label>Pilar Konten (3-5 topik utama, pisahkan dengan koma)</label>
+        <input type="text" id="pfPilar" placeholder="cth: tips produktivitas, cerita di balik layar, studi kasus klien, mindset">
+        <label>Tujuan Personal Branding</label>
+        <textarea id="pfTujuan" placeholder="cth: dikenal sebagai ahli produktivitas, menarik klien coaching, membangun audience 10k dalam 6 bulan"></textarea>
+        <label>Gaya / Tone yang diinginkan</label>
+        <input type="text" id="pfTone" placeholder="cth: santai tapi berbobot, banyak humor, tanpa jargon">
+        <div class="row"><button class="btn" onclick="saveProfile()">💾 Simpan Profil</button></div>
+      </div>
+    </div>
+
+    <!-- ── VOICE ── -->
+    <div class="view" id="view-voice">
+      <h1>🎙️ Suara Brand (Voice Learning)</h1>
+      <p class="sub">Tempelkan 3–10 postingan terbaikmu (caption, script, thread). AI akan mempelajari gaya bahasamu supaya semua konten terdengar otentik — bukan generik.</p>
+      <div class="card">
+        <label>Postingan lama kamu — pisahkan tiap post dengan baris berisi <code>---</code></label>
+        <textarea id="vcPosts" style="min-height:220px" placeholder="Caption post pertama kamu di sini...&#10;---&#10;Caption post kedua...&#10;---&#10;Script video ketiga..."></textarea>
+        <div class="row">
+          <button class="btn" id="btnLearn" onclick="learnVoice()">🧠 Pelajari Suara Saya</button>
+          <span class="hint">Semakin banyak contoh, semakin akurat.</span>
+        </div>
+      </div>
+      <div class="card voice-box" id="voiceResult" style="display:none">
+        <h3>🧬 Profil Suara Kamu</h3>
+        <div id="voiceContent" style="font-size:14px; line-height:1.8"></div>
+        <details><summary>Edit manual (JSON)</summary>
+          <textarea id="voiceJson" style="min-height:160px; margin-top:8px; font-family:monospace; font-size:12.5px"></textarea>
+          <div class="row"><button class="btn sm sec" onclick="saveVoiceJson()">Simpan Perubahan</button></div>
+        </details>
+      </div>
+    </div>
+
+    <!-- ── GENERATOR ── -->
+    <div class="view" id="view-generator">
+      <h1>✨ Generator Konten</h1>
+      <p class="sub">Buat konten dengan suara brand-mu sendiri. Hasil bisa langsung dikirim ke kalender.</p>
+      <div class="card">
+        <div class="grid2">
+          <div>
+            <label>Jenis Konten</label>
+            <select id="genType">
+              <option value="ide">💡 10 Ide Konten</option>
+              <option value="hook">🪝 5 Hook / Kalimat Pembuka</option>
+              <option value="caption">📸 Caption Instagram</option>
+              <option value="script">🎬 Script Video Pendek (TikTok/Reels)</option>
+              <option value="thread">🧵 Thread X (Twitter)</option>
+              <option value="linkedin">💼 Post LinkedIn</option>
+              <option value="carousel">🎠 Outline Carousel (slide per slide)</option>
+            </select>
+          </div>
+          <div><label>Topik</label><input type="text" id="genTopik" placeholder="cth: cara bangun pagi tanpa alarm"></div>
+        </div>
+        <label>Catatan tambahan (opsional)</label>
+        <input type="text" id="genNote" placeholder="cth: sertakan CTA follow, panjang maksimal 150 kata, sebutkan produk X">
+        <div class="row">
+          <button class="btn" id="btnGen" onclick="generateContent()">✨ Buat Konten</button>
+          <button class="btn sec" id="btnGenAgain" onclick="generateContent(true)" style="display:none">🔄 Variasi Lain</button>
+        </div>
+        <div class="out" id="genOut"></div>
+        <div class="row" id="genActions" style="display:none">
+          <button class="btn sm green" onclick="sendToCalendar()">📅 Kirim ke Kalender</button>
+          <button class="btn sm sec" onclick="copyOut('genOut')">📋 Salin</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── ANALISIS ── -->
+    <div class="view" id="view-analisis">
+      <h1>🔍 Analisis Post</h1>
+      <p class="sub">Tempelkan teks post/caption/script apa pun (milikmu atau kompetitor). AI membedah hook, struktur, CTA, dan alasan post itu berhasil — plus saran versi lebih baik dengan suaramu.</p>
+      <div class="card">
+        <label>Teks post yang mau dianalisis</label>
+        <textarea id="anText" style="min-height:160px" placeholder="Tempel caption/script/thread di sini..."></textarea>
+        <div class="row"><button class="btn" id="btnAn" onclick="analyzePost()">🔬 Analisis</button></div>
+        <div class="out" id="anOut"></div>
+      </div>
+    </div>
+
+    <!-- ── ANALISIS AKUN IG ── -->
+    <div class="view" id="view-analisisakun">
+      <h1>📱 Analisis Akun IG</h1>
+      <p class="sub">Pelajari akun Instagram yang kamu kagumi: AI membedah pola hook, formula konten, gaya caption & visualnya — lalu satu klik untuk membuat postingan <b>serupa polanya, tapi dengan tema & suaramu sendiri</b> (meniru pola, bukan menjiplak).</p>
+
+      <div class="card">
+        <h3>1️⃣ Analisis Akun Baru</h3>
+        <label>Link akun Instagram</label>
+        <input type="text" id="igLink" placeholder="https://www.instagram.com/namaakun/">
+        <p class="hint">ℹ️ Instagram memblokir pengambilan data otomatis, jadi aplikasi tidak bisa membuka link ini sendiri. Caranya: buka akunnya di HP/browser → <b>screenshot</b> profil/grid & 2–5 post terbaiknya → unggah di bawah. Makin banyak contoh, makin akurat analisisnya.</p>
+        <div class="row" style="margin-top:10px">
+          <button class="btn sec" onclick="document.getElementById('igFiles').click()">🖼️ Unggah Screenshot</button>
+          <input type="file" id="igFiles" accept="image/*" multiple style="display:none" onchange="handleIgFiles(this)">
+        </div>
+        <div id="igThumbs" style="display:flex; gap:10px; flex-wrap:wrap; margin-top:14px"></div>
+        <label>Caption post-nya (opsional, tempel 1-3 caption — bantu AI membaca gaya menulisnya)</label>
+        <textarea id="igCaptions" style="min-height:90px" placeholder="Tempel caption post akun itu di sini (boleh kosong kalau sudah terlihat di screenshot)"></textarea>
+        <div class="row">
+          <button class="btn" id="btnIgAnalyze" onclick="analyzeIgAccount()">🔬 Analisis Akun Ini</button>
+        </div>
+        <div class="out" id="igOut"></div>
+      </div>
+
+      <div class="card">
+        <h3>2️⃣ Akun yang Sudah Dianalisis</h3>
+        <p class="hint">Analisis tersimpan di sini sebagai "bahan baku". Klik ✨ untuk membuat postingan bergaya akun itu — dengan tema & suara brand-mu.</p>
+        <div id="igList"></div>
+      </div>
+
+      <div class="card">
+        <h3>3️⃣ ✨ Buat Postingan Mirip — dengan Temaku</h3>
+        <div class="grid3">
+          <div><label>Pakai pola akun</label><select id="igGenAcc"></select></div>
+          <div><label>Jenis konten</label><select id="igGenType"><option value="carousel">Carousel (outline slide)</option><option value="caption">Caption</option><option value="script">Script Reel</option></select></div>
+          <div><label>Topik (dari temamu)</label><input type="text" id="igGenTopik" placeholder="cth: subsidi sewa distrik Tokyo"></div>
+        </div>
+        <div class="row">
+          <button class="btn" id="btnIgGen" onclick="igMakePost()">✨ Buat Postingan</button>
+        </div>
+        <div class="out" id="igGenOut"></div>
+        <div class="row" id="igGenActions" style="display:none">
+          <button class="btn sm sec" onclick="copyOut('igGenOut')">📋 Salin</button>
+          <button class="btn sm green" onclick="igSendToCalendar()">📅 Kirim ke Kalender</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── STUDIO DESAIN ── -->
+    <div class="view" id="view-desain">
+      <h1>🎨 Studio Desain</h1>
+      <p class="sub">Mulai dari template brand-mu, atau ekstrak "DNA desain" dari referensi lalu buat rekomendasi desain siap eksekusi di Canva.</p>
+
+      <div class="card">
+        <h3>📚 Pustaka Template Canva</h3>
+        <p class="hint">Template brand <b>Lyn's Library</b> milikmu, siap pakai. Klik untuk membuka & mengedit langsung di Canva. 💡 <b>Tips:</b> di Canva, <i>duplikat dulu</i> (File → Buat salinan) sebelum mengubah teks, supaya template aslimu tetap utuh untuk dipakai lagi minggu depan.</p>
+        <div id="tplGrid" class="tpl-grid"></div>
+        <details style="margin-top:16px">
+          <summary style="cursor:pointer; font-weight:700; font-size:13px; color:var(--muted)">➕ Tambah template sendiri</summary>
+          <div class="grid2" style="margin-top:10px">
+            <div><label>Nama template</label><input type="text" id="tplName" placeholder="cth: Carousel Ranking Distrik"></div>
+            <div><label>Link Canva (edit)</label><input type="text" id="tplUrl" placeholder="https://www.canva.com/d/..."></div>
+          </div>
+          <div><label>Emoji sampul (opsional)</label><input type="text" id="tplEmoji" placeholder="cth: 📚 🗼 🌸" maxlength="4" style="max-width:160px"></div>
+          <div class="row"><button class="btn sm" onclick="addTemplate()">Simpan Template</button></div>
+        </details>
+      </div>
+
+      <div class="card">
+        <h3>1️⃣ Upload & Bandingkan Contoh Desain</h3>
+        <p class="hint">Screenshot 2–6 desain post (JPG/PNG). Bisa dari feed kamu sendiri, kompetitor, atau referensi mana pun. Gambar dikompres otomatis dan hanya dikirim ke api.anthropic.com.</p>
+        <div class="row" style="margin-top:10px">
+          <button class="btn sec" onclick="document.getElementById('dsFiles').click()">🖼️ Pilih Gambar</button>
+          <input type="file" id="dsFiles" accept="image/*" multiple style="display:none" onchange="handleDesignFiles(this)">
+          <span class="hint">atau tempel gambar dengan Ctrl+V di halaman ini</span>
+        </div>
+        <div id="dsThumbs" style="display:flex; gap:10px; flex-wrap:wrap; margin-top:14px"></div>
+        <div class="row">
+          <button class="btn" id="btnDsAnalyze" onclick="analyzeDesigns()">🔬 Analisis & Bandingkan Desain</button>
+        </div>
+        <div class="out" id="dsOut"></div>
+      </div>
+
+      <div class="card voice-box" id="dsProfileCard" style="display:none">
+        <h3>🧬 DNA Desain Kamu</h3>
+        <p class="hint">Diekstrak dari perbandingan di atas. Dipakai otomatis oleh rekomendasi desain & asisten AI.</p>
+        <div id="dsProfileContent" style="font-size:14px; line-height:1.8"></div>
+        <details><summary>Edit manual (JSON)</summary>
+          <textarea id="dsProfileJson" style="min-height:160px; margin-top:8px; font-family:monospace; font-size:12.5px"></textarea>
+          <div class="row"><button class="btn sm sec" onclick="saveDesignJson()">Simpan Perubahan</button></div>
+        </details>
+      </div>
+
+      <div class="card">
+        <h3>2️⃣ Rekomendasi Desain Post</h3>
+        <div class="grid2">
+          <div><label>Topik / Isi Post</label><input type="text" id="dsTopik" placeholder="cth: 3 kesalahan orang saat mulai side-hustle"></div>
+          <div>
+            <label>Format & Platform</label>
+            <select id="dsFormat">
+              <option value="Instagram Feed (1080×1350)">Instagram Feed — 1080×1350</option>
+              <option value="Instagram Square (1080×1080)">Instagram Square — 1080×1080</option>
+              <option value="Instagram/TikTok Story-Reels (1080×1920)">Story / Reels Cover — 1080×1920</option>
+              <option value="Carousel Instagram (1080×1350, multi-slide)">Carousel Instagram</option>
+              <option value="X Post (1600×900)">X (Twitter) — 1600×900</option>
+              <option value="LinkedIn (1200×627)">LinkedIn — 1200×627</option>
+              <option value="YouTube Thumbnail (1280×720)">YouTube Thumbnail — 1280×720</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <button class="btn" id="btnDsRec" onclick="recommendDesign()">✨ Buat Rekomendasi Desain</button>
+        </div>
+        <div class="out" id="dsRecOut"></div>
+        <div class="row" id="dsRecActions" style="display:none">
+          <button class="btn sm green" onclick="copyMagicPrompt()">🪄 Salin Prompt Canva Magic Design</button>
+          <button class="btn sm sec" onclick="openCanva()">🎨 Buka Canva</button>
+          <button class="btn sm sec" onclick="copyOut('dsRecOut')">📋 Salin Semua</button>
+          <button class="btn sm sec" onclick="sendDesignToWebhook()">⚡ Kirim ke Webhook</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>🔗 Cara Menyambungkan ke Canva</h3>
+        <div style="font-size:13.5px; line-height:1.8; color:var(--muted)">
+          <b style="color:var(--text)">Jalur cepat (manual, 30 detik):</b><br>
+          1. Klik <b>🪄 Salin Prompt Canva Magic Design</b> di atas.<br>
+          2. Klik <b>🎨 Buka Canva</b> → di Canva, ketik prompt di kolom pencarian AI ("Apa yang akan kamu desain?") atau buka <i>Magic Design</i> → tempel prompt → Canva membuatkan beberapa opsi desain sesuai DNA desainmu.<br><br>
+          <b style="color:var(--text)">Jalur otomatis penuh (via Make.com):</b><br>
+          1. Di Make.com buat skenario: <b>Webhook → Canva</b> (modul "Create Design from Brand Template" / "Autofill Template").<br>
+          2. Siapkan <i>Brand Template</i> di Canva dengan field teks: <code>judul</code>, <code>subjudul</code>, <code>cta</code>.<br>
+          3. Isi URL webhook di menu <b>⚡ Otomatisasi</b> — tombol "Kirim ke Webhook" di atas akan mengisi template Canva-mu otomatis dengan copy & spesifikasi desain.
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ SELF-DISCOVERY ══ -->
+
+    <!-- ── TES KEPRIBADIAN ── -->
+    <div class="view" id="view-tes">
+      <h1>💬 Tes Kepribadian</h1>
+      <p class="sub">Dua jalur: <b>🧬 Lab Kepribadian Pro</b> (bank soal lengkap ala asesmen HR — tanpa API key, hasil detail + riwayat tersimpan) dan <b>💬 Tes Interaktif AI</b> (12 pertanyaan adaptif).<br>
+      <span style="font-size:12px; color:var(--warn)">⚠️ Alat refleksi & pengembangan diri, bukan diagnosis psikologis profesional.</span></p>
+
+      <div class="card">
+        <h3>🧬 Lab Kepribadian Pro — Asesmen Lengkap ala HR</h3>
+        <p class="hint">5 asesmen standar dengan skoring psikometri baku (tanpa AI, tanpa API key): <b>MBTI 60 soal</b> (16 tipe + fungsi kognitif + ranking populasi + profesi per tipe), <b>Big Five/OCEAN 50 soal</b>, <b>DISC 28 soal</b>, <b>RIASEC/Holland 36 soal</b>, dan <b>EQ 20 soal</b>. Setiap hasil otomatis terarsip ke riwayat permanen, hasil tes online (16Personalities, SPI, dll.) juga bisa dicatat, dan semuanya bisa digabung menjadi laporan siap cetak/PDF.</p>
+        <div class="row" style="margin-top:4px">
+          <button class="btn" onclick="toggleLabPro()" id="btnLabPro">🧬 Buka Lab Kepribadian Pro</button>
+          <button class="btn" style="background:transparent; color:var(--muted); border:1px solid var(--line)" onclick="window.open('tes-pro/index.html','_blank')">⛶ Buka di Tab Baru</button>
+        </div>
+        <div id="labProWrap" style="display:none; margin-top:14px">
+          <iframe id="labProFrame" title="Lab Kepribadian Pro" style="width:100%; height:80vh; border:1px solid var(--line); border-radius:14px; background:#fff"></iframe>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>💬 Tes Interaktif (12 Pertanyaan Adaptif)</h3>
+        <p class="hint">Jawab dengan jujur & spontan — tidak ada jawaban benar/salah. Di akhir, hasil bisa disimpan sebagai Profil Kepribadian.</p>
+        <div class="row" style="margin-top:4px">
+          <button class="btn" id="btnPtStart" onclick="startPersonalityTest()">▶️ Mulai Tes</button>
+          <span class="hint" id="ptProgress"></span>
+        </div>
+        <div class="chat-log" id="ptLog" style="max-height:380px; margin-top:12px; overflow-y:auto; display:none; flex-direction:column"></div>
+        <div class="chat-input" id="ptInputRow" style="display:none">
+          <textarea id="ptInput" placeholder="Jawab dengan jujur & spontan... (Enter untuk kirim)"></textarea>
+          <button class="btn" id="btnPtSend" onclick="sendPtAnswer()">Kirim</button>
+        </div>
+        <div class="row" id="ptSaveRow" style="display:none">
+          <button class="btn green" onclick="savePersonalityFromTest()">💾 Simpan sebagai Profil Kepribadian</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── ANALISIS TULISAN ── -->
+    <div class="view" id="view-tulisan">
+      <h1>✍️ Analisis Tulisan</h1>
+      <p class="sub"><b>Psycho-Stylometric Profiler</b> — analisis berbasis bukti dari tulisanmu dengan 3 kerangka tervalidasi: <b>Big Five (OCEAN)</b>, <b>RIASEC/Holland Codes</b> (pemetaan bakat & minat), dan <b>Stylometric DNA</b> (4 variabel LIWC: Analytical Thinking, Clout, Authenticity, Emotional Tone). Setiap kesimpulan disertai kutipan bukti dari teksmu, dan hasilnya termasuk <b>Arahan Persona</b> — panduan suara brand siap-pakai. Bisa untuk dirimu sendiri maupun memahami orang lain.<br>
+      <span style="font-size:12px; color:var(--warn)">⚠️ Alat refleksi & pemahaman diri, bukan diagnosis psikologis profesional.</span></p>
+      <div class="card">
+        <h3>✍️ Deteksi dari Tulisan</h3>
+        <p class="hint">Metode ala LIWC/Crystal: kepribadian terbaca dari pola bahasa — kata fungsi, nada emosi, dan pola sosial dalam tulisan. Tempelkan tulisan bebas apa pun: chat panjang, caption, email, jurnal, esai (min. 150 kata; makin banyak & makin spontan tulisannya, makin akurat).</p>
+        <div class="grid2">
+          <div>
+            <label>Subjek Analisis</label>
+            <select id="psSubjek">
+              <option value="self">Saya sendiri (disimpan sebagai Profil Kepribadian)</option>
+              <option value="other">Orang lain (hanya analisis, tidak disimpan)</option>
+            </select>
+          </div>
+          <div>
+            <label>Konteks tulisan (opsional)</label>
+            <input type="text" id="psKonteks" placeholder="cth: chat sehari-hari, caption IG, email kerja">
+          </div>
+        </div>
+        <label>Tempel tulisan di sini</label>
+        <textarea id="psText" style="min-height:180px" placeholder="Tempelkan beberapa contoh tulisan... boleh dicampur (chat + caption + email), pisahkan dengan --- jika perlu."></textarea>
+        <div class="row"><button class="btn" id="btnPsAnalyze" onclick="analyzePersonality()">🔬 Analisis Kepribadian</button></div>
+        <div class="out" id="psOut"></div>
+      </div>
+    </div>
+
+    <!-- ── PROFIL KEPRIBADIAN ── -->
+    <div class="view" id="view-psprofil">
+      <h1>🧬 Profil Kepribadian</h1>
+      <p class="sub">Hasil Self-Discovery-mu terangkum di sini — dan otomatis dipakai semua fitur lain (jurnal, generator konten, asisten AI) supaya semuanya selaras dengan dirimu yang asli.</p>
+      <div class="card" id="psEmpty">
+        <p class="hint">Belum ada profil kepribadian. Jalankan <b>💬 Tes Kepribadian</b> atau <b>✍️ Analisis Tulisan</b> (pilih subjek "Saya sendiri") untuk membuatnya.</p>
+      </div>
+      <div class="card voice-box" id="psProfileCard" style="display:none">
+        <h3>🧬 Profil Kepribadian Kamu</h3>
+        <div id="psProfileContent" style="font-size:14px; line-height:1.8"></div>
+        <details><summary>Edit manual (JSON)</summary>
+          <textarea id="psProfileJson" style="min-height:160px; margin-top:8px; font-family:monospace; font-size:12.5px"></textarea>
+          <div class="row"><button class="btn sm sec" onclick="savePersonalityJson()">Simpan Perubahan</button></div>
+        </details>
+        <div class="row">
+          <button class="btn sm sec" onclick="brandingFromPersonality()">✨ Rekomendasi Branding dari Kepribadianku</button>
+          <button class="btn sm sec" onclick="applyPersonaToVoice()">🎙️ Terapkan Arahan Persona ke Suara Brand</button>
+          <button class="btn sm sec" onclick="copyPersona()">📋 Salin Arahan Persona</button>
+        </div>
+        <div class="out" id="psBrandOut"></div>
+      </div>
+    </div>
+
+    <!-- ── LAYANAN TES RESMI ── -->
+    <div class="view" id="view-layanan">
+      <h1>🌐 Layanan Tes Resmi</h1>
+      <p class="sub">Layanan tes kepribadian populer sebagai pembanding hasil analisis LYNSBrand — gratis atau freemium.</p>
+      <div class="card">
+        <h3>🌐 Layanan Tes Resmi (pembanding)</h3>
+        <p class="hint">Untuk pembanding hasil, coba layanan populer ini — lalu tempel hasilnya di kolom "Deteksi dari Tulisan" atau edit JSON profil agar tergabung:</p>
+        <div style="font-size:13.5px; line-height:2">
+          • <a href="https://www.16personalities.com/id" target="_blank">16Personalities</a> — tes MBTI-style paling populer, gratis, ada bahasa Indonesia<br>
+          • <a href="https://www.truity.com/test/type-finder-personality-test-new" target="_blank">Truity TypeFinder</a> — versi lebih rigor dengan skor per dimensi<br>
+          • <a href="https://bigfive-test.com/id" target="_blank">BigFive-Test.com</a> — Big Five/IPIP open-source, paling ilmiah, gratis (reliabilitas α &gt; .80)<br>
+          • <a href="https://www.mynextmove.org/explore/ip" target="_blank">O*NET Interest Profiler</a> — tes minat karir RIASEC/Holland Codes resmi Departemen Tenaga Kerja AS, gratis & tervalidasi (α .78–.85)<br>
+          • <a href="https://www.crystalknows.com/" target="_blank">Crystal Knows</a> — DISC dari analisis tulisan/LinkedIn (pendekatan yang sama dengan modul ini)<br>
+          • <a href="https://www.truity.com/test/enneagram-personality-test" target="_blank">Truity Enneagram</a> — tes 9 tipe Enneagram<br>
+          • <a href="https://www.viacharacter.org/" target="_blank">VIA Character Strengths</a> — 24 kekuatan karakter, gratis
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ SELF-EXPRESSION ══ -->
+
+    <!-- ── JURNAL ── -->
+    <div class="view" id="view-jurnal">
+      <h1>📓 Jurnal Refleksi</h1>
+      <p class="sub">Menuangkan isi kepala tanpa harus bermain media sosial. Tulis bebas, dapatkan refleksi AI yang memahami kepribadianmu — dan kalau suatu saat mau, satu klik mengubah jurnal jadi ide konten.</p>
+      <div class="card">
+        <h3>✏️ Tulis Entri Baru</h3>
+        <div class="row" style="margin-top:4px">
+          <input type="date" id="jrDate" style="width:auto">
+          <button class="btn sec sm" id="btnJrPrompt" onclick="journalPrompt()">🎲 Beri Aku Prompt Jurnal</button>
+        </div>
+        <div class="out" id="jrPromptOut" style="margin-top:10px"></div>
+        <label>Isi jurnal</label>
+        <textarea id="jrText" style="min-height:170px" placeholder="Tulis bebas... perasaan hari ini, ide yang muncul, hal yang mengganjal, pelajaran, mimpi. Tidak ada format yang salah."></textarea>
+        <div class="row"><button class="btn" onclick="addJournalEntry()">💾 Simpan Entri</button></div>
+      </div>
+      <div class="card">
+        <h3>📚 Entri Jurnal</h3>
+        <div id="jrList"><p class="hint">Belum ada entri. Mulailah dari yang kecil — tiga kalimat pun cukup.</p></div>
+        <div class="out" id="jrOut"></div>
+      </div>
+      <div class="card">
+        <p class="hint">💡 Jurnalmu adalah bahan emas untuk <b>✍️ Analisis Tulisan</b> — makin banyak menulis, makin akurat profil kepribadianmu. Semua entri tersimpan lokal di browser ini (ikut ter-backup lewat menu Otomatisasi → Backup).</p>
+      </div>
+    </div>
+
+    <!-- ── KALENDER ── -->
+    <div class="view" id="view-kalender">
+      <h1>📅 Kalender Konten</h1>
+      <p class="sub">Rencanakan dan lacak konten. Status: <span class="badge ide">ide</span> → <span class="badge draft">draft</span> → <span class="badge siap">siap</span> → <span class="badge terbit">terbit</span></p>
+      <div class="card">
+        <h3>➕ Tambah rencana konten</h3>
+        <div class="grid3">
+          <div><label>Tanggal</label><input type="date" id="calDate"></div>
+          <div><label>Platform</label><select id="calPlat"><option>Instagram</option><option>TikTok</option><option>X (Twitter)</option><option>LinkedIn</option><option>YouTube</option><option>Facebook</option><option>Threads</option></select></div>
+          <div><label>Jenis</label><select id="calType"><option value="caption">Caption</option><option value="script">Script Video</option><option value="thread">Thread</option><option value="linkedin">Post LinkedIn</option><option value="carousel">Carousel</option></select></div>
+        </div>
+        <label>Topik / Judul</label>
+        <input type="text" id="calTopik" placeholder="cth: 3 kesalahan orang saat mulai side-hustle">
+        <div class="row">
+          <button class="btn" onclick="addCalItem()">➕ Tambah</button>
+          <button class="btn green" id="btnWeekPlan" onclick="generateWeekPlan()">🤖 Buatkan Rencana 7 Hari Otomatis</button>
+        </div>
+        <div class="out" id="weekOut"></div>
+      </div>
+      <div id="calList"></div>
+    </div>
+
+    <!-- ── CHAT ── -->
+    <div class="view" id="view-chat">
+      <h1>💬 Asisten Branding</h1>
+      <p class="sub">Konsultan personal branding pribadimu — sudah tahu profil, suara brand, dan memorimu. Tanyakan strategi, minta brainstorm, atau minta review konten.</p>
+      <div class="chat-wrap">
+        <div class="chat-log" id="chatLog"></div>
+        <div class="chat-input">
+          <textarea id="chatInput" placeholder="Ketik pesan... (Enter untuk kirim, Shift+Enter baris baru)"></textarea>
+          <button class="btn" id="btnChat" onclick="sendChat()">Kirim</button>
+        </div>
+        <div class="row" style="padding-top:8px">
+          <button class="btn sm sec" onclick="clearChat()">🗑️ Bersihkan Chat</button>
+          <button class="btn sm sec" onclick="saveMemoryFromChat()">🧠 Simpan Insight ke Memori</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── OTOMATISASI ── -->
+    <div class="view" id="view-otomatisasi">
+      <h1>⚡ Otomatisasi Publikasi</h1>
+      <p class="sub">Hubungkan ke <b>Make.com / Zapier / n8n</b> lewat webhook untuk memposting otomatis ke SNS, atau ekspor konten untuk dijadwalkan di Buffer/Meta Business Suite.</p>
+      <div class="card">
+        <h3>🔗 Webhook</h3>
+        <p class="hint">Buat skenario di Make/Zapier dengan trigger "Webhook", lalu sambungkan ke modul Instagram/TikTok/X/LinkedIn. Tempel URL webhook-nya di sini. Setiap konten berstatus <b>siap</b> yang jatuh tempo akan dikirim sebagai JSON: <code>{judul, platform, jenis, tanggal, konten}</code>.</p>
+        <label>URL Webhook</label>
+        <input type="text" id="whUrl" placeholder="https://hook.eu1.make.com/xxxxxx" onchange="saveWebhook()">
+        <div class="row">
+          <button class="btn sec" onclick="testWebhook()">🧪 Kirim Tes</button>
+          <label style="display:flex; align-items:center; gap:8px; margin:0; text-transform:none; font-size:13.5px; cursor:pointer">
+            <input type="checkbox" id="whAuto" onchange="saveWebhook()" style="width:auto"> Auto-kirim konten "siap" yang jatuh tempo (saat aplikasi terbuka)
+          </label>
+        </div>
+      </div>
+      <div class="card">
+        <h3>📤 Konten siap kirim</h3>
+        <div id="autoList"><p class="hint">Belum ada konten berstatus "siap".</p></div>
+      </div>
+      <div class="card">
+        <h3>🔄 Sinkron ke Notion (Content Bank)</h3>
+        <p class="hint">Kirim status & draft dari kalender ini kembali ke database <b>📚 Content Bank</b> di Notion, lewat webhook Make yang sama. Item hasil impor membawa <code>notion_id</code>, jadi Make <b>memperbarui</b> baris yang ada (bukan bikin duplikat). Payload: <code>{tipe:"notion_sync", notion_id, judul, status, tanggal, platform, jenis, catatan_riset, draft_ai}</code>. Skenario Make-nya perlu dibuat sekali — lihat <b>PANDUAN-SINKRON-NOTION.md</b>.</p>
+        <div class="row" style="margin-top:0">
+          <button class="btn sec" id="btnSyncNotion" onclick="syncAllToNotion()">🔄 Sinkron Semua ke Notion</button>
+          <button class="btn sec" onclick="syncChangedToNotion()">✨ Sinkron yang Ada Draft/Perubahan Saja</button>
+        </div>
+        <p class="hint" style="margin-bottom:0">⚠️ Tiap item = 1 operasi Make. "Sinkron Semua" atas 52 item = 52 operasi — perhatikan kuota bulanan paket gratis Make (1.000 ops). Karena webhook dikirim <i>no-cors</i>, browser tidak bisa membaca balasan: aplikasi hanya melaporkan "terkirim", bukan "berhasil disimpan di Notion". Cek riwayat eksekusi di Make untuk memastikan.</p>
+      </div>
+      <div class="card">
+        <h3>📦 Ekspor</h3>
+        <div class="row" style="margin-top:0">
+          <button class="btn sec" onclick="exportJSON()">Ekspor JSON</button>
+          <button class="btn sec" onclick="exportCSV()">Ekspor CSV (untuk Buffer/spreadsheet)</button>
+          <button class="btn sec" onclick="backupAll()">💾 Backup Semua Data</button>
+          <button class="btn sec" onclick="document.getElementById('restoreFile').click()">📥 Pulihkan Backup</button>
+          <input type="file" id="restoreFile" accept=".json" style="display:none" onchange="restoreAll(this)">
+        </div>
+        <p class="hint" style="margin-bottom:0">⚠️ <b>Pulihkan Backup</b> menimpa SEMUA data. Untuk sekadar <b>menambah</b> ide dari Content Bank tanpa menghapus yang ada, pakai tombol di bawah.</p>
+      </div>
+      <div class="card">
+        <h3>🔀 Impor Content Bank (gabung, aman)</h3>
+        <p class="hint">Tambahkan ide dari file Content Bank Notion ke kalendermu <b>tanpa menimpa</b> apa pun. Menerima <code>impor-notion-kalender.json</code> (52 ide aktif) maupun <code>impor-notion-trivia-tambahan.json</code> (30 ide trivia). Item yang topiknya sudah ada dilewati otomatis, jadi aman dijalankan berkali-kali — bisa muat kedua file sekaligus.</p>
+        <div class="row" style="margin-top:0">
+          <button class="btn" onclick="document.getElementById('cbFile').click()">🔀 Pilih File & Gabungkan</button>
+          <input type="file" id="cbFile" accept=".json" style="display:none" onchange="importContentBank(this)">
+        </div>
+      </div>
+    </div>
+
+    <!-- ── AKUN SAYA ── -->
+    <div class="view" id="view-akun">
+      <h1>👤 Akun Saya</h1>
+      <p class="sub">Daftarkan dirimu (gratis) supaya perjalananmu tercatat — dan dapatkan tips berkarya sesuai kepribadianmu, update fitur, serta penawaran khusus langsung ke emailmu.</p>
+      <div class="card voice-box" id="akStatus" style="display:none">
+        <h3>🌱 Status: Jelajah Bebas</h3>
+        <div id="akStatusContent" style="font-size:14px; line-height:1.9"></div>
+        <div class="row">
+          <a class="btn sm" href="halaman-penjualan.html#harga" style="text-decoration:none">💎 Lihat Paket & Upgrade</a>
+        </div>
+      </div>
+      <div class="card">
+        <h3 id="akFormTitle">✨ Daftar Gratis</h3>
+        <div class="grid2">
+          <div><label>Nama</label><input type="text" id="akNama" placeholder="Nama panggilanmu"></div>
+          <div><label>Email</label><input type="text" id="akEmail" placeholder="email@kamu.com"></div>
+        </div>
+        <div class="grid2">
+          <div><label>Platform SNS Utama</label><select id="akPlat"><option value="">— belum ada / rahasia —</option><option>Instagram</option><option>TikTok</option><option>X (Twitter)</option><option>LinkedIn</option><option>YouTube</option><option>Threads</option></select></div>
+          <div><label>Username / Handle SNS (opsional)</label><input type="text" id="akHandle" placeholder="@akunkamu"></div>
+        </div>
+        <label>Niche / bidang yang kamu tekuni (opsional)</label>
+        <input type="text" id="akNiche" placeholder="cth: buku & literasi, kuliner, produktivitas">
+        <label style="display:flex; align-items:flex-start; gap:8px; margin-top:14px; text-transform:none; font-size:12.5px; font-weight:500; letter-spacing:0; cursor:pointer; line-height:1.5">
+          <input type="checkbox" id="akConsent" checked style="width:auto; margin-top:2px">
+          <span>Saya bersedia menerima email dari LYNSBrand: tips berkarya sesuai kepribadian, update fitur, dan penawaran. Bisa berhenti berlangganan kapan saja.</span>
+        </label>
+        <div class="row">
+          <button class="btn" id="btnAkun" onclick="registerAccount()">✨ Daftar Gratis</button>
+          <span class="hint" id="akMsg"></span>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Kenapa mendaftar?</h3>
+        <div style="font-size:13.5px; line-height:2; color:var(--muted)">
+          📬 Tips mingguan yang disesuaikan dengan tipe kepribadianmu<br>
+          🎁 Template & prompt pack baru dikirim duluan ke member<br>
+          💎 Penawaran khusus member untuk paket setup & konsultasi<br>
+          🔔 Kabar fitur baru sebelum orang lain
+        </div>
+      </div>
+    </div>
+
+    <!-- ── BANK MATERI (Content Bank dari Notion) ── -->
+    <div class="view" id="view-bankmateri">
+      <h1>📚 Bank Materi</h1>
+      <p class="sub">Semua ide postingan dari Content Bank Notion-mu, terkumpul di satu tempat. Tiap materi punya tiga alat sendiri: <b>✏️ Tulis &amp; Edit</b> (naskah lengkap, tersimpan permanen), <b>🤖 Analisis AI</b> (sudut, hook, struktur slide, caption, hashtag), dan <b>🎨 Studio Desain</b> (brief desain + prompt Canva, hasilnya kembali ke materi ini). Saring per pilar/status, lalu <b>kirim ke Kalender</b> saat siap dijadwalkan.</p>
+
+      <div class="card">
+        <div class="row" style="margin-top:0; justify-content:space-between; align-items:center">
+          <div id="cbSummary" class="hint" style="margin:0"></div>
+          <div class="row" style="margin:0; gap:8px">
+            <button class="btn" onclick="autoSyncNotion(this)">🔄 Sinkron dari Notion</button>
+            <input type="file" id="cbSyncFile" accept=".json" style="display:none" onchange="syncContentBank(this)">
+          </div>
+        </div>
+        <p class="hint" style="margin-bottom:0">Satu klik — otomatis menarik semua ide terbaru, <b>tanpa perlu buka folder</b>. Ide baru ditambahkan, yang sudah ada diperbarui, dan progres statusmu tidak tertimpa — aman diulang. 💡 Kalau kamu menambah ide di Notion, minta Claude memperbarui datanya, lalu cukup klik Sinkron lagi. · <a href="#" onclick="document.getElementById('cbSyncFile').click();return false" style="color:var(--accent)">muat file .json manual</a></p>
+      </div>
+
+      <div class="card">
+        <div class="grid3" style="gap:10px">
+          <div><label>Pilar</label><select id="cbFilterPilar" onchange="renderContentBank()"><option value="">Semua pilar</option><option>Pilar 1 · Distrik &amp; Ranking</option><option>Pilar 2 · 雑学 / 豆知識</option><option>Pilar 3 · Hidup &amp; Kerja</option></select></div>
+          <div><label>Status</label><select id="cbFilterStatus" onchange="renderContentBank()"><option value="">Semua status</option><option>Ide</option><option>Draft</option><option>Siap</option><option>Terjadwal</option><option>Tayang</option></select></div>
+          <div><label>Prioritas</label><select id="cbFilterPrio" onchange="renderContentBank()"><option value="">Semua prioritas</option><option>Tinggi</option><option>Sedang</option><option>Rendah</option></select></div>
+        </div>
+        <label>Cari</label>
+        <input type="text" id="cbSearch" placeholder="cari judul, hook, atau catatan..." oninput="renderContentBank()">
+        <details style="margin-top:12px">
+          <summary style="cursor:pointer; font-weight:700; font-size:13px; color:var(--muted)">➕ Tambah materi manual</summary>
+          <div class="grid2" style="margin-top:10px">
+            <div><label>Judul</label><input type="text" id="cbNewJudul" placeholder="Judul ide"></div>
+            <div><label>Pilar</label><select id="cbNewPilar"><option>Pilar 1 · Distrik &amp; Ranking</option><option>Pilar 2 · 雑学 / 豆知識</option><option>Pilar 3 · Hidup &amp; Kerja</option></select></div>
+          </div>
+          <div class="grid3" style="gap:10px">
+            <div><label>Format</label><select id="cbNewFormat"><option>Carousel</option><option>Video / Reel</option><option>Single</option></select></div>
+            <div><label>Prioritas</label><select id="cbNewPrio"><option>Sedang</option><option>Tinggi</option><option>Rendah</option></select></div>
+            <div><label>Status</label><select id="cbNewStatus"><option>Ide</option><option>Draft</option><option>Siap</option></select></div>
+          </div>
+          <label>Hook / CTA</label><input type="text" id="cbNewHook" placeholder="Hook pembuka / CTA">
+          <label>Catatan riset</label><textarea id="cbNewCatatan" style="min-height:70px" placeholder="Catatan, data, sumber..."></textarea>
+          <div class="row"><button class="btn sm" onclick="addBankItem()">Simpan Materi</button></div>
+        </details>
+      </div>
+
+      <div id="cbList"></div>
+    </div>
+
+    <!-- ── KELOLA AKUN (multi-akun brand) ── -->
+    <div class="view" id="view-akunbrand">
+      <h1>🗂️ Kelola Akun</h1>
+      <p class="sub">Kamu pengatur utama di sini. Kelola beberapa akun/brand SNS dari satu tempat — tiap akun punya <b>profil, suara, desain, kalender & konten sendiri-sendiri</b>. API key & pengaturan dipakai bersama semua akun (cukup diisi sekali).</p>
+
+      <div class="card voice-box">
+        <h3>📍 Akun Aktif</h3>
+        <div id="wsActiveBig" style="font-size:15px; line-height:1.8"></div>
+        <p class="hint" style="margin-bottom:0">Semua yang kamu buat (profil, konten, kalender, template) tersimpan di akun yang sedang aktif. Ganti akun dengan tombol <b>Aktifkan</b> di daftar bawah — halaman akan dimuat ulang membawa data akun itu.</p>
+      </div>
+
+      <div class="card">
+        <h3>➕ Buat Akun Baru</h3>
+        <p class="hint">Akun baru mulai kosong (bersih), siap kamu isi profil & kontennya sendiri. Cocok untuk brand kedua, akun eksperimen, atau memisahkan niche.</p>
+        <div class="row" style="margin-top:10px; align-items:flex-end; gap:10px">
+          <div style="flex:1; min-width:200px"><label>Nama akun / brand</label><input type="text" id="wsNewName" placeholder="cth: Brand Resep Sehat"></div>
+          <button class="btn" onclick="addWorkspace()">➕ Buat & Pindah ke Akun Ini</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>📋 Daftar Akun</h3>
+        <div id="wsList"></div>
+      </div>
+    </div>
+
+    <!-- ── PENGATURAN ── -->
+    <div class="view" id="view-pengaturan">
+      <h1>⚙️ Pengaturan</h1>
+      <p class="sub">Aplikasi ini memanggil Claude API langsung dari browser-mu. API key hanya disimpan di browser ini (localStorage) dan tidak dikirim ke mana pun selain api.anthropic.com.</p>
+      <div class="card">
+        <label>Anthropic API Key</label>
+        <input type="password" id="setKey" placeholder="sk-ant-...">
+        <p class="hint">Belum punya? Buat di <a href="https://platform.claude.com/" target="_blank">platform.claude.com</a> → API Keys.</p>
+        <p class="hint">🔒 Cukup dimasukkan <b>sekali</b>: key tersimpan di browser ini dan otomatis dipakai terus — tidak perlu diisi ulang tiap buka. Agar tetap ingat, gunakan <b>satu alamat yang sama</b> (situs live-mu, bukan file lokal) di browser yang sama. Kalau nanti membersihkan data browser, cukup tempel ulang sekali. Tombol <b>💾 Backup Semua Data</b> di menu Otomatisasi juga menyimpan key ini.</p>
+        <div class="grid2">
+          <div>
+            <label>Model</label>
+            <select id="setModel">
+              <option value="claude-opus-4-8">Claude Opus 4.8 (terbaik, disarankan)</option>
+              <option value="claude-sonnet-5">Claude Sonnet 5 (cepat & hemat)</option>
+              <option value="claude-haiku-4-5">Claude Haiku 4.5 (paling hemat)</option>
+            </select>
+          </div>
+          <div>
+            <label>Bahasa Output Konten</label>
+            <select id="setLang">
+              <option value="Indonesia">Bahasa Indonesia</option>
+              <option value="English">English</option>
+              <option value="日本語">日本語 (Jepang)</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <button class="btn" onclick="saveSettings()">💾 Simpan</button>
+          <button class="btn sec" onclick="testAPI()">🧪 Tes Koneksi</button>
+        </div>
+        <div class="out" id="setOut"></div>
+      </div>
+      <div class="card">
+        <h3>☁️ Sinkron Cloud (antar perangkat)</h3>
+        <p class="hint">Simpan API key + semua akun, kalender, bank materi & template secara online supaya bisa dibuka di <b>PC lain atau HP</b> tanpa memasukkan ulang. Datamu <b>dienkripsi di perangkat ini</b> dengan Kode Sinkron rahasiamu sebelum dikirim — server hanya menyimpan versi teracak dan tidak bisa membacanya. Perubahan tersimpan otomatis ke cloud.</p>
+        <div id="syncStatus" style="font-size:13px; margin:8px 0"></div>
+        <label>Kode Sinkron (rahasia, min. 6 karakter — WAJIB diingat)</label>
+        <input type="password" id="syncPass" placeholder="mis. kalimat rahasia yang mudah kamu ingat">
+        <p class="hint">⚠️ Kalau lupa Kode Sinkron ini, data di cloud tidak bisa dibuka lagi (tidak ada cara memulihkannya — itulah yang membuatnya aman). Simpan di tempat aman.</p>
+        <div class="row">
+          <button class="btn" onclick="cloudEnable()">☁️ Aktifkan & Unggah</button>
+          <button class="btn sec" onclick="cloudPush(true)">🔄 Sinkron Sekarang</button>
+          <button class="btn sec" onclick="cloudDisable()">Matikan di perangkat ini</button>
+        </div>
+        <hr style="border:none; border-top:1px solid var(--border); margin:16px 0">
+        <p class="hint"><b>Di perangkat baru (PC lain / HP)?</b> Masukkan Kode Sinkron yang sama, lalu klik Pulihkan — semua data (termasuk API key) akan tertarik otomatis. ⚠️ Ini menimpa data di perangkat ini.</p>
+        <label>Kode Sinkron</label>
+        <input type="password" id="syncPassPull" placeholder="Kode Sinkron dari perangkat pertama">
+        <div class="row"><button class="btn green" onclick="cloudPull()">⬇️ Pulihkan dari Cloud</button></div>
+      </div>
+      <div class="card">
+        <h3>🧠 Memori Asisten</h3>
+        <p class="hint">Catatan yang selalu diingat asisten di semua percakapan (tujuan, keputusan, pelajaran).</p>
+        <textarea id="memText" style="min-height:130px" placeholder="- Fokus Q3: bangun audience TikTok&#10;- Konten video pendek performa terbaik jam 19:00&#10;- Jangan pakai kata 'gaes'"></textarea>
+        <div class="row"><button class="btn sm sec" onclick="saveMemory()">Simpan Memori</button></div>
+      </div>
+      <div class="card">
+        <h3>⚠️ Zona Berbahaya</h3>
+        <div class="row" style="margin-top:0"><button class="btn danger" onclick="resetAll()">Hapus Semua Data</button></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<!-- ══ MODAL ONBOARDING BYOK ══ -->
+<div class="modal-bg" id="byokModal">
+  <div class="modal">
+    <h2>🔑 Satu langkah lagi: sambungkan AI-mu</h2>
+    <p class="hint" style="margin-top:2px">LYNSBrand memakai model <b>BYOK (Bring Your Own Key)</b>: kamu memakai API key Anthropic milikmu sendiri. Key hanya disimpan di browser ini dan hanya dikirim ke api.anthropic.com — tidak ada server perantara, dan biayanya kamu bayar langsung ke Anthropic sesuai pemakaian (tanpa langganan).</p>
+    <div class="steps">
+      <div class="stp"><div class="n">1</div><div>Buka <a href="https://platform.claude.com/" target="_blank" style="color:var(--accent)"><b>platform.claude.com</b></a> → daftar/masuk (gratis).</div></div>
+      <div class="stp"><div class="n">2</div><div>Menu <b>Billing</b> → isi saldo kecil (mulai $5; satu konten biasanya hanya beberapa sen).</div></div>
+      <div class="stp"><div class="n">3</div><div>Menu <b>API Keys</b> → <b>Create Key</b> → salin key (tampil sekali!) → tempel di bawah.</div></div>
+    </div>
+    <label>Anthropic API Key</label>
+    <input type="password" id="byokKey" placeholder="sk-ant-...">
+    <div class="row">
+      <button class="btn" id="btnByokSave" onclick="byokSave()">✅ Simpan & Tes Koneksi</button>
+      <button class="btn sec" onclick="byokClose()">Nanti Saja</button>
+    </div>
+    <div class="out" id="byokOut"></div>
+    <p class="hint" style="margin-top:12px">🔒 Jangan pernah membagikan API key-mu kepada siapa pun — termasuk penyedia aplikasi ini.</p>
+    <hr style="border:none; border-top:1px solid var(--border); margin:16px 0">
+    <p class="hint" style="margin:0 0 8px"><b>Sudah pernah pakai di perangkat lain?</b> Masukkan <b>Kode Sinkron</b>-mu untuk memulihkan API key + semua data sekaligus (tanpa ketik ulang):</p>
+    <input type="password" id="syncPassByok" placeholder="Kode Sinkron dari perangkat pertama">
+    <div class="row"><button class="btn green" onclick="cloudPull()">⬇️ Pulihkan dari Cloud</button></div>
+  </div>
+</div>
+
+<script>
+/* ═══════════════════ STORAGE (multi-akun) ═══════════════════ */
+// Data KONTEN dipisah per akun/workspace (bp_ws_<id>_<key>). Pengaturan & API key GLOBAL
+// (dipakai bersama semua akun) — jadi key cukup dimasukkan sekali untuk semua akun.
+const WS_KEYS = ['profile','voice','design','personality','journal','calendar','chat','memory','webhook','templates','account','contentbank','igaccounts'];
+const GLOBAL_KEYS = new Set(['settings','seenLanding','workspaces','activeWs','synccfg']);
+const DEFAULT_WS_ID = 'w_default';
+let activeWs = null;   // diisi oleh bootstrap di bawah
+const store = {
+  _key(k){ return GLOBAL_KEYS.has(k) ? ('bp_'+k) : ('bp_ws_'+(activeWs||DEFAULT_WS_ID)+'_'+k); },
+  get(k, d){ try{ const v = localStorage.getItem(this._key(k)); return v ? JSON.parse(v) : d; }catch(e){ return d; } },
+  set(k, v){ localStorage.setItem(this._key(k), JSON.stringify(v)); }
+};
+/* ═══ SINKRON CLOUD (E2E) — config lokal & global, TIDAK ikut disinkron ═══ */
+const SYNC_ENDPOINT = 'https://pflqxswbfxrwcfyrgwkr.supabase.co/functions/v1/sync';
+let syncCfg = (()=>{ try{ return JSON.parse(localStorage.getItem('bp_synccfg')||'null') || {pass:'',enabled:false,last:0}; }catch(e){ return {pass:'',enabled:false,last:0}; } })();
+function saveSyncCfg(){ localStorage.setItem('bp_synccfg', JSON.stringify(syncCfg)); }
+// Bungkus store.set: tiap data berubah, jadwalkan unggah otomatis (kalau sync aktif)
+const _storeSet = store.set.bind(store);
+store.set = function(k, v){ _storeSet(k, v); if(k!=='synccfg') cloudPushSoon(); };
+let workspaces = store.get('workspaces', null);
+(function bootstrapWorkspaces(){
+  if(!workspaces || !workspaces.length){
+    // Pertama kali versi multi-akun: buat "Akun Utama" & pindahkan semua data lama ke sana.
+    let nm = 'Akun Utama';
+    try{ const p = JSON.parse(localStorage.getItem('bp_profile')||'null'); if(p && p.nama) nm = p.nama; }catch(e){}
+    workspaces = [{id:DEFAULT_WS_ID, name:nm}];
+    activeWs = DEFAULT_WS_ID;
+    store.set('workspaces', workspaces); store.set('activeWs', activeWs);
+    WS_KEYS.forEach(k=>{ const v = localStorage.getItem('bp_'+k); if(v!==null){ localStorage.setItem('bp_ws_'+DEFAULT_WS_ID+'_'+k, v); localStorage.removeItem('bp_'+k); } });
+  } else {
+    activeWs = store.get('activeWs', workspaces[0].id);
+    if(!workspaces.some(w=>w.id===activeWs)){ activeWs = workspaces[0].id; store.set('activeWs', activeWs); }
+  }
+})();
+let settings = store.get('settings', {key:'', model:'claude-opus-4-8', lang:'Indonesia'});
+let profile  = store.get('profile', null);
+let voice    = store.get('voice', null);
+let designProfile = store.get('design', null);
+let personality = store.get('personality', null);
+let journal  = store.get('journal', []);
+let account  = store.get('account', null);
+const REGISTER_ENDPOINT = 'https://pflqxswbfxrwcfyrgwkr.supabase.co/functions/v1/register';
+let calendar = store.get('calendar', []);
+let chatHist = store.get('chat', []);
+let memory   = store.get('memory', '');
+let webhook  = store.get('webhook', {url:'', auto:false});
+let lastGen  = null;
+
+const $ = id => document.getElementById(id);
+function toast(msg, ms=2600){ const t=$('toast'); t.textContent=msg; t.style.display='block'; clearTimeout(t._tm); t._tm=setTimeout(()=>t.style.display='none', ms); }
+function esc(s){ const d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
+function fmtDate(d){ if(!d) return '—'; const dt=new Date(d+'T00:00:00'); return dt.toLocaleDateString('id-ID',{weekday:'short', day:'numeric', month:'short'}); }
+function uid(){ return 'c'+ Math.random().toString(36).slice(2,10); }
+
+/* ═══════════════════ NAVIGASI ═══════════════════ */
+document.querySelectorAll('.nav-item').forEach(el=>{
+  el.onclick = ()=>{
+    if(!el.dataset.view) return; // item tautan (mis. Halaman Utama) — biarkan navigasi normal
+    document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+    document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+    el.classList.add('active');
+    $('view-'+el.dataset.view).classList.add('active');
+    if(el.dataset.view==='dashboard') renderDashboard();
+    if(el.dataset.view==='kalender') renderCalendar();
+    if(el.dataset.view==='otomatisasi') renderAutoList();
+    if(el.dataset.view==='desain') renderTemplates();
+    if(el.dataset.view==='bankmateri') renderContentBank();
+    if(el.dataset.view==='akunbrand') renderWorkspaces();
+    if(el.dataset.view==='pengaturan') renderSyncUI();
+    if(el.dataset.view==='analisisakun') renderIgAccounts();
+  };
+});
+
+/* ═══════════════════ CLAUDE API ═══════════════════ */
+function systemPrompt(){
+  let s = `Kamu adalah LYNS, asisten ahli personal branding, strategi media sosial, dan psikologi kepribadian. Selalu jawab dalam bahasa ${settings.lang}.`;
+  if(profile){
+    s += `\n\n## PROFIL BRAND PENGGUNA\n- Nama: ${profile.nama}\n- Niche: ${profile.niche}\n- Target audiens: ${profile.audiens}\n- Platform: ${(profile.platforms||[]).join(', ')}\n- Pilar konten: ${profile.pilar}\n- Tujuan: ${profile.tujuan}\n- Tone yang diinginkan: ${profile.tone}`;
+  }
+  if(voice){
+    s += `\n\n## PROFIL SUARA BRAND (hasil analisis postingan asli pengguna — WAJIB ditiru saat membuat konten)\n${JSON.stringify(voice, null, 2)}\nSemua konten yang kamu buat HARUS terdengar seperti ditulis oleh pengguna sendiri: tiru tone, struktur kalimat, pilihan kata, dan gaya emoji dari profil suara di atas. Hindari bahasa generik khas AI.`;
+  }
+  if(designProfile){
+    s += `\n\n## DNA DESAIN (hasil analisis desain referensi pengguna — acuan untuk semua rekomendasi visual)\n${JSON.stringify(designProfile, null, 2)}`;
+  }
+  if(personality){
+    s += `\n\n## PROFIL KEPRIBADIAN PENGGUNA (MBTI, Big Five, DISC, Enneagram, sifat, habit — gunakan agar semua saran & konten selaras dengan kepribadian aslinya)\n${JSON.stringify(personality, null, 2)}`;
+  }
+  if(memory && memory.trim()){
+    s += `\n\n## MEMORI (catatan penting dari pengguna)\n${memory}`;
+  }
+  return s;
+}
+
+async function callClaude(messages, {stream=false, onDelta=null, maxTokens=4096, system=null}={}){
+  if(!settings.key){ toast('⚠️ Atur API key dulu di Pengaturan'); navTo('pengaturan'); throw new Error('no-key'); }
+  const body = {
+    model: settings.model,
+    max_tokens: maxTokens,
+    system: system || systemPrompt(),
+    messages,
+    stream
+  };
+  const res = await fetch('https://api.anthropic.com/v1/messages', {
+    method:'POST',
+    headers:{
+      'Content-Type':'application/json',
+      'x-api-key': settings.key,
+      'anthropic-version':'2023-06-01',
+      'anthropic-dangerous-direct-browser-access':'true'
+    },
+    body: JSON.stringify(body)
+  });
+  if(!res.ok){
+    let msg = 'HTTP '+res.status;
+    try{ const e = await res.json(); msg = e.error?.message || msg; }catch(_){}
+    throw new Error(msg);
+  }
+  if(!stream){
+    const data = await res.json();
+    if(data.stop_reason === 'refusal') throw new Error('Permintaan ditolak oleh sistem keamanan model. Coba ubah topiknya.');
+    return (data.content||[]).filter(b=>b.type==='text').map(b=>b.text).join('');
+  }
+  // streaming SSE
+  const reader = res.body.getReader();
+  const dec = new TextDecoder();
+  let buf = '', full = '';
+  while(true){
+    const {done, value} = await reader.read();
+    if(done) break;
+    buf += dec.decode(value, {stream:true});
+    const lines = buf.split('\n');
+    buf = lines.pop();
+    for(const line of lines){
+      if(!line.startsWith('data: ')) continue;
+      try{
+        const ev = JSON.parse(line.slice(6));
+        if(ev.type==='content_block_delta' && ev.delta?.type==='text_delta'){
+          full += ev.delta.text;
+          if(onDelta) onDelta(ev.delta.text, full);
+        }
+      }catch(_){}
+    }
+  }
+  return full;
+}
+
+function navTo(view){ document.querySelector(`.nav-item[data-view="${view}"]`).click(); }
+
+/* ═══════════════════ LANDING PAGE ═══════════════════ */
+function enterApp(){
+  $('landing').classList.remove('show');
+  store.set('seenLanding', true);
+  if(!settings.key && !window._byokDismissed) byokShow();
+}
+
+/* ═══════════════════ ONBOARDING BYOK ═══════════════════ */
+function byokShow(){ $('byokModal').classList.add('show'); }
+function byokClose(){
+  $('byokModal').classList.remove('show');
+  window._byokDismissed = true; // tidak mengganggu lagi di sesi ini; status key tetap terlihat di sidebar
+}
+async function byokSave(){
+  const key = $('byokKey').value.trim();
+  if(!key){ toast('Tempel dulu API key-nya'); return; }
+  const btn = $('btnByokSave'); btn.disabled = true; btn.innerHTML = '<span class="spinner"></span> Menguji...';
+  const out = $('byokOut'); out.textContent = 'Menguji koneksi ke api.anthropic.com...';
+  settings.key = key; store.set('settings', settings);   // key langsung disimpan & TETAP tersimpan, apa pun hasil tesnya
+  $('setKey').value = key;
+  updateApiStatus();
+  try{
+    const r = await callClaude([{role:'user', content:'Balas hanya dengan: OK'}], {maxTokens:16, system:'Kamu penguji koneksi.'});
+    out.textContent = '✅ Koneksi berhasil & key tersimpan! Cukup sekali ini — nanti tidak perlu isi ulang di browser ini. 🌸';
+    renderDashboard();
+    setTimeout(()=>{ byokClose(); toast('🌸 Semua siap — mulai dari Tes Kepribadian!'); }, 1400);
+  }catch(e){
+    // JANGAN hapus key: tes bisa gagal karena hal sesaat (jaringan/billing baru aktif). Key tetap tersimpan.
+    out.textContent = '⚠️ Key sudah TERSIMPAN, tapi tes koneksi belum berhasil:\n' + e.message +
+      '\n\nKey TIDAK dihapus — kamu bisa tutup jendela ini & coba pakai nanti. Periksa: key lengkap? saldo Billing terisi? koneksi internet?';
+  }
+  btn.disabled = false; btn.innerHTML = '✅ Simpan & Tes Koneksi';
+}
+function showLanding(){
+  $('landing').classList.add('show');
+  $('landing').scrollTop = 0;
+}
+// Logo di sidebar bisa diklik untuk kembali ke beranda
+document.querySelector('.sidebar .logo').style.cursor = 'pointer';
+document.querySelector('.sidebar .logo').title = 'Kembali ke beranda';
+document.querySelector('.sidebar .logo').onclick = showLanding;
+// Kunjungan pertama → tampilkan landing; selanjutnya langsung ke aplikasi (tawarkan setup BYOK jika belum ada key)
+if(!store.get('seenLanding', false)) showLanding();
+else if(!settings.key) byokShow();
+
+/* ═══════════════════ AKUN SAYA ═══════════════════ */
+function renderAccount(){
+  if(account){
+    $('akStatus').style.display = 'block';
+    $('akStatusContent').innerHTML = `
+      <p>Terdaftar sebagai <b>${esc(account.nama||'—')}</b> · <code>${esc(account.email)}</code></p>
+      <p>${account.platform ? `SNS: <b>${esc(account.platform)}</b> ${esc(account.sns_handle||'')}` : 'SNS: belum diisi'} ${account.niche ? ' · Niche: '+esc(account.niche) : ''}</p>
+      <p class="hint">📬 ${account.consent!==false ? 'Kamu akan menerima tips & penawaran via email.' : 'Kamu memilih tidak menerima email promosi.'}</p>`;
+    $('akFormTitle').textContent = '✏️ Perbarui Data';
+    $('btnAkun').innerHTML = '💾 Simpan Perubahan';
+    $('akNama').value = account.nama||''; $('akEmail').value = account.email||'';
+    $('akPlat').value = account.platform||''; $('akHandle').value = account.sns_handle||'';
+    $('akNiche').value = account.niche||''; $('akConsent').checked = account.consent!==false;
+  } else {
+    $('akStatus').style.display = 'none';
+    $('akFormTitle').textContent = '✨ Daftar Gratis';
+    $('btnAkun').innerHTML = '✨ Daftar Gratis';
+    if(profile){ $('akNiche').value = $('akNiche').value || profile.niche || ''; }
+  }
+}
+async function registerAccount(){
+  const email = $('akEmail').value.trim().toLowerCase();
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)){ toast('⚠️ Isi email yang valid dulu'); return; }
+  const data = {
+    email, nama: $('akNama').value.trim(),
+    platform: $('akPlat').value, sns_handle: $('akHandle').value.trim(),
+    niche: $('akNiche').value.trim(), consent: $('akConsent').checked,
+    source: 'app'
+  };
+  const btn = $('btnAkun'); btn.disabled = true; btn.innerHTML = '<span class="spinner"></span> Menyimpan...';
+  $('akMsg').textContent = '';
+  try{
+    const res = await fetch(REGISTER_ENDPOINT, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data)});
+    const out = await res.json();
+    if(res.ok && out.ok){
+      account = data; store.set('account', account);
+      renderAccount(); renderDashboard();
+      toast('🎉 Akunmu terdaftar — selamat datang di keluarga LYNSBrand!');
+    } else {
+      $('akMsg').textContent = '❌ ' + (out.error==='LIMIT' ? 'Terlalu banyak percobaan hari ini — coba lagi besok.' : (out.error||'Gagal, coba lagi.'));
+    }
+  }catch(e){
+    // tetap simpan lokal walau server tak terjangkau, agar pengalaman tidak terputus
+    account = data; store.set('account', account); renderAccount(); renderDashboard();
+    $('akMsg').textContent = '⚠️ Tersimpan di perangkat; sinkronisasi server gagal (cek koneksi).';
+  }
+  btn.disabled = false; btn.innerHTML = account ? '💾 Simpan Perubahan' : '✨ Daftar Gratis';
+}
+
+/* ═══════════════════ PENGATURAN ═══════════════════ */
+function loadSettings(){
+  $('setKey').value = settings.key || '';
+  $('setModel').value = settings.model || 'claude-opus-4-8';
+  $('setLang').value = settings.lang || 'Indonesia';
+  $('memText').value = memory || '';
+  $('whUrl').value = webhook.url || '';
+  $('whAuto').checked = !!webhook.auto;
+  updateApiStatus();
+}
+function saveSettings(){
+  settings = {key: $('setKey').value.trim(), model: $('setModel').value, lang: $('setLang').value};
+  store.set('settings', settings);
+  updateApiStatus();
+  toast('✅ Pengaturan disimpan');
+}
+function updateApiStatus(){
+  $('apiStatus').innerHTML = settings.key
+    ? '<span class="dot ok"></span>API key aktif · ' + esc(settings.model.replace('claude-',''))
+    : '<span class="dot no"></span>API key belum diatur';
+}
+async function testAPI(){
+  saveSettings();
+  const out = $('setOut'); out.textContent = 'Menguji koneksi...';
+  try{
+    const r = await callClaude([{role:'user', content:'Balas hanya dengan: OK'}], {maxTokens:16, system:'Kamu penguji koneksi.'});
+    out.textContent = '✅ Koneksi berhasil! Respons model: ' + r;
+  }catch(e){ out.textContent = '❌ Gagal: ' + e.message; }
+}
+function saveMemory(){ memory = $('memText').value; store.set('memory', memory); toast('🧠 Memori disimpan'); }
+function resetAll(){
+  if(!confirm('Yakin hapus SEMUA data dari SEMUA akun (profil, suara, kalender, chat, template, pengaturan & API key)? Ini mengosongkan seluruh aplikasi dan tidak bisa dibatalkan.\n\n💡 Untuk menghapus satu akun saja, pakai menu "🗂️ Kelola Akun".')) return;
+  Object.keys(localStorage).filter(k=>k.startsWith('bp_')).forEach(k=>localStorage.removeItem(k));
+  location.reload();
+}
+
+/* ═══════════════════ PROFIL ═══════════════════ */
+const PLATFORMS = ['Instagram','TikTok','X (Twitter)','LinkedIn','YouTube','Facebook','Threads'];
+function renderPlatformPills(){
+  const wrap = $('pfPlatforms'); wrap.innerHTML='';
+  PLATFORMS.forEach(p=>{
+    const el = document.createElement('div');
+    el.className = 'pill' + ((profile?.platforms||[]).includes(p) ? ' on':'');
+    el.textContent = p;
+    el.onclick = ()=> el.classList.toggle('on');
+    wrap.appendChild(el);
+  });
+}
+function loadProfile(){
+  if(!profile) { renderPlatformPills(); return; }
+  $('pfNama').value = profile.nama||''; $('pfNiche').value = profile.niche||'';
+  $('pfAudiens').value = profile.audiens||''; $('pfPilar').value = profile.pilar||'';
+  $('pfTujuan').value = profile.tujuan||''; $('pfTone').value = profile.tone||'';
+  renderPlatformPills();
+}
+function saveProfile(){
+  profile = {
+    nama: $('pfNama').value.trim(), niche: $('pfNiche').value.trim(),
+    audiens: $('pfAudiens').value.trim(), pilar: $('pfPilar').value.trim(),
+    tujuan: $('pfTujuan').value.trim(), tone: $('pfTone').value.trim(),
+    platforms: [...document.querySelectorAll('#pfPlatforms .pill.on')].map(e=>e.textContent)
+  };
+  store.set('profile', profile);
+  toast('✅ Profil brand disimpan');
+  renderDashboard();
+}
+
+/* ═══════════════════ VOICE LEARNING ═══════════════════ */
+async function learnVoice(){
+  const posts = $('vcPosts').value.trim();
+  if(!posts){ toast('Tempel dulu postingan lamamu'); return; }
+  const btn = $('btnLearn'); btn.disabled = true; btn.innerHTML = '<span class="spinner"></span> Menganalisis...';
+  try{
+    const prompt = `Analisis postingan media sosial berikut dan ekstrak "profil suara" penulisnya. Balas HANYA dengan JSON valid (tanpa markdown, tanpa penjelasan) dengan struktur persis ini:
+{
+  "ringkasan": "deskripsi 2-3 kalimat gaya menulis orang ini",
+  "tone": "deskripsi tone (santai/formal/humoris/dst)",
+  "struktur_kalimat": "pola panjang kalimat & paragraf",
+  "gaya_hook": "cara khas membuka postingan",
+  "kata_frasa_khas": ["kata/frasa yang sering dipakai"],
+  "gaya_emoji": "cara pakai emoji (sering/jarang/jenis apa)",
+  "gaya_cta": "cara khas menutup/mengajak audiens",
+  "lakukan": ["hal yang harus ditiru saat menulis sebagai orang ini"],
+  "hindari": ["hal yang TIDAK pernah dilakukan penulis ini"]
+}
+
+POSTINGAN:
+${posts}`;
+    const raw = await callClaude([{role:'user', content: prompt}], {maxTokens:2048, system:'Kamu analis gaya bahasa. Balas hanya JSON valid.'});
+    const jsonStr = raw.replace(/```json|```/g,'').trim();
+    voice = JSON.parse(jsonStr.slice(jsonStr.indexOf('{'), jsonStr.lastIndexOf('}')+1));
+    store.set('voice', voice);
+    renderVoice();
+    toast('🎉 Suara brand berhasil dipelajari!');
+  }catch(e){ toast('❌ Gagal: '+e.message, 4000); }
+  btn.disabled = false; btn.innerHTML = '🧠 Pelajari Suara Saya';
+}
+function renderVoice(){
+  if(!voice){ $('voiceResult').style.display='none'; return; }
+  $('voiceResult').style.display='block';
+  const li = a => (a||[]).map(x=>`• ${esc(x)}`).join('<br>');
+  $('voiceContent').innerHTML = `
+    <p><b>Ringkasan:</b> ${esc(voice.ringkasan||'')}</p>
+    <p><b>Tone:</b> ${esc(voice.tone||'')}</p>
+    <p><b>Struktur:</b> ${esc(voice.struktur_kalimat||'')}</p>
+    <p><b>Gaya hook:</b> ${esc(voice.gaya_hook||'')}</p>
+    <p><b>Kata khas:</b> ${esc((voice.kata_frasa_khas||[]).join(', '))}</p>
+    <p><b>Emoji:</b> ${esc(voice.gaya_emoji||'')} &nbsp; <b>CTA:</b> ${esc(voice.gaya_cta||'')}</p>
+    <p><b>Lakukan:</b><br>${li(voice.lakukan)}</p>
+    <p><b>Hindari:</b><br>${li(voice.hindari)}</p>`;
+  $('voiceJson').value = JSON.stringify(voice, null, 2);
+}
+function saveVoiceJson(){
+  try{ voice = JSON.parse($('voiceJson').value); store.set('voice', voice); renderVoice(); toast('✅ Profil suara diperbarui'); }
+  catch(e){ toast('❌ JSON tidak valid'); }
+}
+
+/* ═══════════════════ GENERATOR ═══════════════════ */
+const GEN_PROMPTS = {
+  ide:      t=>`Buatkan 10 ide konten segar tentang "${t}" yang sesuai pilar konten dan target audiensku. Untuk tiap ide: judul singkat + 1 kalimat sudut pandang (angle) + format yang disarankan (video/carousel/caption).`,
+  hook:     t=>`Buatkan 5 hook/kalimat pembuka yang kuat untuk konten tentang "${t}". Variasikan: pertanyaan, statistik/fakta, cerita, kontroversi, dan pola interupsi. Tulis dengan suara brand-ku.`,
+  caption:  t=>`Tulis 1 caption Instagram lengkap tentang "${t}": hook kuat di baris pertama, isi bernilai, CTA di akhir, dan 5-8 hashtag relevan. Tulis dengan suara brand-ku.`,
+  script:   t=>`Tulis script video pendek 30-60 detik (TikTok/Reels) tentang "${t}". Format: [HOOK 0-3 dtk], [ISI], [CTA]. Sertakan petunjuk visual singkat dalam kurung. Tulis dengan suara brand-ku.`,
+  thread:   t=>`Tulis thread X (Twitter) 5-8 tweet tentang "${t}". Tweet pertama harus hook yang bikin orang berhenti scroll. Nomori tiap tweet. Tulis dengan suara brand-ku.`,
+  linkedin: t=>`Tulis post LinkedIn tentang "${t}": pembuka yang relatable, insight profesional dengan format mudah dibaca (baris pendek), tutup dengan pertanyaan pemantik diskusi. Tulis dengan suara brand-ku.`,
+  carousel: t=>`Buat outline carousel Instagram 8-10 slide tentang "${t}". Untuk tiap slide: nomor, teks utama (maks 20 kata), dan catatan visual. Slide 1 = hook, slide terakhir = CTA. Tulis dengan suara brand-ku.`
+};
+async function generateContent(variation=false){
+  const topik = $('genTopik').value.trim();
+  if(!topik){ toast('Isi topiknya dulu'); return; }
+  const type = $('genType').value;
+  const note = $('genNote').value.trim();
+  let prompt = GEN_PROMPTS[type](topik);
+  if(note) prompt += `\nCatatan tambahan: ${note}`;
+  if(variation) prompt += `\nBuat versi yang BERBEDA dari sebelumnya — sudut pandang atau pendekatan baru.`;
+  const btn = $('btnGen'); btn.disabled = true; btn.innerHTML = '<span class="spinner"></span> Membuat...';
+  const out = $('genOut'); out.textContent = '';
+  $('genActions').style.display = 'none';
+  try{
+    const text = await callClaude([{role:'user', content: prompt}], {
+      stream:true, maxTokens:4096,
+      onDelta:(d, full)=>{ out.textContent = full; out.scrollTop = out.scrollHeight; }
+    });
+    lastGen = {type, topik, text};
+    $('genActions').style.display = 'flex';
+    $('btnGenAgain').style.display = 'inline-flex';
+  }catch(e){ out.textContent = '❌ Gagal: '+e.message; }
+  btn.disabled = false; btn.innerHTML = '✨ Buat Konten';
+}
+function sendToCalendar(){
+  if(!lastGen) return;
+  const platMap = {caption:'Instagram', script:'TikTok', thread:'X (Twitter)', linkedin:'LinkedIn', carousel:'Instagram', hook:'Instagram', ide:'Instagram'};
+  calendar.push({
+    id: uid(), date: new Date().toISOString().slice(0,10),
+    platform: platMap[lastGen.type]||'Instagram', type: lastGen.type,
+    topik: lastGen.topik, status:'draft', content: lastGen.text
+  });
+  store.set('calendar', calendar);
+  toast('📅 Dikirim ke kalender sebagai draft');
+  renderCalendar(); renderDashboard();
+}
+function copyOut(id){ navigator.clipboard.writeText($(id).textContent).then(()=>toast('📋 Disalin!')); }
+
+/* ═══════════════════ ANALISIS ═══════════════════ */
+async function analyzePost(){
+  const text = $('anText').value.trim();
+  if(!text){ toast('Tempel dulu teks post-nya'); return; }
+  const btn = $('btnAn'); btn.disabled = true; btn.innerHTML = '<span class="spinner"></span> Menganalisis...';
+  const out = $('anOut'); out.textContent = '';
+  try{
+    const prompt = `Bedah post media sosial berikut secara mendalam:
+
+"""
+${text}
+"""
+
+Berikan analisis terstruktur:
+1. 🪝 HOOK — apa hook-nya, teknik apa yang dipakai, seberapa kuat (skor 1-10)
+2. 🏗️ STRUKTUR — bagaimana alur post dibangun
+3. 🎯 CTA — ada/tidak, seberapa efektif
+4. 💡 KENAPA BERHASIL/GAGAL — faktor psikologis & algoritmik
+5. ✍️ VERSI LEBIH BAIK — tulis ulang post ini dengan lebih kuat, memakai suara brand-KU (bukan gaya penulis aslinya)`;
+    await callClaude([{role:'user', content: prompt}], {
+      stream:true, maxTokens:4096,
+      onDelta:(d, full)=>{ out.textContent = full; out.scrollTop = out.scrollHeight; }
+    });
+  }catch(e){ out.textContent = '❌ Gagal: '+e.message; }
+  btn.disabled = false; btn.innerHTML = '🔬 Analisis';
+}
+
+/* ═══════════════════ PUSTAKA TEMPLATE CANVA ═══════════════════ */
+// Seed awal: 12 template brand Lyn's Library dari folder Canva "Koleksi Template — Pastel Handwritten".
+const DEFAULT_TEMPLATES = [
+  {id:'DAHRJ56kvsU', emoji:'🎠', name:'Carousel 8 Halaman — Formula Arc (siap isi)', url:'https://www.canva.com/design/DAHRJ56kvsU/edit'},
+  {id:'DAHPhMAng1o', emoji:'📚', name:"Lyn's Library — Utama",                    url:'https://www.canva.com/d/UCQi2Rxj9CoH92U'},
+  {id:'DAHPhCiJMxw', emoji:'🌸', name:"Selamat Datang di Lyn's Library",      url:'https://www.canva.com/d/tpcwvVZEFDASNX8'},
+  {id:'DAHPhCgj2CA', emoji:'👋', name:'Halo, Kenalan Yuk! (versi 1)',             url:'https://www.canva.com/d/1tR1ugYM-jy7nII'},
+  {id:'DAHPhNp-Bdg', emoji:'👋', name:'Halo, Kenalan Yuk! (versi 2)',             url:'https://www.canva.com/d/q9uGzp7I70oX2SZ'},
+  {id:'DAHPhIHoM1A', emoji:'📖', name:'Kebiasaan Membaca',                        url:'https://www.canva.com/d/IPl1u7yZ8mwUbWf'},
+  {id:'DAHPhDKgC4c', emoji:'🔖', name:'Reading Habit Specialist',                 url:'https://www.canva.com/d/YazaOdkpEzd53YW'},
+  {id:'DAHPhDfXdWY', emoji:'🎀', name:'Reading Habit Tips — Sampul (pastel)',     url:'https://www.canva.com/d/hsL3Qxk1NZGMBWW'},
+  {id:'DAHPhMiWRoA', emoji:'☕', name:'Reading Habit Tips — Sampul Carousel',     url:'https://www.canva.com/d/HdIv4CBAfyiqJqg'},
+  {id:'DAHPhHd32Bc', emoji:'📗', name:'Cozy Library — Overview',                  url:'https://www.canva.com/d/UjM-Jb5OQ4y1XK7'},
+  {id:'DAHPhKREmvY', emoji:'✂️', name:'Scrapbook Intro (charming)',              url:'https://www.canva.com/d/dk4ydW-FoofHsPW'},
+  {id:'DAHPhJvfgdM', emoji:'✂️', name:'Scrapbook Intro (warm)',                  url:'https://www.canva.com/d/BzD2xasTnGuIh_4'},
+  {id:'DAHPhLTiFnA', emoji:'✏️', name:'Nostalgic Library — Playful Doodles',     url:'https://www.canva.com/d/0NRq6cgLgYRKq0K'}
+];
+const TPL_FOLDER_URL = 'https://www.canva.com/folder/FAHPhEcPNPs';
+let templates = store.get('templates', null);
+if(templates === null){
+  // Hanya akun utama yang di-seed template Lyn's Library; akun baru mulai dengan pustaka kosong.
+  templates = (activeWs === DEFAULT_WS_ID) ? DEFAULT_TEMPLATES.map(t=>({...t})) : [];
+  store.set('templates', templates);
+}
+// Seed satu-kali (v2): tambahkan template Carousel 8 Halaman ke pustaka akun utama yang SUDAH ada.
+// Pakai flag per-akun supaya kalau user sengaja menghapusnya nanti, tidak muncul lagi.
+if(activeWs === DEFAULT_WS_ID && !store.get('tplSeed2', false)){
+  const t2 = DEFAULT_TEMPLATES.find(t=>t.id==='DAHRJ56kvsU');
+  if(t2 && !templates.some(t=>t.id===t2.id)){ templates.unshift({...t2}); store.set('templates', templates); }
+  store.set('tplSeed2', true);
+}
+function renderTemplates(){
+  const grid = $('tplGrid'); if(!grid) return;
+  if(!templates.length){ grid.innerHTML = '<p class="hint">Belum ada template. Tambahkan lewat "➕ Tambah template sendiri" di bawah.</p>'; return; }
+  grid.innerHTML = templates.map(t=>`
+    <div class="tpl-card">
+      <button class="tpl-del" title="Hapus dari pustaka" onclick="delTemplate('${t.id}')">✕</button>
+      <div class="tpl-cover">${esc(t.emoji||'🎨')}</div>
+      <div class="tpl-body">
+        <div class="tpl-title">${esc(t.name)}</div>
+        <div class="tpl-acts">
+          <a class="btn sm" href="${encodeURI(t.url)}" target="_blank" rel="noopener">🎨 Buka di Canva</a>
+        </div>
+      </div>
+    </div>`).join('');
+}
+function addTemplate(){
+  const name = $('tplName').value.trim();
+  let url = $('tplUrl').value.trim();
+  const emoji = $('tplEmoji').value.trim() || '🎨';
+  if(!name || !url){ toast('Isi nama & link Canva-nya'); return; }
+  if(!/^https?:\/\//i.test(url)) url = 'https://' + url;
+  templates.push({id:uid(), emoji, name, url});
+  store.set('templates', templates);
+  $('tplName').value=''; $('tplUrl').value=''; $('tplEmoji').value='';
+  renderTemplates();
+  toast('📚 Template ditambahkan ke pustaka');
+}
+function delTemplate(id){
+  if(!confirm('Hapus template ini dari pustaka aplikasi? (Desain di Canva TIDAK ikut terhapus.)')) return;
+  templates = templates.filter(t=>t.id!==id);
+  store.set('templates', templates);
+  renderTemplates();
+  toast('Template dihapus dari pustaka');
+}
+
+/* ═══════════════════ KELOLA AKUN (multi-akun) ═══════════════════ */
+function wsName(id){ const w = workspaces.find(x=>x.id===id); return w ? w.name : '—'; }
+function wsCounts(id){
+  // hitung ringkas isi sebuah akun tanpa mengaktifkannya (baca langsung dari localStorage)
+  const rd = (k,d)=>{ try{ const v = localStorage.getItem('bp_ws_'+id+'_'+k); return v?JSON.parse(v):d; }catch(e){ return d; } };
+  const cal = rd('calendar', []); const prof = rd('profile', null); const tpl = rd('templates', []);
+  return { konten: Array.isArray(cal)?cal.length:0, adaProfil: !!prof, template: Array.isArray(tpl)?tpl.length:0 };
+}
+function renderWsActive(){
+  const nm = wsName(activeWs);
+  const el = document.getElementById('wsActive'); if(el) el.textContent = '🗂️ ' + nm;
+  const big = document.getElementById('wsActiveBig');
+  if(big){ const c = wsCounts(activeWs); big.innerHTML = `<b style="font-size:17px">${esc(nm)}</b><br><span class="hint">${c.konten} item konten · ${c.template} template · profil brand ${c.adaProfil?'✅ terisi':'⬜ belum diisi'}</span>`; }
+}
+function renderWorkspaces(){
+  renderWsActive();
+  const wrap = document.getElementById('wsList'); if(!wrap) return;
+  wrap.innerHTML = workspaces.map(w=>{
+    const c = wsCounts(w.id);
+    const isActive = w.id===activeWs;
+    return `<div class="cal-item" style="${isActive?'border:1.5px solid var(--accent); background:var(--bg3)':''}">
+      <div class="title" style="flex:1">
+        ${isActive?'<span class="badge siap">AKTIF</span> ':''}<b>${esc(w.name)}</b>
+        <div class="hint" style="margin-top:2px">${c.konten} konten · ${c.template} template · profil ${c.adaProfil?'✅':'⬜'}</div>
+      </div>
+      ${isActive?'' : `<button class="btn sm" onclick="switchWorkspace('${w.id}')">Aktifkan</button>`}
+      <button class="btn sm sec" onclick="renameWorkspace('${w.id}')" title="Ganti nama">✏️</button>
+      <button class="btn sm danger" onclick="deleteWorkspace('${w.id}')" title="Hapus akun">🗑️</button>
+    </div>`;
+  }).join('');
+}
+function addWorkspace(){
+  const name = ($('wsNewName').value||'').trim();
+  if(!name){ toast('Isi nama akunnya dulu'); return; }
+  const id = 'w_' + uid();
+  workspaces.push({id, name});
+  store.set('workspaces', workspaces);      // 'workspaces' global → tidak terpengaruh akun aktif
+  $('wsNewName').value = '';
+  // langsung aktifkan akun baru (reload membawa data kosong akun itu)
+  switchWorkspace(id);
+}
+function switchWorkspace(id){
+  if(id===activeWs) return;
+  if(!workspaces.some(w=>w.id===id)) return;
+  store.set('activeWs', id);
+  toast('🔄 Berpindah akun — memuat ulang...');
+  setTimeout(()=>location.reload(), 700);
+}
+function renameWorkspace(id){
+  const w = workspaces.find(x=>x.id===id); if(!w) return;
+  const nm = prompt('Nama baru untuk akun ini:', w.name);
+  if(nm===null) return;
+  const t = nm.trim(); if(!t){ toast('Nama tidak boleh kosong'); return; }
+  w.name = t; store.set('workspaces', workspaces);
+  renderWorkspaces();
+  toast('✏️ Nama akun diperbarui');
+}
+function deleteWorkspace(id){
+  if(workspaces.length<=1){ toast('Minimal harus ada 1 akun'); return; }
+  const w = workspaces.find(x=>x.id===id); if(!w) return;
+  const c = wsCounts(id);
+  if(!confirm(`Hapus akun "${w.name}"?\n${c.konten} item konten, ${c.template} template, dan semua profil/suara/desain/jurnal di akun ini akan HILANG permanen. Tindakan ini tidak bisa dibatalkan.`)) return;
+  // hapus semua penyimpanan akun ini
+  Object.keys(localStorage).filter(k=>k.startsWith('bp_ws_'+id+'_')).forEach(k=>localStorage.removeItem(k));
+  const wasActive = (id===activeWs);
+  workspaces = workspaces.filter(x=>x.id!==id);
+  store.set('workspaces', workspaces);
+  if(wasActive){
+    store.set('activeWs', workspaces[0].id);
+    toast('🗑️ Akun dihapus — memuat ulang...');
+    setTimeout(()=>location.reload(), 700);
+  } else {
+    renderWorkspaces();
+    toast('🗑️ Akun dihapus');
+  }
+}
+
+/* ═══════════════════ BANK MATERI (Content Bank dari Notion) ═══════════════════ */
+let contentBank = store.get('contentbank', []);
+const CB_STATUSES = ['Ide','Draft','Siap','Terjadwal','Tayang'];
+const PILAR_SHORT = { 'Pilar 1 · Distrik & Ranking':'Pilar 1', 'Pilar 2 · 雑学 / 豆知識':'Pilar 2', 'Pilar 3 · Hidup & Kerja':'Pilar 3' };
+function nidFromUrl(u){ if(!u) return ''; const m = String(u).match(/([0-9a-f]{32}|[0-9a-f-]{36})\/?$/i); return m ? m[1].replace(/-/g,'') : ''; }
+// Samakan variasi label pilar (mis. "…【へぇちゃん】") ke 3 bentuk baku agar filter & pengelompokan konsisten
+function canonicalPilar(p){
+  const s = String(p||'');
+  if(/pilar\s*1/i.test(s)) return 'Pilar 1 · Distrik & Ranking';
+  if(/pilar\s*2/i.test(s)) return 'Pilar 2 · 雑学 / 豆知識';
+  if(/pilar\s*3/i.test(s)) return 'Pilar 3 · Hidup & Kerja';
+  return s;
+}
+// Normalisasi 1 item dari berbagai bentuk file (Notion mentah / trivia terstruktur / bank) → item bank standar
+function cbNormalize(it, fallbackPilar){
+  if(it.Judul || it.url){ // bentuk mentah Notion
+    return { notion_id: nidFromUrl(it.url), judul: it.Judul||'', pilar: canonicalPilar(it.Pilar||fallbackPilar), status: it.Status||'Ide',
+      format: it.Format||'Carousel', prioritas: it.Prioritas||'Sedang', hook: it['Hook / CTA']||'', catatan: it.Catatan||'', source:'content-bank' };
+  }
+  if(it.topik){ // bentuk trivia terstruktur (impor-notion-trivia-tambahan.json)
+    const cat = (it.catatan||'') + (it.pilar_asli? ` (arsip trivia · pilar asli: ${it.pilar_asli})` : '');
+    return { notion_id: (it.notion_id||'').trim(), judul: it.topik, pilar: canonicalPilar(it.pilar||fallbackPilar||'Pilar 2'), status: it.status||'Ide',
+      format: it.format||'Video / Reel', prioritas: it.prioritas||'Sedang', hook: it.hook||'', catatan: cat, source:'trivia' };
+  }
+  // bentuk bank langsung
+  return { notion_id:(it.notion_id||'').trim(), judul: it.judul||'', pilar: canonicalPilar(it.pilar||fallbackPilar), status: it.status||'Ide',
+    format: it.format||'Carousel', prioritas: it.prioritas||'Sedang', hook: it.hook||'', catatan: it.catatan||'', source: it.source||'manual' };
+}
+// Ambil array ide mentah dari berbagai bentuk data file/ekspor
+function cbExtractRaw(data){
+  if(Array.isArray(data)) return data;
+  if(Array.isArray(data.results)) return data.results;   // Notion mentah
+  if(Array.isArray(data.items)) return data.items;        // trivia/bank terstruktur
+  return [];
+}
+// Inti merge: gabungkan array ide ke contentBank (dedup by notion_id lalu judul). Return {added, updated}.
+function cbMergeRaw(raw, fallbackPilar){
+  const byId = new Map(), byJudul = new Map();
+  contentBank.forEach(x=>{ if(x.notion_id) byId.set(x.notion_id, x); byJudul.set((x.judul||'').trim().toLowerCase(), x); });
+  let added=0, updated=0;
+  raw.forEach(r=>{
+    const n = cbNormalize(r, fallbackPilar);
+    if(!n.judul) return;
+    let ex = (n.notion_id && byId.get(n.notion_id)) || byJudul.get(n.judul.trim().toLowerCase());
+    if(ex){
+      Object.assign(ex, { judul:n.judul, pilar:n.pilar, format:n.format, prioritas:n.prioritas, hook:n.hook, catatan:n.catatan, source:n.source });
+      if(n.notion_id) ex.notion_id = n.notion_id;
+      if((ex.status||'Ide')==='Ide') ex.status = n.status;   // jangan timpa progres lokal
+      updated++;
+    } else {
+      const item = { id: uid(), ...n };
+      contentBank.push(item);
+      if(item.notion_id) byId.set(item.notion_id, item);
+      byJudul.set(item.judul.trim().toLowerCase(), item);
+      added++;
+    }
+  });
+  return {added, updated};
+}
+// SATU KLIK: tarik semua ide langsung dari file yang ikut ter-deploy (alamat yang sama) — tanpa buka folder lokal.
+const NOTION_SYNC_FILES = ['impor-notion-content-bank.json', 'impor-notion-trivia-tambahan.json'];
+async function autoSyncNotion(btn){
+  const label = btn ? btn.innerHTML : '';
+  if(btn){ btn.disabled = true; btn.innerHTML = '<span class="spinner"></span> Menyinkron...'; }
+  let added=0, updated=0, ok=0, gagal=[];
+  for(const f of NOTION_SYNC_FILES){
+    try{
+      const res = await fetch(f + '?t=' + Date.now());   // cache-bust supaya selalu versi terbaru
+      if(!res.ok) throw new Error('HTTP '+res.status);
+      const data = await res.json();
+      const raw = cbExtractRaw(data);
+      const r = cbMergeRaw(raw, (data && data.pilar_display) || '');
+      added += r.added; updated += r.updated; ok++;
+    }catch(e){ gagal.push(f.replace('impor-notion-','').replace('.json','')); }
+  }
+  if(ok){ store.set('contentbank', contentBank); renderContentBank(); }
+  if(btn){ btn.disabled = false; btn.innerHTML = label; }
+  if(ok===0){ toast('❌ Gagal menyinkron. Kalau membuka dari file lokal, pakai "muat file" di bawah. Di situs live seharusnya otomatis.', 5000); return; }
+  let msg = `✅ Sinkron Notion: ${added} ide baru, ${updated} diperbarui`;
+  if(gagal.length) msg += ` (lewati: ${gagal.join(', ')})`;
+  toast(msg, 4600);
+}
+// Fallback: muat file .json manual (mis. saat dibuka dari file lokal / file custom)
+function syncContentBank(input){
+  const file = input.files[0]; if(!file) return;
+  const rd = new FileReader();
+  rd.onload = ()=>{
+    try{
+      const data = JSON.parse(rd.result);
+      const raw = cbExtractRaw(data);
+      if(!raw.length){ toast('❌ File tidak berisi ide yang bisa disinkron'); input.value=''; return; }
+      const {added, updated} = cbMergeRaw(raw, (data && data.pilar_display) || '');
+      store.set('contentbank', contentBank);
+      renderContentBank();
+      toast(`✅ Sinkron selesai: ${added} baru, ${updated} diperbarui`, 4200);
+    }catch(e){ toast('❌ File tidak valid: '+e.message, 4000); }
+    input.value='';
+  };
+  rd.readAsText(file);
+}
+function cbSummary(){
+  const el = $('cbSummary'); if(!el) return;
+  const by = p => contentBank.filter(x=>x.pilar===p).length;
+  el.innerHTML = `<b>${contentBank.length} materi</b> · Pilar 1: ${by('Pilar 1 · Distrik & Ranking')} · Pilar 2: ${by('Pilar 2 · 雑学 / 豆知識')} · Pilar 3: ${by('Pilar 3 · Hidup & Kerja')}`;
+}
+function renderContentBank(){
+  cbSummary();
+  const wrap = $('cbList'); if(!wrap) return;
+  if(!contentBank.length){ wrap.innerHTML = '<div class="card"><p class="hint">Bank materi masih kosong. Cukup klik <b>🔄 Sinkron dari Notion</b> di atas — semua idemu (±88) akan tertarik otomatis, tanpa buka folder.</p></div>'; return; }
+  const fp = $('cbFilterPilar').value, fs = $('cbFilterStatus').value, fpr = $('cbFilterPrio').value;
+  const q = ($('cbSearch').value||'').trim().toLowerCase();
+  let list = contentBank.filter(x=>
+    (!fp || x.pilar===fp) && (!fs || (x.status||'Ide')===fs) && (!fpr || x.prioritas===fpr) &&
+    (!q || (x.judul+' '+x.hook+' '+x.catatan).toLowerCase().includes(q))
+  );
+  const prioRank = {Tinggi:0, Sedang:1, Rendah:2};
+  list.sort((a,b)=> (a.pilar||'').localeCompare(b.pilar||'') || (prioRank[a.prioritas]??3)-(prioRank[b.prioritas]??3) || (a.judul||'').localeCompare(b.judul||''));
+  if(!list.length){ wrap.innerHTML = '<div class="card"><p class="hint">Tidak ada materi yang cocok dengan filter/pencarian ini.</p></div>'; return; }
+  wrap.innerHTML = list.map(x=>{
+    const badge = {Ide:'ide',Draft:'draft',Siap:'siap',Terjadwal:'siap',Tayang:'siap'}[x.status||'Ide']||'ide';
+    return `<div class="card" style="padding:14px 16px">
+      <div style="display:flex; gap:10px; align-items:flex-start; flex-wrap:wrap">
+        <div style="flex:1; min-width:220px">
+          <div style="font-weight:700; color:var(--text); line-height:1.35">${esc(x.judul)}</div>
+          <div style="margin:6px 0; display:flex; gap:6px; flex-wrap:wrap; font-size:11px">
+            <span class="badge" style="background:var(--bg3); color:var(--muted)">${esc(PILAR_SHORT[x.pilar]||x.pilar||'—')}</span>
+            <span class="badge" style="background:var(--bg3); color:var(--muted)">${esc(x.format||'—')}</span>
+            <span class="badge" style="background:var(--bg3); color:var(--muted)">Prioritas: ${esc(x.prioritas||'—')}</span>
+            ${x.notion_id?`<a href="https://www.notion.so/${esc(x.notion_id)}" target="_blank" rel="noopener" class="badge" style="background:var(--bg3); color:var(--accent); text-decoration:none">↗ Notion</a>`:''}
+          </div>
+          ${x.hook?`<div style="font-size:13px; color:var(--text)"><b>🎣</b> ${esc(x.hook)}</div>`:''}
+          ${x.catatan?`<details style="margin-top:6px"><summary style="cursor:pointer; font-size:12px; color:var(--muted)">📝 Catatan riset</summary><div style="font-size:12.5px; color:var(--muted); line-height:1.6; margin-top:5px; white-space:pre-wrap">${esc(x.catatan)}</div></details>`:''}
+          <div style="margin-top:8px; display:flex; gap:6px; flex-wrap:wrap">
+            <button class="btn sm sec" onclick="cbTogglePanel('${x.id}','edit')">✏️ Tulis &amp; Edit${x.naskah?' ✅':''}</button>
+            <button class="btn sm sec" onclick="cbTogglePanel('${x.id}','ai')">🤖 Analisis AI${x.analisis?' ✅':''}</button>
+            <button class="btn sm sec" onclick="cbTogglePanel('${x.id}','desain')">🎨 Studio Desain${x.desain?' ✅':''}</button>
+          </div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:6px; align-items:stretch; min-width:140px">
+          <select class="btn sm sec" style="padding:6px 8px" onchange="setBankStatus('${x.id}', this.value)">
+            ${CB_STATUSES.map(s=>`<option ${((x.status||'Ide')===s)?'selected':''}>${s}</option>`).join('')}
+          </select>
+          <button class="btn sm" onclick="bankToCalendar('${x.id}')" title="Kirim ke Kalender Konten">📅 Ke Kalender</button>
+          <button class="btn sm danger" onclick="delBankItem('${x.id}')">✕ Hapus</button>
+        </div>
+      </div>
+      ${cbPanel(x)}
+    </div>`;
+  }).join('');
+}
+function setBankStatus(id, s){ const x = contentBank.find(c=>c.id===id); if(x){ x.status=s; store.set('contentbank', contentBank); renderContentBank(); } }
+function delBankItem(id){
+  if(!confirm('Hapus materi ini dari Bank Materi? (Tidak menghapus apa pun di Notion.)')) return;
+  contentBank = contentBank.filter(c=>c.id!==id); store.set('contentbank', contentBank); renderContentBank();
+  toast('Materi dihapus');
+}
+function addBankItem(){
+  const judul = ($('cbNewJudul').value||'').trim();
+  if(!judul){ toast('Isi judulnya dulu'); return; }
+  contentBank.push({ id:uid(), notion_id:'', judul, pilar:$('cbNewPilar').value, status:$('cbNewStatus').value,
+    format:$('cbNewFormat').value, prioritas:$('cbNewPrio').value, hook:($('cbNewHook').value||'').trim(), catatan:($('cbNewCatatan').value||'').trim(), source:'manual' });
+  store.set('contentbank', contentBank);
+  ['cbNewJudul','cbNewHook','cbNewCatatan'].forEach(i=>$(i).value='');
+  renderContentBank();
+  toast('📚 Materi ditambahkan');
+}
+function bankToCalendar(id){
+  const x = contentBank.find(c=>c.id===id); if(!x) return;
+  const today = new Date().toISOString().slice(0,10);
+  const date = prompt('Kirim ke Kalender — tanggal tayang (YYYY-MM-DD):', today);
+  if(date===null) return;
+  const d = date.trim(); if(!/^\d{4}-\d{2}-\d{2}$/.test(d)){ toast('Format tanggal salah (YYYY-MM-DD)'); return; }
+  const type = FMT_TYPE[x.format] || 'carousel';
+  const content =
+    `📌 Dari Bank Materi (Content Bank Notion)\n${x.pilar||''} · Format asli: ${x.format||'—'} · Prioritas: ${x.prioritas||'—'}\n`+
+    `Mark saat tayang: "Lyns Archive : (Topik)"\n\n🎣 HOOK / CTA\n${x.hook||'—'}\n\n📝 CATATAN RISET\n${x.catatan||'—'}\n\n`+
+    (x.naskah?`📝 NASKAH MATERI\n${x.naskah}\n\n`:'')+
+    (x.desain?`🎨 BRIEF DESAIN (${x.desain.format||''})\n${x.desain.brief}\n\n`:'')+
+    `⚠️ PRINSIP: jangan pernah karang data. Verifikasi angka, aturan hukum/imigrasi, statistik, dan nama program pemda ke sumber resmi sebelum tayang.`;
+  calendar.push({ id:uid(), date:d, platform:'Instagram', type, topik:x.judul, status:'ide', content, notion_id:x.notion_id||'' });
+  store.set('calendar', calendar);
+  x.status = 'Terjadwal'; store.set('contentbank', contentBank);
+  renderContentBank(); renderCalendar(); renderDashboard();
+  toast('📅 Dikirim ke Kalender ('+fmtDate(d)+') & ditandai Terjadwal');
+}
+
+/* ── Panel per-materi: Tulis & Edit · Analisis AI · Studio Desain ───────────────
+   Semua hasil (naskah, analisis, brief desain) disimpan permanen di item bank,
+   jadi ikut multi-akun & Sinkron Cloud. Sinkron dari Notion tidak menimpanya
+   (cbMergeRaw hanya menyentuh field asal Notion). */
+let cbOpen = null;   // {id, tab} — panel yang sedang terbuka
+const CB_DS_FORMATS = ['Instagram Feed (1080×1350)','Instagram Square (1080×1080)','Instagram/TikTok Story-Reels (1080×1920)','Carousel Instagram (1080×1350, multi-slide)','X Post (1600×900)','LinkedIn (1200×627)','YouTube Thumbnail (1280×720)'];
+function cbFind(id){ return contentBank.find(c=>c.id===id); }
+function cbSave(){ store.set('contentbank', contentBank); }
+function cbTogglePanel(id, tab){
+  cbOpen = (cbOpen && cbOpen.id===id && cbOpen.tab===tab) ? null : {id, tab};
+  renderContentBank();
+}
+function cbStamp(ts){ if(!ts) return ''; try{ return new Date(ts).toLocaleString('id-ID',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'}); }catch(e){ return ''; } }
+function cbPanel(x){
+  if(!cbOpen || cbOpen.id!==x.id) return '';
+  const box = 'margin-top:12px; padding-top:12px; border-top:1px dashed var(--border)';
+  if(cbOpen.tab==='edit'){
+    const sel = (id,opts,val)=>`<select id="${id}">${opts.map(o=>`<option ${o===val?'selected':''}>${esc(o)}</option>`).join('')}</select>`;
+    return `<div style="${box}">
+      <div class="grid2">
+        <div><label>Judul</label><input type="text" id="cbE_judul_${x.id}" value="${esc(x.judul||'')}"></div>
+        <div><label>Pilar</label>${sel('cbE_pilar_'+x.id, ['Pilar 1 · Distrik & Ranking','Pilar 2 · 雑学 / 豆知識','Pilar 3 · Hidup & Kerja'], x.pilar)}</div>
+      </div>
+      <div class="grid3" style="gap:10px">
+        <div><label>Format</label>${sel('cbE_format_'+x.id, ['Carousel','Video / Reel','Single'], x.format)}</div>
+        <div><label>Prioritas</label>${sel('cbE_prio_'+x.id, ['Tinggi','Sedang','Rendah'], x.prioritas)}</div>
+        <div><label>Status</label>${sel('cbE_status_'+x.id, CB_STATUSES, x.status||'Ide')}</div>
+      </div>
+      <label>Hook / CTA</label><input type="text" id="cbE_hook_${x.id}" value="${esc(x.hook||'')}">
+      <label>Catatan riset</label><textarea id="cbE_catatan_${x.id}" style="min-height:70px">${esc(x.catatan||'')}</textarea>
+      <label>📝 Naskah materi <span class="hint">(isi lengkap: skrip, teks tiap slide, caption — tersimpan permanen)</span></label>
+      <textarea id="cbE_naskah_${x.id}" style="min-height:150px" placeholder="Tulis naskah lengkapnya di sini...">${esc(x.naskah||'')}</textarea>
+      <div class="row">
+        <button class="btn sm" onclick="cbSaveEdit('${x.id}')">💾 Simpan Perubahan</button>
+        <button class="btn sm sec" onclick="cbTogglePanel('${x.id}','edit')">Tutup</button>
+        ${x.naskahTs?`<span class="hint" style="align-self:center">Tersimpan: ${esc(cbStamp(x.naskahTs))}</span>`:''}
+      </div>
+    </div>`;
+  }
+  if(cbOpen.tab==='ai'){
+    const a = x.analisis;
+    return `<div style="${box}">
+      <p class="hint" style="margin-top:0">AI membedah materi ini: sudut terkuat, alternatif hook, struktur slide, draf caption, hashtag, dan <b>daftar fakta yang wajib diverifikasi</b>. Hasilnya tersimpan permanen di materi ini.</p>
+      <div class="row" style="margin-top:0">
+        <button class="btn sm" id="cbAiBtn_${x.id}" onclick="cbAnalyze('${x.id}')">🤖 ${a?'Analisis Ulang':'Analisis Otomatis'}</button>
+        ${a?`<button class="btn sm sec" onclick="cbCopyAnalisis('${x.id}')">📋 Salin</button>
+             <button class="btn sm sec" onclick="cbAnalisisToNaskah('${x.id}')" title="Salin hasil analisis ke kolom Naskah">📝 Jadikan Naskah</button>
+             <button class="btn sm danger" onclick="cbDelAnalisis('${x.id}')">✕ Hapus Analisis</button>`:''}
+        <button class="btn sm sec" onclick="cbTogglePanel('${x.id}','ai')">Tutup</button>
+      </div>
+      ${a?`<p class="hint">Dianalisis: ${esc(cbStamp(a.ts))}</p>`:''}
+      <div class="out" id="cbAiOut_${x.id}" style="${a?'':'display:none'}">${esc(a?a.text:'')}</div>
+    </div>`;
+  }
+  // tab === 'desain'
+  const d = x.desain;
+  const tplOpts = templates.map(t=>`<option value="${esc(t.url)}">${esc((t.emoji||'🎨')+' '+t.name)}</option>`).join('');
+  return `<div style="${box}">
+    <p class="hint" style="margin-top:0">Kirim materi ini ke <b>Studio Desain</b> — judul & hook-nya dipakai jadi brief, lalu AI merancang layout, warna, font, copy, dan prompt Canva. Hasilnya kembali tersimpan di materi ini.</p>
+    <div class="grid2">
+      <div><label>Format desain</label><select id="cbD_format_${x.id}">${CB_DS_FORMATS.map(f=>`<option ${((d&&d.format)===f)?'selected':''}>${esc(f)}</option>`).join('')}</select></div>
+      <div><label>Buka template Canva</label>${templates.length?`<select id="cbD_tpl_${x.id}">${tplOpts}</select>`:'<p class="hint" style="margin:6px 0 0">Pustaka template masih kosong — tambahkan di Studio Desain.</p>'}</div>
+    </div>
+    <div class="row">
+      <button class="btn sm" onclick="cbToDesign('${x.id}')">🎨 Buat Brief Desain</button>
+      ${templates.length?`<button class="btn sm sec" onclick="cbOpenTpl('${x.id}')">🖌️ Buka Template di Canva</button>`:''}
+      ${d?`<button class="btn sm sec" onclick="cbCopyDesain('${x.id}')">📋 Salin Brief</button>
+           <button class="btn sm sec" onclick="cbCopyMagic('${x.id}')">🪄 Salin Prompt Canva</button>
+           <button class="btn sm danger" onclick="cbDelDesain('${x.id}')">✕ Hapus Brief</button>`:''}
+      <button class="btn sm sec" onclick="cbTogglePanel('${x.id}','desain')">Tutup</button>
+    </div>
+    ${d?`<p class="hint">Brief dibuat: ${esc(cbStamp(d.ts))} · ${esc(d.format||'')}</p><div class="out">${esc(d.brief||'')}</div>`:''}
+  </div>`;
+}
+function cbSaveEdit(id){
+  const x = cbFind(id); if(!x) return;
+  const v = f => { const el = $('cbE_'+f+'_'+id); return el ? el.value : undefined; };
+  x.judul = (v('judul')||'').trim() || x.judul;
+  x.pilar = v('pilar'); x.format = v('format'); x.prioritas = v('prio'); x.status = v('status');
+  x.hook = (v('hook')||'').trim(); x.catatan = (v('catatan')||'').trim();
+  const naskah = (v('naskah')||'').trim();
+  if(naskah !== (x.naskah||'')){ x.naskah = naskah; x.naskahTs = Date.now(); }
+  cbSave(); renderContentBank();
+  toast('💾 Materi tersimpan');
+}
+async function cbAnalyze(id){
+  const x = cbFind(id); if(!x) return;
+  const btn = $('cbAiBtn_'+id), out = $('cbAiOut_'+id);
+  if(btn){ btn.disabled = true; btn.innerHTML = '<span class="spinner"></span> Menganalisis...'; }
+  if(out){ out.style.display = 'block'; out.textContent = ''; }
+  try{
+    const prompt = `Bedah materi konten dari Bank Materi berikut, lalu susun jadi bahan siap produksi.
+
+MATERI
+- Judul: ${x.judul||'—'}
+- Pilar: ${x.pilar||'—'}
+- Format rencana: ${x.format||'—'} · Prioritas: ${x.prioritas||'—'} · Status: ${x.status||'Ide'}
+- Hook / CTA saat ini: ${x.hook||'—'}
+- Catatan riset: ${x.catatan||'—'}
+${x.naskah?`- Naskah yang sudah ditulis:\n"""\n${x.naskah}\n"""`:'- Naskah: belum ditulis'}
+
+Balas dengan bagian persis berikut:
+
+## 🎯 SUDUT TERKUAT
+Sudut pandang paling menarik untuk materi ini + alasannya (2-3 kalimat).
+
+## 🪝 5 ALTERNATIF HOOK
+Lima hook pembuka siap pakai, dengan suara brand-ku.
+
+## 🧱 STRUKTUR KONTEN
+Rincian per slide (kalau carousel) atau per detik (kalau video/reel): apa yang muncul dan teksnya.
+
+## ✍️ DRAF CAPTION
+Caption siap tempel, lengkap dengan CTA dan mark "Lyns Archive : (Topik)".
+
+## #️⃣ HASHTAG
+8-12 hashtag relevan campuran besar & kecil.
+
+## ⚠️ WAJIB DIVERIFIKASI
+Daftar setiap angka, aturan hukum/imigrasi, statistik, atau nama program pemda yang muncul — tandai [PERLU VERIFIKASI] dan sebutkan jenis sumber resmi yang harus dicek. JANGAN mengarang data apa pun; kalau kamu tidak yakin, katakan tidak yakin.`;
+    const text = await callClaude([{role:'user', content: prompt}], {
+      stream:true, maxTokens:4096,
+      onDelta:(d, full)=>{ if(out){ out.textContent = full; out.scrollTop = out.scrollHeight; } }
+    });
+    x.analisis = {text, ts: Date.now()};
+    cbSave();
+    renderContentBank();
+    toast('🤖 Analisis tersimpan di materi ini');
+  }catch(e){
+    if(out) out.textContent = '❌ Gagal: '+e.message;
+    if(btn){ btn.disabled = false; btn.innerHTML = '🤖 Analisis Otomatis'; }
+  }
+}
+function cbCopyAnalisis(id){ const x = cbFind(id); if(x&&x.analisis) navigator.clipboard.writeText(x.analisis.text).then(()=>toast('📋 Analisis disalin')); }
+function cbDelAnalisis(id){
+  const x = cbFind(id); if(!x||!x.analisis) return;
+  if(!confirm('Hapus hasil analisis AI untuk materi ini?')) return;
+  delete x.analisis; cbSave(); renderContentBank(); toast('Analisis dihapus');
+}
+function cbAnalisisToNaskah(id){
+  const x = cbFind(id); if(!x||!x.analisis) return;
+  if(x.naskah && !confirm('Naskah materi ini sudah terisi. Timpa dengan hasil analisis?')) return;
+  x.naskah = x.analisis.text; x.naskahTs = Date.now();
+  cbSave(); cbOpen = {id, tab:'edit'}; renderContentBank();
+  toast('📝 Hasil analisis disalin ke Naskah');
+}
+function cbOpenTpl(id){
+  const sel = $('cbD_tpl_'+id); if(!sel||!sel.value) return;
+  window.open(sel.value, '_blank', 'noopener');
+}
+// Jembatan Bank Materi → Studio Desain: isi form Studio, pindah view, jalankan rekomendasi,
+// lalu hasilnya disimpan balik ke materi ini (lihat dsFromBank di recommendDesign).
+let dsFromBank = null;
+function cbToDesign(id){
+  const x = cbFind(id); if(!x) return;
+  const fmt = ($('cbD_format_'+id)||{}).value || CB_DS_FORMATS[0];
+  const brief = x.judul + (x.hook?` — hook: ${x.hook}`:'') + (x.pilar?` (${x.pilar})`:'');
+  $('dsTopik').value = brief;
+  $('dsFormat').value = fmt;
+  dsFromBank = {id, format: fmt};
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  const nav = document.querySelector('.nav-item[data-view="desain"]');
+  if(nav) nav.classList.add('active');
+  $('view-desain').classList.add('active');
+  renderTemplates();
+  window.scrollTo(0,0);
+  toast('🎨 Materi dikirim ke Studio Desain — merancang brief...');
+  recommendDesign();
+}
+function cbCopyDesain(id){ const x = cbFind(id); if(x&&x.desain) navigator.clipboard.writeText(x.desain.brief).then(()=>toast('📋 Brief desain disalin')); }
+function cbCopyMagic(id){
+  const x = cbFind(id); if(!x||!x.desain) return;
+  const p = extractSection(x.desain.brief, 'CANVA MAGIC DESIGN') || x.desain.brief;
+  navigator.clipboard.writeText(p).then(()=>toast('🪄 Prompt disalin — tempel di Canva (Magic Design)'));
+}
+function cbDelDesain(id){
+  const x = cbFind(id); if(!x||!x.desain) return;
+  if(!confirm('Hapus brief desain untuk materi ini?')) return;
+  delete x.desain; cbSave(); renderContentBank(); toast('Brief desain dihapus');
+}
+
+/* ═══════════════════ STUDIO DESAIN ═══════════════════ */
+let designImgs = [];   // {name, dataUrl} — hanya di memori (tidak disimpan permanen)
+let lastDesignRec = null;
+
+function resizeImage(file){
+  return new Promise((resolve, reject)=>{
+    const img = new Image();
+    img.onload = ()=>{
+      const MAX = 1400;
+      let {width:w, height:h} = img;
+      if(Math.max(w,h) > MAX){ const r = MAX/Math.max(w,h); w = Math.round(w*r); h = Math.round(h*r); }
+      const cv = document.createElement('canvas'); cv.width = w; cv.height = h;
+      cv.getContext('2d').drawImage(img, 0, 0, w, h);
+      resolve(cv.toDataURL('image/jpeg', 0.85));
+    };
+    img.onerror = reject;
+    img.src = URL.createObjectURL(file);
+  });
+}
+async function addDesignFile(file){
+  if(!file.type.startsWith('image/')) return;
+  if(designImgs.length >= 6){ toast('Maksimal 6 gambar'); return; }
+  try{
+    const dataUrl = await resizeImage(file);
+    designImgs.push({name: file.name || ('tempel-'+(designImgs.length+1)), dataUrl});
+    renderDesignThumbs();
+  }catch(e){ toast('❌ Gagal memuat gambar'); }
+}
+async function handleDesignFiles(input){
+  for(const f of input.files) await addDesignFile(f);
+  input.value = '';
+}
+document.addEventListener('paste', async e=>{
+  if(!$('view-desain').classList.contains('active')) return;
+  for(const item of e.clipboardData.items){
+    if(item.type.startsWith('image/')){ await addDesignFile(item.getAsFile()); }
+  }
+});
+function renderDesignThumbs(){
+  $('dsThumbs').innerHTML = designImgs.map((im,i)=>`
+    <div style="position:relative">
+      <img src="${im.dataUrl}" style="height:110px; border-radius:10px; border:1px solid var(--border); display:block">
+      <button class="btn sm danger" style="position:absolute; top:4px; right:4px; padding:2px 8px" onclick="designImgs.splice(${i},1);renderDesignThumbs()">✕</button>
+      <div class="hint" style="max-width:110px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap">${esc(im.name)}</div>
+    </div>`).join('');
+}
+async function analyzeDesigns(){
+  if(designImgs.length < 1){ toast('Upload minimal 1 gambar desain dulu (idealnya 2–6 untuk perbandingan)'); return; }
+  const btn = $('btnDsAnalyze'); btn.disabled = true; btn.innerHTML = '<span class="spinner"></span> Menganalisis desain...';
+  const out = $('dsOut'); out.textContent = '';
+  try{
+    const blocks = designImgs.map(im=>({
+      type:'image',
+      source:{type:'base64', media_type:'image/jpeg', data: im.dataUrl.split(',')[1]}
+    }));
+    blocks.push({type:'text', text:`Kamu ahli desain grafis media sosial. Analisis ${designImgs.length} desain post di atas secara mendalam:
+
+UNTUK SETIAP DESAIN (beri nomor Desain 1, 2, dst):
+1. 🎨 Palet warna — sebutkan kode hex warna dominan & aksen
+2. ✍️ Tipografi — jenis font (serif/sans/script/display), berat, ukuran relatif, hierarki
+3. 📐 Layout & komposisi — grid, penempatan elemen, white space, keseimbangan
+4. 🖼️ Gaya visual — fotografi/ilustrasi/flat/gradient/tekstur, mood keseluruhan
+5. 👁️ Hierarki visual — ke mana mata diarahkan pertama, kedua, ketiga
+
+PERBANDINGAN (jika lebih dari 1 desain):
+- Tabel ringkas persamaan & perbedaan antar desain
+- Desain mana yang paling efektif untuk engagement, dan kenapa
+- Pola/benang merah yang bisa dijadikan identitas visual konsisten
+
+KESIMPULAN: rangkum gaya desain yang sebaiknya diadopsi sebagai identitas visual brand ini.`});
+    const analysis = await callClaude([{role:'user', content: blocks}], {
+      stream:true, maxTokens:4096,
+      onDelta:(d, full)=>{ out.textContent = full; out.scrollTop = out.scrollHeight; }
+    });
+    // langkah 2: ekstrak DNA desain sebagai JSON dari hasil analisis (tanpa kirim gambar lagi = hemat token)
+    toast('🧬 Mengekstrak DNA desain...');
+    const raw = await callClaude([{role:'user', content:`Dari analisis desain berikut, ekstrak "DNA desain" untuk dijadikan panduan identitas visual. Balas HANYA JSON valid (tanpa markdown):
+{
+  "ringkasan_gaya": "deskripsi 2-3 kalimat identitas visual",
+  "palet_warna": [{"hex":"#......","peran":"latar/utama/aksen/teks"}],
+  "tipografi": {"headline":"deskripsi font headline","body":"deskripsi font body","hierarki":"aturan hierarki"},
+  "layout": ["pola layout yang berulang"],
+  "gaya_visual": "fotografi/ilustrasi/flat/dst + mood",
+  "elemen_khas": ["elemen visual khas yang harus konsisten"],
+  "lakukan": ["prinsip yang harus dipertahankan"],
+  "hindari": ["hal yang harus dihindari"]
+}
+
+ANALISIS:
+${analysis}`}], {maxTokens:1536, system:'Kamu ekstraktor design system. Balas hanya JSON valid.'});
+    const js = raw.replace(/```json|```/g,'').trim();
+    designProfile = JSON.parse(js.slice(js.indexOf('{'), js.lastIndexOf('}')+1));
+    store.set('design', designProfile);
+    renderDesignProfile();
+    toast('🎉 DNA desain berhasil diekstrak!');
+  }catch(e){ out.textContent += '\n\n❌ Gagal: '+e.message; }
+  btn.disabled = false; btn.innerHTML = '🔬 Analisis & Bandingkan Desain';
+}
+function renderDesignProfile(){
+  if(!designProfile){ $('dsProfileCard').style.display='none'; return; }
+  $('dsProfileCard').style.display='block';
+  const li = a => (a||[]).map(x=>`• ${esc(typeof x==='string'?x:JSON.stringify(x))}`).join('<br>');
+  const swatches = (designProfile.palet_warna||[]).map(c=>
+    `<span style="display:inline-flex;align-items:center;gap:6px;margin-right:12px">
+      <span style="width:18px;height:18px;border-radius:5px;display:inline-block;background:${esc(c.hex||'#000')};border:1px solid var(--border)"></span>
+      <code>${esc(c.hex||'')}</code> <span class="hint">${esc(c.peran||'')}</span></span>`).join('');
+  const t = designProfile.tipografi||{};
+  $('dsProfileContent').innerHTML = `
+    <p><b>Gaya:</b> ${esc(designProfile.ringkasan_gaya||'')}</p>
+    <p><b>Palet:</b><br>${swatches}</p>
+    <p><b>Tipografi:</b> Headline — ${esc(t.headline||'')} · Body — ${esc(t.body||'')}<br><span class="hint">${esc(t.hierarki||'')}</span></p>
+    <p><b>Layout:</b><br>${li(designProfile.layout)}</p>
+    <p><b>Gaya visual:</b> ${esc(designProfile.gaya_visual||'')}</p>
+    <p><b>Elemen khas:</b><br>${li(designProfile.elemen_khas)}</p>
+    <p><b>Lakukan:</b><br>${li(designProfile.lakukan)}</p>
+    <p><b>Hindari:</b><br>${li(designProfile.hindari)}</p>`;
+  $('dsProfileJson').value = JSON.stringify(designProfile, null, 2);
+}
+function saveDesignJson(){
+  try{ designProfile = JSON.parse($('dsProfileJson').value); store.set('design', designProfile); renderDesignProfile(); toast('✅ DNA desain diperbarui'); }
+  catch(e){ toast('❌ JSON tidak valid'); }
+}
+
+/* ═══════════════════ ANALISIS AKUN IG ═══════════════════ */
+let igAccounts = store.get('igaccounts', []);
+let igImgs = [];       // {name, dataUrl} — hanya di memori
+let igLastGen = null;  // hasil generate terakhir {topik, type, text}
+async function handleIgFiles(input){
+  for(const f of input.files){
+    try{ igImgs.push({name:f.name, dataUrl: await resizeImage(f)}); }catch(e){}
+  }
+  input.value=''; renderIgThumbs();
+}
+function renderIgThumbs(){
+  $('igThumbs').innerHTML = igImgs.map((im,i)=>`
+    <div style="position:relative">
+      <img src="${im.dataUrl}" style="height:110px; border-radius:10px; border:1px solid var(--border); display:block">
+      <button class="btn sm danger" style="position:absolute; top:4px; right:4px; padding:2px 8px" onclick="igImgs.splice(${i},1);renderIgThumbs()">✕</button>
+    </div>`).join('');
+}
+function igHandleFromLink(link){
+  const m = String(link||'').match(/instagram\.com\/([A-Za-z0-9._]+)/i);
+  return m ? '@'+m[1].replace(/\/$/,'') : (link||'').trim();
+}
+async function analyzeIgAccount(){
+  const link = $('igLink').value.trim();
+  if(!link){ toast('Tempel dulu link akun Instagram-nya'); return; }
+  if(igImgs.length < 1){ toast('Unggah minimal 1 screenshot akun/post-nya dulu'); return; }
+  const btn = $('btnIgAnalyze'); btn.disabled = true; btn.innerHTML = '<span class="spinner"></span> Menganalisis akun...';
+  const out = $('igOut'); out.textContent = '';
+  try{
+    const caps = $('igCaptions').value.trim();
+    const blocks = igImgs.map(im=>({ type:'image', source:{type:'base64', media_type:'image/jpeg', data: im.dataUrl.split(',')[1]} }));
+    blocks.push({type:'text', text:`Kamu analis strategi konten Instagram. Screenshot di atas berasal dari akun ${igHandleFromLink(link)} (${link}).${caps?`\n\nCAPTION ASLI AKUN ITU:\n"""\n${caps}\n"""`:''}
+
+Bedah POLA akun ini secara mendalam (bukan menilai satu post, tapi menemukan formula yang berulang):
+1. 🎯 NICHE & AUDIENS — apa topiknya, siapa yang disasar, janji nilai apa yang konsisten
+2. 🪝 POLA HOOK — bagaimana slide/detik pertama menghentikan scroll (beri 3-5 pola kalimat konkret yang bisa ditiru)
+3. 🏗️ FORMULA KONTEN — struktur post yang berulang (urutan slide/bagian caption), panjang, format favorit
+4. ✍️ GAYA CAPTION — tone, panjang, struktur, penggunaan emoji, cara bercerita
+5. 🎨 GAYA VISUAL — palet, tipografi, layout, elemen khas yang bikin dikenali
+6. 📣 POLA CTA — cara khas mengajak aksi (komen kata kunci? save? DM?)
+7. 💡 KENAPA AKUN INI BERHASIL — 3 prinsip terpenting yang bisa diadaptasi akun lain TANPA menjiplak`});
+    const analysis = await callClaude([{role:'user', content: blocks}], {
+      stream:true, maxTokens:4096,
+      onDelta:(d, full)=>{ out.textContent = full; out.scrollTop = out.scrollHeight; }
+    });
+    toast('🧬 Menyimpan DNA akun...');
+    const raw = await callClaude([{role:'user', content:`Dari analisis akun Instagram berikut, ekstrak "DNA akun" ringkas untuk dipakai sebagai acuan membuat konten serupa. Balas HANYA JSON valid (tanpa markdown):
+{
+  "ringkasan": "2-3 kalimat inti kenapa akun ini berhasil",
+  "niche": "...", "audiens": "...",
+  "pola_hook": ["pola kalimat hook konkret"],
+  "formula_konten": ["struktur/urutan yang berulang"],
+  "gaya_caption": "...",
+  "gaya_visual": "...",
+  "pola_cta": ["..."],
+  "prinsip_adaptasi": ["prinsip yang bisa diadaptasi tanpa menjiplak"]
+}
+
+ANALISIS:
+${analysis}`}], {maxTokens:1536, system:'Kamu ekstraktor strategi konten. Balas hanya JSON valid.'});
+    const js = raw.replace(/```json|```/g,'').trim();
+    const dna = JSON.parse(js.slice(js.indexOf('{'), js.lastIndexOf('}')+1));
+    igAccounts.push({ id: uid(), link, handle: igHandleFromLink(link), tanggal: new Date().toISOString().slice(0,10), dna });
+    store.set('igaccounts', igAccounts);
+    igImgs = []; renderIgThumbs(); $('igCaptions').value='';
+    renderIgAccounts();
+    toast('🎉 Akun tersimpan sebagai bahan! Lanjut ke bagian 3 untuk membuat postingan.');
+  }catch(e){ out.textContent += '\n\n❌ Gagal: '+e.message; }
+  btn.disabled = false; btn.innerHTML = '🔬 Analisis Akun Ini';
+}
+function renderIgAccounts(){
+  const wrap = $('igList'); if(!wrap) return;
+  if(!igAccounts.length){ wrap.innerHTML = '<p class="hint">Belum ada akun yang dianalisis.</p>'; }
+  else wrap.innerHTML = igAccounts.map(a=>`
+    <div class="cal-item">
+      <div class="title" style="flex:1">
+        <b>${esc(a.handle)}</b> <span class="hint">· ${esc(a.tanggal)}</span>
+        <div class="hint" style="margin-top:2px">${esc((a.dna&&a.dna.ringkasan)||'')}</div>
+      </div>
+      <a class="btn sm sec" href="${encodeURI(a.link)}" target="_blank" rel="noopener" title="Buka akunnya">↗ IG</a>
+      <button class="btn sm sec" onclick="viewIgDna('${a.id}')" title="Lihat DNA lengkap">👁️</button>
+      <button class="btn sm danger" onclick="delIgAccount('${a.id}')">✕</button>
+    </div>`).join('');
+  // isi dropdown generator
+  const sel = $('igGenAcc');
+  if(sel) sel.innerHTML = igAccounts.length
+    ? igAccounts.map(a=>`<option value="${a.id}">${esc(a.handle)}</option>`).join('')
+    : '<option value="">— analisis akun dulu di atas —</option>';
+}
+function viewIgDna(id){
+  const a = igAccounts.find(x=>x.id===id); if(!a) return;
+  const w = window.open('', '_blank', 'width=640,height=760');
+  w.document.write(`<pre style="white-space:pre-wrap;font-family:Segoe UI;padding:24px;line-height:1.6">${esc(a.handle)} — DNA akun\n\n${esc(JSON.stringify(a.dna, null, 2))}</pre>`);
+}
+function delIgAccount(id){
+  if(!confirm('Hapus analisis akun ini?')) return;
+  igAccounts = igAccounts.filter(x=>x.id!==id); store.set('igaccounts', igAccounts); renderIgAccounts();
+}
+async function igMakePost(){
+  const accId = $('igGenAcc').value;
+  const a = igAccounts.find(x=>x.id===accId);
+  if(!a){ toast('Analisis dulu minimal 1 akun di bagian 1'); return; }
+  const topik = $('igGenTopik').value.trim();
+  if(!topik){ toast('Isi topiknya (dari temamu sendiri)'); return; }
+  const type = $('igGenType').value;
+  const btn = $('btnIgGen'); btn.disabled = true; btn.innerHTML = '<span class="spinner"></span> Membuat...';
+  const out = $('igGenOut'); out.textContent = ''; $('igGenActions').style.display='none';
+  try{
+    const bentuk = type==='carousel' ? 'outline carousel 8-10 slide (nomor slide + teks utama maks 20 kata/slide + catatan visual)'
+                 : type==='script' ? 'script Reel 30-60 detik dengan [HOOK 0-3 dtk], [ISI], [CTA] + petunjuk visual'
+                 : 'caption Instagram lengkap (hook baris pertama, isi bernilai, CTA, 5-8 hashtag)';
+    const text = await callClaude([{role:'user', content:`Berikut DNA akun Instagram yang berhasil (${a.handle}) sebagai INSPIRASI POLA:
+${JSON.stringify(a.dna, null, 2)}
+
+Buatkan ${bentuk} tentang topik MILIKKU: "${topik}".
+
+ATURAN PENTING:
+- TIRU POLANYA (struktur hook, formula konten, pola CTA) dari DNA di atas — tapi isi, tema, dan niche = MILIKKU (lihat profil brand di system prompt).
+- JANGAN menjiplak kalimat/topik akun itu. Ini adaptasi pola, bukan salinan.
+- Tulis dengan SUARA BRAND-KU (profil suara di system prompt), bukan gaya akun itu.
+- Patuhi prinsipku: jangan pernah mengarang data — kalau butuh angka/fakta, beri placeholder [PERLU VERIFIKASI].`}], {
+      stream:true, maxTokens:4096,
+      onDelta:(d, full)=>{ out.textContent = full; out.scrollTop = out.scrollHeight; }
+    });
+    igLastGen = {topik, type, text, handle: a.handle};
+    $('igGenActions').style.display='flex';
+  }catch(e){ out.textContent = '❌ Gagal: '+e.message; }
+  btn.disabled = false; btn.innerHTML = '✨ Buat Postingan';
+}
+function igSendToCalendar(){
+  if(!igLastGen) return;
+  calendar.push({ id: uid(), date: new Date().toISOString().slice(0,10), platform:'Instagram',
+    type: igLastGen.type, topik: igLastGen.topik, status:'draft',
+    content: `📌 Dibuat dari pola akun ${igLastGen.handle} (Analisis Akun IG)\n\n${igLastGen.text}` });
+  store.set('calendar', calendar);
+  renderCalendar(); renderDashboard();
+  toast('📅 Dikirim ke kalender sebagai draft');
+}
+async function recommendDesign(){
+  const topik = $('dsTopik').value.trim();
+  if(!topik){ toast('Isi topik post-nya dulu'); return; }
+  const format = $('dsFormat').value;
+  const btn = $('btnDsRec'); btn.disabled = true; btn.innerHTML = '<span class="spinner"></span> Merancang...';
+  const out = $('dsRecOut'); out.textContent = '';
+  $('dsRecActions').style.display = 'none';
+  try{
+    let prompt = `Rancang rekomendasi desain post lengkap untuk: "${topik}"\nFormat: ${format}\n`;
+    prompt += designProfile
+      ? `Gunakan DNA DESAIN dari system prompt sebagai acuan utama — desain harus terlihat konsisten dengan identitas visual yang sudah dianalisis.`
+      : `(Belum ada DNA desain — buat rekomendasi terbaik berdasarkan profil brand dan praktik desain terbaik.)`;
+    prompt += `
+
+Berikan output terstruktur persis dengan bagian-bagian berikut:
+
+## 🎯 KONSEP
+Konsep visual 2-3 kalimat.
+
+## 📐 LAYOUT (elemen per elemen)
+Posisi & ukuran tiap elemen: headline, subteks, visual utama, logo/handle, CTA. Jelaskan seperti sedang memandu desainer.
+
+## 🎨 SPESIFIKASI
+- Warna: kode hex tiap elemen (latar, headline, aksen, CTA)
+- Font: jenis & perkiraan ukuran untuk headline/body/CTA
+- Gaya visual: foto/ilustrasi/ikon yang dipakai
+
+## ✍️ COPY DESAIN
+- Headline (maks 8 kata, dengan suara brand-ku)
+- Subteks (maks 15 kata)
+- Teks CTA
+
+## 🪄 PROMPT UNTUK CANVA MAGIC DESIGN
+Satu paragraf bahasa Inggris (Canva AI lebih akurat dalam English) yang mendeskripsikan desain ini secara lengkap: format, warna hex, gaya, mood, dan teks yang harus muncul. Tulis dalam satu blok tanpa bullet.
+
+## 🔎 KATA KUNCI TEMPLATE CANVA
+3-5 kata kunci pencarian template (English, dipisah koma).`;
+    const text = await callClaude([{role:'user', content: prompt}], {
+      stream:true, maxTokens:4096,
+      onDelta:(d, full)=>{ out.textContent = full; out.scrollTop = out.scrollHeight; }
+    });
+    lastDesignRec = {topik, format, text};
+    $('dsRecActions').style.display = 'flex';
+    // Kalau brief ini dipicu dari Bank Materi, simpan balik ke materi asalnya
+    if(dsFromBank){
+      const it = cbFind(dsFromBank.id);
+      if(it){ it.desain = {brief:text, format, ts:Date.now()}; cbSave(); renderContentBank(); toast('🎨 Brief desain tersimpan di materi "'+it.judul+'"'); }
+      dsFromBank = null;
+    }
+  }catch(e){ out.textContent = '❌ Gagal: '+e.message; dsFromBank = null; }
+  btn.disabled = false; btn.innerHTML = '✨ Buat Rekomendasi Desain';
+}
+function extractSection(text, header){
+  const re = new RegExp(`##[^\\n]*${header}[^\\n]*\\n([\\s\\S]*?)(?=\\n##|$)`, 'i');
+  const m = text.match(re);
+  return m ? m[1].trim() : '';
+}
+function copyMagicPrompt(){
+  if(!lastDesignRec) return;
+  const p = extractSection(lastDesignRec.text, 'CANVA MAGIC DESIGN') || lastDesignRec.text;
+  navigator.clipboard.writeText(p).then(()=>toast('🪄 Prompt disalin — tempel di Canva (kolom AI / Magic Design)'));
+}
+function openCanva(){
+  let q = 'social media post';
+  if(lastDesignRec){
+    const kw = extractSection(lastDesignRec.text, 'KATA KUNCI');
+    if(kw) q = kw.split('\n')[0].replace(/[•\-*]/g,'').trim();
+  }
+  window.open('https://www.canva.com/templates/?query=' + encodeURIComponent(q), '_blank');
+}
+async function sendDesignToWebhook(){
+  if(!lastDesignRec) return;
+  if(!webhook.url){ toast('⚠️ Isi URL webhook dulu di menu Otomatisasi'); return; }
+  const payload = {
+    tipe: 'design_brief',
+    topik: lastDesignRec.topik,
+    format: lastDesignRec.format,
+    judul: extractSection(lastDesignRec.text, 'COPY DESAIN').split('\n')[0]?.replace(/^[-•\s]*(Headline[:\s]*)?/i,'') || lastDesignRec.topik,
+    prompt_canva: extractSection(lastDesignRec.text, 'CANVA MAGIC DESIGN'),
+    spesifikasi_lengkap: lastDesignRec.text
+  };
+  try{
+    await fetch(webhook.url, {method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)});
+    toast('🚀 Design brief terkirim ke webhook');
+  }catch(e){ toast('❌ Gagal kirim: '+e.message); }
+}
+
+/* ═══════════════════ LAB KEPRIBADIAN ═══════════════════ */
+const PS_FRAMEWORK = `Kerangka analisis yang WAJIB dipakai:
+1. Big Five/OCEAN — skor 0-100 per dimensi (Openness, Conscientiousness, Extraversion, Agreeableness, Neuroticism) + interpretasi. Ini kerangka paling ilmiah, utamakan.
+2. MBTI — estimasi tipe 4 huruf + tingkat keyakinan (%) + dimensi mana yang borderline. Ingat MBTI bersifat spektrum, bukan kotak.
+3. DISC — profil dominan (Dominance/Influence/Steadiness/Conscientiousness).
+4. Enneagram — estimasi tipe + wing.
+5. RIASEC/Holland Codes — 2 tipe minat dominan (Realistic/Investigative/Artistic/Social/Enterprising/Conventional) + 2-3 saran content pillar dari gabungannya.
+6. Analisis linguistik ala LIWC — pola kata fungsi (saya/kita), nada emosi, orientasi sosial, kata kognitif (dari cara menjawab).
+Selalu berikan sebagai spektrum & probabilitas, bukan label mutlak. Sertakan disclaimer singkat bahwa ini refleksi, bukan diagnosis.`;
+
+async function analyzePersonality(){
+  const text = $('psText').value.trim();
+  if(text.split(/\s+/).length < 50){ toast('Tulisan terlalu pendek — minimal ±150 kata untuk hasil bermakna'); return; }
+  const isSelf = $('psSubjek').value === 'self';
+  const konteks = $('psKonteks').value.trim();
+  const btn = $('btnPsAnalyze'); btn.disabled = true; btn.innerHTML = '<span class="spinner"></span> Menganalisis kepribadian...';
+  const out = $('psOut'); out.textContent = '';
+  try{
+    const prompt = `Analisis kepribadian ${isSelf?'PENULIS (yaitu pengguna sendiri)':'penulis (orang lain, bukan pengguna)'} dari teks berikut${konteks?` (konteks: ${konteks})`:''}.
+
+ATURAN KETAT:
+- Setiap kesimpulan WAJIB didukung bukti konkret: kutipan langsung atau observasi spesifik dari teks. Jangan menebak.
+- Objektif, analitis, observasional. Jangan menasihati kehidupan atau menghakimi isi tulisan.
+- Sajikan sebagai spektrum & probabilitas, bukan label mutlak.
+
+KERANGKA (gunakan semuanya):
+A. BIG FIVE (OCEAN) — skor 0-100 per dimensi: Openness (imajinasi, kompleksitas ide), Conscientiousness (keteraturan, disiplin, orientasi detail), Extraversion (energi sosial, asertivitas), Agreeableness (empati, harmoni vs kompetisi), Neuroticism (sensitivitas stres, fluktuasi emosi).
+B. RIASEC / HOLLAND CODES — pilih 2 tipe minat dominan: Realistic (praktis/hands-on), Investigative (analitis/riset), Artistic (kreatif/ekspresif), Social (membantu/mengajar), Enterprising (memimpin/persuasif), Conventional (teratur/sistematis).
+C. STYLOMETRIC DNA — 4 variabel ringkasan LIWC: Analytical Thinking (Rendah/Sedang/Tinggi — seberapa logis-terstruktur bahasanya), Clout (Rendah/Sedang/Tinggi — kepercayaan diri & otoritas), Authenticity (Rendah/Sedang/Tinggi — transparansi & kerentanan), Emotional Tone (Positif/Negatif/Netral). Plus: struktur kalimat (pendek-tegas vs panjang-mengalir) dan 3-5 signature vocabulary (kata/frasa khas penulis).
+D. PELENGKAP — estimasi MBTI (+ % keyakinan + dimensi borderline), DISC, Enneagram.
+
+FORMAT OUTPUT (markdown, persis urutan ini):
+## 1. 📊 Big Five (OCEAN)
+Tiap dimensi: skor X/100, penjelasan singkat, lalu baris *Bukti teks: "..."*
+## 2. 🧭 Pemetaan Bakat & Minat (RIASEC)
+Dua tipe dominan + alasan dari teks + "Potensi Content Pillar:" 2-3 topik konten spesifik dari gabungan keduanya.
+## 3. 🧬 DNA Gaya Penulisan (Stylometry)
+Analytical Thinking, Clout, Authenticity, Emotional Tone, Struktur Kalimat, Signature Vocabulary — masing-masing dengan level + penjelasan berbasis teks.
+## 4. 🔤 MBTI · DISC · Enneagram
+Estimasi + tingkat keyakinan + dimensi borderline.
+## 5. 💎 Sifat, Habit & Kecenderungan
+Pola perilaku, cara mengambil keputusan, respons stres — dengan bukti teks.
+## 6. 🎭 Arahan Persona (Brand Voice Guideline)
+SATU paragraf instruksi siap-pakai yang merangkum hasil stilometri di atas, yang bisa di-copy-paste ke AI generator konten untuk meniru suara penulis (contoh format: "Gunakan kalimat pendek dan tegas. Pertahankan nada analitis namun rentan secara emosional...").
+
+TEKS:
+"""
+${text}
+"""`;
+    const analysis = await callClaude([{role:'user', content: prompt}], {
+      stream:true, maxTokens:4096,
+      system: `Kamu adalah "Psycho-Stylometric Profiler" — gabungan keahlian Psikolog Kepribadian, Analis Perilaku, Konsultan Karir (Holland/RIASEC), dan Ahli Linguistik Komputasional (LIWC). Bahasa output: ${settings.lang}. Sertakan di akhir: disclaimer 1 kalimat bahwa ini refleksi, bukan diagnosis.`,
+      onDelta:(d, full)=>{ out.textContent = full; out.scrollTop = out.scrollHeight; }
+    });
+    if(isSelf){
+      toast('🧬 Menyimpan profil kepribadian...');
+      await extractPersonality(analysis);
+    }
+  }catch(e){ out.textContent += '\n\n❌ Gagal: '+e.message; }
+  btn.disabled = false; btn.innerHTML = '🔬 Analisis Kepribadian';
+}
+
+async function extractPersonality(analysisText){
+  const raw = await callClaude([{role:'user', content:`Dari analisis kepribadian berikut, ekstrak profil terstruktur. Balas HANYA JSON valid (tanpa markdown):
+{
+  "mbti": {"tipe":"XXXX","keyakinan":"..%","catatan":"dimensi borderline"},
+  "big_five": {"openness":0,"conscientiousness":0,"extraversion":0,"agreeableness":0,"neuroticism":0},
+  "disc": "profil DISC singkat",
+  "enneagram": "tipe + wing",
+  "riasec": {"tipe_1":"...","tipe_2":"...","content_pillars":["2-3 topik konten dari gabungan kedua tipe"]},
+  "stylometry": {"analytical":"Rendah|Sedang|Tinggi","clout":"Rendah|Sedang|Tinggi","authenticity":"Rendah|Sedang|Tinggi","tone":"Positif|Negatif|Netral","struktur_kalimat":"deskripsi pola kalimat","signature_vocabulary":["3-5 kata/frasa khas"]},
+  "arahan_persona": "satu paragraf brand voice guideline siap-pakai untuk AI meniru suara penulis",
+  "sifat_dominan": ["..."],
+  "kekuatan": ["..."],
+  "area_berkembang": ["..."],
+  "habit_kecenderungan": ["pola perilaku, pengambilan keputusan, respons stres"],
+  "gaya_komunikasi": "ringkasan gaya komunikasi & tulisan",
+  "ringkasan": "ringkasan kepribadian 2-3 kalimat"
+}
+Jika suatu bagian tidak ada di analisis (mis. stylometry pada hasil tes lisan), isi dengan null.
+
+ANALISIS:
+${analysisText}`}], {maxTokens:2048, system:'Kamu ekstraktor profil psikometrik. Balas hanya JSON valid. Nilai big_five harus angka 0-100.'});
+  const js = raw.replace(/```json|```/g,'').trim();
+  personality = JSON.parse(js.slice(js.indexOf('{'), js.lastIndexOf('}')+1));
+  store.set('personality', personality);
+  renderPersonality();
+  renderDashboard();
+  toast('🎉 Profil kepribadian tersimpan!');
+}
+
+const BF_LABELS = {openness:'Openness (keterbukaan)', conscientiousness:'Conscientiousness (kedisiplinan)', extraversion:'Extraversion (energi sosial)', agreeableness:'Agreeableness (keramahan)', neuroticism:'Neuroticism (sensitivitas emosi)'};
+function renderPersonality(){
+  if(!personality){ $('psProfileCard').style.display='none'; $('psEmpty').style.display='block'; return; }
+  $('psEmpty').style.display='none';
+  $('psProfileCard').style.display='block';
+  const li = a => (a||[]).map(x=>`• ${esc(x)}`).join('<br>');
+  const bf = personality.big_five||{};
+  const bars = Object.keys(BF_LABELS).map(k=>{
+    const v = Math.max(0, Math.min(100, Number(bf[k])||0));
+    return `<div class="bar-row"><div class="bl">${BF_LABELS[k]}</div><div class="bar-track"><div class="bar-fill" style="width:${v}%"></div></div><div class="bv">${v}</div></div>`;
+  }).join('');
+  const m = personality.mbti||{};
+  const ri = personality.riasec||{};
+  const st = personality.stylometry||{};
+  $('psProfileContent').innerHTML = `
+    <p><b>Ringkasan:</b> ${esc(personality.ringkasan||'')}</p>
+    <p><b>MBTI:</b> <span class="badge siap" style="font-size:13px">${esc(m.tipe||'—')}</span> keyakinan ${esc(m.keyakinan||'—')} <span class="hint">${esc(m.catatan||'')}</span></p>
+    <div style="margin:10px 0"><b>Big Five:</b>${bars}</div>
+    <p><b>DISC:</b> ${esc(personality.disc||'—')} &nbsp;·&nbsp; <b>Enneagram:</b> ${esc(personality.enneagram||'—')}</p>
+    ${ri.tipe_1 ? `<p><b>🧭 RIASEC (minat & bakat):</b> ${esc(ri.tipe_1)} + ${esc(ri.tipe_2||'')}<br><span class="hint">Content pillar: ${esc((ri.content_pillars||[]).join(' · '))}</span></p>` : ''}
+    ${st && st.analytical ? `<p><b>🧬 DNA Gaya Penulisan (LIWC):</b> Analytical: <b>${esc(st.analytical)}</b> · Clout: <b>${esc(st.clout||'—')}</b> · Authenticity: <b>${esc(st.authenticity||'—')}</b> · Tone: <b>${esc(st.tone||'—')}</b><br><span class="hint">${esc(st.struktur_kalimat||'')}</span><br><b>Kosakata khas:</b> ${esc((st.signature_vocabulary||[]).join(', '))}</p>` : ''}
+    ${personality.arahan_persona ? `<p><b>🎭 Arahan Persona (Brand Voice):</b><br><i style="color:var(--muted)">${esc(personality.arahan_persona)}</i></p>` : ''}
+    <p><b>Sifat dominan:</b><br>${li(personality.sifat_dominan)}</p>
+    <p><b>Kekuatan:</b><br>${li(personality.kekuatan)}</p>
+    <p><b>Area berkembang:</b><br>${li(personality.area_berkembang)}</p>
+    <p><b>Habit & kecenderungan:</b><br>${li(personality.habit_kecenderungan)}</p>
+    <p><b>Gaya komunikasi:</b> ${esc(personality.gaya_komunikasi||'')}</p>`;
+  $('psProfileJson').value = JSON.stringify(personality, null, 2);
+}
+function savePersonalityJson(){
+  try{ personality = JSON.parse($('psProfileJson').value); store.set('personality', personality); renderPersonality(); toast('✅ Profil kepribadian diperbarui'); }
+  catch(e){ toast('❌ JSON tidak valid'); }
+}
+function applyPersonaToVoice(){
+  if(!personality || !personality.arahan_persona){ toast('Belum ada Arahan Persona — jalankan ✍️ Analisis Tulisan dulu'); return; }
+  voice = voice || {};
+  voice.arahan_persona = personality.arahan_persona;
+  if(personality.stylometry) voice.dna_stilometri = personality.stylometry;
+  store.set('voice', voice);
+  renderVoice();
+  toast('🎙️ Arahan persona diterapkan ke Suara Brand — semua konten kini mengikutinya');
+}
+function copyPersona(){
+  if(!personality || !personality.arahan_persona){ toast('Belum ada Arahan Persona — jalankan ✍️ Analisis Tulisan dulu'); return; }
+  navigator.clipboard.writeText(personality.arahan_persona).then(()=>toast('📋 Arahan persona disalin — tempel ke AI generator mana pun'));
+}
+
+/* — Tes interaktif adaptif — */
+let ptMsgs = [], ptDone = false, ptCount = 0;
+const PT_SYSTEM = ()=>`Kamu psikolog kepribadian yang hangat dan tajam. Bahasa: ${settings.lang}. Kamu sedang memandu tes kepribadian adaptif 12 pertanyaan.
+Aturan:
+- Ajukan SATU pertanyaan per giliran, singkat, nomori (Pertanyaan X/12).
+- Pertanyaan harus adaptif: gali lebih dalam berdasarkan jawaban sebelumnya. Campurkan skenario nyata ("apa yang kamu lakukan jika..."), preferensi, energi sosial, cara memutuskan, respons stres, kebiasaan.
+- Jangan menyebut framework saat bertanya (jangan bilang "ini untuk mengukur extraversion").
+- Setelah jawaban ke-12, tulis laporan lengkap yang diawali baris "=== HASIL ANALISIS ===" berisi: ${PS_FRAMEWORK}
+Tambahkan juga: sifat dominan, kekuatan, area berkembang, habit & kecenderungan, gaya komunikasi, dan 3 saran personal branding sesuai kepribadian.`;
+
+// ── Lab Kepribadian Pro (embed) ──
+function toggleLabPro(){
+  const wrap = document.getElementById('labProWrap');
+  const frame = document.getElementById('labProFrame');
+  const btn = document.getElementById('btnLabPro');
+  const buka = wrap.style.display === 'none';
+  if(buka && !frame.src) frame.src = 'tes-pro/index.html';
+  wrap.style.display = buka ? '' : 'none';
+  btn.textContent = buka ? '▾ Tutup Lab Kepribadian Pro' : '🧬 Buka Lab Kepribadian Pro';
+  if(buka) frame.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+async function startPersonalityTest(){
+  ptMsgs = []; ptDone = false; ptCount = 0;
+  $('ptLog').style.display='flex'; $('ptLog').innerHTML='';
+  $('ptInputRow').style.display='flex'; $('ptSaveRow').style.display='none';
+  $('ptProgress').textContent = '';
+  $('btnPtStart').textContent = '🔄 Ulangi Tes';
+  ptMsgs.push({role:'user', content:'Mulai tesnya. Ajukan pertanyaan pertama.'});
+  await ptTurn();
+}
+function ptAppend(role, text){
+  const div = document.createElement('div');
+  div.className = 'msg '+(role==='user'?'user':'ai');
+  div.textContent = text;
+  $('ptLog').appendChild(div);
+  $('ptLog').scrollTop = $('ptLog').scrollHeight;
+  return div;
+}
+async function ptTurn(){
+  const div = ptAppend('ai', '');
+  div.innerHTML = '<span class="spinner"></span>';
+  $('btnPtSend').disabled = true;
+  try{
+    const reply = await callClaude(ptMsgs, {
+      stream:true, maxTokens:4096, system: PT_SYSTEM(),
+      onDelta:(d, full)=>{ div.textContent = full; $('ptLog').scrollTop = $('ptLog').scrollHeight; }
+    });
+    ptMsgs.push({role:'assistant', content:reply});
+    if(reply.includes('=== HASIL ANALISIS ===')){
+      ptDone = true;
+      $('ptInputRow').style.display='none';
+      $('ptSaveRow').style.display='flex';
+      $('ptProgress').textContent = '✅ Tes selesai!';
+    }
+  }catch(e){ div.textContent = '❌ '+e.message; ptMsgs.pop(); }
+  $('btnPtSend').disabled = false;
+}
+async function sendPtAnswer(){
+  const inp = $('ptInput');
+  const text = inp.value.trim();
+  if(!text || ptDone) return;
+  inp.value = '';
+  ptCount++;
+  $('ptProgress').textContent = `Jawaban terkirim: ${ptCount}/12`;
+  ptAppend('user', text);
+  ptMsgs.push({role:'user', content:text});
+  await ptTurn();
+}
+$('ptInput').addEventListener('keydown', e=>{
+  if(e.key==='Enter' && !e.shiftKey){ e.preventDefault(); sendPtAnswer(); }
+});
+async function savePersonalityFromTest(){
+  const report = [...ptMsgs].reverse().find(m=>m.role==='assistant' && m.content.includes('=== HASIL ANALISIS ==='));
+  if(!report){ toast('Laporan belum ada'); return; }
+  toast('🧬 Menyimpan profil kepribadian...');
+  try{ await extractPersonality(report.content); }
+  catch(e){ toast('❌ Gagal: '+e.message, 4000); }
+}
+async function brandingFromPersonality(){
+  const out = $('psBrandOut'); out.textContent = '';
+  try{
+    await callClaude([{role:'user', content:`Berdasarkan PROFIL KEPRIBADIAN-ku di system prompt (dan profil brand jika ada), berikan rekomendasi personal branding yang selaras dengan kepribadianku:
+1. 🎭 Positioning & persona publik yang paling otentik untukku
+2. 📱 Format konten yang paling cocok dengan energiku (video tampil? tulisan? behind-the-scene?)
+3. 🗣️ Tone of voice yang natural (bukan yang harus dipaksakan)
+4. ⚠️ Jebakan branding yang harus kuhindari sesuai kepribadianku
+5. 📅 Ritme posting realistis sesuai habit & energiku`}], {
+      stream:true, maxTokens:3072,
+      onDelta:(d, full)=>{ out.textContent = full; out.scrollTop = out.scrollHeight; }
+    });
+  }catch(e){ out.textContent = '❌ Gagal: '+e.message; }
+}
+
+/* ═══════════════════ JURNAL REFLEKSI ═══════════════════ */
+function addJournalEntry(){
+  const text = $('jrText').value.trim();
+  const date = $('jrDate').value || new Date().toISOString().slice(0,10);
+  if(!text){ toast('Tulis dulu isinya — tiga kalimat pun cukup'); return; }
+  journal.unshift({id:uid(), date, text, createdAt: Date.now()});
+  store.set('journal', journal);
+  $('jrText').value=''; $('jrPromptOut').textContent='';
+  renderJournal();
+  toast('📓 Entri jurnal tersimpan');
+}
+function delJournal(id){
+  if(!confirm('Hapus entri jurnal ini?')) return;
+  journal = journal.filter(j=>j.id!==id);
+  store.set('journal', journal);
+  renderJournal();
+}
+function renderJournal(){
+  const wrap = $('jrList');
+  if(!journal.length){ wrap.innerHTML = '<p class="hint">Belum ada entri. Mulailah dari yang kecil — tiga kalimat pun cukup.</p>'; return; }
+  wrap.innerHTML = journal.map(j=>`
+    <div class="cal-item" style="align-items:flex-start">
+      <div class="date" style="padding-top:2px">${fmtDate(j.date)}</div>
+      <div class="title" style="white-space:pre-wrap; font-weight:500; line-height:1.55">${esc(j.text.length>220 ? j.text.slice(0,220)+'…' : j.text)}</div>
+      <button class="btn sm sec" title="Refleksi AI" onclick="reflectJournal('${j.id}')">🪞</button>
+      <button class="btn sm sec" title="Jadikan ide konten" onclick="journalToContent('${j.id}')">✨</button>
+      <button class="btn sm danger" onclick="delJournal('${j.id}')">✕</button>
+    </div>`).join('');
+}
+async function journalPrompt(){
+  const btn = $('btnJrPrompt'); btn.disabled = true; btn.innerHTML = '<span class="spinner"></span>';
+  const out = $('jrPromptOut'); out.textContent = '';
+  try{
+    const recent = journal.slice(0,3).map(j=>`[${j.date}] ${j.text.slice(0,200)}`).join('\n');
+    await callClaude([{role:'user', content:`Buatkan SATU prompt jurnal reflektif untukku hari ini — pertanyaan yang menggugah tapi tidak berat. ${personality?'Sesuaikan dengan profil kepribadianku.':''} ${recent?`Entri terakhirku (untuk kesinambungan, jangan mengulang tema yang sama):\n${recent}`:''}\nBalas hanya dengan prompt-nya (1-2 kalimat), tanpa pembuka.`}], {
+      stream:true, maxTokens:256,
+      onDelta:(d, full)=>{ out.textContent = '🎲 '+full; }
+    });
+  }catch(e){ out.textContent = '❌ Gagal: '+e.message; }
+  btn.disabled = false; btn.innerHTML = '🎲 Beri Aku Prompt Jurnal';
+}
+async function reflectJournal(id){
+  const j = journal.find(x=>x.id===id);
+  const out = $('jrOut'); out.textContent = ''; out.scrollIntoView({behavior:'smooth', block:'nearest'});
+  try{
+    await callClaude([{role:'user', content:`Sebagai teman refleksi yang hangat (bukan terapis), tanggapi entri jurnalku tanggal ${j.date}:
+
+"""
+${j.text}
+"""
+
+Berikan:
+1. 🪞 CERMIN — pantulkan apa yang sebenarnya sedang kurasakan/kupikirkan (baca yang tersirat)
+2. 🔍 POLA — kaitkan dengan kepribadianku${journal.length>1?' dan entri-entri sebelumnya jika relevan':''} (pola emosi, kebiasaan berpikir)
+3. 💡 SUDUT PANDANG BARU — satu reframe yang jujur, bukan toxic positivity
+4. ❓ SATU PERTANYAAN LANJUTAN untuk jurnal berikutnya
+
+Singkat, hangat, tidak menggurui.${journal.length>1?`\n\nEntri sebelumnya untuk konteks:\n${journal.filter(x=>x.id!==id).slice(0,4).map(x=>`[${x.date}] ${x.text.slice(0,150)}`).join('\n')}`:''}`}], {
+      stream:true, maxTokens:2048,
+      onDelta:(d, full)=>{ out.textContent = full; out.scrollTop = out.scrollHeight; }
+    });
+  }catch(e){ out.textContent = '❌ Gagal: '+e.message; }
+}
+async function journalToContent(id){
+  const j = journal.find(x=>x.id===id);
+  const out = $('jrOut'); out.textContent = ''; out.scrollIntoView({behavior:'smooth', block:'nearest'});
+  try{
+    await callClaude([{role:'user', content:`Entri jurnal pribadiku tanggal ${j.date}:
+
+"""
+${j.text}
+"""
+
+Ubah pengalaman/pemikiran ini menjadi bahan konten (tanpa membocorkan hal yang terlalu privat — sarankan bagian mana yang sebaiknya tetap privat):
+1. 💡 3 ide konten dari pengalaman ini (judul + angle + format yang cocok)
+2. ✍️ 1 draft caption siap pakai dengan suara brand-ku, dari ide terbaik
+3. 🔒 CATATAN PRIVASI — bagian mana dari jurnal ini yang sebaiknya TIDAK dibagikan publik`}], {
+      stream:true, maxTokens:2560,
+      onDelta:(d, full)=>{ out.textContent = full; out.scrollTop = out.scrollHeight; }
+    });
+  }catch(e){ out.textContent = '❌ Gagal: '+e.message; }
+}
+
+/* ═══════════════════ KALENDER ═══════════════════ */
+function addCalItem(){
+  const topik = $('calTopik').value.trim();
+  const date = $('calDate').value;
+  if(!topik || !date){ toast('Isi tanggal dan topik'); return; }
+  calendar.push({id:uid(), date, platform:$('calPlat').value, type:$('calType').value, topik, status:'ide', content:''});
+  store.set('calendar', calendar);
+  $('calTopik').value='';
+  renderCalendar(); renderDashboard();
+  toast('➕ Ditambahkan ke kalender');
+}
+const STATUSES = ['ide','draft','siap','terbit'];
+function renderCalendar(){
+  const wrap = $('calList');
+  if(!calendar.length){ wrap.innerHTML = '<div class="card"><p class="hint">Kalender masih kosong. Tambahkan rencana di atas, atau pakai tombol 🤖 untuk rencana otomatis 7 hari.</p></div>'; return; }
+  const sorted = [...calendar].sort((a,b)=>a.date.localeCompare(b.date));
+  const today = new Date().toISOString().slice(0,10);
+  wrap.innerHTML = sorted.map(c=>`
+    <div class="cal-item ${c.status!=='terbit' && c.date<today ? 'overdue':''}">
+      <div class="date">${fmtDate(c.date)}</div>
+      <span class="plat">${esc(c.platform)}</span>
+      <div class="title">${esc(c.topik)} ${c.content?'📝':''}</div>
+      <select class="btn sm sec" style="padding:5px 8px" onchange="setStatus('${c.id}', this.value)">
+        ${STATUSES.map(s=>`<option value="${s}" ${c.status===s?'selected':''}>${s}</option>`).join('')}
+      </select>
+      <button class="btn sm sec" onclick="draftFromCal('${c.id}')" title="Buat draft konten dengan AI">✨</button>
+      <button class="btn sm sec" onclick="viewCalContent('${c.id}')" title="Lihat konten">👁️</button>
+      <button class="btn sm danger" onclick="delCalItem('${c.id}')">✕</button>
+    </div>`).join('');
+}
+function setStatus(id, s){ const c = calendar.find(x=>x.id===id); if(c){ c.status=s; store.set('calendar', calendar); renderCalendar(); renderDashboard(); renderAutoList(); } }
+function delCalItem(id){ calendar = calendar.filter(x=>x.id!==id); store.set('calendar', calendar); renderCalendar(); renderDashboard(); }
+function viewCalContent(id){
+  const c = calendar.find(x=>x.id===id);
+  if(!c.content){ toast('Belum ada konten — klik ✨ untuk membuatkan draft'); return; }
+  const w = window.open('', '_blank', 'width=600,height=700');
+  w.document.write(`<pre style="white-space:pre-wrap;font-family:Segoe UI;padding:24px;line-height:1.6">${esc(c.content)}</pre>`);
+}
+const DRAFT_SEP = '\n\n════════ ✨ DRAFT AI ════════\n\n';
+async function draftFromCal(id){
+  const c = calendar.find(x=>x.id===id);
+  toast('✨ Membuat draft untuk: '+c.topik);
+  try{
+    const prompt = GEN_PROMPTS[c.type] ? GEN_PROMPTS[c.type](c.topik) : GEN_PROMPTS.caption(c.topik);
+    // catatan riset (mis. hasil impor Content Bank) dipertahankan & dikirim sebagai konteks;
+    // draft lama di bawah DRAFT_SEP dibuang agar tidak menumpuk saat regenerasi
+    const notes = (c.content||'').split(DRAFT_SEP)[0].trim();
+    const ctx = notes ? `\n\n## CATATAN RISET & ARAHAN UNTUK KONTEN INI (WAJIB dipatuhi)\n${notes}\n\nPatuhi hook/CTA dan arahan formula di atas. Kalau catatan menyebut data belum diriset atau perlu verifikasi, JANGAN mengarang angka/aturan/nama program — tulis placeholder dan tandai [PERLU VERIFIKASI].` : '';
+    const text = await callClaude([{role:'user', content: prompt + `\nPlatform target: ${c.platform}.` + ctx}], {maxTokens:4096});
+    c.content = notes ? notes + DRAFT_SEP + text : text;
+    c.status = c.status==='ide' ? 'draft' : c.status;
+    store.set('calendar', calendar);
+    renderCalendar();
+    toast('✅ Draft selesai — klik 👁️ untuk melihat');
+  }catch(e){ toast('❌ Gagal: '+e.message, 4000); }
+}
+async function generateWeekPlan(){
+  if(!profile){ toast('Isi Profil Brand dulu'); navTo('profil'); return; }
+  const btn = $('btnWeekPlan'); btn.disabled = true; btn.innerHTML = '<span class="spinner"></span> Menyusun rencana...';
+  const out = $('weekOut'); out.textContent = '';
+  try{
+    const today = new Date();
+    const prompt = `Susun rencana konten 7 hari ke depan mulai ${today.toISOString().slice(0,10)} untuk brand-ku. Balas HANYA JSON array valid (tanpa markdown):
+[{"date":"YYYY-MM-DD","platform":"salah satu dari: ${(profile.platforms||['Instagram']).join(' / ')}","type":"caption|script|thread|linkedin|carousel","topik":"judul spesifik dan menarik"}]
+Buat 7 item (1 per hari), variasikan pilar konten (${profile.pilar}) dan format. Topik harus spesifik, bukan generik.`;
+    const raw = await callClaude([{role:'user', content: prompt}], {maxTokens:2048});
+    const jsonStr = raw.replace(/```json|```/g,'').trim();
+    const plan = JSON.parse(jsonStr.slice(jsonStr.indexOf('['), jsonStr.lastIndexOf(']')+1));
+    plan.forEach(p=> calendar.push({id:uid(), date:p.date, platform:p.platform, type:p.type, topik:p.topik, status:'ide', content:''}));
+    store.set('calendar', calendar);
+    renderCalendar(); renderDashboard();
+    out.textContent = `✅ ${plan.length} rencana konten ditambahkan ke kalender:\n` + plan.map(p=>`• ${p.date} — [${p.platform}] ${p.topik}`).join('\n');
+  }catch(e){ out.textContent = '❌ Gagal: '+e.message; }
+  btn.disabled = false; btn.innerHTML = '🤖 Buatkan Rencana 7 Hari Otomatis';
+}
+
+/* ═══════════════════ CHAT ═══════════════════ */
+function renderChat(){
+  const log = $('chatLog');
+  log.innerHTML = chatHist.map(m=>`<div class="msg ${m.role==='user'?'user':'ai'}">${esc(m.content)}</div>`).join('');
+  log.scrollTop = log.scrollHeight;
+}
+async function sendChat(){
+  const inp = $('chatInput');
+  const text = inp.value.trim();
+  if(!text) return;
+  inp.value = '';
+  chatHist.push({role:'user', content:text});
+  renderChat();
+  const log = $('chatLog');
+  const aiDiv = document.createElement('div');
+  aiDiv.className = 'msg ai'; aiDiv.innerHTML = '<span class="spinner"></span>';
+  log.appendChild(aiDiv); log.scrollTop = log.scrollHeight;
+  $('btnChat').disabled = true;
+  try{
+    // kirim maksimal 30 pesan terakhir agar hemat token
+    const msgs = chatHist.slice(-30).map(m=>({role:m.role, content:m.content}));
+    const reply = await callClaude(msgs, {
+      stream:true, maxTokens:4096,
+      onDelta:(d, full)=>{ aiDiv.textContent = full; log.scrollTop = log.scrollHeight; }
+    });
+    chatHist.push({role:'assistant', content:reply});
+    store.set('chat', chatHist);
+  }catch(e){ aiDiv.textContent = '❌ '+e.message; chatHist.pop(); }
+  $('btnChat').disabled = false;
+}
+$('chatInput').addEventListener('keydown', e=>{
+  if(e.key==='Enter' && !e.shiftKey){ e.preventDefault(); sendChat(); }
+});
+function clearChat(){ if(confirm('Hapus riwayat chat?')){ chatHist=[]; store.set('chat', chatHist); renderChat(); } }
+async function saveMemoryFromChat(){
+  if(chatHist.length < 2){ toast('Belum ada percakapan untuk disimpan'); return; }
+  toast('🧠 Mengekstrak insight...');
+  try{
+    const convo = chatHist.slice(-20).map(m=>`${m.role}: ${m.content}`).join('\n');
+    const summary = await callClaude([{role:'user', content:`Dari percakapan berikut, ekstrak 1-5 poin insight/keputusan/preferensi yang layak diingat jangka panjang. Format: bullet points singkat. Jika tidak ada yang penting, balas "-".\n\n${convo}`}], {maxTokens:512, system:'Kamu perangkum insight. Singkat dan padat.'});
+    if(summary.trim() !== '-'){
+      memory = (memory ? memory + '\n' : '') + summary.trim();
+      store.set('memory', memory);
+      $('memText').value = memory;
+      toast('✅ Insight disimpan ke memori');
+    } else toast('Tidak ada insight baru yang perlu disimpan');
+  }catch(e){ toast('❌ Gagal: '+e.message); }
+}
+
+/* ═══════════════════ OTOMATISASI ═══════════════════ */
+function saveWebhook(){
+  webhook = {url: $('whUrl').value.trim(), auto: $('whAuto').checked};
+  store.set('webhook', webhook);
+  toast('✅ Pengaturan webhook disimpan');
+}
+async function pushToWebhook(item){
+  if(!webhook.url){ toast('⚠️ Isi URL webhook dulu'); return false; }
+  const payload = {judul:item.topik, platform:item.platform, jenis:item.type, tanggal:item.date, konten:item.content||''};
+  try{
+    await fetch(webhook.url, {method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload)});
+    return true;
+  }catch(e){ toast('❌ Gagal kirim: '+e.message); return false; }
+}
+async function sendItemToWebhook(id){
+  const c = calendar.find(x=>x.id===id);
+  if(await pushToWebhook(c)){
+    c.status = 'terbit'; store.set('calendar', calendar);
+    toast('🚀 Terkirim ke webhook → status: terbit');
+    renderAutoList(); renderCalendar(); renderDashboard();
+  }
+}
+/* ── Sinkron balik: kalender aplikasi → Content Bank Notion (via webhook Make) ── */
+// status aplikasi → opsi kolom Status di Notion. Catatan: Notion punya "Terjadwal" yang
+// tidak ada di aplikasi (impor memetakannya ke "siap"), jadi sinkron balik akan
+// menuliskannya sebagai "Siap" — baris yang tadinya "Terjadwal" akan berubah.
+const NOTION_STATUS = {ide:'Ide', draft:'Draft', siap:'Siap', terbit:'Tayang'};
+function notionPayload(c){
+  const parts = (c.content||'').split(DRAFT_SEP);
+  return {
+    tipe: 'notion_sync',
+    notion_id: c.notion_id || '',        // kosong = baris baru (belum ada di Notion)
+    judul: c.topik,
+    status: NOTION_STATUS[c.status] || 'Ide',
+    tanggal: c.date,
+    platform: c.platform,
+    jenis: c.type,
+    catatan_riset: (parts[0]||'').trim(),
+    draft_ai: (parts[1]||'').trim()
+  };
+}
+async function syncOneToNotion(c){
+  try{
+    await fetch(webhook.url, {method:'POST', mode:'no-cors', headers:{'Content-Type':'application/json'}, body: JSON.stringify(notionPayload(c))});
+    return true;
+  }catch(e){ return false; }
+}
+async function syncListToNotion(items, label){
+  if(!webhook.url){ toast('⚠️ Isi URL webhook dulu di atas'); return; }
+  if(!items.length){ toast('Tidak ada item yang perlu disinkron'); return; }
+  if(!confirm(`Kirim ${items.length} item ke Notion lewat webhook Make?\n\nIni memakai ${items.length} operasi Make.`)) return;
+  const btn = $('btnSyncNotion'); const old = btn.innerHTML;
+  btn.disabled = true;
+  let sent = 0, failed = 0;
+  for(const c of items){
+    btn.innerHTML = `<span class="spinner"></span> Mengirim ${sent+failed+1}/${items.length}...`;
+    if(await syncOneToNotion(c)) sent++; else failed++;
+    await new Promise(r=>setTimeout(r, 250)); // jangan hantam webhook
+  }
+  btn.disabled = false; btn.innerHTML = old;
+  toast(`🔄 ${label}: ${sent} terkirim${failed?`, ${failed} gagal`:''} — cek riwayat di Make`, 5000);
+}
+function syncAllToNotion(){ syncListToNotion(calendar, 'Sinkron semua'); }
+function syncChangedToNotion(){
+  const items = calendar.filter(c => (c.content||'').includes(DRAFT_SEP) || c.status !== 'ide');
+  syncListToNotion(items, 'Sinkron perubahan');
+}
+
+async function testWebhook(){
+  saveWebhook();
+  if(!webhook.url){ toast('⚠️ Isi URL webhook dulu'); return; }
+  const ok = await pushToWebhook({topik:'Tes dari LYNSBrand AI', platform:'Test', type:'test', date:new Date().toISOString().slice(0,10), content:'Halo! Ini payload tes. Jika kamu melihat ini di Make/Zapier, koneksi berhasil. 🎉'});
+  if(ok) toast('🧪 Payload tes terkirim — cek riwayat di Make/Zapier');
+}
+function renderAutoList(){
+  const wrap = $('autoList');
+  const ready = calendar.filter(c=>c.status==='siap').sort((a,b)=>a.date.localeCompare(b.date));
+  if(!ready.length){ wrap.innerHTML = '<p class="hint">Belum ada konten berstatus "siap". Ubah status konten di Kalender menjadi <b>siap</b> agar muncul di sini.</p>'; return; }
+  wrap.innerHTML = ready.map(c=>`
+    <div class="cal-item">
+      <div class="date">${fmtDate(c.date)}</div>
+      <span class="plat">${esc(c.platform)}</span>
+      <div class="title">${esc(c.topik)}</div>
+      <button class="btn sm green" onclick="sendItemToWebhook('${c.id}')">🚀 Kirim Sekarang</button>
+    </div>`).join('');
+}
+// auto-cek tiap 60 detik: konten "siap" yang tanggalnya <= hari ini dikirim otomatis
+setInterval(async ()=>{
+  if(!webhook.auto || !webhook.url) return;
+  const today = new Date().toISOString().slice(0,10);
+  for(const c of calendar.filter(x=>x.status==='siap' && x.date<=today)){
+    if(await pushToWebhook(c)){ c.status='terbit'; store.set('calendar', calendar); toast(`🚀 Auto-terbit: ${c.topik}`); }
+  }
+  renderAutoList(); renderCalendar(); renderDashboard();
+}, 60000);
+
+/* ═══════════════════ EKSPOR / BACKUP ═══════════════════ */
+function download(name, content, type='application/json'){
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([content], {type}));
+  a.download = name; a.click();
+}
+function exportJSON(){ download('lynsbrand-konten.json', JSON.stringify(calendar, null, 2)); }
+function exportCSV(){
+  const rows = [['tanggal','platform','jenis','topik','status','konten']];
+  calendar.forEach(c=> rows.push([c.date, c.platform, c.type, c.topik, c.status, (c.content||'').replace(/"/g,'""')]));
+  const csv = rows.map(r=> r.map(f=>`"${f}"`).join(',')).join('\n');
+  download('lynsbrand-konten.csv', '﻿'+csv, 'text/csv');
+}
+function backupAll(){
+  const data = {};
+  Object.keys(localStorage).filter(k=>k.startsWith('bp_')).forEach(k=> data[k] = localStorage.getItem(k));
+  download('lynsbrand-backup-'+new Date().toISOString().slice(0,10)+'.json', JSON.stringify(data, null, 2));
+}
+function restoreAll(input){
+  const file = input.files[0]; if(!file) return;
+  const rd = new FileReader();
+  rd.onload = ()=>{
+    try{
+      const data = JSON.parse(rd.result);
+      Object.entries(data).forEach(([k,v])=>{ if(k.startsWith('bp_')) localStorage.setItem(k, v); });
+      toast('✅ Backup dipulihkan — memuat ulang...');
+      setTimeout(()=>location.reload(), 1000);
+    }catch(e){ toast('❌ File backup tidak valid'); }
+  };
+  rd.readAsText(file);
+}
+// Impor Content Bank non-destruktif: menambah item ke kalender tanpa menimpa. Dedupe by notion_id lalu by topik.
+const FMT_TYPE = {'Carousel':'carousel', 'Video / Reel':'script', 'Reel':'script', 'Video':'script', 'Single':'caption'};
+function importContentBank(input){
+  const file = input.files[0]; if(!file){ return; }
+  const rd = new FileReader();
+  rd.onload = ()=>{
+    try{
+      const data = JSON.parse(rd.result);
+      // Terima 3 bentuk file: (1) array item, (2) {items:[...]} Content Bank terstruktur,
+      // (3) {bp_calendar:"<json>"} file backup kalender penuh — semuanya digabung dgn aman.
+      let items = [];
+      if(Array.isArray(data)) items = data;
+      else if(Array.isArray(data.items)) items = data.items;
+      else if(typeof data.bp_calendar === 'string'){ try{ items = JSON.parse(data.bp_calendar); }catch(e){ items = []; } }
+      if(!items.length){ toast('❌ File tidak berisi item yang bisa diimpor'); input.value=''; return; }
+      const pilarDefault = (data && data.pilar_display) || 'Pilar 2 · 雑学 / 豆知識 【へぇちゃん】';
+      const seenId = new Set(calendar.map(c=>(c.notion_id||'').trim()).filter(Boolean));
+      const seenTopik = new Set(calendar.map(c=>(c.topik||'').trim().toLowerCase()));
+      let added=0, skipped=0;
+      items.forEach(it=>{
+        // item bisa berupa calendar item lengkap ATAU item terstruktur Content Bank
+        const topik = (it.topik||it.judul||'').trim();
+        if(!topik){ skipped++; return; }
+        const nid = (it.notion_id||'').trim();
+        if((nid && seenId.has(nid)) || seenTopik.has(topik.toLowerCase())){ skipped++; return; }
+        let content = it.content;
+        if(!content){
+          const pilar = it.pilar || pilarDefault;
+          const asli = it.pilar_asli ? ` · Pilar asli: ${it.pilar_asli}` : '';
+          content =
+            `📌 Dari Content Bank Notion\n${pilar} · Format asli: ${it.format||'—'}${asli} · Prioritas: ${it.prioritas||'—'}\n`+
+            `Mark saat tayang: "Lyns Archive : (Topik)"\n\n`+
+            `🎣 HOOK / CTA\n${it.hook||'—'}\n\n`+
+            `📝 CATATAN RISET\n${it.catatan||'—'}\n\n`+
+            `⚠️ PRINSIP: jangan pernah karang data. Verifikasi angka, aturan hukum/imigrasi, statistik, dan nama program pemda ke sumber resmi sebelum tayang.`;
+        }
+        const type = it.type || FMT_TYPE[it.format] || 'carousel';
+        calendar.push({
+          id: uid(),
+          date: it.date || new Date().toISOString().slice(0,10),
+          platform: it.platform || 'Instagram',
+          type, topik, status: it.status || 'ide', content,
+          notion_id: nid
+        });
+        added++;
+        if(nid) seenId.add(nid);
+        seenTopik.add(topik.toLowerCase());
+      });
+      store.set('calendar', calendar);
+      renderCalendar(); renderDashboard(); renderAutoList();
+      toast(`✅ ${added} ide ditambahkan${skipped?`, ${skipped} dilewati (sudah ada)`:''}`, 4200);
+    }catch(e){ toast('❌ File tidak valid: '+e.message, 4000); }
+    input.value='';
+  };
+  rd.readAsText(file);
+}
+
+/* ═══════════════════ DASHBOARD ═══════════════════ */
+function renderDashboard(){
+  $('stIde').textContent = calendar.filter(c=>c.status==='ide'||c.status==='draft').length;
+  $('stSiap').textContent = calendar.filter(c=>c.status==='siap').length;
+  $('stTerbit').textContent = calendar.filter(c=>c.status==='terbit').length;
+  const check = (ok, label, view) => `<div>${ok?'✅':'⬜'} <a href="#" style="color:${ok?'var(--muted)':'var(--text)'}; text-decoration:${ok?'line-through':'underline'}" onclick="navTo('${view}');return false">${label}</a></div>`;
+  $('checklist').innerHTML =
+    check(!!settings.key, 'Atur API key', 'pengaturan') +
+    check(!!account, 'Daftar akun gratis (tips & penawaran member)', 'akun') +
+    check(!!profile, 'Isi profil brand', 'profil') +
+    check(!!voice, 'Latih suara brand dari postingan lamamu', 'voice') +
+    check(!!personality, 'Kenali dirimu: ikuti Tes Kepribadian (Self-Discovery)', 'tes') +
+    check(journal.length>0, 'Tulis jurnal refleksi pertamamu (Self-Expression)', 'jurnal') +
+    check(calendar.length>0, 'Rencanakan konten di kalender', 'kalender') +
+    check(!!webhook.url, '(Opsional) Hubungkan webhook otomatisasi', 'otomatisasi');
+  const today = new Date().toISOString().slice(0,10);
+  const week = new Date(Date.now()+7*864e5).toISOString().slice(0,10);
+  const up = calendar.filter(c=>c.date>=today && c.date<=week && c.status!=='terbit').sort((a,b)=>a.date.localeCompare(b.date));
+  $('dashUpcoming').innerHTML = up.length
+    ? up.map(c=>`<div class="cal-item"><div class="date">${fmtDate(c.date)}</div><span class="plat">${esc(c.platform)}</span><div class="title">${esc(c.topik)}</div><span class="badge ${c.status}">${c.status}</span></div>`).join('')
+    : '<p class="hint">Belum ada konten terjadwal minggu ini. Buka <b>Kalender Konten</b> → tombol 🤖 untuk rencana otomatis.</p>';
+}
+
+/* ═══════════════════ SINKRON CLOUD (E2E, Web Crypto) ═══════════════════ */
+function _b64enc(bytes){ let s=''; const CH=0x8000; for(let i=0;i<bytes.length;i+=CH){ s+=String.fromCharCode.apply(null, bytes.subarray(i,i+CH)); } return btoa(s); }
+function _b64dec(b64){ const bin=atob(b64); const u=new Uint8Array(bin.length); for(let i=0;i<bin.length;i++) u[i]=bin.charCodeAt(i); return u; }
+async function _deriveKey(pass, salt){
+  const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(pass), 'PBKDF2', false, ['deriveKey']);
+  return crypto.subtle.deriveKey({name:'PBKDF2', salt, iterations:150000, hash:'SHA-256'}, base, {name:'AES-GCM', length:256}, false, ['encrypt','decrypt']);
+}
+async function _syncId(pass){
+  const h = await crypto.subtle.digest('SHA-256', new TextEncoder().encode('lynsbrand-sync-id::v1::'+pass));
+  return [...new Uint8Array(h)].map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+async function _encrypt(pass, obj){
+  const salt = crypto.getRandomValues(new Uint8Array(16));
+  const iv = crypto.getRandomValues(new Uint8Array(12));
+  const key = await _deriveKey(pass, salt);
+  const ct = new Uint8Array(await crypto.subtle.encrypt({name:'AES-GCM', iv}, key, new TextEncoder().encode(JSON.stringify(obj))));
+  const out = new Uint8Array(16+12+ct.length); out.set(salt,0); out.set(iv,16); out.set(ct,28);
+  return _b64enc(out);
+}
+async function _decrypt(pass, b64){
+  const raw = _b64dec(b64);
+  const salt = raw.slice(0,16), iv = raw.slice(16,28), ct = raw.slice(28);
+  const key = await _deriveKey(pass, salt);
+  const pt = await crypto.subtle.decrypt({name:'AES-GCM', iv}, key, ct);
+  return JSON.parse(new TextDecoder().decode(pt));
+}
+// Kumpulkan/terapkan semua data bp_ KECUALI config sync
+function cloudCollect(){ const d={}; Object.keys(localStorage).forEach(k=>{ if(k.startsWith('bp_') && k!=='bp_synccfg') d[k]=localStorage.getItem(k); }); return d; }
+function cloudApply(d){ Object.entries(d).forEach(([k,v])=>{ if(k && k.startsWith('bp_') && k!=='bp_synccfg' && typeof v==='string') localStorage.setItem(k, v); }); }
+let _syncBusy=false, _syncTimer=null;
+function cloudPushSoon(){ if(!syncCfg.enabled || !syncCfg.pass) return; clearTimeout(_syncTimer); _syncTimer=setTimeout(()=>cloudPush(false), 4000); }
+async function cloudPush(manual){
+  if(!syncCfg.enabled || !syncCfg.pass){ if(manual) toast('Aktifkan Sinkron Cloud dulu'); return; }
+  if(_syncBusy) return; _syncBusy=true;
+  try{
+    const sid = await _syncId(syncCfg.pass);
+    const payload = await _encrypt(syncCfg.pass, cloudCollect());
+    const r = await fetch(SYNC_ENDPOINT, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({action:'save', syncId:sid, ciphertext:payload})});
+    const out = await r.json().catch(()=>({}));
+    if(r.ok && out.ok){ syncCfg.last=Date.now(); saveSyncCfg(); renderSyncUI(); if(manual) toast('☁️ Semua data tersimpan ke cloud'); }
+    else if(manual) toast('❌ Gagal unggah: '+(out.error||('HTTP '+r.status)), 4200);
+  }catch(e){ if(manual) toast('❌ Error unggah: '+e.message, 4200); }
+  _syncBusy=false;
+}
+async function cloudPull(passArg){
+  const pass = (passArg || (($('syncPassPull')&&$('syncPassPull').value)||'') || (($('syncPassByok')&&$('syncPassByok').value)||'') || syncCfg.pass || '').trim();
+  if(!pass){ toast('Masukkan Kode Sinkron dulu'); return; }
+  toast('⬇️ Mengambil data dari cloud...');
+  try{
+    const sid = await _syncId(pass);
+    const r = await fetch(SYNC_ENDPOINT, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({action:'load', syncId:sid})});
+    const out = await r.json().catch(()=>({}));
+    if(!r.ok || !out.ok){ toast('❌ Gagal ambil cloud: '+(out.error||('HTTP '+r.status)), 4200); return; }
+    if(!out.ciphertext){ toast('☁️ Belum ada data cloud untuk Kode Sinkron ini. Cek ejaan kodenya.', 5000); return; }
+    let data; try{ data = await _decrypt(pass, out.ciphertext); }
+    catch(e){ toast('❌ Kode Sinkron salah — data tidak bisa dibuka.', 5000); return; }
+    cloudApply(data);
+    syncCfg = {pass, enabled:true, last:Date.now()}; saveSyncCfg();
+    toast('✅ Semua data (termasuk API key) dipulihkan! Memuat ulang...', 3000);
+    setTimeout(()=>location.reload(), 1400);
+  }catch(e){ toast('❌ Error: '+e.message, 4200); }
+}
+async function cloudEnable(){
+  const p = (($('syncPass')&&$('syncPass').value)||'').trim();
+  if(p.length < 6){ toast('Kode Sinkron minimal 6 karakter'); return; }
+  syncCfg = {pass:p, enabled:true, last:0}; saveSyncCfg();
+  await cloudPush(true); renderSyncUI();
+}
+function cloudDisable(){
+  if(!confirm('Matikan Sinkron Cloud di PERANGKAT INI? Data di cloud tidak dihapus; perangkat ini saja yang berhenti menyinkron.')) return;
+  syncCfg = {pass:'', enabled:false, last:0}; saveSyncCfg(); renderSyncUI();
+  toast('Sinkron cloud dimatikan di perangkat ini');
+}
+function renderSyncUI(){
+  const el = $('syncStatus'); if(!el) return;
+  if(syncCfg.enabled){
+    const when = syncCfg.last ? new Date(syncCfg.last).toLocaleString('id-ID') : 'belum pernah';
+    el.innerHTML = '<span class="dot ok"></span><b>Aktif</b> · sinkron terakhir: '+esc(when);
+    if($('syncPass')) $('syncPass').value = syncCfg.pass;
+  } else {
+    el.innerHTML = '<span class="dot no"></span>Belum aktif di perangkat ini';
+  }
+}
+
+/* ═══════════════════ INIT ═══════════════════ */
+loadSettings(); loadProfile(); renderVoice(); renderDesignProfile(); renderPersonality(); renderJournal(); renderChat(); renderCalendar(); renderDashboard(); renderAutoList(); renderAccount(); renderTemplates(); renderWsActive(); renderContentBank(); renderSyncUI(); renderIgAccounts();
+$('calDate').value = new Date().toISOString().slice(0,10);
+$('jrDate').value = new Date().toISOString().slice(0,10);
+</script>
+</body>
+</html>
