@@ -595,11 +595,8 @@
         <p class="hint">5 asesmen standar dengan skoring psikometri baku (tanpa AI, tanpa API key): <b>MBTI 60 soal</b> (16 tipe + fungsi kognitif + ranking populasi + profesi per tipe), <b>Big Five/OCEAN 50 soal</b>, <b>DISC 28 soal</b>, <b>RIASEC/Holland 36 soal</b>, dan <b>EQ 20 soal</b>. Setiap hasil otomatis terarsip ke riwayat permanen, hasil tes online (16Personalities, SPI, dll.) juga bisa dicatat, dan semuanya bisa digabung menjadi laporan siap cetak/PDF.</p>
         <div class="row" style="margin-top:4px">
           <button class="btn" onclick="toggleLabPro()" id="btnLabPro">🧬 Buka Lab Kepribadian Pro</button>
-          <button class="btn" style="background:transparent; color:var(--muted); border:1px solid var(--line)" onclick="window.open('tes-pro/index.html','_blank')">⛶ Buka di Tab Baru</button>
         </div>
-        <div id="labProWrap" style="display:none; margin-top:14px">
-          <iframe id="labProFrame" title="Lab Kepribadian Pro" style="width:100%; height:80vh; border:1px solid var(--line); border-radius:14px; background:#fff"></iframe>
-        </div>
+        <div id="labProWrap" style="display:none; margin-top:14px"></div>
       </div>
 
       <div class="card">
@@ -1025,7 +1022,7 @@
 /* ═══════════════════ STORAGE (multi-akun) ═══════════════════ */
 // Data KONTEN dipisah per akun/workspace (bp_ws_<id>_<key>). Pengaturan & API key GLOBAL
 // (dipakai bersama semua akun) — jadi key cukup dimasukkan sekali untuk semua akun.
-const WS_KEYS = ['profile','voice','design','personality','journal','calendar','chat','memory','webhook','templates','account','contentbank','igaccounts'];
+const WS_KEYS = ['profile','voice','design','personality','journal','calendar','chat','memory','webhook','templates','account','contentbank','igaccounts','labpro'];
 const GLOBAL_KEYS = new Set(['settings','seenLanding','workspaces','activeWs','synccfg']);
 const DEFAULT_WS_ID = 'w_default';
 let activeWs = null;   // diisi oleh bootstrap di bawah
@@ -2665,16 +2662,15 @@ Aturan:
 - Setelah jawaban ke-12, tulis laporan lengkap yang diawali baris "=== HASIL ANALISIS ===" berisi: ${PS_FRAMEWORK}
 Tambahkan juga: sifat dominan, kekuatan, area berkembang, habit & kecenderungan, gaya komunikasi, dan 3 saran personal branding sesuai kepribadian.`;
 
-// ── Lab Kepribadian Pro (embed) ──
+// ── Lab Kepribadian Pro (menyatu di halaman ini — lihat blok LP di bawah) ──
 function toggleLabPro(){
   const wrap = document.getElementById('labProWrap');
-  const frame = document.getElementById('labProFrame');
   const btn = document.getElementById('btnLabPro');
   const buka = wrap.style.display === 'none';
-  if(buka && !frame.src) frame.src = 'tes-pro/index.html';
+  if(buka) lpInit();                      // pasang sekali saat pertama dibuka
   wrap.style.display = buka ? '' : 'none';
   btn.textContent = buka ? '▾ Tutup Lab Kepribadian Pro' : '🧬 Buka Lab Kepribadian Pro';
-  if(buka) frame.scrollIntoView({behavior:'smooth', block:'start'});
+  if(buka) wrap.scrollIntoView({behavior:'smooth', block:'start'});
 }
 
 async function startPersonalityTest(){
@@ -3252,6 +3248,912 @@ function renderSyncUI(){
 loadSettings(); loadProfile(); renderVoice(); renderDesignProfile(); renderPersonality(); renderJournal(); renderChat(); renderCalendar(); renderDashboard(); renderAutoList(); renderAccount(); renderTemplates(); renderWsActive(); renderContentBank(); renderSyncUI(); renderIgAccounts();
 $('calDate').value = new Date().toISOString().slice(0,10);
 $('jrDate').value = new Date().toISOString().slice(0,10);
+</script>
+<!-- ══════════ LAB KEPRIBADIAN PRO (menyatu di halaman ini) ══════════
+     Dulu halaman terpisah yang dimuat lewat iframe. Sekarang tampil langsung di
+     menu Tes Kepribadian. Tampilannya dibungkus Shadow DOM supaya CSS-nya (yang
+     memakai nama kelas umum seperti .card & .btn) tidak bentrok dengan gaya
+     aplikasi utama — dan sebaliknya. Palet warnanya diselaraskan ke tema pastel.
+     Soal-soalnya tetap dibaca dari tes-pro/data-*.js (satu sumber kebenaran). -->
+<template id="lpTemplate">
+  <style>
+
+  :root{
+    --bg:#f6f5fb; --card:#ffffff; --ink:#25243a; --muted:#6b6a85; --line:#e6e4f2;
+    --accent:#7c5cbf; --accent2:#2e9e6b; --soft:#f1eefa; --radius:16px;
+    --shadow:0 4px 20px rgba(60,50,120,.08);
+  }
+  *{box-sizing:border-box; margin:0; padding:0}
+  body{font-family:'Segoe UI','Hiragino Sans','Noto Sans',system-ui,sans-serif; background:var(--bg); color:var(--ink); line-height:1.65}
+  .wrap{max-width:960px; margin:0 auto; padding:24px 18px 80px}
+  header.top{display:flex; align-items:center; gap:12px; padding:14px 0 22px; cursor:pointer}
+  header.top .logo{font-size:30px}
+  header.top h1{font-size:20px; letter-spacing:.3px}
+  header.top .sub{font-size:12.5px; color:var(--muted)}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:22px; margin-bottom:16px}
+  h2{font-size:19px; margin-bottom:8px}
+  h3{font-size:16px; margin:18px 0 8px}
+  p.muted{color:var(--muted); font-size:14px}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:14px}
+  .tcard{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:20px; cursor:pointer; transition:.15s; position:relative; overflow:hidden}
+  .tcard:hover{transform:translateY(-3px); box-shadow:0 10px 26px rgba(60,50,120,.14)}
+  .tcard .stripe{position:absolute; top:0; left:0; right:0; height:5px}
+  .tcard .ic{font-size:30px}
+  .tcard h3{margin:8px 0 4px}
+  .tcard .meta{font-size:12px; color:var(--muted); margin-bottom:8px}
+  .tcard .desc{font-size:13.5px; color:var(--muted)}
+  .badge{display:inline-block; font-size:11.5px; padding:3px 10px; border-radius:99px; background:var(--soft); color:var(--accent); font-weight:600; margin-top:10px}
+  .badge.done{background:#e3f4ec; color:#1e7d51}
+  .btn{display:inline-block; border:none; border-radius:12px; padding:11px 20px; font-size:14.5px; font-weight:600; cursor:pointer; background:var(--accent); color:#fff; transition:.15s}
+  .btn:hover{filter:brightness(1.08)}
+  .btn.sec{background:var(--soft); color:var(--accent)}
+  .btn.ghost{background:transparent; color:var(--muted); border:1px solid var(--line)}
+  .btn.sm{padding:7px 14px; font-size:13px}
+  .btn.danger{background:#fbeaea; color:#c0392b}
+  .row{display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-top:14px}
+  /* ── test runner ── */
+  .progress{height:8px; background:var(--line); border-radius:99px; overflow:hidden; margin:6px 0 4px}
+  .progress > div{height:100%; background:linear-gradient(90deg,var(--accent),#a98fe0); border-radius:99px; transition:width .25s}
+  .qnum{font-size:12.5px; color:var(--muted)}
+  .qtext{font-size:19px; font-weight:600; margin:22px 0 26px; min-height:64px}
+  .likert{display:grid; grid-template-columns:repeat(5,1fr); gap:8px}
+  .likert button{border:2px solid var(--line); background:#fff; border-radius:12px; padding:14px 6px; font-size:12.5px; cursor:pointer; transition:.12s; color:var(--muted); font-weight:600; line-height:1.3}
+  .likert button:hover{border-color:var(--accent); color:var(--accent)}
+  .likert button.on{background:var(--accent); border-color:var(--accent); color:#fff}
+  .likert .dot{display:block; font-size:20px; margin-bottom:4px}
+  /* ── results ── */
+  .hero-type{text-align:center; padding:28px 20px}
+  .hero-type .code{font-size:44px; font-weight:800; letter-spacing:6px}
+  .hero-type .nick{font-size:18px; font-weight:600; margin-top:2px}
+  .hero-type .tag{color:var(--muted); font-size:14px; margin-top:6px}
+  .gbadge{display:inline-block; color:#fff; font-size:12px; font-weight:700; padding:4px 14px; border-radius:99px; margin-top:12px}
+  .srcline{text-align:center; font-size:12.5px; color:var(--muted); margin-top:10px}
+  .dimbar{margin:14px 0}
+  .dimbar .lbl{display:flex; justify-content:space-between; font-size:13px; font-weight:600; margin-bottom:4px}
+  .dimbar .lbl .win{color:var(--accent)}
+  .dimbar .track{height:14px; border-radius:99px; background:var(--line); position:relative; overflow:hidden}
+  .dimbar .track > div{height:100%; border-radius:99px}
+  .dimbar .note{font-size:12px; color:var(--muted); margin-top:3px}
+  .bar{margin:12px 0}
+  .bar .lbl{display:flex; justify-content:space-between; font-size:13.5px; font-weight:600; margin-bottom:4px}
+  .bar .track{height:14px; border-radius:99px; background:var(--line); overflow:hidden}
+  .bar .track > div{height:100%; border-radius:99px; transition:width .4s}
+  .cols2{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+  @media(max-width:640px){.cols2{grid-template-columns:1fr}}
+  ul.clean{list-style:none}
+  ul.clean li{padding:5px 0 5px 24px; position:relative; font-size:14px}
+  ul.clean li::before{content:"✔"; position:absolute; left:2px; color:var(--accent2); font-weight:700}
+  ul.clean.warn li::before{content:"⚠"; color:#d5762a}
+  ul.clean.tip li::before{content:"💡"}
+  .chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:8px}
+  .chip{background:var(--soft); color:var(--accent); font-size:13px; font-weight:600; padding:6px 14px; border-radius:99px}
+  table.rank{width:100%; border-collapse:collapse; font-size:13.5px; margin-top:10px}
+  table.rank th{text-align:left; color:var(--muted); font-size:12px; padding:6px 8px; border-bottom:2px solid var(--line)}
+  table.rank td{padding:8px; border-bottom:1px solid var(--line); vertical-align:middle}
+  table.rank tr.me{background:var(--soft); font-weight:700}
+  .minibar{height:8px; background:var(--line); border-radius:99px; overflow:hidden; min-width:80px}
+  .minibar > div{height:100%; border-radius:99px}
+  .fn-stack{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:10px; margin-top:8px}
+  .fn{border:1px solid var(--line); border-radius:12px; padding:12px}
+  .fn .role{font-size:11px; font-weight:800; color:var(--accent); text-transform:uppercase; letter-spacing:1px}
+  .fn .nm{font-weight:700; font-size:14px; margin:3px 0}
+  .fn .ds{font-size:12.5px; color:var(--muted)}
+  .callout{border-left:4px solid var(--accent); background:var(--soft); border-radius:0 12px 12px 0; padding:12px 16px; font-size:13.5px; margin:14px 0}
+  .callout.green{border-color:var(--accent2); background:#e9f6f0}
+  .lvl{font-size:12px; font-weight:800; padding:2px 10px; border-radius:99px; color:#fff}
+  .score-big{font-size:34px; font-weight:800}
+  /* ── riwayat & form ── */
+  .hitem{display:flex; align-items:center; gap:12px; padding:12px 4px; border-bottom:1px solid var(--line); flex-wrap:wrap}
+  .hitem:last-child{border-bottom:none}
+  .hitem .hic{font-size:22px}
+  .hitem .hmain{flex:1; min-width:200px}
+  .hitem .htitle{font-weight:700; font-size:14.5px}
+  .hitem .hsub{font-size:12.5px; color:var(--muted)}
+  .srcbadge{display:inline-block; font-size:10.5px; font-weight:800; padding:2px 8px; border-radius:99px; background:#e3f4ec; color:#1e7d51; vertical-align:middle}
+  .srcbadge.ext{background:#fdf1e3; color:#b06a12}
+  .field{margin-bottom:12px}
+  .field label{display:block; font-size:13px; font-weight:700; margin-bottom:4px}
+  .field input, .field select, .field textarea{width:100%; padding:10px 12px; border:1.5px solid var(--line); border-radius:10px; font-size:14px; font-family:inherit; background:#fff; color:var(--ink)}
+  .field input:focus, .field select:focus, .field textarea:focus{outline:none; border-color:var(--accent)}
+  .field .hint{font-size:11.5px; color:var(--muted); margin-top:3px}
+  .fgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(110px,1fr)); gap:10px}
+  footer{color:var(--muted); font-size:12px; text-align:center; margin-top:30px; line-height:1.8}
+  @media print{
+    body{background:#fff}
+    .no-print{display:none!important}
+    .card{box-shadow:none; border-color:#ccc; break-inside:avoid}
+    .wrap{max-width:100%; padding:0}
+  }
+
+  /* Selaraskan ke palet aplikasi utama (pastel sakura) */
+  :host{ --bg:#faf6f0; --card:#ffffff; --ink:#5a4d5e; --muted:#a294a6; --line:#e9dde3;
+         --accent:#b18ce0; --accent2:#6fbfa0; --soft:#f4ecf2; }
+  .wrap{ padding:0 !important; max-width:none !important; }
+  </style>
+  <div class="wrap">
+    <div id="vHome"></div>
+    <div id="vTest" style="display:none"></div>
+    <div id="vResult" style="display:none"></div>
+    <footer>
+      ⚠️ Semua hasil di sini adalah alat refleksi &amp; pengembangan diri, bukan diagnosis psikologis.<br>
+      Praktik terbaik HR: MBTI untuk <i>pengembangan tim &amp; komunikasi</i>; untuk <i>seleksi</i> gunakan Big Five, DISC, dan wawancara terstruktur sebagai kombinasi.
+    </footer>
+  </div>
+</template>
+<script src="tes-pro/data-mbti.js"></script>
+<script src="tes-pro/data-tes.js"></script>
+<script>
+/* ═══════════════════ LAB KEPRIBADIAN PRO ═══════════════════ */
+let LPROOT = null, lpSiap = false;
+function lpInit(){
+  if(lpSiap) return;
+  const host = document.getElementById('labProWrap');
+  if(!host || typeof MBTI_QUESTIONS === 'undefined'){ toast('❌ Data soal belum termuat'); return; }
+  LPROOT = host.attachShadow({mode:'open'});
+  LPROOT.appendChild(document.getElementById('lpTemplate').content.cloneNode(true));
+  lpSiap = true;
+  lpMigrasiLokal();
+  migrateV1();
+  goHome();
+}
+// Pindahkan riwayat dari versi halaman terpisah (localStorage 'labpro_v2') ke akun aktif.
+// Kunci lama TIDAK dihapus, supaya tetap ada kalau perlu dilihat lagi.
+function lpMigrasiLokal(){
+  try{
+    const lama = JSON.parse(localStorage.getItem('labpro_v2') || 'null');
+    const kini = store.get('labpro', null);
+    const kosong = !kini || !Array.isArray(kini.history) || !kini.history.length;
+    if(lama && Array.isArray(lama.history) && lama.history.length && kosong){
+      store.set('labpro', lama);
+      toast('📜 ' + lama.history.length + ' hasil tes lama dipindahkan ke akun ini', 4200);
+    }
+  }catch(e){}
+}
+// ═══════════════ KONFIGURASI TES ═══════════════
+const TESTS = {
+  mbti:  { nama:"Tes MBTI Lengkap", ikon:"🧭", warna:"#7c5cbf", skala:"setuju", q:()=>MBTI_QUESTIONS,
+           meta:"60 pertanyaan · ±12 menit",
+           desc:"Temukan tipe Anda di antara 16 kepribadian: skor per dimensi, fungsi kognitif, kekuatan-kelemahan, ranking populasi, dan contoh profesi." },
+  big5:  { nama:"Big Five (OCEAN)", ikon:"🌊", warna:"#3a7bd5", skala:"setuju", q:()=>BIG5_QUESTIONS,
+           meta:"50 pertanyaan · ±10 menit",
+           desc:"Standar emas psikologi kepribadian yang paling dipercaya HR: Openness, Conscientiousness, Extraversion, Agreeableness, Neuroticism — skor 0–100." },
+  disc:  { nama:"DISC", ikon:"🎯", warna:"#c74b4b", skala:"setuju", q:()=>DISC_QUESTIONS,
+           meta:"28 pertanyaan · ±6 menit",
+           desc:"Asesmen gaya kerja paling populer dalam seleksi & penempatan karyawan: Dominance, Influence, Steadiness, Conscientiousness." },
+  riasec:{ nama:"RIASEC / Holland", ikon:"🗺️", warna:"#2e9e6b", skala:"suka", q:()=>RIASEC_QUESTIONS,
+           meta:"36 pertanyaan · ±7 menit",
+           desc:"Peta minat karier 6 dimensi (dipakai Dept. Tenaga Kerja AS): temukan kode Holland Anda dan bidang kerja yang paling cocok." },
+  eq:    { nama:"Kecerdasan Emosional (EQ)", ikon:"❤️‍🔥", warna:"#d5762a", skala:"setuju", q:()=>EQ_QUESTIONS,
+           meta:"20 pertanyaan · ±4 menit",
+           desc:"4 domain EQ model Goleman — kesadaran diri, pengelolaan diri, kesadaran sosial, pengelolaan hubungan. Prediktor sukses kepemimpinan." },
+};
+const LAIN = { nama:"Tes Lainnya", ikon:"📝", warna:"#6b6a85" };
+const SKALA = {
+  setuju: ["Sangat Tidak Setuju","Tidak Setuju","Netral","Setuju","Sangat Setuju"],
+  suka:   ["Sangat Tidak Suka","Tidak Suka","Netral","Suka","Sangat Suka"],
+};
+
+// ═══════════════ PENYIMPANAN & RIWAYAT ═══════════════
+// Skema v2: { history: [ {id, test, ts, sumber, catatan, answers?, skor?, dims?, kode?, namaTes?, hasil?} ] }
+// Setiap hasil DITAMBAHKAN ke riwayat, tidak pernah menimpa — hasil lama tetap terekam selamanya.
+const STORE_KEY = "labpro_v2";
+const OLD_KEY = "labpro_v1";
+
+// Riwayat kini disimpan lewat store aplikasi: terpisah per akun brand DAN ikut
+// terenkripsi ke Sinkron Cloud, jadi bisa dibuka di HP/PC lain.
+function db(){
+  const o = store.get('labpro', null) || {};
+  if(!Array.isArray(o.history)) o.history = [];
+  return o;
+}
+function dbSave(o){ store.set('labpro', o); }
+function lpUid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2,7); }
+function lpEsc(s){ return String(s??"").replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+function tglID(ts){ return new Date(ts).toLocaleDateString("id-ID",{day:"numeric",month:"long",year:"numeric"}); }
+
+// Migrasi dari v1 (versi lama yang menimpa hasil) → semua hasil lama diarsipkan ke riwayat
+function migrateV1(){
+  const d = db();
+  if(d.migratedV1) return;
+  try{
+    const v1 = JSON.parse(localStorage.getItem(OLD_KEY)||"null");
+    if(v1){
+      for(const [test, rec] of Object.entries(v1)){
+        if(!TESTS[test] || !rec || !Array.isArray(rec.answers)) continue;
+        d.history.push(buildEntry(test, rec.answers, rec.ts || new Date().toISOString()));
+      }
+    }
+  }catch(e){}
+  d.migratedV1 = true;
+  dbSave(d);
+}
+
+// Bangun entry riwayat dari jawaban internal (skor dihitung & disimpan agar tetap terbaca meski soal berubah di masa depan)
+function buildEntry(test, answers, ts){
+  const e = { id: lpUid(), test, ts: ts || new Date().toISOString(), sumber: "internal", answers };
+  if(test==="mbti"){ const r = hitungMbti(answers); e.kode = r.code; e.dims = r.res; }
+  if(test==="big5") e.skor = hitungBig5(answers);
+  if(test==="disc"){ e.skor = hitungDisc(answers); const o = Object.keys(e.skor).sort((a,b)=>e.skor[b]-e.skor[a]); e.kode = o[0]+o[1]; }
+  if(test==="riasec"){ e.skor = hitungRiasec(answers); const o = Object.keys(e.skor).sort((a,b)=>e.skor[b]-e.skor[a]); e.kode = o.slice(0,3).map(hollandLetter).join(""); }
+  if(test==="eq") e.skor = hitungEq(answers);
+  return e;
+}
+function addEntry(e){ const d = db(); d.history.push(e); dbSave(d); return e.id; }
+function getEntry(id){ return db().history.find(h=>h.id===id); }
+function latestEntry(test){
+  return db().history.filter(h=>h.test===test).sort((a,b)=>new Date(b.ts)-new Date(a.ts))[0];
+}
+function historySorted(){ return db().history.slice().sort((a,b)=>new Date(b.ts)-new Date(a.ts)); }
+
+function headline(e){
+  if(e.test==="mbti") return `${e.kode} — ${MBTI_TYPES[e.kode]?.nick||""}`;
+  if(e.test==="big5" && e.skor) return `O ${e.skor.O} · C ${e.skor.C} · E ${e.skor.E} · A ${e.skor.A} · N ${e.skor.N}`;
+  if(e.test==="disc") return `${e.kode} — ${(DISC_COMBO[e.kode]||"").split("—")[0].trim()}`;
+  if(e.test==="riasec") return `Kode Holland: ${e.kode}`;
+  if(e.test==="eq" && e.skor) return `EQ ${e.skor.total}/100`;
+  if(e.test==="lain"){ const h=(e.hasil||"").replace(/\s+/g," ").trim(); return h? h.slice(0,60)+(h.length>60?"…":"") : (e.namaTes||"Tes eksternal"); }
+  return "";
+}
+
+// ═══════════════ NAVIGASI ═══════════════
+function show(id){ for(const v of ["vHome","vTest","vResult"]) LPROOT.getElementById(v).style.display = v===id ? "" : "none"; window.scrollTo(0,0); }
+function goHome(){ renderHome(); show("vHome"); }
+
+function renderHome(){
+  const hist = historySorted();
+  let cards = "";
+  for(const [key,t] of Object.entries(TESTS)){
+    const last = latestEntry(key);
+    const n = hist.filter(h=>h.test===key).length;
+    cards += `<div class="tcard" onclick="${last?`showEntry('${last.id}')`:`startTest('${key}')`}">
+      <div class="stripe" style="background:${t.warna}"></div>
+      <div class="ic">${t.ikon}</div>
+      <h3>${t.nama}</h3>
+      <div class="meta">${t.meta}</div>
+      <div class="desc">${t.desc}</div>
+      ${last
+        ? `<span class="badge done">✔ ${lpEsc(headline(last))} · ${tglID(last.ts)}</span><br>
+           <span class="badge" onclick="event.stopPropagation();startTest('${key}')">↻ Ulangi tes</span>
+           ${n>1?`<span class="badge" onclick="event.stopPropagation();renderHistory()">📜 ${n}× dikerjakan</span>`:""}`
+        : `<span class="badge">▶ Mulai tes</span>`}
+    </div>`;
+  }
+  const nHist = hist.length;
+  LPROOT.getElementById("vHome").innerHTML = `
+    <div class="card">
+      <h2>Selamat datang 👋</h2>
+      <p class="muted">Lima asesmen kepribadian yang lazim digunakan HR profesional — semua dinilai dengan skoring psikometri baku, tanpa AI, tanpa internet.
+      Jawablah <b>jujur dan spontan</b> (bukan "jawaban ideal") — tidak ada benar/salah. Setiap hasil otomatis <b>diarsipkan ke riwayat</b> — mengulang tes tidak menghapus hasil lama.</p>
+    </div>
+    <div class="grid">${cards}</div>
+    <div class="card" style="margin-top:16px">
+      <h2>📜 Riwayat & Arsip Hasil</h2>
+      <p class="muted">${nHist ? `<b>${nHist} hasil</b> tersimpan permanen di arsip — dari tes internal maupun tes online yang Anda catat.` : "Belum ada hasil di arsip. Kerjakan tes di atas, atau catat hasil tes online yang pernah Anda ikuti."}</p>
+      <div class="row">
+        ${nHist?`<button class="btn" onclick="renderHistory()">📜 Lihat Riwayat (${nHist})</button>`:""}
+        <button class="btn sec" onclick="renderManualForm()">➕ Catat Hasil Tes Online</button>
+        ${nHist?`<button class="btn sec" onclick="renderReport()">📄 Laporan Gabungan</button>`:""}
+        ${nHist?`<button class="btn ghost sm" onclick="exportBackup()">💾 Ekspor Backup</button>`:""}
+        <button class="btn ghost sm" onclick="LPROOT.getElementById('impFile').click()">📥 Impor Backup</button>
+        <input type="file" id="impFile" accept=".json" style="display:none" onchange="importBackup(this)">
+      </div>
+    </div>`;
+}
+
+// ═══════════════ MESIN TES ═══════════════
+let RUN = null;
+function startTest(key){
+  const qs = TESTS[key].q();
+  RUN = { key, i: 0, answers: new Array(qs.length).fill(null) };
+  renderQuestion(); show("vTest");
+}
+function renderQuestion(){
+  const t = TESTS[RUN.key], qs = t.q(), q = qs[RUN.i];
+  const labels = SKALA[t.skala];
+  const dots = ["😖","🙁","😐","🙂","😍"];
+  const pct = Math.round(RUN.i / qs.length * 100);
+  LPROOT.getElementById("vTest").innerHTML = `
+    <div class="card">
+      <div class="qnum">${t.ikon} <b>${t.nama}</b> — pertanyaan ${RUN.i+1} dari ${qs.length}</div>
+      <div class="progress"><div style="width:${pct}%"></div></div>
+      <div class="qtext">${lpEsc(q.t)}</div>
+      <div class="likert">
+        ${labels.map((l,idx)=>`<button class="${RUN.answers[RUN.i]===idx+1?'on':''}" onclick="answer(${idx+1})"><span class="dot">${dots[idx]}</span>${l}</button>`).join("")}
+      </div>
+      <div class="row">
+        ${RUN.i>0 ? `<button class="btn ghost sm" onclick="RUN.i--;renderQuestion()">← Sebelumnya</button>` : ""}
+        <button class="btn ghost sm" onclick="if(confirm('Keluar? Jawaban tes ini akan hilang.'))goHome()">✕ Batal</button>
+      </div>
+    </div>`;
+}
+function answer(v){
+  RUN.answers[RUN.i] = v;
+  const qs = TESTS[RUN.key].q();
+  if(RUN.i < qs.length-1){ RUN.i++; setTimeout(renderQuestion, 120); }
+  else finishTest();
+}
+function finishTest(){
+  const id = addEntry(buildEntry(RUN.key, RUN.answers));
+  RUN = null;
+  showEntry(id);
+}
+function showEntry(id){
+  const e = getEntry(id);
+  if(!e) return goHome();
+  const map = { mbti:renderMbtiResult, big5:renderBig5Result, disc:renderDiscResult, riasec:renderRiasecResult, eq:renderEqResult, lain:renderLainResult };
+  map[e.test](e);
+  show("vResult");
+}
+function hapusEntry(id){
+  if(!confirm("Hapus hasil ini dari arsip? Tindakan ini tidak bisa dibatalkan.")) return;
+  const d = db(); d.history = d.history.filter(h=>h.id!==id); dbSave(d); renderHistory();
+}
+
+// ═══════════════ UTIL SKOR ═══════════════
+function pct0100(sum, n){ return Math.round((sum - n) / (4*n) * 100); }
+function band(p){ return p>=66 ? ["TINGGI","#2e9e6b"] : p>=36 ? ["SEDANG","#d5a53a"] : ["RENDAH","#3a7bd5"]; }
+function srcLine(e){
+  const badge = e.sumber==="internal"
+    ? `<span class="srcbadge">TES INTERNAL</span>`
+    : `<span class="srcbadge ext">TES ONLINE — ${lpEsc(e.sumber)}</span>`;
+  return `<div class="srcline">${badge} &nbsp;Dikerjakan: <b>${tglID(e.ts)}</b>${e.catatan?` · Catatan: ${lpEsc(e.catatan)}`:""}</div>`;
+}
+function footerBtns(e){
+  return `<div class="row no-print">
+    <button class="btn" onclick="goHome()">🏠 Beranda</button>
+    ${e.sumber==="internal"?`<button class="btn sec" onclick="startTest('${e.test}')">↻ Ulangi Tes</button>`:""}
+    <button class="btn sec" onclick="window.print()">🖨 Cetak / PDF</button>
+    <button class="btn ghost" onclick="renderHistory()">📜 Riwayat</button>
+    <button class="btn ghost" onclick="renderReport()">📄 Laporan Gabungan</button>
+  </div>`;
+}
+
+// ═══════════════ SKORING ═══════════════
+function hitungMbti(answers){
+  const dims = { EI:0, SN:0, TF:0, JP:0 };
+  MBTI_QUESTIONS.forEach((q,i)=>{ dims[q.d] += (answers[i]-3) * q.k; });
+  const res = {}; let code = "";
+  for(const [dim, sum] of Object.entries(dims)){
+    const nItem = MBTI_QUESTIONS.filter(q=>q.d===dim).length;
+    const pctFirst = Math.round((sum + 2*nItem) / (4*nItem) * 100);
+    const winner = pctFirst >= 50 ? dim[0] : dim[1];
+    code += winner;
+    res[dim] = { pctFirst, winner, pctWin: pctFirst>=50 ? pctFirst : 100-pctFirst };
+  }
+  return { code, res };
+}
+function hitungBig5(answers){
+  const sums = {O:0,C:0,E:0,A:0,N:0};
+  BIG5_QUESTIONS.forEach((q,i)=>{ sums[q.d] += q.r ? 6-answers[i] : answers[i]; });
+  const out = {}; for(const k of Object.keys(sums)) out[k] = pct0100(sums[k], 10); return out;
+}
+function hitungDisc(answers){
+  const sums = {D:0,I:0,S:0,C:0};
+  DISC_QUESTIONS.forEach((q,i)=>{ sums[q.d] += answers[i]; });
+  const out = {}; for(const k of Object.keys(sums)) out[k] = pct0100(sums[k], 7); return out;
+}
+function hitungRiasec(answers){
+  const sums = {R:0,I:0,A:0,S:0,E:0,K:0};
+  RIASEC_QUESTIONS.forEach((q,i)=>{ sums[q.d] += answers[i]; });
+  const out = {}; for(const k of Object.keys(sums)) out[k] = pct0100(sums[k], 6); return out;
+}
+function hitungEq(answers){
+  const sums = {SA:0,SM:0,SO:0,RM:0};
+  EQ_QUESTIONS.forEach((q,i)=>{ sums[q.d] += answers[i]; });
+  const out = {}; for(const k of Object.keys(sums)) out[k] = pct0100(sums[k], 5);
+  out.total = Math.round((out.SA+out.SM+out.SO+out.RM)/4); return out;
+}
+const hollandLetter = k => k==="K" ? "C" : k;
+
+// ═══════════════ HASIL: MBTI ═══════════════
+function kejelasan(p){
+  const gap = Math.abs(p-50);
+  return gap<=10 ? "sedikit condong (borderline — bisa berubah antar situasi)" :
+         gap<=20 ? "preferensi sedang" :
+         gap<=35 ? "preferensi jelas" : "preferensi sangat jelas";
+}
+const DIM_LABELS = {
+  EI:["E — Ekstrover","I — Introver","Ke mana energi Anda mengalir"],
+  SN:["S — Sensing","N — Intuition","Cara Anda menyerap informasi"],
+  TF:["T — Thinking","F — Feeling","Dasar Anda mengambil keputusan"],
+  JP:["J — Judging","P — Perceiving","Gaya Anda menata kehidupan"],
+};
+function renderMbtiResult(e){
+  const code = e.kode, res = e.dims;
+  const tp = MBTI_TYPES[code], grup = MBTI_GROUPS[tp.grup];
+  const rank = mbtiRanking();
+  const myRank = rank.findIndex(r=>r.kode===code)+1;
+  const roles = ["Dominan","Sekunder (pendukung)","Tersier","Inferior (titik lemah)"];
+
+  const dimbars = res ? Object.entries(res).map(([dim,r])=>{
+    const [l1,l2,ket] = DIM_LABELS[dim];
+    return `<div class="dimbar">
+      <div class="lbl"><span class="${r.winner===dim[0]?'win':''}">${l1} · ${r.pctFirst}%</span><span style="color:var(--muted);font-size:11.5px">${ket}</span><span class="${r.winner===dim[1]?'win':''}">${100-r.pctFirst}% · ${l2}</span></div>
+      <div class="track"><div style="width:${r.pctFirst}%; background:linear-gradient(90deg,${grup.warna},${grup.warna}cc)"></div></div>
+      <div class="note">→ Anda condong ke <b>${r.winner}</b> (${r.pctWin}%) — ${kejelasan(r.pctFirst)}</div>
+    </div>`;
+  }).join("") : "";
+
+  const fnCards = tp.fungsi.map((f,i)=>{
+    const [nm,ds] = FUNGSI_KOGNITIF[f];
+    return `<div class="fn"><div class="role">${roles[i]}</div><div class="nm">${nm}</div><div class="ds">${ds}</div></div>`;
+  }).join("");
+
+  const rankRows = rank.map((r,i)=>{
+    const g = MBTI_GROUPS[r.grup];
+    return `<tr class="${r.kode===code?'me':''}">
+      <td>${i+1}</td><td><b>${r.kode}</b> — ${r.nick} ${r.kode===code?"⭐ (Anda)":""}</td>
+      <td><span style="color:${g.warna};font-weight:700">${r.grup}</span></td>
+      <td>${r.pct}%</td>
+      <td><div class="minibar"><div style="width:${r.pct/14*100}%;background:${g.warna}"></div></div></td>
+    </tr>`;
+  }).join("");
+
+  LPROOT.getElementById("vResult").innerHTML = `
+    <div class="card hero-type" style="border-top:6px solid ${grup.warna}">
+      <div class="code" style="color:${grup.warna}">${code}</div>
+      <div class="nick">${tp.nick}</div>
+      <div class="tag">"${tp.tagline}"</div>
+      <span class="gbadge" style="background:${grup.warna}">Kelompok ${tp.grup} — ${grup.desc}</span>
+      ${srcLine(e)}
+    </div>
+
+    ${res ? `<div class="card"><h2>📊 Skor per Dimensi</h2>${dimbars}
+      <div class="callout">Semakin dekat ke 50%, semakin fleksibel Anda di dimensi itu (bisa berbeda antara situasi kerja vs pribadi). Skor "borderline" wajar — MBTI mengukur <i>preferensi</i>, bukan kemampuan.</div>
+    </div>` : ""}
+
+    <div class="card"><h2>🧬 Siapa ${code} Itu</h2>
+      <p style="font-size:14.5px">${tp.desc}</p>
+      <h3>Susunan Fungsi Kognitif</h3>
+      <p class="muted" style="font-size:13px">Menurut teori Jung, setiap tipe memakai 4 "mesin mental" dengan urutan kekuatan berbeda — inilah yang menjelaskan <i>mengapa</i> Anda berperilaku seperti tipe Anda.</p>
+      <div class="fn-stack">${fnCards}</div>
+    </div>
+
+    <div class="card"><div class="cols2">
+      <div><h2>💪 Kekuatan</h2><ul class="clean">${tp.kekuatan.map(k=>`<li>${k}</li>`).join("")}</ul></div>
+      <div><h2>🌧 Titik Lemah</h2><ul class="clean warn">${tp.kelemahan.map(k=>`<li>${k}</li>`).join("")}</ul></div>
+    </div></div>
+
+    <div class="card"><h2>💼 ${code} di Dunia Kerja</h2>
+      <p style="font-size:14px"><b>Gaya kerja:</b> ${tp.kerja}</p>
+      <p style="font-size:14px; margin-top:8px"><b>Gaya komunikasi:</b> ${tp.komunikasi}</p>
+      <h3>Profesi yang Banyak Diisi Tipe ${code}</h3>
+      <div class="chips">${tp.karier.map(k=>`<span class="chip">${k}</span>`).join("")}</div>
+      <p class="muted" style="font-size:12px; margin-top:10px">Figur yang sering diasosiasikan dengan ${code} (perkiraan populer, bukan hasil tes resmi): ${tp.tokoh.join(" · ")}</p>
+    </div>
+
+    <div class="card"><h2>🏆 Ranking Kelangkaan 16 Tipe</h2>
+      <p class="muted" style="font-size:13px">Perkiraan proporsi populasi (data survei AS, Myers & Briggs Foundation). Tipe Anda <b>${code}</b> berada di peringkat <b>#${myRank} dari 16</b> — ${myRank<=5?"termasuk tipe yang umum dijumpai":myRank<=11?"kelangkaan menengah":"termasuk tipe yang langka"}.</p>
+      <table class="rank">
+        <tr><th>#</th><th>Tipe</th><th>Kelompok</th><th>Populasi</th><th></th></tr>
+        ${rankRows}
+      </table>
+    </div>
+
+    <div class="card"><h2>🌱 Saran Pengembangan untuk ${code}</h2>
+      <ul class="clean tip">${tp.tips.map(k=>`<li>${k}</li>`).join("")}</ul>
+      <div class="callout green">Catatan HR: MBTI paling tepat dipakai untuk <b>pemahaman diri, komunikasi tim, dan pengembangan</b> — bukan sebagai satu-satunya dasar keputusan seleksi. Untuk konteks seleksi, kombinasikan dengan Big Five & DISC di aplikasi ini.</div>
+    </div>
+    ${footerBtns(e)}`;
+}
+
+// ═══════════════ HASIL: BIG FIVE ═══════════════
+function renderBig5Result(e){
+  const sc = e.skor;
+  const bars = Object.entries(BIG5_TRAITS).map(([k,tr])=>{
+    const p = sc[k]; const [lv,lc] = band(p);
+    return `<div class="bar"><div class="lbl"><span>${tr.nama}</span><span><span class="lvl" style="background:${lc}">${lv}</span> &nbsp;${p}/100</span></div>
+      <div class="track"><div style="width:${p}%;background:${tr.warna}"></div></div></div>`;
+  }).join("");
+  const cards = Object.entries(BIG5_TRAITS).map(([k,tr])=>{
+    const p = sc[k]; const [lv] = band(p);
+    const interp = lv==="TINGGI" ? tr.tinggi : lv==="SEDANG" ? tr.sedang : tr.rendah;
+    const extra = k==="N" ? `<p class="muted" style="font-size:13px;margin-top:6px">↔ Dibaca terbalik: <b>Stabilitas Emosi Anda = ${100-p}/100</b>.</p>` : "";
+    return `<div class="card" style="border-left:5px solid ${tr.warna}">
+      <h3 style="margin-top:0">${tr.nama} — <span style="color:${tr.warna}">${p}/100 (${lv})</span></h3>
+      <p class="muted" style="font-size:13px">${tr.apa}</p>
+      <p style="font-size:14px;margin-top:8px"><b>Profil Anda:</b> ${interp}</p>${extra}
+      <div class="callout" style="border-color:${tr.warna}">💼 <b>Makna di mata HR:</b> ${tr.hr}</div>
+    </div>`;
+  }).join("");
+  LPROOT.getElementById("vResult").innerHTML = `
+    <div class="card"><h2>🌊 Hasil Big Five (OCEAN)</h2>
+      <p class="muted" style="font-size:13.5px">Big Five adalah model kepribadian paling tervalidasi secara ilmiah dan paling banyak dipakai dalam asesmen kerja modern. Tidak ada skor "baik/buruk" — setiap posisi punya kekuatan di konteks pekerjaan yang berbeda.</p>
+      ${bars}${srcLine(e)}</div>
+    ${cards}
+    ${footerBtns(e)}`;
+}
+
+// ═══════════════ HASIL: DISC ═══════════════
+function renderDiscResult(e){
+  const sc = e.skor;
+  const order = Object.keys(sc).sort((a,b)=>sc[b]-sc[a]);
+  const [p1,p2] = order;
+  const combo = DISC_COMBO[p1+p2] || "";
+  const s1 = DISC_STYLES[p1], s2 = DISC_STYLES[p2];
+  const bars = order.map(k=>{
+    const s = DISC_STYLES[k];
+    return `<div class="bar"><div class="lbl"><span>${s.ikon} ${s.nama}</span><span>${sc[k]}/100</span></div>
+      <div class="track"><div style="width:${sc[k]}%;background:${s.warna}"></div></div></div>`;
+  }).join("");
+  const styleCard = (s, p, label)=>`
+    <div class="card" style="border-left:5px solid ${s.warna}">
+      <h3 style="margin-top:0">${s.ikon} ${label}: ${s.nama} — ${p}/100</h3>
+      <p style="font-size:14px">${s.inti}</p>
+      <div class="cols2" style="margin-top:10px">
+        <div><b style="font-size:13.5px">Kekuatan</b><ul class="clean">${s.kekuatan.map(k=>`<li>${k}</li>`).join("")}</ul></div>
+        <div><b style="font-size:13.5px">Risiko / titik lemah</b><ul class="clean warn">${s.kelemahan.map(k=>`<li>${k}</li>`).join("")}</ul></div>
+      </div>
+      <p style="font-size:13.5px;margin-top:8px">🔋 <b>Termotivasi oleh:</b> ${s.motivasi}<br>😨 <b>Ketakutan terbesar:</b> ${s.takut}</p>
+      <div class="callout" style="border-color:${s.warna}">🗣 <b>Cara berkomunikasi dengan gaya ini:</b> ${s.komunikasi}</div>
+      <b style="font-size:13.5px">Peran yang cocok</b>
+      <div class="chips">${s.karier.map(k=>`<span class="chip">${k}</span>`).join("")}</div>
+    </div>`;
+  LPROOT.getElementById("vResult").innerHTML = `
+    <div class="card hero-type" style="border-top:6px solid ${s1.warna}">
+      <div class="code" style="color:${s1.warna};letter-spacing:2px">${p1}${p2}</div>
+      <div class="nick">${combo.split("—")[0].trim()}</div>
+      <div class="tag">${combo.split("—")[1]?.trim()||""}</div>
+      <span class="gbadge" style="background:${s1.warna}">Gaya utama: ${s1.nama} · Sekunder: ${s2.nama}</span>
+      ${srcLine(e)}
+    </div>
+    <div class="card"><h2>📊 Profil DISC Anda</h2>${bars}
+      <div class="callout">DISC menggambarkan <b>gaya perilaku kerja yang tampak</b> — cara Anda merespons tantangan (D), orang (I), tempo (S), dan aturan (C). HR memakainya untuk penempatan, komposisi tim, dan gaya manajemen yang pas.</div>
+    </div>
+    ${styleCard(s1, sc[p1], "Gaya Utama")}
+    ${styleCard(s2, sc[p2], "Gaya Sekunder")}
+    ${footerBtns(e)}`;
+}
+
+// ═══════════════ HASIL: RIASEC ═══════════════
+function renderRiasecResult(e){
+  const sc = e.skor;
+  // dari skor penuh, atau dari kode saja (entri manual)
+  const order = sc ? Object.keys(sc).sort((a,b)=>sc[b]-sc[a])
+                   : e.kode.split("").map(c=>c==="C"?"K":c);
+  const top3 = order.slice(0,3);
+  const kode = top3.map(hollandLetter).join("");
+  const bars = sc ? order.map(k=>{
+    const t = RIASEC_TYPES[k];
+    return `<div class="bar"><div class="lbl"><span>${t.ikon} ${t.nama}</span><span>${sc[k]}/100</span></div>
+      <div class="track"><div style="width:${sc[k]}%;background:${t.warna}"></div></div></div>`;
+  }).join("") : "";
+  const cards = top3.map((k,i)=>{
+    const t = RIASEC_TYPES[k];
+    return `<div class="card" style="border-left:5px solid ${t.warna}">
+      <h3 style="margin-top:0">${t.ikon} #${i+1} — ${t.nama}${sc?` (${sc[k]}/100)`:""}</h3>
+      <p style="font-size:14px">${t.desc}</p>
+      <b style="font-size:13.5px">Contoh profesi</b>
+      <div class="chips">${t.karier.map(c=>`<span class="chip">${c}</span>`).join("")}</div>
+    </div>`;
+  }).join("");
+  LPROOT.getElementById("vResult").innerHTML = `
+    <div class="card hero-type" style="border-top:6px solid ${RIASEC_TYPES[top3[0]].warna}">
+      <div class="code" style="color:${RIASEC_TYPES[top3[0]].warna};letter-spacing:4px">${kode}</div>
+      <div class="nick">Kode Holland Anda</div>
+      <div class="tag">Kombinasi 3 minat teratas — urutan menunjukkan prioritas</div>
+      ${srcLine(e)}
+    </div>
+    ${sc?`<div class="card"><h2>📊 Peta Minat Karier (6 Dimensi)</h2>${bars}
+      <div class="callout">Model RIASEC (John Holland) adalah dasar dari <b>O*NET Interest Profiler</b> milik Dept. Tenaga Kerja AS. Karier paling memuaskan biasanya berada di irisan 2–3 minat teratas Anda — bukan hanya minat #1.</div>
+    </div>`:""}
+    ${cards}
+    <div class="card"><h2>💡 Cara Memakai Kode ${kode}</h2>
+      <ul class="clean tip">
+        <li>Cari pekerjaan yang menggabungkan minimal 2 huruf teratas Anda — mis. kode ${kode[0]}${kode[1]} berarti carilah peran ${RIASEC_TYPES[top3[0]].nama.split("—")[0].trim()} yang juga mengandung unsur ${RIASEC_TYPES[top3[1]].nama.split("—")[0].trim()}.</li>
+        ${sc?`<li>Skor terendah (${RIASEC_TYPES[order[5]].nama}) menandakan jenis tugas yang paling cepat menguras energi Anda — minimalkan, atau delegasikan.</li>`:""}
+        <li>Bandingkan dengan hasil resmi gratis di O*NET Interest Profiler (mynextmove.org/explore/ip).</li>
+      </ul>
+    </div>
+    ${footerBtns(e)}`;
+}
+
+// ═══════════════ HASIL: EQ ═══════════════
+function renderEqResult(e){
+  const sc = e.skor;
+  const [lvT,lcT] = band(sc.total);
+  const punyaDomain = ["SA","SM","SO","RM"].every(k=>typeof sc[k]==="number");
+  const bars = punyaDomain ? Object.entries(EQ_DOMAINS).map(([k,dm])=>{
+    const [lv,lc] = band(sc[k]);
+    return `<div class="bar"><div class="lbl"><span>${dm.ikon} ${dm.nama}</span><span><span class="lvl" style="background:${lc}">${lv}</span> &nbsp;${sc[k]}/100</span></div>
+      <div class="track"><div style="width:${sc[k]}%;background:${dm.warna}"></div></div></div>`;
+  }).join("") : "";
+  const cards = punyaDomain ? Object.entries(EQ_DOMAINS).map(([k,dm])=>{
+    return `<div class="card" style="border-left:5px solid ${dm.warna}">
+      <h3 style="margin-top:0">${dm.ikon} ${dm.nama} — ${sc[k]}/100</h3>
+      <p style="font-size:14px">${dm.desc}</p>
+      <div class="callout" style="border-color:${dm.warna}">🏋️ <b>Latihan peningkatan:</b> ${dm.tips}</div>
+    </div>`;
+  }).join("") : "";
+  LPROOT.getElementById("vResult").innerHTML = `
+    <div class="card hero-type" style="border-top:6px solid #d5762a">
+      <div class="score-big" style="color:#d5762a">${sc.total}<span style="font-size:18px;color:var(--muted)">/100</span></div>
+      <div class="nick">Skor EQ Keseluruhan — <span class="lvl" style="background:${lcT}">${lvT}</span></div>
+      <div class="tag">Kecerdasan emosional (model Goleman)</div>
+      ${srcLine(e)}
+    </div>
+    ${punyaDomain?`<div class="card"><h2>📊 Skor per Domain</h2>${bars}
+      <div class="callout">Riset TalentSmart: EQ menyumbang ±58% kinerja di berbagai pekerjaan dan menjadi pembeda terkuat pada posisi kepemimpinan. Berbeda dari IQ, <b>EQ bisa dilatih</b> — mulai dari domain skor terendah Anda.</div>
+    </div>`:""}
+    ${cards}
+    ${footerBtns(e)}`;
+}
+
+// ═══════════════ HASIL: TES LAINNYA (eksternal) ═══════════════
+function renderLainResult(e){
+  LPROOT.getElementById("vResult").innerHTML = `
+    <div class="card hero-type" style="border-top:6px solid #6b6a85">
+      <div class="ic" style="font-size:40px">📝</div>
+      <div class="nick" style="font-size:22px">${lpEsc(e.namaTes)}</div>
+      ${srcLine(e)}
+    </div>
+    <div class="card"><h2>Hasil</h2>
+      <p style="font-size:14.5px; white-space:pre-wrap">${lpEsc(e.hasil)}</p>
+    </div>
+    ${footerBtns(e)}`;
+}
+
+// ═══════════════ CATAT HASIL TES ONLINE ═══════════════
+function renderManualForm(){
+  LPROOT.getElementById("vResult").innerHTML = `
+    <div class="card">
+      <h2>➕ Catat Hasil Tes Online / Eksternal</h2>
+      <p class="muted" style="font-size:13.5px">Pernah ikut tes di 16Personalities, Truity, BigFive-Test, O*NET, tes SPI/適性検査 kantor, atau asesmen lain? Catat hasilnya di sini agar terarsip bersama riwayat tes internal — lengkap dengan tanggal dan sumbernya.</p>
+      <div class="field"><label>Jenis tes</label>
+        <select id="mJenis" onchange="manualFields()">
+          <option value="mbti">🧭 MBTI (mis. dari 16Personalities)</option>
+          <option value="big5">🌊 Big Five / OCEAN</option>
+          <option value="disc">🎯 DISC</option>
+          <option value="riasec">🗺️ RIASEC / Holland</option>
+          <option value="eq">❤️‍🔥 EQ</option>
+          <option value="lain">📝 Tes lainnya (SPI, StrengthsFinder, Enneagram, dll.)</option>
+        </select></div>
+      <div class="cols2">
+        <div class="field"><label>Sumber tes</label><input id="mSumber" placeholder="mis. 16personalities.com / SPI kantor">
+          <div class="hint">Nama situs / penyelenggara tes</div></div>
+        <div class="field"><label>Tanggal tes</label><input id="mTgl" type="date" value="${new Date().toISOString().slice(0,10)}"></div>
+      </div>
+      <div id="mDetail"></div>
+      <div class="field"><label>Catatan (opsional)</label><input id="mCatatan" placeholder="mis. dikerjakan saat proses lamaran kerja X"></div>
+      <div class="row">
+        <button class="btn" onclick="simpanManual()">💾 Simpan ke Arsip</button>
+        <button class="btn ghost" onclick="goHome()">✕ Batal</button>
+      </div>
+    </div>`;
+  show("vResult");
+  manualFields();
+}
+function manualFields(){
+  const j = LPROOT.getElementById("mJenis").value;
+  const num = (id,lbl)=>`<div class="field"><label>${lbl}</label><input id="${id}" type="number" min="0" max="100" placeholder="0–100"></div>`;
+  let html = "";
+  if(j==="mbti"){
+    html = `<div class="field"><label>Tipe MBTI hasil tes</label>
+      <select id="mKode">${Object.entries(MBTI_TYPES).map(([k,v])=>`<option value="${k}">${k} — ${v.nick}</option>`).join("")}</select></div>
+      <p class="muted" style="font-size:12.5px; margin-bottom:8px">Opsional — isi persentase per dimensi bila tersedia (mis. 16Personalities menampilkan "Introverted 87%" → isi E = 13):</p>
+      <div class="fgrid">${num("mE","% E (Ekstrover)")}${num("mS","% S (Sensing)")}${num("mT","% T (Thinking)")}${num("mJ","% J (Judging)")}</div>`;
+  } else if(j==="big5"){
+    html = `<div class="fgrid">${num("mO","Openness")}${num("mC","Conscientiousness")}${num("mEx","Extraversion")}${num("mA","Agreeableness")}${num("mN","Neuroticism")}</div>
+      <p class="muted" style="font-size:12px">Semua skor wajib diisi (0–100). Bila sumber memakai skala lain, konversikan dulu ke 0–100.</p>`;
+  } else if(j==="disc"){
+    html = `<div class="fgrid">${num("mD","D (Dominance)")}${num("mI","I (Influence)")}${num("mSs","S (Steadiness)")}${num("mCc","C (Conscientiousness)")}</div>
+      <p class="muted" style="font-size:12px">Semua skor wajib diisi (0–100).</p>`;
+  } else if(j==="riasec"){
+    html = `<div class="field"><label>Kode Holland (3 huruf)</label><input id="mKode" placeholder="mis. SEA" maxlength="3" style="text-transform:uppercase">
+      <div class="hint">Huruf yang sah: R, I, A, S, E, C — urutkan dari minat terkuat</div></div>`;
+  } else if(j==="eq"){
+    html = `${num("mTotal","Skor EQ total (wajib)")}
+      <p class="muted" style="font-size:12.5px; margin-bottom:8px">Opsional — skor per domain bila tersedia:</p>
+      <div class="fgrid">${num("mSA","Kesadaran Diri")}${num("mSM","Pengelolaan Diri")}${num("mSO","Kesadaran Sosial")}${num("mRM","Pengelolaan Hubungan")}</div>`;
+  } else {
+    html = `<div class="field"><label>Nama tes</label><input id="mNama" placeholder="mis. SPI3, CliftonStrengths, Enneagram, 玉手箱"></div>
+      <div class="field"><label>Hasil</label><textarea id="mHasil" rows="4" placeholder="Tulis hasil / skor / tipe yang didapat, sedetail yang Anda mau"></textarea></div>`;
+  }
+  LPROOT.getElementById("mDetail").innerHTML = html;
+}
+function numVal(id){ const el = LPROOT.getElementById(id); if(!el||el.value==="") return null; const v = Number(el.value); return isNaN(v)?null:Math.max(0,Math.min(100,Math.round(v))); }
+function simpanManual(){
+  const j = LPROOT.getElementById("mJenis").value;
+  const sumber = LPROOT.getElementById("mSumber").value.trim() || "tes online";
+  const tgl = LPROOT.getElementById("mTgl").value;
+  const catatan = LPROOT.getElementById("mCatatan").value.trim();
+  const e = { id: lpUid(), test: j, sumber, catatan,
+              ts: tgl ? new Date(tgl+"T12:00:00").toISOString() : new Date().toISOString() };
+  if(j==="mbti"){
+    e.kode = LPROOT.getElementById("mKode").value;
+    const p = { EI:numVal("mE"), SN:numVal("mS"), TF:numVal("mT"), JP:numVal("mJ") };
+    if(Object.values(p).every(v=>v!==null)){
+      e.dims = {};
+      for(const [dim,pctFirst] of Object.entries(p)){
+        const winner = pctFirst>=50 ? dim[0] : dim[1];
+        e.dims[dim] = { pctFirst, winner, pctWin: pctFirst>=50?pctFirst:100-pctFirst };
+      }
+    }
+  } else if(j==="big5"){
+    const s = { O:numVal("mO"), C:numVal("mC"), E:numVal("mEx"), A:numVal("mA"), N:numVal("mN") };
+    if(Object.values(s).some(v=>v===null)) return alert("Isi kelima skor Big Five (0–100) terlebih dahulu.");
+    e.skor = s;
+  } else if(j==="disc"){
+    const s = { D:numVal("mD"), I:numVal("mI"), S:numVal("mSs"), C:numVal("mCc") };
+    if(Object.values(s).some(v=>v===null)) return alert("Isi keempat skor DISC (0–100) terlebih dahulu.");
+    e.skor = s;
+    const o = Object.keys(s).sort((a,b)=>s[b]-s[a]); e.kode = o[0]+o[1];
+  } else if(j==="riasec"){
+    const kode = (LPROOT.getElementById("mKode").value||"").toUpperCase().trim();
+    if(!/^[RIASEC]{3}$/.test(kode)) return alert("Kode Holland harus 3 huruf dari R, I, A, S, E, C — mis. SEA.");
+    e.kode = kode;
+  } else if(j==="eq"){
+    const total = numVal("mTotal");
+    if(total===null) return alert("Isi skor EQ total (0–100) terlebih dahulu.");
+    e.skor = { total, SA:numVal("mSA"), SM:numVal("mSM"), SO:numVal("mSO"), RM:numVal("mRM") };
+  } else {
+    e.namaTes = LPROOT.getElementById("mNama").value.trim();
+    e.hasil = LPROOT.getElementById("mHasil").value.trim();
+    if(!e.namaTes || !e.hasil) return alert("Isi nama tes dan hasilnya terlebih dahulu.");
+  }
+  addEntry(e);
+  showEntry(e.id);
+}
+
+// ═══════════════ RIWAYAT ═══════════════
+function renderHistory(){
+  const hist = historySorted();
+  const info = t => TESTS[t] || LAIN;
+  const items = hist.map(e=>{
+    const t = info(e.test);
+    return `<div class="hitem">
+      <div class="hic">${t.ikon}</div>
+      <div class="hmain">
+        <div class="htitle">${t.nama==="Tes Lainnya"?lpEsc(e.namaTes||t.nama):t.nama} — ${lpEsc(headline(e))}</div>
+        <div class="hsub">${tglID(e.ts)} · ${e.sumber==="internal"?'<span class="srcbadge">TES INTERNAL</span>':`<span class="srcbadge ext">ONLINE — ${lpEsc(e.sumber)}</span>`}${e.catatan?` · ${lpEsc(e.catatan)}`:""}</div>
+      </div>
+      <button class="btn sec sm" onclick="showEntry('${e.id}')">Lihat</button>
+      <button class="btn danger sm" onclick="hapusEntry('${e.id}')">🗑</button>
+    </div>`;
+  }).join("");
+
+  // ringkasan perkembangan per jenis tes (bila dikerjakan lebih dari sekali)
+  const perkembangan = Object.keys(TESTS).map(k=>{
+    const list = hist.filter(h=>h.test===k).sort((a,b)=>new Date(a.ts)-new Date(b.ts));
+    if(list.length<2) return "";
+    const jejak = list.map(e=> e.kode || (e.skor&&e.skor.total!==undefined?`EQ ${e.skor.total}`:"") || "•").join(" → ");
+    return `<li><b>${TESTS[k].nama}:</b> ${jejak}</li>`;
+  }).filter(Boolean).join("");
+
+  LPROOT.getElementById("vResult").innerHTML = `
+    <div class="card">
+      <h2>📜 Riwayat Hasil (${hist.length})</h2>
+      <p class="muted" style="font-size:13px">Semua hasil terarsip permanen — mengulang tes atau memperbarui aplikasi tidak menghapus riwayat. Urutan: terbaru di atas.</p>
+      ${items || '<p class="muted">Arsip masih kosong.</p>'}
+    </div>
+    ${perkembangan?`<div class="card"><h3 style="margin-top:0">📈 Jejak Perkembangan</h3>
+      <p class="muted" style="font-size:12.5px">Hasil dari waktu ke waktu (kiri = paling lama). Perubahan tipe/skor antar waktu itu normal — kepribadian diukur, bukan dihakimi.</p>
+      <ul class="clean tip">${perkembangan}</ul></div>`:""}
+    <div class="row no-print">
+      <button class="btn" onclick="goHome()">🏠 Beranda</button>
+      <button class="btn sec" onclick="renderManualForm()">➕ Catat Hasil Tes Online</button>
+      <button class="btn sec" onclick="exportBackup()">💾 Ekspor Backup</button>
+      <button class="btn ghost" onclick="renderReport()">📄 Laporan Gabungan</button>
+    </div>`;
+  show("vResult");
+}
+
+// ═══════════════ BACKUP ═══════════════
+function exportBackup(){
+  const blob = new Blob([JSON.stringify(db(), null, 2)], {type:"application/json"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = `lab-kepribadian-backup-${new Date().toISOString().slice(0,10)}.json`;
+  a.click();
+  URL.revokeObjectURL(a.href);
+}
+function importBackup(input){
+  const file = input.files[0]; if(!file) return;
+  const reader = new FileReader();
+  reader.onload = () => {
+    try{
+      const inc = JSON.parse(reader.result);
+      if(!Array.isArray(inc.history)) throw new Error("format");
+      const d = db();
+      const ada = new Set(d.history.map(h=>h.id));
+      let n = 0;
+      for(const h of inc.history){ if(h && h.id && !ada.has(h.id)){ d.history.push(h); n++; } }
+      dbSave(d);
+      alert(`Impor selesai — ${n} hasil baru digabungkan ke arsip (duplikat dilewati).`);
+      goHome();
+    }catch(err){ alert("File backup tidak valid."); }
+  };
+  reader.readAsText(file);
+  input.value = "";
+}
+
+// ═══════════════ LAPORAN GABUNGAN ═══════════════
+function renderReport(){
+  const tgl = new Date().toLocaleDateString("id-ID",{day:"numeric",month:"long",year:"numeric"});
+  let bagian = "";
+  const eM = latestEntry("mbti");
+  if(eM){
+    const tp = MBTI_TYPES[eM.kode], grup = MBTI_GROUPS[tp.grup];
+    bagian += `<div class="card" style="border-left:5px solid ${grup.warna}">
+      <h3 style="margin-top:0">🧭 MBTI: <span style="color:${grup.warna}">${eM.kode} — ${tp.nick}</span> (Kelompok ${tp.grup})</h3>
+      <p style="font-size:13.5px">${tp.tagline}${eM.dims?` — ${Object.values(eM.dims).map(r=>`${r.winner} ${r.pctWin}%`).join(" · ")}`:""}</p>
+      <p class="muted" style="font-size:13px"><b>Ringkas:</b> ${tp.desc}</p>
+      <p class="muted" style="font-size:12px">${tglID(eM.ts)} · sumber: ${eM.sumber==="internal"?"tes internal":lpEsc(eM.sumber)}</p></div>`;
+  }
+  const eB = latestEntry("big5");
+  if(eB && eB.skor){
+    const sc = eB.skor;
+    const topKey = Object.entries(sc).sort((a,b)=>b[1]-a[1])[0][0];
+    bagian += `<div class="card" style="border-left:5px solid #3a7bd5">
+      <h3 style="margin-top:0">🌊 Big Five (OCEAN)</h3>
+      <p style="font-size:13.5px">${Object.keys(BIG5_TRAITS).map(k=>`<b>${k}</b> ${sc[k]} (${band(sc[k])[0].toLowerCase()})`).join(" · ")}</p>
+      <p class="muted" style="font-size:13px">Stabilitas emosi: ${100-sc.N}/100. Dimensi paling menonjol: ${BIG5_TRAITS[topKey].nama}.</p>
+      <p class="muted" style="font-size:12px">${tglID(eB.ts)} · sumber: ${eB.sumber==="internal"?"tes internal":lpEsc(eB.sumber)}</p></div>`;
+  }
+  const eD = latestEntry("disc");
+  if(eD && eD.skor){
+    const sc = eD.skor;
+    const order = Object.keys(sc).sort((a,b)=>sc[b]-sc[a]);
+    const combo = DISC_COMBO[order[0]+order[1]]||"";
+    bagian += `<div class="card" style="border-left:5px solid ${DISC_STYLES[order[0]].warna}">
+      <h3 style="margin-top:0">🎯 DISC: ${order[0]}${order[1]} — ${combo.split("—")[0].trim()}</h3>
+      <p style="font-size:13.5px">${order.map(k=>`<b>${k}</b> ${sc[k]}`).join(" · ")}</p>
+      <p class="muted" style="font-size:13px">${combo}</p>
+      <p class="muted" style="font-size:12px">${tglID(eD.ts)} · sumber: ${eD.sumber==="internal"?"tes internal":lpEsc(eD.sumber)}</p></div>`;
+  }
+  const eR = latestEntry("riasec");
+  if(eR){
+    const top = eR.kode.split("").map(c=>c==="C"?"K":c);
+    bagian += `<div class="card" style="border-left:5px solid ${RIASEC_TYPES[top[0]].warna}">
+      <h3 style="margin-top:0">🗺️ Kode Holland: ${eR.kode}</h3>
+      <p style="font-size:13.5px">${top.map(k=>`${RIASEC_TYPES[k].ikon} ${RIASEC_TYPES[k].nama.split("—")[0].trim()}${eR.skor?` ${eR.skor[k]}`:""}`).join(" · ")}</p>
+      <p class="muted" style="font-size:12px">${tglID(eR.ts)} · sumber: ${eR.sumber==="internal"?"tes internal":lpEsc(eR.sumber)}</p></div>`;
+  }
+  const eQ = latestEntry("eq");
+  if(eQ && eQ.skor){
+    const sc = eQ.skor;
+    const domain = ["SA","SM","SO","RM"].every(k=>typeof sc[k]==="number")
+      ? Object.entries(EQ_DOMAINS).map(([k,dm])=>`${dm.ikon} ${dm.nama.split("—")[0].trim()} ${sc[k]}`).join(" · ") : "";
+    bagian += `<div class="card" style="border-left:5px solid #d5762a">
+      <h3 style="margin-top:0">❤️‍🔥 EQ: ${sc.total}/100 (${band(sc.total)[0].toLowerCase()})</h3>
+      ${domain?`<p style="font-size:13.5px">${domain}</p>`:""}
+      <p class="muted" style="font-size:12px">${tglID(eQ.ts)} · sumber: ${eQ.sumber==="internal"?"tes internal":lpEsc(eQ.sumber)}</p></div>`;
+  }
+  const lains = historySorted().filter(h=>h.test==="lain");
+  if(lains.length){
+    bagian += `<div class="card" style="border-left:5px solid #6b6a85">
+      <h3 style="margin-top:0">📝 Asesmen Lainnya</h3>
+      ${lains.map(e=>`<p style="font-size:13.5px; margin-bottom:6px"><b>${lpEsc(e.namaTes)}</b> (${tglID(e.ts)}, ${lpEsc(e.sumber)}): ${lpEsc((e.hasil||"").slice(0,160))}${(e.hasil||"").length>160?"…":""}</p>`).join("")}
+    </div>`;
+  }
+
+  const belum = Object.keys(TESTS).filter(k=>!latestEntry(k)).map(k=>TESTS[k].nama);
+  LPROOT.getElementById("vResult").innerHTML = `
+    <div class="card" style="text-align:center">
+      <h2 style="font-size:24px">📄 Laporan Profil Kepribadian</h2>
+      <p class="muted">Dibuat dengan Lab Kepribadian Pro · ${tgl} · memakai hasil terbaru dari tiap jenis tes</p>
+    </div>
+    ${bagian || '<div class="card"><p class="muted">Belum ada hasil di arsip.</p></div>'}
+    ${belum.length? `<div class="card no-print"><p class="muted" style="font-size:13px">Belum dikerjakan: ${belum.join(", ")} — kerjakan agar laporan makin lengkap.</p></div>`:""}
+    <div class="card">
+      <h3 style="margin-top:0">📌 Cara membaca laporan ini (konteks HR)</h3>
+      <ul class="clean tip">
+        <li><b>MBTI</b> → bahasa bersama untuk komunikasi & preferensi kerja (pengembangan, bukan seleksi).</li>
+        <li><b>Big Five</b> → prediktor kinerja paling tervalidasi; perhatikan terutama Conscientiousness & Stabilitas Emosi.</li>
+        <li><b>DISC</b> → gaya perilaku yang tampak — untuk penempatan, komposisi tim, dan cara memimpin orang ini.</li>
+        <li><b>Holland/RIASEC</b> → kecocokan minat vs bidang kerja; prediktor kepuasan & retensi.</li>
+        <li><b>EQ</b> → potensi kepemimpinan & kerja sama; area yang paling bisa dilatih.</li>
+      </ul>
+    </div>
+    <div class="row no-print">
+      <button class="btn" onclick="goHome()">🏠 Beranda</button>
+      <button class="btn sec" onclick="renderHistory()">📜 Riwayat</button>
+      <button class="btn sec" onclick="window.print()">🖨 Cetak / Simpan PDF</button>
+    </div>`;
+  show("vResult");
+}
+
+
 </script>
 </body>
 </html>
