@@ -109,6 +109,13 @@
   .cb-nudge{background:none; border:none; cursor:pointer; color:var(--muted); font-size:10px; line-height:1; padding:2px 4px; border-radius:5px;}
   .cb-nudge:hover:not(:disabled){background:var(--bg3); color:var(--accent);}
   .cb-nudge:disabled{opacity:.25; cursor:default;}
+  /* Antrean garapan (pembuatan & publish) */
+  .cb-antre{display:inline-flex; align-items:center; gap:6px; font-size:11.5px; color:var(--muted); background:var(--bg3); border:1px solid var(--border); border-radius:99px; padding:3px 8px;}
+  .cb-antre.aktif{border-color:var(--accent); color:var(--text);}
+  .cb-antre select{width:auto; min-width:52px; margin:0; padding:2px 6px; font-size:11.5px; border-radius:8px;}
+  .cb-no{display:inline-block; font-size:11px; font-weight:800; padding:2px 8px; border-radius:99px; margin-right:6px; vertical-align:middle;}
+  .cb-no.buat{background:#efe4fb; color:#6b4ba8;}
+  .cb-no.pub{background:#dff1e8; color:#2f7d5c;}
 
   /* chat */
   .chat-wrap{display:flex; flex-direction:column; height:calc(100vh - 190px); min-height:400px;}
@@ -871,6 +878,8 @@
         <div class="grid2" style="gap:10px">
           <div><label>Jenis Materi</label><select id="cbFilterFormat" onchange="renderContentBank()"><option value="">Semua jenis</option><option>Carousel</option><option>Video / Reel</option><option>Single</option></select></div>
           <div><label>Urutkan</label><select id="cbSort" onchange="cbSetSort(this.value)">
+            <option value="antreBuat">✍️ Antrean pembuatan (1, 2, 3…)</option>
+            <option value="antrePublish">📤 Antrean publish (1, 2, 3…)</option>
             <option value="pilar">Pilar → prioritas → judul (bawaan)</option>
             <option value="baru">🆕 Terbaru dulu</option>
             <option value="lama">🕰️ Terlama dulu</option>
@@ -1871,7 +1880,11 @@ function cbSummary(){
   }
   const el = $('cbSummary'); if(!el) return;
   const by = p => contentBank.filter(x=>x.pilar===p).length;
-  el.innerHTML = `<b>${contentBank.length} materi</b> · Pilar 1: ${by('Pilar 1 · Distrik & Ranking')} · Pilar 2: ${by('Pilar 2 · 雑学 / 豆知識')} · Pilar 3: ${by('Pilar 3 · Hidup & Kerja')}`;
+  const nBuat = antreItems('buat').length, nPub = antreItems('publish').length;
+  const antre = (nBuat||nPub)
+    ? `<br><span style="color:var(--text)">Antrean: <b>✍️ ${nBuat} menunggu digarap</b>${nBuat?` <a href="#" onclick="cbSetSort('antreBuat');return false" style="color:var(--accent)">lihat urut</a> · <a href="#" onclick="cbAntreKosongkan('buat');return false" style="color:var(--muted)">kosongkan</a>`:''} &nbsp;·&nbsp; <b>📤 ${nPub} menunggu publish</b>${nPub?` <a href="#" onclick="cbSetSort('antrePublish');return false" style="color:var(--accent)">lihat urut</a> · <a href="#" onclick="cbAntreKosongkan('publish');return false" style="color:var(--muted)">kosongkan</a>`:''}</span>`
+    : '';
+  el.innerHTML = `<b>${contentBank.length} materi</b> · Pilar 1: ${by('Pilar 1 · Distrik & Ranking')} · Pilar 2: ${by('Pilar 2 · 雑学 / 豆知識')} · Pilar 3: ${by('Pilar 3 · Hidup & Kerja')}${antre}`;
 }
 function renderContentBank(){
   cbSummary();
@@ -1901,7 +1914,10 @@ function renderContentBank(){
           <button class="cb-nudge" title="Turunkan" ${i===list.length-1?'disabled':''} onclick="cbNudge('${x.id}',1)">▼</button>
         </div>
         <div style="flex:1; min-width:220px">
-          <div style="font-weight:700; color:var(--text); line-height:1.35">${esc(x.judul)}</div>
+          <div style="font-weight:700; color:var(--text); line-height:1.35">
+            ${typeof x.noBuat==='number' ? `<span class="cb-no buat" title="Urutan pembuatan">✍️ #${x.noBuat}</span>` : ''}
+            ${typeof x.noPublish==='number' ? `<span class="cb-no pub" title="Urutan publish">📤 #${x.noPublish}</span>` : ''}
+            ${esc(x.judul)}</div>
           <div style="margin:6px 0; display:flex; gap:6px; flex-wrap:wrap; font-size:11px">
             <span class="badge" style="background:var(--bg3); color:var(--muted)">${esc(PILAR_SHORT[x.pilar]||x.pilar||'—')}</span>
             <span class="badge" style="background:var(--bg3); color:var(--muted)">${esc(x.format||'—')}</span>
@@ -1910,6 +1926,9 @@ function renderContentBank(){
           </div>
           ${x.hook?`<div style="font-size:13px; color:var(--text)"><b>🎣</b> ${esc(x.hook)}</div>`:''}
           ${x.catatan?`<details style="margin-top:6px"><summary style="cursor:pointer; font-size:12px; color:var(--muted)">📝 Catatan riset</summary><div style="font-size:12.5px; color:var(--muted); line-height:1.6; margin-top:5px; white-space:pre-wrap">${esc(x.catatan)}</div></details>`:''}
+          <div style="margin-top:8px; display:flex; gap:8px; flex-wrap:wrap; align-items:center">
+            ${antreKontrol(x,'buat')}${antreKontrol(x,'publish')}
+          </div>
           <div style="margin-top:8px; display:flex; gap:6px; flex-wrap:wrap">
             <button class="btn sm sec" onclick="cbTogglePanel('${x.id}','edit')">✏️ Tulis &amp; Edit${x.naskah?' ✅':''}</button>
             <button class="btn sm sec" onclick="cbTogglePanel('${x.id}','ai')">🤖 Analisis AI${x.analisis?' ✅':''}</button>
@@ -1984,6 +2003,13 @@ function cbJudul(a,b){ return (a.judul||'').localeCompare(b.judul||'', 'id'); }
 // Tanggal materi dibuat di Notion (atau saat ditambah manual). 0 = tidak diketahui.
 function cbWaktu(x){ return Date.parse(x.dibuat || '') || 0; }
 function cbCmpAuto(a,b){ return (a.pilar||'').localeCompare(b.pilar||'') || (CB_PRIO_RANK[a.prioritas]??3)-(CB_PRIO_RANK[b.prioritas]??3) || cbJudul(a,b); }
+function cbCmpAntre(a,b,f){
+  const na = a[f], nb = b[f];
+  if(typeof na==='number' && typeof nb==='number') return na-nb;
+  if(typeof na==='number') return -1;
+  if(typeof nb==='number') return 1;
+  return cbJudul(a,b);
+}
 function cbCmpManual(a,b){ return (a.ord??0)-(b.ord??0); }
 // Materi tanpa tanggal selalu ditaruh di BAWAH, baik saat urut terbaru maupun terlama,
 // supaya tidak menyamar jadi "paling tua" hanya karena tanggalnya belum ada.
@@ -1993,6 +2019,9 @@ const CB_SORTERS = {
   baru:      (a,b)=>{ const ta=cbWaktu(a), tb=cbWaktu(b); if(!ta||!tb) return (tb?1:0)-(ta?1:0) || cbJudul(a,b); return tb-ta || cbJudul(a,b); },
   lama:      (a,b)=>{ const ta=cbWaktu(a), tb=cbWaktu(b); if(!ta||!tb) return (tb?1:0)-(ta?1:0) || cbJudul(a,b); return ta-tb || cbJudul(a,b); },
   prioritas: (a,b)=> (CB_PRIO_RANK[a.prioritas]??3)-(CB_PRIO_RANK[b.prioritas]??3) || cbJudul(a,b),
+  // Yang belum masuk antrean selalu di bawah, diurut judul.
+  antreBuat:    (a,b)=> cbCmpAntre(a,b,'noBuat'),
+  antrePublish: (a,b)=> cbCmpAntre(a,b,'noPublish'),
   format:    (a,b)=> (CB_FMT_RANK[a.format]??3)-(CB_FMT_RANK[b.format]??3) || cbJudul(a,b),
   judul:     cbJudul,
 };
@@ -2065,6 +2094,78 @@ function cbDragEnd(e){
   e.currentTarget.draggable = false;
   e.currentTarget.style.opacity = ''; e.currentTarget.style.boxShadow = '';
   document.querySelectorAll('.cb-card').forEach(c=>{ c.style.boxShadow=''; c.style.opacity=''; });
+}
+/* ── ANTREAN GARAPAN: nomor urut 1,2,3… untuk PEMBUATAN dan PUBLISH ──────────
+   Dua antrean terpisah, masing-masing punya nomornya sendiri. Nomor tidak pernah
+   kembar: pilihan yang tersedia hanya nomor yang masih kosong. Tombol "Selesai"
+   mencabut materi dari antrean lalu SEMUA nomor di bawahnya naik satu tingkat,
+   jadi antreannya selalu rapat 1,2,3… tanpa lubang. Tersimpan permanen di materi
+   (ikut multi-akun & Sinkron Cloud). */
+const ANTREAN = {
+  buat:    { field:'noBuat',    emoji:'✍️', label:'Buat'    },
+  publish: { field:'noPublish', emoji:'📤', label:'Publish' },
+};
+function antreItems(jenis){
+  const f = ANTREAN[jenis].field;
+  return contentBank.filter(x=>typeof x[f]==='number').sort((a,b)=>a[f]-b[f]);
+}
+// Beri nomor ulang 1..N supaya tidak ada lubang setelah ada yang selesai/dicabut.
+function antreRapikan(jenis){
+  const f = ANTREAN[jenis].field;
+  antreItems(jenis).forEach((x,i)=> x[f] = i+1);
+}
+// Nomor yang boleh dipilih: semua yang masih kosong, sampai satu di atas panjang antrean.
+function antreNomorTersedia(jenis, id){
+  const f = ANTREAN[jenis].field;
+  const dipakai = new Set(contentBank.filter(x=>x.id!==id && typeof x[f]==='number').map(x=>x[f]));
+  const maks = dipakai.size + 1;
+  const out = [];
+  for(let n=1; n<=maks; n++) if(!dipakai.has(n)) out.push(n);
+  return out;
+}
+function cbSetAntre(id, jenis, nilai){
+  const x = cbFind(id); if(!x) return;
+  const f = ANTREAN[jenis].field;
+  if(nilai === ''){ delete x[f]; }
+  else {
+    const n = parseInt(nilai, 10);
+    if(!(n > 0)) return;
+    if(contentBank.some(c=>c.id!==id && c[f]===n)){ toast('Nomor ' + n + ' sudah dipakai materi lain'); renderContentBank(); return; }
+    x[f] = n;
+  }
+  antreRapikan(jenis);
+  cbSave(); renderContentBank();
+}
+function cbAntreSelesai(id, jenis){
+  const x = cbFind(id); if(!x) return;
+  const f = ANTREAN[jenis].field;
+  if(typeof x[f] !== 'number') return;
+  delete x[f];
+  antreRapikan(jenis);                       // nomor 2 naik jadi 1, 3 jadi 2, dst.
+  cbSave(); renderContentBank();
+  toast('✔ Selesai — antrean ' + ANTREAN[jenis].label.toLowerCase() + ' maju satu nomor');
+}
+function cbAntreKosongkan(jenis){
+  const n = antreItems(jenis).length;
+  if(!n){ toast('Antrean ' + ANTREAN[jenis].label.toLowerCase() + ' masih kosong'); return; }
+  if(!confirm(`Kosongkan seluruh antrean ${ANTREAN[jenis].label.toLowerCase()} (${n} materi)? Materinya tidak dihapus, hanya nomor urutnya dicabut.`)) return;
+  const f = ANTREAN[jenis].field;
+  contentBank.forEach(x=>{ delete x[f]; });
+  cbSave(); renderContentBank();
+  toast('Antrean ' + ANTREAN[jenis].label.toLowerCase() + ' dikosongkan');
+}
+// Kontrol antrean di satu kartu: nomor sekarang + pilihan nomor + tombol selesai.
+function antreKontrol(x, jenis){
+  const a = ANTREAN[jenis], f = a.field, kini = x[f];
+  const opsi = antreNomorTersedia(jenis, x.id)
+    .map(n=>`<option value="${n}" ${kini===n?'selected':''}>${n}</option>`).join('');
+  return `<span class="cb-antre${typeof kini==='number'?' aktif':''}">
+    <b>${a.emoji} ${a.label}</b>
+    <select title="Pilih nomor urut ${a.label.toLowerCase()}" onchange="cbSetAntre('${x.id}','${jenis}',this.value)">
+      <option value="" ${typeof kini!=='number'?'selected':''}>—</option>${opsi}
+    </select>
+    ${typeof kini==='number' ? `<button class="btn sm green" style="padding:2px 8px" title="Tandai selesai — nomor berikutnya naik" onclick="cbAntreSelesai('${x.id}','${jenis}')">✔ Selesai</button>` : ''}
+  </span>`;
 }
 let cbOpen = null;   // {id, tab} — panel yang sedang terbuka
 const CB_DS_FORMATS = ['Instagram Feed (1080×1350)','Instagram Square (1080×1080)','Instagram/TikTok Story-Reels (1080×1920)','Carousel Instagram (1080×1350, multi-slide)','X Post (1600×900)','LinkedIn (1200×627)','YouTube Thumbnail (1280×720)'];
