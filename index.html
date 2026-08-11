@@ -46,6 +46,39 @@
   .grid3{display:grid; grid-template-columns:repeat(3,1fr); gap:14px;}
   @media(max-width:900px){.grid2,.grid3{grid-template-columns:1fr;}}
 
+  /* ── Tampilan HP: menu samping jadi laci geser ───────────────────────────
+     Di layar sempit sidebar 240px memakan separuh layar sehingga isi halaman
+     terjepit. Di sini sidebar dikeluarkan dari alur (fixed) dan disembunyikan
+     ke kiri; dibuka lewat tombol ☰. Isi halaman jadi selebar layar penuh. */
+  .nav-toggle{display:none;}
+  .nav-backdrop{display:none;}
+  @media(max-width:820px){
+    .nav-toggle{display:flex; align-items:center; justify-content:center; position:fixed; top:10px; left:10px; z-index:70;
+      width:42px; height:42px; border-radius:12px; border:1px solid var(--border); background:var(--bg2);
+      color:var(--text); font-size:19px; cursor:pointer; box-shadow:0 2px 10px rgba(90,77,94,.12);}
+    .sidebar{position:fixed; top:0; left:0; bottom:0; z-index:65; width:min(82vw,300px); min-width:0;
+      transform:translateX(-100%); transition:transform .22s ease; box-shadow:none; overscroll-behavior:contain;
+      -webkit-overflow-scrolling:touch;}
+    .sidebar.buka{transform:none; box-shadow:6px 0 24px rgba(90,77,94,.18);}
+    .nav-backdrop.buka{display:block; position:fixed; inset:0; z-index:60; background:rgba(60,50,60,.38);}
+    .main{padding:62px 14px 40px; width:100%;}
+    .view{max-width:none;}
+    h1{font-size:21px;}
+    .sub{font-size:13.5px; margin-bottom:18px;}
+    .card{padding:15px 14px; border-radius:12px;}
+    .modal{width:94vw; max-height:88vh;}
+    .chat-wrap{height:calc(100vh - 210px);}
+    .cal-item{flex-wrap:wrap; gap:8px;}
+    .cal-item .date{min-width:0;}
+    /* Isi yang memang lebar (tabel, hasil AI, kode) digeser sendiri, bukan
+       memaksa seluruh halaman ikut melebar. */
+    .out, pre, table{overflow-x:auto; max-width:100%;}
+    input, select, textarea{font-size:16px;}   /* cegah iOS auto-zoom saat mengetik */
+    /* 100dvh mengikuti tinggi layar SETELAH bilah alamat browser HP muncul/hilang,
+       supaya bagian bawah halaman tidak pernah tertutup. */
+    body, .app{height:100dvh;}
+  }
+
   /* Pustaka Template Canva */
   .tpl-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(215px,1fr)); gap:14px; margin-top:14px;}
   .tpl-card{position:relative; display:flex; flex-direction:column; border:1px solid var(--border); border-radius:14px; overflow:hidden; background:var(--bg2); transition:.15s;}
@@ -305,9 +338,13 @@
   </footer>
 </div>
 
+<!-- Tombol menu & latar gelap — hanya tampil di layar HP (lihat @media di CSS) -->
+<button class="nav-toggle" id="navToggle" onclick="toggleSidebar()" aria-label="Buka menu" title="Menu">☰</button>
+<div class="nav-backdrop" id="navBackdrop" onclick="toggleSidebar(false)"></div>
+
 <div class="app">
   <!-- ══ SIDEBAR ══ -->
-  <div class="sidebar">
+  <div class="sidebar" id="sidebar">
     <div class="logo"><svg viewBox="0 0 100 100" width="32" height="32" style="vertical-align:-9px; margin-right:4px"><g fill="url(#skrG)"><path d="M50 38 C40 32 32 20 36 10 C38.5 4.5 47 4 49 9 L50 12 L51 9 C53 4 61.5 4.5 64 10 C68 20 60 32 50 38 Z"/><path d="M50 38 C40 32 32 20 36 10 C38.5 4.5 47 4 49 9 L50 12 L51 9 C53 4 61.5 4.5 64 10 C68 20 60 32 50 38 Z" transform="rotate(72 50 50)"/><path d="M50 38 C40 32 32 20 36 10 C38.5 4.5 47 4 49 9 L50 12 L51 9 C53 4 61.5 4.5 64 10 C68 20 60 32 50 38 Z" transform="rotate(144 50 50)"/><path d="M50 38 C40 32 32 20 36 10 C38.5 4.5 47 4 49 9 L50 12 L51 9 C53 4 61.5 4.5 64 10 C68 20 60 32 50 38 Z" transform="rotate(216 50 50)"/><path d="M50 38 C40 32 32 20 36 10 C38.5 4.5 47 4 49 9 L50 12 L51 9 C53 4 61.5 4.5 64 10 C68 20 60 32 50 38 Z" transform="rotate(288 50 50)"/></g><g stroke="url(#skrG)" stroke-width="2" fill="none" stroke-linecap="round"><path d="M50 45 L51.18 48.38 L54.76 48.45 L51.9 50.62 L52.94 54.05 L50 52 L47.06 54.05 L48.1 50.62 L45.24 48.45 L48.82 48.38 Z"/><line x1="53.53" y1="45.15" x2="57.64" y2="39.48"/><line x1="55.71" y1="51.85" x2="62.36" y2="54.02"/><line x1="50" y1="56" x2="50" y2="63"/><line x1="44.29" y1="51.85" x2="37.64" y2="54.02"/><line x1="46.47" y1="45.15" x2="42.36" y2="39.48"/></g><g fill="url(#skrG)"><circle cx="57.64" cy="39.48" r="2.4"/><circle cx="62.36" cy="54.02" r="2.4"/><circle cx="50" cy="63" r="2.4"/><circle cx="37.64" cy="54.02" r="2.4"/><circle cx="42.36" cy="39.48" r="2.4"/></g></svg><span>LYNSBrand AI</span><small>Personal Branding · Kepribadian · Otomatisasi SNS</small></div>
     <div class="nav-item active" data-view="dashboard"><span class="ico">📊</span> Dashboard</div>
 
@@ -1182,8 +1219,20 @@ function fmtDate(d){ if(!d) return '—'; const dt=new Date(d+'T00:00:00'); retu
 function uid(){ return 'c'+ Math.random().toString(36).slice(2,10); }
 
 /* ═══════════════════ NAVIGASI ═══════════════════ */
+// Laci menu di HP: dibuka lewat tombol ☰, ditutup dengan menyentuh latar gelap,
+// menekan Esc, atau begitu satu menu dipilih.
+function toggleSidebar(paksa){
+  const sb = $('sidebar'), bd = $('navBackdrop'), tb = $('navToggle');
+  if(!sb) return;
+  const buka = (paksa === undefined) ? !sb.classList.contains('buka') : !!paksa;
+  sb.classList.toggle('buka', buka);
+  if(bd) bd.classList.toggle('buka', buka);
+  if(tb) tb.innerHTML = buka ? '✕' : '☰';
+}
+document.addEventListener('keydown', e=>{ if(e.key === 'Escape') toggleSidebar(false); });
 document.querySelectorAll('.nav-item').forEach(el=>{
   el.onclick = ()=>{
+    if(window.innerWidth <= 820) toggleSidebar(false);
     if(!el.dataset.view) return; // item tautan (mis. Halaman Utama) — biarkan navigasi normal
     document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
     document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
@@ -1311,6 +1360,7 @@ async function byokSave(){
   btn.disabled = false; btn.innerHTML = '✅ Simpan & Tes Koneksi';
 }
 function showLanding(){
+  toggleSidebar(false);          // di HP, tutup laci menu dulu
   $('landing').classList.add('show');
   $('landing').scrollTop = 0;
 }
