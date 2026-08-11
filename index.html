@@ -1034,8 +1034,10 @@
 /* ═══════════════════ STORAGE (multi-akun) ═══════════════════ */
 // Data KONTEN dipisah per akun/workspace (bp_ws_<id>_<key>). Pengaturan & API key GLOBAL
 // (dipakai bersama semua akun) — jadi key cukup dimasukkan sekali untuk semua akun.
-const WS_KEYS = ['profile','voice','design','personality','journal','calendar','chat','memory','webhook','templates','account','contentbank','igaccounts','labpro'];
-const GLOBAL_KEYS = new Set(['settings','seenLanding','workspaces','activeWs','synccfg']);
+const WS_KEYS = ['profile','voice','design','personality','journal','calendar','chat','memory','webhook','templates','contentbank','igaccounts','labpro'];
+// 'account' GLOBAL: pendaftaran itu milik ORANGNYA (satu email), bukan milik satu brand.
+// Kalau per-akun-brand, pindah akun bikin pendaftaran terlihat "hilang".
+const GLOBAL_KEYS = new Set(['settings','seenLanding','workspaces','activeWs','synccfg','account']);
 const DEFAULT_WS_ID = 'w_default';
 let activeWs = null;   // diisi oleh bootstrap di bawah
 const store = {
@@ -1122,6 +1124,19 @@ function vaultClear(){
   try{ localStorage.removeItem(KEY_BACKUP_LS); }catch(e){}
   _idbSet(VAULT_ID, '');
 }
+// Migrasi sekali jalan: pendaftaran akun yang dulu tersimpan per akun-brand
+// (bp_ws_<id>_account) dipindahkan ke tempat global (bp_account) supaya tetap ada
+// walau pindah akun brand. Data lama TIDAK dihapus, hanya disalin.
+(function migrasiAkunKeGlobal(){
+  try{
+    if(localStorage.getItem('bp_account')) return;
+    const kunci = Object.keys(localStorage).filter(k=>/^bp_ws_.+_account$/.test(k));
+    for(const k of kunci){
+      const v = localStorage.getItem(k);
+      if(v && v !== 'null' && v !== '{}'){ localStorage.setItem('bp_account', v); break; }
+    }
+  }catch(e){}
+})();
 let settings = store.get('settings', {key:'', model:'claude-opus-4-8', lang:'Indonesia'});
 // Pemulihan lapis 2 (serentak, sebelum aplikasi jalan) — kalau tempat utama kosong.
 if(!settings.key){
@@ -1338,20 +1353,25 @@ async function registerAccount(){
   };
   const btn = $('btnAkun'); btn.disabled = true; btn.innerHTML = '<span class="spinner"></span> Menyimpan...';
   $('akMsg').textContent = '';
+  // SIMPAN DULU DI PERANGKAT, apa pun yang terjadi di server. Dulu data hanya
+  // tersimpan kalau server menjawab sukses — jadi kalau server sibuk/tidur,
+  // pendaftaran terasa "hilang". Sekarang tidak pernah hilang lagi.
+  account = data; store.set('account', account);
+  renderAccount(); renderDashboard();
   try{
     const res = await fetch(REGISTER_ENDPOINT, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data)});
-    const out = await res.json();
+    const out = await res.json().catch(()=>({}));
     if(res.ok && out.ok){
-      account = data; store.set('account', account);
-      renderAccount(); renderDashboard();
+      $('akMsg').textContent = '';
       toast('🎉 Akunmu terdaftar — selamat datang di keluarga LYNSBrand!');
     } else {
-      $('akMsg').textContent = '❌ ' + (out.error==='LIMIT' ? 'Terlalu banyak percobaan hari ini — coba lagi besok.' : (out.error||'Gagal, coba lagi.'));
+      $('akMsg').textContent = '✅ Tersimpan di perangkat ini (& ikut Sinkron Cloud). ⚠️ Pendaftaran ke server belum masuk: '
+        + (out.error==='LIMIT' ? 'terlalu banyak percobaan hari ini.' : (out.error || ('HTTP '+res.status))) + ' Datamu aman — coba simpan lagi nanti.';
+      toast('✅ Data akun tersimpan di perangkat ini');
     }
   }catch(e){
-    // tetap simpan lokal walau server tak terjangkau, agar pengalaman tidak terputus
-    account = data; store.set('account', account); renderAccount(); renderDashboard();
-    $('akMsg').textContent = '⚠️ Tersimpan di perangkat; sinkronisasi server gagal (cek koneksi).';
+    $('akMsg').textContent = '✅ Tersimpan di perangkat ini (& ikut Sinkron Cloud). ⚠️ Server tidak terjangkau — periksa koneksi, lalu simpan lagi kapan saja.';
+    toast('✅ Data akun tersimpan di perangkat ini');
   }
   btn.disabled = false; btn.innerHTML = account ? '💾 Simpan Perubahan' : '✨ Daftar Gratis';
 }
@@ -3195,20 +3215,34 @@ function importContentBank(input){
 }
 
 /* ═══════════════════ DASHBOARD ═══════════════════ */
+// Poin "Tes Kepribadian" tercentang oleh DUA jalur: tes interaktif AI (personality)
+// ATAU hasil apa pun dari Lab Kepribadian Pro (MBTI/Big Five/DISC/RIASEC/EQ).
+// Dibaca langsung dari store, bukan lewat db() Lab Pro, supaya aman dipanggil
+// saat aplikasi baru dimuat (blok Lab Pro ada di bagian bawah halaman).
+function adaHasilTesKepribadian(){
+  if(personality) return true;
+  try{ const o = store.get('labpro', null); return !!(o && Array.isArray(o.history) && o.history.length); }
+  catch(e){ return false; }
+}
 function renderDashboard(){
   $('stIde').textContent = calendar.filter(c=>c.status==='ide'||c.status==='draft').length;
   $('stSiap').textContent = calendar.filter(c=>c.status==='siap').length;
   $('stTerbit').textContent = calendar.filter(c=>c.status==='terbit').length;
   const check = (ok, label, view) => `<div>${ok?'✅':'⬜'} <a href="#" style="color:${ok?'var(--muted)':'var(--text)'}; text-decoration:${ok?'line-through':'underline'}" onclick="navTo('${view}');return false">${label}</a></div>`;
+  const poin = [
+    [!!settings.key, 'Atur API key', 'pengaturan'],
+    [!!account, 'Daftar akun gratis (tips & penawaran member)', 'akun'],
+    [!!profile, 'Isi profil brand', 'profil'],
+    [!!voice, 'Latih suara brand dari postingan lamamu', 'voice'],
+    [adaHasilTesKepribadian(), 'Kenali dirimu: ikuti Tes Kepribadian (Self-Discovery)', 'tes'],
+    [journal.length>0, 'Tulis jurnal refleksi pertamamu (Self-Expression)', 'jurnal'],
+    [calendar.length>0, 'Rencanakan konten di kalender', 'kalender'],
+    [!!webhook.url, '(Opsional) Hubungkan webhook otomatisasi', 'otomatisasi'],
+  ];
+  const selesai = poin.filter(p=>p[0]).length;
   $('checklist').innerHTML =
-    check(!!settings.key, 'Atur API key', 'pengaturan') +
-    check(!!account, 'Daftar akun gratis (tips & penawaran member)', 'akun') +
-    check(!!profile, 'Isi profil brand', 'profil') +
-    check(!!voice, 'Latih suara brand dari postingan lamamu', 'voice') +
-    check(!!personality, 'Kenali dirimu: ikuti Tes Kepribadian (Self-Discovery)', 'tes') +
-    check(journal.length>0, 'Tulis jurnal refleksi pertamamu (Self-Expression)', 'jurnal') +
-    check(calendar.length>0, 'Rencanakan konten di kalender', 'kalender') +
-    check(!!webhook.url, '(Opsional) Hubungkan webhook otomatisasi', 'otomatisasi');
+    `<div class="hint" style="margin:0 0 6px">${selesai} dari ${poin.length} selesai · semuanya tersimpan otomatis &amp; ikut Sinkron Cloud</div>` +
+    poin.map(p=>check(p[0], p[1], p[2])).join('');
   const today = new Date().toISOString().slice(0,10);
   const week = new Date(Date.now()+7*864e5).toISOString().slice(0,10);
   const up = calendar.filter(c=>c.date>=today && c.date<=week && c.status!=='terbit').sort((a,b)=>a.date.localeCompare(b.date));
@@ -3503,7 +3537,11 @@ function db(){
   if(!Array.isArray(o.history)) o.history = [];
   return o;
 }
-function dbSave(o){ store.set('labpro', o); }
+function dbSave(o){
+  store.set('labpro', o);
+  // hasil tes baru → checklist "Kenali dirimu" di Dashboard ikut tercentang
+  if (typeof renderDashboard === 'function') renderDashboard();
+}
 function lpUid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2,7); }
 function lpEsc(s){ return String(s??"").replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
 function tglID(ts){ return new Date(ts).toLocaleDateString("id-ID",{day:"numeric",month:"long",year:"numeric"}); }
