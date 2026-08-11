@@ -113,6 +113,7 @@
   .cb-antre{display:inline-flex; align-items:center; gap:6px; font-size:11.5px; color:var(--muted); background:var(--bg3); border:1px solid var(--border); border-radius:99px; padding:3px 8px;}
   .cb-antre.aktif{border-color:var(--accent); color:var(--text);}
   .cb-antre select{width:auto; min-width:52px; margin:0; padding:2px 6px; font-size:11.5px; border-radius:8px;}
+  .cb-antre-no{width:58px; margin:0; padding:2px 6px; font-size:11.5px; border-radius:8px; text-align:center;}
   .cb-no{display:inline-block; font-size:11px; font-weight:800; padding:2px 8px; border-radius:99px; margin-right:6px; vertical-align:middle;}
   .cb-no.buat{background:#efe4fb; color:#6b4ba8;}
   .cb-no.pub{background:#dff1e8; color:#2f7d5c;}
@@ -2121,26 +2122,32 @@ function antreRapikan(jenis){
   const f = ANTREAN[jenis].field;
   antreItems(jenis).forEach((x,i)=> x[f] = i+1);
 }
-// Nomor yang boleh dipilih: semua yang masih kosong, sampai satu di atas panjang antrean.
-function antreNomorTersedia(jenis, id){
+// Nomor yang sudah terpakai di satu antrean (untuk ditampilkan & dicegah kembar).
+function antreNomorTerpakai(jenis, kecualiId){
   const f = ANTREAN[jenis].field;
-  const dipakai = new Set(contentBank.filter(x=>x.id!==id && typeof x[f]==='number').map(x=>x[f]));
-  const maks = dipakai.size + 1;
-  const out = [];
-  for(let n=1; n<=maks; n++) if(!dipakai.has(n)) out.push(n);
-  return out;
+  return contentBank.filter(x=>x.id!==kecualiId && typeof x[f]==='number').map(x=>x[f]).sort((a,b)=>a-b);
 }
+// Nomor kosong terkecil — dipakai sebagai saran di kolom isian.
+function antreNomorKosongTerkecil(jenis, kecualiId){
+  const t = new Set(antreNomorTerpakai(jenis, kecualiId));
+  let n = 1; while(t.has(n)) n++;
+  return n;
+}
+// Nomor boleh diisi BEBAS (boleh melompat, mis. langsung 6) asal belum dipakai.
+// Sengaja TIDAK dirapikan di sini — lompatan nomor itu pilihan sadar user.
 function cbSetAntre(id, jenis, nilai){
   const x = cbFind(id); if(!x) return;
   const f = ANTREAN[jenis].field;
-  if(nilai === ''){ delete x[f]; }
-  else {
-    const n = parseInt(nilai, 10);
-    if(!(n > 0)) return;
-    if(contentBank.some(c=>c.id!==id && c[f]===n)){ toast('Nomor ' + n + ' sudah dipakai materi lain'); renderContentBank(); return; }
-    x[f] = n;
+  const s = String(nilai == null ? '' : nilai).trim();
+  if(s === ''){ delete x[f]; cbSave(); renderContentBank(); return; }
+  const n = parseInt(s, 10);
+  if(!Number.isFinite(n) || n < 1){ toast('Nomor urut harus angka 1 atau lebih'); renderContentBank(); return; }
+  const bentrok = contentBank.find(c=>c.id!==id && c[f] === n);
+  if(bentrok){
+    toast('Nomor ' + n + ' sudah dipakai: "' + bentrok.judul.slice(0,45) + '"', 4200);
+    renderContentBank(); return;
   }
-  antreRapikan(jenis);
+  x[f] = n;
   cbSave(); renderContentBank();
 }
 function cbAntreSelesai(id, jenis){
@@ -2164,14 +2171,17 @@ function cbAntreKosongkan(jenis){
 // Kontrol antrean di satu kartu: nomor sekarang + pilihan nomor + tombol selesai.
 function antreKontrol(x, jenis){
   const a = ANTREAN[jenis], f = a.field, kini = x[f];
-  const opsi = antreNomorTersedia(jenis, x.id)
-    .map(n=>`<option value="${n}" ${kini===n?'selected':''}>${n}</option>`).join('');
+  const terpakai = antreNomorTerpakai(jenis, x.id);
+  const saran = antreNomorKosongTerkecil(jenis, x.id);
+  const judulBantuan = `Isi bebas nomor urut ${a.label.toLowerCase()} — boleh melompat (mis. langsung 6). `
+    + (terpakai.length ? `Sudah terpakai: ${terpakai.join(', ')}.` : 'Belum ada nomor terpakai.')
+    + ' Kosongkan untuk mengeluarkan dari antrean.';
   return `<span class="cb-antre${typeof kini==='number'?' aktif':''}">
     <b>${a.emoji} ${a.label}</b>
-    <select title="Pilih nomor urut ${a.label.toLowerCase()}" onchange="cbSetAntre('${x.id}','${jenis}',this.value)">
-      <option value="" ${typeof kini!=='number'?'selected':''}>—</option>${opsi}
-    </select>
-    ${typeof kini==='number' ? `<button class="btn sm green" style="padding:2px 8px" title="Tandai selesai — nomor berikutnya naik" onclick="cbAntreSelesai('${x.id}','${jenis}')">✔ Selesai</button>` : ''}
+    <input type="number" min="1" step="1" inputmode="numeric" class="cb-antre-no"
+      value="${typeof kini==='number'?kini:''}" placeholder="${saran}" title="${esc(judulBantuan)}"
+      onchange="cbSetAntre('${x.id}','${jenis}',this.value)">
+    ${typeof kini==='number' ? `<button class="btn sm green" style="padding:2px 8px" title="Tandai selesai — antrean dirapikan, nomor berikutnya naik" onclick="cbAntreSelesai('${x.id}','${jenis}')">✔ Selesai</button>` : ''}
   </span>`;
 }
 let cbOpen = null;   // {id, tab} — panel yang sedang terbuka
