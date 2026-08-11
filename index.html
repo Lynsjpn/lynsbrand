@@ -1792,7 +1792,7 @@ function cbNormalize(it, fallbackPilar){
   // bentuk bank langsung
   return { notion_id:(it.notion_id||'').trim(), judul: it.judul||'', pilar: canonicalPilar(it.pilar||fallbackPilar), status: it.status||'Ide',
     format: it.format||'Carousel', prioritas: it.prioritas||'Sedang', hook: it.hook||'', catatan: it.catatan||'',
-    dibuat: it.dibuat||'', diubah: it.diubah||'', source: it.source||'manual' };
+    dibuat: it.dibuat||'', diubah: it.diubah||'', naskah: it.naskah||'', source: it.source||'manual' };
 }
 // Ambil array ide mentah dari berbagai bentuk data file/ekspor
 function cbExtractRaw(data){
@@ -1818,11 +1818,19 @@ function cbMergeRaw(raw, fallbackPilar){
       Object.assign(ex, { judul:n.judul, pilar:n.pilar, format:n.format, prioritas:n.prioritas, hook:n.hook, catatan:n.catatan, source:n.source });
       if(n.dibuat) ex.dibuat = n.dibuat;
       if(n.diubah) ex.diubah = n.diubah;
+      // Naskah dari isi halaman Notion. Gabungan 3-arah supaya tulisanmu sendiri
+      // TIDAK pernah tertimpa: naskah ikut diperbarui hanya kalau kamu belum
+      // mengubahnya (isinya masih sama dengan versi Notion terakhir).
+      if(n.naskah){
+        if(!ex.naskah || ex.naskah === ex.naskahNotion){ ex.naskah = n.naskah; ex.naskahTs = Date.now(); }
+        ex.naskahNotion = n.naskah;
+      }
       if(n.notion_id) ex.notion_id = n.notion_id;
       if((ex.status||'Ide')==='Ide') ex.status = n.status;   // jangan timpa progres lokal
       updated++;
     } else {
       const item = { id: uid(), ...n };
+      if(item.naskah){ item.naskahNotion = item.naskah; item.naskahTs = Date.now(); }
       if(manual) item.ord = ordBerikut++;
       contentBank.push(item);
       if(item.notion_id) byId.set(item.notion_id, item);
@@ -2211,6 +2219,7 @@ function cbPanel(x){
       <label>Hook / CTA</label><input type="text" id="cbE_hook_${x.id}" value="${esc(x.hook||'')}">
       <label>Catatan riset</label><textarea id="cbE_catatan_${x.id}" style="min-height:70px">${esc(x.catatan||'')}</textarea>
       <label>📝 Naskah materi <span class="hint">(isi lengkap: skrip, teks tiap slide, caption — tersimpan permanen)</span></label>
+      ${x.naskahNotion && x.naskahNotion !== (x.naskah||'') ? `<p class="hint" style="margin:0 0 6px; color:var(--warn)">📥 Naskah di Notion berbeda dengan yang tersimpan di sini (versimu sendiri dipertahankan). <a href="#" onclick="cbPakaiNaskahNotion('${x.id}');return false" style="color:var(--accent)">pakai versi Notion</a></p>` : ''}
       <textarea id="cbE_naskah_${x.id}" style="min-height:150px" placeholder="Tulis naskah lengkapnya di sini...">${esc(x.naskah||'')}</textarea>
       <div class="row">
         <button class="btn sm" onclick="cbSaveEdit('${x.id}')">💾 Simpan Perubahan</button>
@@ -2318,6 +2327,13 @@ function cbDelAnalisis(id){
   const x = cbFind(id); if(!x||!x.analisis) return;
   if(!confirm('Hapus hasil analisis AI untuk materi ini?')) return;
   delete x.analisis; cbSave(); renderContentBank(); toast('Analisis dihapus');
+}
+function cbPakaiNaskahNotion(id){
+  const x = cbFind(id); if(!x || !x.naskahNotion) return;
+  if(x.naskah && !confirm('Ganti naskah di sini dengan versi dari Notion? Tulisanmu yang sekarang akan hilang.')) return;
+  x.naskah = x.naskahNotion; x.naskahTs = Date.now();
+  cbSave(); renderContentBank();
+  toast('📥 Naskah versi Notion dipakai');
 }
 function cbAnalisisToNaskah(id){
   const x = cbFind(id); if(!x||!x.analisis) return;

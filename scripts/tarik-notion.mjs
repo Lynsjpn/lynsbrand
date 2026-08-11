@@ -88,6 +88,66 @@ async function tarikDatabase(dbId) {
   return hasil;
 }
 
+/* ── Isi HALAMAN Notion (blok) → naskah materi ───────────────────────────────
+   Naskah lengkap (isi slide, caption, prompt Canva) ditulis di badan halaman,
+   bukan di properti. Bagian ini membacanya lalu merangkainya jadi teks biasa. */
+const jeda = ms => new Promise(r => setTimeout(r, ms));
+
+function rtTeks(rt) {
+  return (rt || []).map(t => t.plain_text).join('');
+}
+function blokKeTeks(blok, indent = '', nomor = null) {
+  const t = blok.type;
+  const isi = blok[t] || {};
+  const teks = rtTeks(isi.rich_text);
+  switch (t) {
+    case 'heading_1':          return indent + '# ' + teks;
+    case 'heading_2':          return indent + '## ' + teks;
+    case 'heading_3':          return indent + '### ' + teks;
+    case 'paragraph':          return indent + teks;
+    case 'bulleted_list_item': return indent + '- ' + teks;
+    case 'numbered_list_item': return indent + (nomor ? nomor + '. ' : '- ') + teks;
+    case 'to_do':              return indent + (isi.checked ? '[x] ' : '[ ] ') + teks;
+    case 'quote':              return indent + '> ' + teks;
+    case 'callout':            return indent + (isi.icon && isi.icon.emoji ? isi.icon.emoji + ' ' : '') + teks;
+    case 'toggle':             return indent + '▸ ' + teks;
+    case 'code':               return indent + '```\n' + teks + '\n```';
+    case 'divider':            return indent + '———';
+    default:                   return teks ? indent + teks : '';
+  }
+}
+async function ambilBlok(blokId) {
+  const hasil = [];
+  let cursor;
+  do {
+    const url = `https://api.notion.com/v1/blocks/${blokId}/children?page_size=100` + (cursor ? `&start_cursor=${cursor}` : '');
+    const r = await fetch(url, { headers: { 'Authorization': `Bearer ${TOKEN}`, 'Notion-Version': '2022-06-28' } });
+    if (!r.ok) return hasil;                       // halaman tanpa akses/kosong — biarkan saja
+    const j = await r.json();
+    hasil.push(...j.results);
+    cursor = j.has_more ? j.next_cursor : null;
+    if (cursor) await jeda(120);
+  } while (cursor);
+  return hasil;
+}
+async function naskahHalaman(pageId, dalam = 0) {
+  const blok = await ambilBlok(pageId);
+  const baris = [];
+  let hitungNomor = 0;
+  for (const b of blok) {
+    if (b.type === 'numbered_list_item') hitungNomor++; else hitungNomor = 0;
+    const t = blokKeTeks(b, '  '.repeat(dalam), hitungNomor || null);
+    if (t) baris.push(t);
+    // satu tingkat anak saja — cukup untuk toggle/list bersarang, tanpa boros permintaan
+    if (b.has_children && dalam < 1) {
+      await jeda(120);
+      const anak = await naskahHalaman(b.id, dalam + 1);
+      if (anak) baris.push(anak);
+    }
+  }
+  return baris.join('\n').replace(/\n{3,}/g, '\n\n').trim();
+}
+
 /* ── Ubah satu halaman Notion jadi item Bank Materi ──────────────────────── */
 function keItem(page, db) {
   const p = page.properties || {};
@@ -184,6 +244,25 @@ for (const db of DATABASES) {
     // supaya tidak lahir commit kosong tiap jam.
     let lama = null;
     try { lama = JSON.parse(await readFile(db.file, 'utf8')); } catch { /* berkas baru */ }
+
+    // Naskah = isi halaman Notion. Hanya ditarik ulang untuk halaman yang BERUBAH
+    // (bandingkan last_edited_time), supaya tidak ratusan permintaan tiap 3 jam.
+    const naskahLama = new Map();
+    if (lama && Array.isArray(lama.items)) {
+      lama.items.forEach(it => { if (it.notion_id) naskahLama.set(it.notion_id, it); });
+    }
+    let ditarikBaru = 0, dipakaiUlang = 0;
+    for (const it of items) {
+      const sebelumnya = naskahLama.get(it.notion_id);
+      if (sebelumnya && sebelumnya.diubah === it.diubah && typeof sebelumnya.naskah === 'string') {
+        it.naskah = sebelumnya.naskah; dipakaiUlang++;
+        continue;
+      }
+      it.naskah = await naskahHalaman(it.notion_id);
+      ditarikBaru++;
+      await jeda(140);                         // jaga di bawah batas laju Notion
+    }
+    console.log(`  · naskah: ${ditarikBaru} ditarik, ${dipakaiUlang} dipakai ulang`);
     if (lama && JSON.stringify(lama.items) === JSON.stringify(items)) {
       console.log(`= ${db.file}: ${items.length} materi, tidak ada perubahan`);
       continue;
