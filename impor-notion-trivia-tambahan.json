@@ -1,7 +1,7 @@
 {
   "sumber_db": "Content Bank (arsip trivia)",
   "notion_db": "b30d31f33d954b82b6879256db9be53b",
-  "ditarik": "2026-08-08",
+  "ditarik": "2026-08-11",
   "catatan_format": "Ditarik otomatis dari Notion oleh GitHub Actions. Field 'Kenapa Menarik' & 'Catatan' digabung ke catatan riset; tanda ⚠️ berasal dari properti 'Perlu Verifikasi'.",
   "items": [
     {
@@ -15,7 +15,8 @@
       "catatan": "📝 CATATAN: Gion, Nebuta, Awa Odori, Sapporo Snow, Tenjin.\n\n(arsip trivia · pilar asli: Ranking)",
       "dibuat": "2026-07-03T11:52:00.000Z",
       "diubah": "2026-07-03T11:52:00.000Z",
-      "source": "trivia"
+      "source": "trivia",
+      "naskah": "Hook: 5 matsuri paling epic di Jepang.\nSlides: Gion / Nebuta / Awa Odori / Sapporo Snow / Tenjin.\nCTA: Save buat bucket list."
     },
     {
       "notion_id": "392828a0607e817090bceb3ea7040a2c",
@@ -28,7 +29,8 @@
       "catatan": "📝 CATATAN: Tisu iklan, air & ocha di resto, toilet bersih, wifi, refill.\n\n(arsip trivia · pilar asli: Ranking)",
       "dibuat": "2026-07-03T11:52:00.000Z",
       "diubah": "2026-07-03T11:52:00.000Z",
-      "source": "trivia"
+      "source": "trivia",
+      "naskah": "Hook: 5 hal gratis di Jepang.\nSlides: Tisu iklan / air+teh gratis / toilet umum bersih / refill / oshibori.\nCTA: Save buat trip hemat."
     },
     {
       "notion_id": "392828a0607e810a98f3cc6db0e7f9de",
@@ -41,7 +43,8 @@
       "catatan": "📝 CATATAN: Komorebi, tsundoku, mono no aware, ikigai, wabi-sabi.\n\n(arsip trivia · pilar asli: Ranking)",
       "dibuat": "2026-07-03T11:52:00.000Z",
       "diubah": "2026-07-03T11:52:00.000Z",
-      "source": "trivia"
+      "source": "trivia",
+      "naskah": "Hook: 5 kata Jepang tanpa padanan.\nSlides: Komorebi / tsundoku / ikigai / mono no aware / wabi-sabi.\nCTA: Mana favoritmu? Comment."
     },
     {
       "notion_id": "392828a0607e81f3afd0e27ff74843f7",
@@ -54,7 +57,8 @@
       "catatan": "📝 CATATAN: Diam di kereta, antre rapi, nggak ngasih tip, slurp mie.\n\n(arsip trivia · pilar asli: Ranking)",
       "dibuat": "2026-07-03T11:52:00.000Z",
       "diubah": "2026-07-03T11:52:00.000Z",
-      "source": "trivia"
+      "source": "trivia",
+      "naskah": "Hook: 5 culture shock di Jepang.\nSlides: Kereta senyap / antre / no tipping / slurp ramen / kerja lembur.\nCTA: Mana yang paling kaget? Comment."
     },
     {
       "notion_id": "392828a0607e815abea6eb27b913f95e",
@@ -67,7 +71,8 @@
       "catatan": "📝 CATATAN: Okonomiyaki, takoyaki, motsunabe, ochazuke, taiyaki.\n\n(arsip trivia · pilar asli: Ranking)",
       "dibuat": "2026-07-03T11:52:00.000Z",
       "diubah": "2026-07-03T11:52:00.000Z",
-      "source": "trivia"
+      "source": "trivia",
+      "naskah": "Hook: Lupakan sushi — 5 makanan Jepang ini underrated.\nSlides: 1 hook / 2-6 makanan / 7 CTA.\nCTA: Save buat referensi kulineran."
     },
     {
       "notion_id": "392828a0607e81828c4cc21aa3c24fd2",
@@ -80,7 +85,8 @@
       "catatan": "📝 CATATAN: Cek survei terbaru (mis. brand ranking prefektur). Verifikasi sebelum posting.\n\n(arsip trivia · pilar asli: Ranking)",
       "dibuat": "2026-07-03T11:52:00.000Z",
       "diubah": "2026-07-03T11:52:00.000Z",
-      "source": "trivia"
+      "source": "trivia",
+      "naskah": "Hook: 5 prefektur terbaik buat tinggal (versi orang Jepang).\nSlides: 1 hook / 2-6 tiap prefektur + alasan / 7 CTA.\nCTA: Save & follow buat ranking Jepang tiap minggu."
     },
     {
       "notion_id": "392828a0607e818ab74ffc61ef632f3d",
@@ -93,7 +99,8 @@
       "catatan": "📝 CATATAN: Shinjuku (tersibuk dunia), stasiun bawah tanah, dll.\n\n(arsip trivia · pilar asli: Ranking)",
       "dibuat": "2026-07-03T11:52:00.000Z",
       "diubah": "2026-07-03T11:52:00.000Z",
-      "source": "trivia"
+      "source": "trivia",
+      "naskah": "Hook: Stasiun kereta Jepang = kota mini.\nSlides: Shinjuku / Shibuya / Kyoto Station / dll.\nCTA: Save buat referensi jalan-jalan."
     },
     {
       "notion_id": "392828a0607e81688834c746a7ee7629",
@@ -106,7 +113,8 @@
       "catatan": "📝 CATATAN: Bisa berarti 'ya' ATAU 'nggak, makasih'. Konteks + gesture penting.\n\n(arsip trivia · pilar asli: Insider)",
       "dibuat": "2026-07-03T11:52:00.000Z",
       "diubah": "2026-07-03T11:52:00.000Z",
-      "source": "trivia"
+      "source": "trivia",
+      "naskah": "Hook: 'Daijoubu' bisa bikin salah paham fatal.\nBody: Artinya 'nggak apa-apa' TAPI juga cara halus menolak. Kasir tanya butuh kantong? 'Daijoubu' = nggak usah.\nCTA: Save biar nggak salah paham di Jepang."
     },
     {
       "notion_id": "392828a0607e81b28b53ec3e0f3b435e",
@@ -119,7 +127,8 @@
       "catatan": "📝 CATATAN: Putih = duka/suci, merah = hoki, biru-hijau (ao).\n\n(arsip trivia · pilar asli: Trivia)",
       "dibuat": "2026-07-03T11:52:00.000Z",
       "diubah": "2026-07-03T11:52:00.000Z",
-      "source": "trivia"
+      "source": "trivia",
+      "naskah": "Hook: Arti warna versi Jepang.\nSlides: Putih / merah / hitam / 'ao' yang berarti biru+hijau.\nCTA: Save buat referensi budaya."
     },
     {
       "notion_id": "392828a0607e81798842e86075920eec",
@@ -132,7 +141,8 @@
       "catatan": "📝 CATATAN: Bilas dulu, no handuk di air, tato.\n\n(arsip trivia · pilar asli: Insider)",
       "dibuat": "2026-07-03T11:52:00.000Z",
       "diubah": "2026-07-03T11:52:00.000Z",
-      "source": "trivia"
+      "source": "trivia",
+      "naskah": "Hook: Aturan onsen yang turis sering langgar.\nSlides: Bilas dulu / bugil / handuk nggak masuk air / aturan tato.\nCTA: Save sebelum ke onsen."
     },
     {
       "notion_id": "392828a0607e81a189d3cb97aa8ea0ad",
@@ -145,7 +155,8 @@
       "catatan": "📝 CATATAN: Tonkotsu ramen, yatai (warung kaki lima), dekat Asia.\n\n(arsip trivia · pilar asli: Regional)",
       "dibuat": "2026-07-03T11:52:00.000Z",
       "diubah": "2026-07-03T11:52:00.000Z",
-      "source": "trivia"
+      "source": "trivia",
+      "naskah": "Hook: Kota Jepang paling underrated buat foodie?\nBody: Fukuoka — tonkotsu ramen asli, yatai malam hari, hidup lebih murah.\nCTA: Follow buat daerah Jepang."
     },
     {
       "notion_id": "392828a0607e811ba161ecc975c954f4",
@@ -158,7 +169,8 @@
       "catatan": "📝 CATATAN: Salju, susu, jalan lebar, sejarah Ainu.\n\n(arsip trivia · pilar asli: Regional)",
       "dibuat": "2026-07-03T11:52:00.000Z",
       "diubah": "2026-07-03T11:52:00.000Z",
-      "source": "trivia"
+      "source": "trivia",
+      "naskah": "Hook: Hokkaido nggak kayak Jepang yang kamu bayangin.\nBody: Salju ekstrem, susu & seafood terbaik, budaya Ainu, jalan luas.\nCTA: Follow buat jelajah daerah Jepang."
     },
     {
       "notion_id": "392828a0607e81d5acbcd56ecdf01b93",
@@ -171,7 +183,8 @@
       "catatan": "📝 CATATAN: Reikin (key money) + shikikin (deposit). Verifikasi.\n\n(arsip trivia · pilar asli: Trivia)",
       "dibuat": "2026-07-03T11:52:00.000Z",
       "diubah": "2026-07-03T11:52:00.000Z",
-      "source": "trivia"
+      "source": "trivia",
+      "naskah": "Hook: Nyewa rumah di Jepang ada biaya aneh.\nSlides: Reikin (uang hadiah, nggak balik) / shikikin / biaya agen.\nCTA: Save kalau mau tinggal di Jepang."
     },
     {
       "notion_id": "392828a0607e81279658fd0caa41f196",
@@ -184,7 +197,8 @@
       "catatan": "📝 CATATAN: Bonus musim panas & winter, ~1-3 bulan gaji. Verifikasi angka.\n\n(arsip trivia · pilar asli: Trivia)",
       "dibuat": "2026-07-03T11:52:00.000Z",
       "diubah": "2026-07-03T11:52:00.000Z",
-      "source": "trivia"
+      "source": "trivia",
+      "naskah": "Hook: Sistem gaji Jepang beda dari kita.\nBody: Bonus 2x/tahun (natsu & fuyu), bisa 1-3x gaji bulanan.\nCTA: Follow buat dunia kerja Jepang."
     },
     {
       "notion_id": "392828a0607e8109840fd41d5b46022c",
@@ -197,7 +211,8 @@
       "catatan": "📝 CATATAN: Bawa sampah pulang; budaya sejak 1995.\n\n(arsip trivia · pilar asli: Trivia)",
       "dibuat": "2026-07-03T11:52:00.000Z",
       "diubah": "2026-07-03T11:52:00.000Z",
-      "source": "trivia"
+      "source": "trivia",
+      "naskah": "Hook: Nggak ada tempat sampah, tapi jalan Jepang super bersih. Kok bisa?\nBody: Orang bawa sampah pulang. Kebiasaan sejak insiden 1995.\nCTA: Follow buat fakta budaya Jepang."
     },
     {
       "notion_id": "392828a0607e81d08c2dea79cb8376c7",
@@ -210,7 +225,8 @@
       "catatan": "📝 CATATAN: Hanko (stempel pribadi), birokrasi, kepercayaan.\n\n(arsip trivia · pilar asli: Trivia)",
       "dibuat": "2026-07-03T11:52:00.000Z",
       "diubah": "2026-07-03T11:52:00.000Z",
-      "source": "trivia"
+      "source": "trivia",
+      "naskah": "Hook: Jepang canggih tapi masih pakai fax?\nBody: Stempel 'hanko' = tanda tangan resmi, birokrasi tradisional.\nCTA: Follow buat kontradiksi unik Jepang."
     },
     {
       "notion_id": "392828a0607e817c9ffceaec958ab664",
@@ -223,7 +239,8 @@
       "catatan": "📝 CATATAN: Sejarah kata 'ao' mencakup hijau.\n\n(arsip trivia · pilar asli: Insider)",
       "dibuat": "2026-07-03T11:52:00.000Z",
       "diubah": "2026-07-03T11:52:00.000Z",
-      "source": "trivia"
+      "source": "trivia",
+      "naskah": "Hook: Lampu hijau = 'biru' di Jepang?\nBody: Dulu 'ao' mencakup hijau. Lampu 'go' resmi disebut ao-shingou.\nCTA: Follow buat fakta bahasa Jepang."
     },
     {
       "notion_id": "392828a0607e81c88f60e949b8001a78",
@@ -236,7 +253,8 @@
       "catatan": "📝 CATATAN: Pelayanan baik itu standar; omotenashi.\n\n(arsip trivia · pilar asli: Insider)",
       "dibuat": "2026-07-03T11:52:00.000Z",
       "diubah": "2026-07-03T11:52:00.000Z",
-      "source": "trivia"
+      "source": "trivia",
+      "naskah": "Hook: Jangan kasih tip di Jepang.\nBody: Pelayanan prima itu default (omotenashi). Tip bisa bikin bingung/tersinggung.\nCTA: Save sebelum ke Jepang."
     },
     {
       "notion_id": "392828a0607e8135b443c702b0315c5a",
@@ -249,7 +267,8 @@
       "catatan": "📝 CATATAN: Shi = 4 = mati. Kaitkan ke lift, kamar RS, hadiah. Verifikasi contoh gedung.\n\n(arsip trivia · pilar asli: Insider)",
       "dibuat": "2026-07-03T11:52:00.000Z",
       "diubah": "2026-07-03T11:52:00.000Z",
-      "source": "trivia"
+      "source": "trivia",
+      "naskah": "Hook: Kenapa nomor 4 nggak ada di rumah sakit Jepang?\nBody: 4 = 'shi' = bunyi sama dgn 'mati'. Banyak lift & kamar skip angka 4 (dan 9 = 'ku'/penderitaan).\nCTA: Follow buat fakta Jepang yang cuma orang lokal tahu."
     },
     {
       "notion_id": "392828a0607e81769c1df3c987bc1f7e",
@@ -262,7 +281,8 @@
       "catatan": "📝 CATATAN: 'Chotto...', tarik napas, 'muzukashii'. Honne vs tatemae.\n\n(arsip trivia · pilar asli: Insider)",
       "dibuat": "2026-07-03T11:52:00.000Z",
       "diubah": "2026-07-03T11:52:00.000Z",
-      "source": "trivia"
+      "source": "trivia",
+      "naskah": "Hook: Kalau orang Jepang bilang ini, artinya 'TIDAK'.\nBody: 'Chotto...', 'muzukashii desu ne', tarik napas 'ssss'. Konsep honne/tatemae.\nCTA: Save biar paham kode sosial Jepang."
     },
     {
       "notion_id": "392828a0607e81d18cb1c66bd6ce2419",
@@ -275,7 +295,8 @@
       "catatan": "📝 CATATAN: Sopan santun saat sakit, alergi serbuk (kafunsho).\n\n(arsip trivia · pilar asli: Trivia)",
       "dibuat": "2026-07-03T11:52:00.000Z",
       "diubah": "2026-07-03T11:52:00.000Z",
-      "source": "trivia"
+      "source": "trivia",
+      "naskah": "Hook: Masker di Jepang bukan hal baru.\nBody: Dipakai saat pilek (biar nggak nularin), alergi serbuk sari, bahkan pas nggak mau dandan.\nCTA: Follow buat kebiasaan unik Jepang."
     },
     {
       "notion_id": "392828a0607e812b847ee1d7a8c121fa",
@@ -288,7 +309,8 @@
       "catatan": "📝 CATATAN: Rasa aman, kelelahan kerja, inemuri.\n\n(arsip trivia · pilar asli: Trivia)",
       "dibuat": "2026-07-03T11:52:00.000Z",
       "diubah": "2026-07-03T11:52:00.000Z",
-      "source": "trivia"
+      "source": "trivia",
+      "naskah": "Hook: Kenapa aman tidur di kereta Jepang?\nBody: Tingkat kriminalitas rendah + budaya 'inemuri' (tidur di tempat kerja/umum dianggap kerja keras).\nCTA: Follow buat budaya Jepang."
     },
     {
       "notion_id": "392828a0607e811b9dfacc2b512f5577",
@@ -301,7 +323,8 @@
       "catatan": "📝 CATATAN: Genkan, lantai tatami, konsep suci/kotor (uchi-soto).\n\n(arsip trivia · pilar asli: Trivia)",
       "dibuat": "2026-07-03T11:52:00.000Z",
       "diubah": "2026-07-03T11:52:00.000Z",
-      "source": "trivia"
+      "source": "trivia",
+      "naskah": "Hook: Kenapa harus copot sepatu di Jepang?\nBody: Ada 'genkan' (area transisi), lantai tatami, konsep dalam vs luar.\nCTA: Save biar nggak salah tingkah."
     },
     {
       "notion_id": "392828a0607e817f9ddaf85f5d2fd40b",
@@ -314,7 +337,8 @@
       "catatan": "📝 CATATAN: Dilarang foto geisha, gang Gion, etika kuil.\n\n(arsip trivia · pilar asli: Regional)",
       "dibuat": "2026-07-03T11:52:00.000Z",
       "diubah": "2026-07-03T11:52:00.000Z",
-      "source": "trivia"
+      "source": "trivia",
+      "naskah": "Hook: Jangan lakukan ini di Kyoto.\nSlides: Foto geisha / makan sambil jalan / etika kuil / suara di bus.\nCTA: Save sebelum ke Kyoto."
     },
     {
       "notion_id": "392828a0607e81209875ff9fb41f45df",
@@ -327,7 +351,8 @@
       "catatan": "📝 CATATAN: Miso katsu, kastil Nagoya, industri Toyota.\n\n(arsip trivia · pilar asli: Regional)",
       "dibuat": "2026-07-03T11:52:00.000Z",
       "diubah": "2026-07-03T11:52:00.000Z",
-      "source": "trivia"
+      "source": "trivia",
+      "naskah": "Hook: Kenapa turis sering skip Nagoya?\nBody: Padahal ada miso katsu legendaris, kastil, pusat Toyota.\nCTA: Follow buat daerah underrated Jepang."
     },
     {
       "notion_id": "392828a0607e817cbc9ad4a34fdea314",
@@ -340,7 +365,8 @@
       "catatan": "📝 CATATAN: Rahasia umur panjang, budaya Ryukyu, laut.\n\n(arsip trivia · pilar asli: Regional)",
       "dibuat": "2026-07-03T11:52:00.000Z",
       "diubah": "2026-07-03T11:52:00.000Z",
-      "source": "trivia"
+      "source": "trivia",
+      "naskah": "Hook: Ada 'Bali' di Jepang, namanya Okinawa.\nBody: Pantai tropis, budaya Ryukyu, salah satu penduduk terpanjang umurnya di dunia.\nCTA: Follow buat daerah Jepang."
     },
     {
       "notion_id": "392828a0607e81138637c18d81dbfe8b",
@@ -353,7 +379,8 @@
       "catatan": "📝 CATATAN: Dialek Kansai, humor, eskalator kiri vs kanan.\n\n(arsip trivia · pilar asli: Regional)",
       "dibuat": "2026-07-03T11:52:00.000Z",
       "diubah": "2026-07-03T11:52:00.000Z",
-      "source": "trivia"
+      "source": "trivia",
+      "naskah": "Hook: Osaka vs Tokyo — beda dunia.\nSlides: Dialek / humor / eskalator (Osaka berdiri kanan, Tokyo kiri) / makanan / sifat.\nCTA: Kamu tim mana? Comment."
     },
     {
       "notion_id": "392828a0607e81cdb455d3960dda2da4",
@@ -366,7 +393,8 @@
       "catatan": "📝 CATATAN: Kereta rata-rata telat <1 menit/tahun. Budaya waktu.\n\n(arsip trivia · pilar asli: Trivia)",
       "dibuat": "2026-07-03T11:52:00.000Z",
       "diubah": "2026-07-03T11:52:00.000Z",
-      "source": "trivia"
+      "source": "trivia",
+      "naskah": "Hook: Telat 1 menit di Jepang itu masalah besar.\nBody: Kereta Shinkansen rata-rata telat cuma detik. Terlambat = nggak menghormati waktu orang.\nCTA: Follow buat budaya kerja Jepang."
     },
     {
       "notion_id": "392828a0607e81ae8b23e777d2340903",
@@ -379,7 +407,8 @@
       "catatan": "📝 CATATAN: Washlet, pemanas, suara penutup (otohime).\n\n(arsip trivia · pilar asli: Trivia)",
       "dibuat": "2026-07-03T11:52:00.000Z",
       "diubah": "2026-07-03T11:52:00.000Z",
-      "source": "trivia"
+      "source": "trivia",
+      "naskah": "Hook: Toilet Jepang = teknologi level dewa.\nBody: Dudukan hangat, bidet, tombol 'suara' buat nutupin bunyi (Otohime).\nCTA: Follow buat teknologi harian Jepang."
     },
     {
       "notion_id": "392828a0607e81d6b55ce8b8a1404dab",
@@ -392,7 +421,8 @@
       "catatan": "📝 CATATAN: Telur, pisang, dashi, mainan. ~1 mesin tiap 30 orang.\n\n(arsip trivia · pilar asli: Trivia)",
       "dibuat": "2026-07-03T11:52:00.000Z",
       "diubah": "2026-07-03T11:52:00.000Z",
-      "source": "trivia"
+      "source": "trivia",
+      "naskah": "Hook: Vending machine Jepang jual APA aja?\nBody: Telur segar, kaldu dashi, bunga, bahkan serangga. Ada ~4 juta mesin.\nCTA: Follow buat sisi unik Jepang."
     }
   ]
 }

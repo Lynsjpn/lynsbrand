@@ -1,7 +1,7 @@
 {
   "sumber_db": "📚 Content Bank",
   "notion_db": "4848cfba98ca44438d7b1d60462aed50",
-  "ditarik": "2026-08-08",
+  "ditarik": "2026-08-11",
   "catatan_format": "Ditarik otomatis dari Notion oleh GitHub Actions. Field 'Kenapa Menarik' & 'Catatan' digabung ke catatan riset; tanda ⚠️ berasal dari properti 'Perlu Verifikasi'.",
   "items": [
     {
@@ -15,7 +15,8 @@
       "catatan": "📝 CATATAN: Sumber: Log Materi Mingguan 2026-07-05. Data solid: baseline se-Tokyo ¥60rb/th/anak + ¥150rb voucher; Edogawa ¥13rb/bln s.d 12 bln (bayi <1th, unik krn cash bulanan); Nerima ¥100rb anak ke-3+; Katsushika ¥50rb/anak; Toshima ¥50rb e-coupon; Chuo ¥50rb voucher. Minato disebut paling royal se-Tokyo tapi angka pastinya belum ketemu — cari dulu sebelum masuk slide. Bagus dipasangkan sbg 'part 2' setelah konsep Okutama di atas.",
       "dibuat": "2026-07-05T01:30:00.000Z",
       "diubah": "2026-07-25T12:22:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": "## Data & sumber (cek sebelum tayang)\nBaseline nasional (sama di seluruh Jepang): 出産育児一時金 = ¥500.000 per kelahiran. Yang beda antar-distrik adalah top-up distrik + cara kasihnya.\nSumber: city.minato.tokyo.jp (出産費用助成, FY2026 plafon perhitungan naik ke ¥81万) · city.edogawa.tokyo.jp (乳児養育手当, ¥13.000/bln s/d ulang tahun ke-1) · city.chuo.lg.jp (区内共通買物・食事券 ¥30.000 + タクシー利用券 ¥10.000).\nWajib dicek sebelum tayang: angka pasti & periode FY2026 tiap program bisa berubah. Chuo: pakai ¥30.000 (bagian reguler, solid dari halaman resmi); jangan pakai angka ¥50.000 — tambahan ¥20.000 belum terkonfirmasi masih berjalan FY2026. Voucher taksi ¥10.000: konfirmasi ulang periode/eligibilitas.\n———\n## Slide 1 · Cover / Hook\nTebak dulu sebelum swipe →\n> Distrik Tokyo yang paling royal buat lahiran bukan yang kasih cash paling gede.\nSub kecil: Lyns Archive : Birth Support\n## Slide 2 · Pain point\nLahiran di Jepang itu mahal, dan tiap orang langsung nanya: \"distrik mana yang bantuannya paling gede?\"\nTapi kalau cuma ngadu nominal, kamu kehilangan bagian yang paling berguna — caranya. Karena bentuk bantuan itu yang nentuin kapan uangnya kepakai buat kamu.\n## Slide 3 · Preview\nAngka dasarnya sama: ¥500.000 dari negara, di mana pun kamu tinggal.\nYang beda cuma tambahan distrik — dan tiga distrik ini kasihnya dengan tiga cara yang beda banget.\n## Slide 4 · Minato\n❌ \"Paling royal = yang transfer cash paling banyak\"\n✅ Minato nambahin sampai ¥310.000 di atas ¥50万 nasional — langsung buat nutup biaya rumah sakit lahiran, yang di Tokyo sering nembus angka nasional.\nBantuannya nempel ke biaya yang paling bikin deg-degan: tagihan bersalin.\n## Slide 5 · Edogawa\n✅ Edogawa kasih ¥13.000 tiap bulan sampai bayi umur 1 tahun — bukan sekali cair, tapi cashflow tiap bulan.\nBuat tahun pertama yang pengeluarannya bocor terus (popok, susu, perlengkapan), uang yang datang tiap bulan sering kerasa lebih nolong daripada satu transfer gede di awal.\n## Slide 6 · Chuo\n✅ Chuo kasih hadiah lahiran ¥30.000 dalam bentuk voucher belanja lokal, plus voucher taksi ¥10.000 buat ibu hamil ke pemeriksaan.\nUangnya sengaja dibikin muter di toko & restoran dalam distrik — jadi bantuannya sekalian ngidupin ekonomi lingkungan. Cara yang beda sendiri.\n## Slide 7 · Proof & twist\nJadi \"paling royal\" itu tergantung kamu lagi butuh yang mana: nutup tagihan rumah sakit (Minato), cashflow bulanan di tahun pertama (Edogawa), atau meringankan belanja harian (Chuo).\nSemua dari halaman resmi 区役所 masing-masing. Tapi program lahiran level distrik itu diperbarui tiap tahun fiskal — cek angka & periode terbaru sebelum ngandelin.\n## Slide 8 · CTA\nDistrik tempat kamu tinggal kasih tambahan lahiran nggak — dan bentuknya apa?\nKomen \"LAHIRAN\" kalau mau aku bandingkan tambahan lahiran di lebih banyak distrik.\n———\n## Caption\nLyns Archive : Birth Support\nSemua orang di Jepang dapat ¥500.000 dari negara pas lahiran. Yang beda itu tambahan distriknya — dan yang menarik bukan nominalnya, tapi caranya.\nMinato nambahin sampai ¥310.000 langsung ke biaya rumah sakit. Edogawa malah kasih ¥13.000 tiap bulan sampai bayi setahun — cashflow, bukan sekali cair. Chuo kasih ¥30.000 tapi bentuk voucher belanja lokal + voucher taksi buat ibu hamil, biar uangnya muter di distrik sendiri.\nTiga cara, tiga filosofi. \"Paling royal\" tergantung kamu lagi butuh yang mana.\nCatatan: angka & periode program level distrik berubah tiap tahun fiskal — selalu cek halaman resmi 区役所 tempat kamu tinggal sebelum ngandelin.\nSumber: halaman resmi Minato, Edogawa, Chuo.\nKomen \"LAHIRAN\" kalau mau versi lebih banyak distrik.\n#tinggaldijepang #tokyo #lahirandijepang #jepang #keluargadijepang #lynsarchive\n———\n## Catatan desain Canva\n- Format 1080×1350, 8 slide.\n- Cover: ilustrasi flat — stroller / perlengkapan bayi + peta distrik Tokyo, ATAU foto dari samping tangan menggendong. Bukan wajah penuh. Logo bunga \"Lyns\" pink di pojok.\n- Latar Cream White #FFF9F6, judul Montserrat Bold Charcoal Ink #33292B, isi Poppins.\n- Slide 4: baris ❌ Dusty Rose #D98BA0, baris ✅ Muted Gold #D8B589.\n- Slide 4/5/6: \"kartu distrik\" seragam, tapi kasih ikon bentuk bantuan yang beda tiap kartu (🏥 tagihan / 📅 bulanan / 🎟️ voucher) biar poin \"caranya beda\" kebaca secara visual, bukan cuma angka.\n- Slide 7: latar Soft Lavender-Sky #B7C4E3 sebagai \"peringatan/nuansa netral\".\n- Mark \"Lyns Archive : Birth Support\" kecil di header tiap slide."
     },
     {
       "notion_id": "393828a0607e8120bf79e2483ba5888f",
@@ -28,7 +29,8 @@
       "catatan": "📝 CATATAN: Cerita personal = relatable, tapi tetap tanpa wajah.",
       "dibuat": "2026-07-04T12:46:00.000Z",
       "diubah": "2026-07-04T12:46:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": "## Isi slide (5)\n- Slide 1 (cover): \"Aku sudah pindah rumah 5× di Jepang 🧳 Ini 3 hal yang baru aku sadari\"\n- Slide 2: Pelajaran 1 — desa vs kota (akses, biaya, ritme)\n- Slide 3: Pelajaran 2 — sistem sewa/pindahan Jepang yang jarang dibahas\n- Slide 4: Pelajaran 3 — memilih distrik sesuai fase hidup (single vs keluarga)\n- Slide 5 (CTA): \"Kamu udah pindah berapa kali? Paling betah di daerah mana? 👇\"\n## Caption\n11 tahun di Jepang, 5 kali pindah rumah — dari desa kecil sampai kota besar 🏡➡️🏙️\nAda beberapa hal yang baru aku sadari setelah ngerasain sendiri (bukan dari katanya). Aku rangkum 3 yang paling kepakai, terutama buat kamu yang lagi mikir mau tinggal di mana.\nKamu sendiri udah pindah berapa kali? Paling betah di daerah mana? 👇\n#tinggaldijepang #hidupdijepang #jepang #pengalamandijepang #東京\n## Prompt Canva\n> Carousel 1080×1350, warm Japanese travel-journal. Paper white #FAF7F2, gold #E9C46A & red #D62828 accents. Cover small suitcase/house icon. Tip slides: number badge in gold circle, bold Montserrat heading, Poppins body. Faint Japan-map watermark. No faces."
     },
     {
       "notion_id": "393828a0607e81b08001cbf4983b85c5",
@@ -41,7 +43,8 @@
       "catatan": "📝 CATATAN: Refinement dari draft lama — kini pakai arc penuh + ❌/✅.",
       "dibuat": "2026-07-04T22:43:00.000Z",
       "diubah": "2026-07-04T22:43:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": "Hook: \"11 tahun di Jepang, 5 kali pindah rumah — ini yang baru aku sadar.\"\nPain/Preview: Cerita personal, natural — tanpa framing '3 hal penting'.\nPoin 1-3: ❌ ekspektasi awal vs ✅ realita (desa vs kota, sistem sewa yang jarang dibahas, milih distrik sesuai fase hidup).\nProof: Bagian dari cerita itu sendiri — sudah otentik.\nCTA: \"Kamu udah pindah berapa kali? Paling betah di mana? 👇\""
     },
     {
       "notion_id": "393828a0607e81449afcf8f06bf1f7b6",
@@ -54,7 +57,8 @@
       "catatan": "📝 CATATAN: Dari 珍百景 / 池上解説.",
       "dibuat": "2026-07-04T22:43:00.000Z",
       "diubah": "2026-07-04T22:43:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": "Hook: \"Tau nggak, di Jepang ada kebiasaan kecil yang kalau dipikir-pikir agak aneh — tapi jalan terus.\"\nIsi: 5 fakta, 1/slide, angka besar + 1 kalimat.\nCTA: \"Nomor berapa paling bikin kamu kaget?\"\nPilar 2 — fungsi volume, tidak perlu arc panjang."
     },
     {
       "notion_id": "393828a0607e8179afa1c9134b99f754",
@@ -67,7 +71,8 @@
       "catatan": "📝 CATATAN: Ambil dari catatan 珍百景 / 池上解説 / TV lokal.",
       "dibuat": "2026-07-04T12:46:00.000Z",
       "diubah": "2026-07-04T12:46:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": "## Isi slide (6)\n- Slide 1 (cover): \"5 Kebiasaan Jepang yang Bikin Kamu Mikir 'Kok Bisa?' 🇯🇵\"\n- Slide 2–6: 1 fakta per slide (nomor besar + fakta 1–2 kalimat)\n- Slide terakhir gabung CTA: \"Nomor berapa yang paling bikin kaget? 👇\"\n## Caption\nTau nggak, di Jepang ada kebiasaan-kebiasaan kecil yang kadang bikin \"kok bisa gitu ya?\" 😄\nAku kumpulin 5 yang menurutku paling menarik (swipe →). Nomor berapa yang paling bikin kamu kaget? 👇\nSave & share ke temanmu yang suka Jepang ✔️\n#faktajepang #jepang #豆知識 #zatsugaku #budayajepang #infojepang\n## Prompt Canva\n> Carousel 1080×1350 listicle. Paper white #FAF7F2, big red #D62828 numbers 1–5, gold #E9C46A dividers. Cover bold Montserrat title + red circle motif. Fact slides: giant number left, fact text right Poppins. Clean, whitespace-heavy, no people."
     },
     {
       "notion_id": "394828a0607e8185a527e35aea7c4cc9",
@@ -80,7 +85,8 @@
       "catatan": "📝 CATATAN: Formula Arc, 7-8 slide. Data: Adachi (Kita-Ayase) 1R/1K ¥54rb, 2LDK ¥122rb, 3LDK+ ¥188rb. Katsushika (Shibamata) 1R/1K ¥56rb, 2LDK ¥11-12man, 3LDK ¥12-13man. Angle: Adachi = praktis buat commuter (stasiun awal jalur Chiyoda), Katsushika = nuansa shitamachi/nostalgic.",
       "dibuat": "2026-07-05T01:13:00.000Z",
       "diubah": "2026-07-05T01:13:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": ""
     },
     {
       "notion_id": "394828a0607e817a98b0e70cbdbd089a",
@@ -93,7 +99,8 @@
       "catatan": "📝 CATATAN: Bagian Seri Distrik Budget Pekerja Muda (2026-07-05, urutan #8). BELUM ADA riset sama sekali.",
       "dibuat": "2026-07-05T16:58:00.000Z",
       "diubah": "2026-07-05T16:58:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": ""
     },
     {
       "notion_id": "393828a0607e81c8a157f0be6987f603",
@@ -106,7 +113,8 @@
       "catatan": "📝 CATATAN: WAJIB verifikasi ke situs resmi MHLW sebelum posting.",
       "dibuat": "2026-07-04T22:43:00.000Z",
       "diubah": "2026-07-04T22:43:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": "Hook: \"Banyak yang kira pekerja asing nggak dapat hak ini — ternyata salah.\"\nPain: Info hak pekerja asing sering simpang siur.\nPreview: \"3 miskonsepsi yang paling sering aku denger.\"\nPoin 1-3: ❌ miskonsepsi umum vs ✅ fakta aturan sebenarnya (verifikasi MHLW).\nProof: Sudut pandang HR + pengalaman jadi ibu pekerja di Jepang.\nCTA: \"Komen 'CUTI' — aku kirim ringkasan aturannya.\""
     },
     {
       "notion_id": "3a3828a0607e81f4963cef54c011027a",
@@ -119,7 +127,8 @@
       "catatan": "📝 CATATAN: Sumber asal: Log Materi Mingguan — Shinagawa ¥72.450 (15 Jul) & Meguro ¥50.000 (13 Jul), keduanya Perlu Verifikasi = tidak, dari halaman resmi. Shibuya (~¥45.000) SENGAJA TIDAK dipakai angkanya — masih Perlu Verifikasi (angka dari agregator sekunder). Arc: Formula Arc versi ringkas 6-slide.",
       "dibuat": "2026-07-20T10:01:00.000Z",
       "diubah": "2026-07-20T10:01:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": "## Data & sumber (cek sebelum tayang)\n- Shinagawa-ku: maksimal ¥72.450. Syarat: 65+, ambang pendengaran 40–70 dB (難聴 ringan–sedang), butuh diagnosa dokter THT. Loket: 高齢者地域支援課. Sumber: halaman resmi city.shinagawa.\n- Meguro-ku: maksimal ¥50.000, 1× seumur hidup. Syarat: 65+, non-pajak, 40–70 dB, wajib beli di toko alat bantu dengar bersertifikat + surat dokter THT. Sumber: city.meguro (hochouki.html).\n⚠️ Shibuya-ku (~¥45.000) sengaja TIDAK dimasukkan dengan angka — angka itu dari agregator sekunder dan masih berstatus Perlu Verifikasi di Log Materi Mingguan. Kalau mau dipakai, cek dulu plafon persisnya di city.shibuya.tokyo.jp/kenko/koreisha-seikatsu/koreisha-zaitaku/hocyouki-jyosei.html.\nKonfirmasi tahun fiskal (実施要綱) sebelum tayang.\n———\n## Slide 1 · Cover / Hook\nTebak dulu sebelum swipe →\n> Alat bantu dengar yang sama, orang tua yang sama, syarat yang sama. Cuma beda distrik — dan yang ditanggung selisihnya ¥22.000.\nSub kecil: Lyns Archive : Elderly Support\n## Slide 2 · Pain point\nAlat bantu dengar di Jepang harganya bisa ratusan ribu yen, dan asuransi kesehatan biasa nggak menanggungnya.\nBuat yang punya orang tua lansia di sini, itu pengeluaran yang datangnya mendadak dan besar. Yang jarang diketahui: bantuannya ada, tapi diurus di level distrik — bukan nasional.\n## Slide 3 · Anggapan umum\n❌ \"Bantuan lansia di Tokyo pasti sama semua.\"\n✅ Nggak. Ini termasuk program yang tiap distrik menentukan sendiri plafonnya, jadi selisihnya nyata.\n## Slide 4 · Angkanya\n✅ Shinagawa-ku: sampai ¥72.450\n✅ Meguro-ku: sampai ¥50.000 (satu kali seumur hidup)\nSelisih ¥22.450 untuk kebutuhan yang persis sama. Dan angka ¥50.000 itu bukan angka rendah — justru itu yang jadi baseline di banyak distrik. Shinagawa yang di atas rata-rata.\n## Slide 5 · Syarat & proof\nDua-duanya punya syarat mirip: usia 65 tahun ke atas, tingkat kehilangan pendengaran 40–70 dB, dan surat keterangan dokter THT. Meguro menambahkan syarat non-pajak dan pembelian harus di toko alat bantu dengar bersertifikat.\nAngka-angka ini dari halaman resmi masing-masing distrik. Tapi program level distrik diperbarui tiap tahun fiskal — jadi selalu konfirmasi ke loket lansia di 区役所 sebelum beli, bukan sesudah.\n## Slide 6 · CTA\nPola yang sama berlaku ke banyak layanan lansia lain di Tokyo: ada, tapi beda plafon tiap distrik, dan hampir nggak pernah diumumkan dalam bahasa selain Jepang.\nKomen \"DENGAR\" kalau mau aku bandingkan 23 distrik untuk program ini.\n———\n## Caption\nLyns Archive : Elderly Support\nAlat bantu dengar nggak ditanggung asuransi kesehatan biasa di Jepang, dan harganya bisa ratusan ribu yen. Yang jarang diketahui: banyak distrik punya bantuan pembeliannya sendiri — dengan plafon yang beda-beda.\nShinagawa-ku menanggung sampai ¥72.450. Meguro-ku sampai ¥50.000, sekali seumur hidup. Kebutuhan sama, selisihnya ¥22.450.\nSyaratnya mirip di dua distrik: 65 tahun ke atas, tingkat kehilangan pendengaran 40–70 dB, dan surat dari dokter THT. Meguro juga mensyaratkan status non-pajak dan pembelian di toko bersertifikat.\nAngka dari halaman resmi masing-masing distrik. Program begini diperbarui tiap tahun fiskal, jadi konfirmasi ke loket lansia 区役所 sebelum beli — sesudah beli biasanya sudah nggak bisa diklaim.\nKomen \"DENGAR\" kalau mau aku bandingkan 23 distrik.\n#tinggaldijepang #lansia #jepang #tokyo #keluargadijepang #lynsarchive\n———\n## Catatan desain Canva\n- Format 1080×1350, 6 slide (versi ringkas — topiknya spesifik, nggak perlu 8 slide).\n- Cover: ilustrasi flat telinga/gelombang suara halus, atau tangan tua memegang alat bantu dengar. Nada hangat, jangan klinis. Logo bunga \"Lyns\" pink di pojok.\n- Latar Cream White #FFF9F6, judul Montserrat Bold Charcoal Ink #33292B.\n- Slide 3: ❌ Dusty Rose #D98BA0, ✅ Muted Gold #D8B589.\n- Slide 4: dua kartu berdampingan (Shinagawa / Meguro), angka pakai font terbesar di seluruh carousel. Kartu Shinagawa diberi aksen Muted Gold, Meguro Blush Pink #F6D9DE. Selisih \"¥22.450\" ditulis di antara keduanya dengan panah.\n- Slide 5: latar Soft Lavender-Sky #B7C4E3 sebagai blok syarat/peringatan.\n- Jangan pakai warna merah/peringatan medis — tetap di palet Brand Kit."
     },
     {
       "notion_id": "3a8828a0607e8153b39ef09b88dbb9e2",
@@ -132,7 +141,8 @@
       "catatan": "📝 CATATAN: Sumber asal: Log Materi Mingguan — 'Syarat unik Chiyoda: wajib masuk 町会' (20 Jul, Perlu Verifikasi=tidak). Arc: Formula Arc 8-slide, pakai otoritas HR Lyns. Contoh nyata = 次世代育成住宅助成 Chiyoda (2 jebakan: 仮申請 sebelum kontrak + wajib gabung 町会). Sumber: city.chiyoda.lg.jp/koho/machizukuri/sumai/jose/jisedai.html. Prinsip umum dibuat generalizable ke semua bantuan pemda, bukan cuma Chiyoda.",
       "dibuat": "2026-07-25T12:23:00.000Z",
       "diubah": "2026-07-25T12:23:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": "## Data & sumber\nContoh nyata: Chiyoda — 次世代育成住宅助成 (subsidi sewa s/d ¥80.000/bln). Dua syarat administratif yang gampang bikin gagal walau kamu memenuhi syarat pendapatan & keluarga:\n1. 仮申請 (aplikasi sementara) harus SEBELUM tanda tangan kontrak sewa. Telat sedikit — misal daftar setelah kontrak diteken — hangus.\n2. Wajib gabung 町会 (chōkai) — asosiasi warga tingkat lingkungan (mirip RT/RW) — di alamat baru. Nggak gabung, nggak dapat.\nSumber: city.chiyoda.lg.jp — 次世代育成住宅助成 (fetch langsung, update Jul 2026).\nPrinsip yang diangkat: di Jepang, syarat administratif = bagian dari syarat, bukan formalitas. Ini berlaku ke banyak bantuan pemda, bukan cuma Chiyoda.\n———\n## Slide 1 · Cover / Hook\n> Kamu memenuhi semua syarat. Bantuannya tetap hangus.\nSub: Lyns Archive : Japan Life Admin\n## Slide 2 · Pain point\nDi kerjaan aku ngurus HR, dan hal yang paling sering aku lihat: orang kehilangan bantuan yang harusnya mereka dapat — bukan karena nggak layak, tapi karena satu langkah administratif kelewat.\nDi Jepang, \"memenuhi syarat\" dan \"dapat\" itu dua hal beda. Yang misahin: prosedur.\n## Slide 3 · Preview\nAku kasih contoh konkret — subsidi sewa Chiyoda yang lumayan gede. Ada dua jebakan di sini yang polanya kepakai ke hampir semua bantuan pemda di Jepang.\n## Slide 4 · Jebakan 1: urutan\n❌ \"Tanda tangan kontrak dulu, urus subsidinya belakangan.\"\n✅ Aplikasi sementara (仮申請) harus masuk SEBELUM kamu teken kontrak sewa.\nKedengarannya sepele, tapi banyak orang gugur di sini. Begitu kontrak diteken duluan, hak subsidinya hilang — walau semua syarat lain kamu penuhi.\n## Slide 5 · Jebakan 2: 町会\n❌ \"Cukup memenuhi syarat pendapatan & punya anak.\"\n✅ Wajib gabung 町会 (chōkai) di alamat barumu.\n町会 itu asosiasi warga tingkat lingkungan — semacam RT/RW versi Jepang. Hampir semua orang asing nggak tau ini ada, apalagi kalau itu jadi syarat dapat uang.\n## Slide 6 · Kenapa ini penting\nDi Jepang, prosedur bukan formalitas — dia bagian dari syaratnya.\nTanggal, urutan langkah, dokumen, keanggotaan lingkungan: semua diperlakukan sama seriusnya dengan syarat penghasilan. \"Aku nggak tau\" bukan alasan yang mengembalikan uangnya.\n## Slide 7 · Proof\nContoh di atas dari halaman resmi Chiyoda, dan polanya aku lihat berulang di banyak program — subsidi sewa, tunjangan anak, sampai keringanan pajak.\nSatu kebiasaan kecil yang nyelametin: sebelum tanda tangan apa pun (kontrak sewa, kontrak kerja), cek dulu \"ada bantuan yang harus didaftar SEBELUM ini?\"\n## Slide 8 · CTA\nUrutan langkah di Jepang bisa lebih nentuin daripada besar penghasilanmu.\nKomen \"BANTUAN\" kalau mau aku buatin checklist \"cek sebelum tanda tangan kontrak\".\n———\n## Caption\nLyns Archive : Japan Life Admin\nBagian dari kerjaan aku di HR itu ngurus beginian, dan pola yang paling sering aku lihat: orang kehilangan bantuan bukan karena nggak layak — tapi karena urutan langkahnya salah.\nContohnya subsidi sewa Chiyoda (次世代育成住宅助成, sampai ¥80.000/bulan). Dua hal yang gampang bikin gagal: (1) aplikasi sementaranya harus masuk SEBELUM kamu tanda tangan kontrak sewa — telat, hangus; (2) kamu wajib gabung 町会, asosiasi warga tingkat lingkungan yang hampir semua orang asing nggak tau.\nDi Jepang, prosedur itu bagian dari syarat, bukan formalitas. Kebiasaan kecil yang nyelametin: sebelum tanda tangan apa pun, tanya \"ada bantuan yang harus didaftar sebelum ini?\"\nSumber: halaman resmi Chiyoda-ku.\nKomen \"BANTUAN\" kalau mau checklist-nya.\n#tinggaldijepang #kerjadijepang #jepang #hrjepang #lynsarchive\n———\n## Catatan desain Canva\n- Format 1080×1350, 8 slide.\n- Cover: ilustrasi flat — dokumen/stempel (hanko) + tanda silang merah, ATAU foto dari belakang orang megang map dokumen. Bukan wajah penuh. Logo bunga \"Lyns\" pink di pojok.\n- Latar Cream White #FFF9F6, judul Montserrat Bold Charcoal Ink #33292B, isi Poppins.\n- Slide 4–5: baris ❌ Dusty Rose #D98BA0, baris ✅ Muted Gold #D8B589.\n- Slide 6: latar Soft Lavender-Sky #B7C4E3 (nuansa \"insight\", beda dari slide poin).\n- Nada: kredibel-hangat, bukan menggurui — dia berbagi dari pengalaman kerja, bukan ngajarin dari atas.\n- Mark \"Lyns Archive : Japan Life Admin\" kecil di header tiap slide."
     },
     {
       "notion_id": "393828a0607e81fcb89deaea9b96731e",
@@ -145,7 +155,8 @@
       "catatan": "📝 CATATAN: Format interaktif andalan (pernah sukses 2018). Grid 5×5 nama daerah/prefektur.",
       "dibuat": "2026-07-04T12:46:00.000Z",
       "diubah": "2026-07-04T12:46:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": "## Konsep\nGrid bingo 5×5 berisi nama daerah/prefektur Jepang. Audiens menandai yang pernah dikunjungi, kalau bingo → share ke story.\n## Caption\nMain bingo yuk! 🎌 Tandai daerah Jepang yang pernah kamu kunjungi. Dapat 1 garis penuh = BINGO! Screenshot & share ke story, tag aku ya 👇\n#tinggaldijepang #jepang #traveljepang #東京 #bingojepang"
     },
     {
       "notion_id": "394828a0607e81d4a801cdaf6c543ba1",
@@ -158,7 +169,8 @@
       "catatan": "📝 CATATAN: Dari 30-ide eksternal (2026-07-05), belum ada riset baru.",
       "dibuat": "2026-07-05T16:50:00.000Z",
       "diubah": "2026-07-05T16:50:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": ""
     },
     {
       "notion_id": "394828a0607e81df99c5ef94ae97f918",
@@ -171,7 +183,8 @@
       "catatan": "📝 CATATAN: Dari 30-ide eksternal (2026-07-05), belum ada riset baru. Sudah py: ranking sewa #2, jumlah kampus #1 di 23-ku. Perlu digali: fungsi pemerintahan (kantor Kokkai/kementerian), kantor elit, hunian terbatas, landmark.",
       "dibuat": "2026-07-05T16:50:00.000Z",
       "diubah": "2026-07-05T16:50:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": ""
     },
     {
       "notion_id": "394828a0607e817cb981f3d226c99785",
@@ -184,7 +197,8 @@
       "catatan": "📝 CATATAN: Dari 30-ide eksternal (2026-07-05), belum ada riset baru. Sudah py: ranking sewa #3, tunjangan lahir ¥50rb. Perlu digali: Ginza/Nihonbashi sbg pusat bisnis, tipe hunian, cocok utk siapa.",
       "dibuat": "2026-07-05T16:50:00.000Z",
       "diubah": "2026-07-05T16:50:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": ""
     },
     {
       "notion_id": "394828a0607e8152aa95f4458489dc8f",
@@ -197,7 +211,8 @@
       "catatan": "📝 CATATAN: Sumber: Log Materi Mingguan 2026-07-05 (Okutama-machi 定住促進サポート支援金 s.d. ¥1jt + subsidi rumah s.d. ¥2jt vs tunjangan lahir Chuo/Toshima ¥50rb). Angkat sbg 'ternyata Tokyo bukan cuma 23-ku yang mahal & ramai — ada Tokyo yang justru bayar kamu buat tinggal di sana krn depopulasi.' Jelaskan KENAPA bedanya bisa sejauh itu (insentif migrasi vs insentif lahir, bukan berarti satu ku 'lebih baik'). Framing netral, edukatif, bukan menghakimi — sesuai prinsip data-based/anti-konflik. Perlu link resmi Okutama-machi utk sumber di slide terakhir sebelum difinalisasi jadi script.",
       "dibuat": "2026-07-05T01:30:00.000Z",
       "diubah": "2026-07-05T01:30:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": ""
     },
     {
       "notion_id": "394828a0607e81a4a498f21b83acda5f",
@@ -210,7 +225,8 @@
       "catatan": "📝 CATATAN: Pakai Relatable/Manifesto Arc (dari analisis @ibupedia_id).",
       "dibuat": "2026-07-05T00:12:00.000Z",
       "diubah": "2026-07-05T00:12:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": "Hook: \"Dulu, sukses itu naik jabatan. Sekarang, sukses itu sempat masak buat anak. Kapan itu berubah?\"\nNama-in tekanan: Daftar hal yang dulu dikejar (karier, pengakuan) vs yang sekarang dianggap 'menang' (anak makan lahap, sempat me-time 10 menit).\nTwist: Muncul rasa bersalah karena 'harusnya' masih ambisius kayak dulu, takut dibilang udah nggak punya cita-cita.\nReframe: Berubah prioritas bukan kehilangan ambisi — itu tanda kedewasaan mengenali apa yang benar-benar penting di fase ini.\nInsight: Ambisi yang matang itu yang bisa menyesuaikan diri sama fase hidup, bukan yang kaku dari dulu ke dulu.\nPenutup manifesto: \"Sukses yang nggak bisa disesuaikan sama fase hidupmu, bukan sukses yang sehat.\""
     },
     {
       "notion_id": "3a3828a0607e8175ae5fee583d667cba",
@@ -223,7 +239,8 @@
       "catatan": "📝 CATATAN: Sumber asal: Log Materi Mingguan — Setagaya 養育費強制執行 (14 Jul 2026). Perlu Verifikasi = tidak. Arc: Formula Arc 7-slide (topik ada 'fix'-nya, jadi bukan Relatable Arc). Konfirmasi tahun fiskal sebelum tayang — program eksekusi paksa mulai terima 申立 sejak 1 Apr 令和7.",
       "dibuat": "2026-07-20T10:01:00.000Z",
       "diubah": "2026-07-20T10:01:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": "## Data & sumber (cek sebelum tayang)\nSetagaya-ku, program dukungan 養育費 (nafkah anak) untuk rumah tangga orang tua tunggal:\n- Subsidi biaya pembuatan 公正証書 (akta notaris): maksimal ¥49.000\n- Subsidi biaya eksekusi paksa (強制執行): 着手金 maksimal ¥100.000 + 実費 maksimal ¥50.000\nSumber: single-ouen-navi.metro.tokyo.lg.jp/municipality/setagaya (portal resmi Pemerintah Metropolitan Tokyo) + halaman resmi Setagaya-ku.\nSebelum tayang: konfirmasi tahun fiskal berjalan — penerimaan 申立 untuk program eksekusi paksa dimulai 1 April 令和7. Cek juga apakah distrik lain punya skema serupa (belum diriset).\n———\n## Slide 1 · Cover / Hook\n> Yang bikin banyak orang tua tunggal berhenti menagih nafkah anak bukan karena menyerah. Tapi karena biaya menagihnya lebih besar dari yang ditagih.\nDi Jepang, sebagian distrik menanggung biaya itu.\nSub kecil: Lyns Archive : Family Support\n## Slide 2 · Pain point\nAku kerja di HR sudah 6 tahun, dan bagian yang paling sering bikin diam itu bukan soal gaji atau visa.\nTapi ketika seseorang sadar dia punya hak, lalu berhitung, lalu menutup topiknya sendiri karena ongkos memperjuangkannya nggak masuk akal.\nNafkah anak salah satu yang paling sering begitu.\n## Slide 3 · Preview\nAda dua tahap yang biayanya bikin orang mundur. Setagaya-ku menanggung keduanya.\n## Slide 4 · Tahap 1: janji lisan vs dokumen\n❌ \"Sudah sepakat lisan waktu cerai, harusnya cukup.\"\n✅ Kesepakatan lisan nggak bisa dieksekusi. Yang bisa itu 公正証書 — akta notaris yang statusnya setara putusan pengadilan: kalau nggak dibayar, bisa langsung dieksekusi tanpa menggugat ulang.\nBiaya bikinnya yang sering jadi penghalang. Setagaya menanggung sampai ¥49.000.\n## Slide 5 · Tahap 2: kalau tetap nggak dibayar\n❌ \"Kalau tetap nggak bayar, ya sudah. Sewa pengacara mahal.\"\n✅ Kalau sudah punya 公正証書, gaji atau rekening pihak yang wajib bayar bisa disita lewat 強制執行 (eksekusi paksa).\nSetagaya membantu biayanya: 着手金 sampai ¥100.000 dan 実費 sampai ¥50.000.\nJadi urutannya jelas: dokumen dulu, baru eksekusi bisa jalan.\n## Slide 6 · Proof & catatan\nInformasi ini dari portal resmi Pemerintah Metropolitan Tokyo untuk rumah tangga orang tua tunggal, dan halaman resmi Setagaya-ku — bukan dari blog atau agen hukum.\nTapi tiga hal yang perlu dicatat: ada syarat pendapatan dan domisili, program seperti ini diperbarui tiap tahun fiskal, dan belum tentu distrik lain punya skema yang sama. Yang aku pastikan sejauh ini baru Setagaya.\nJadi kalau ini relevan buat kamu, tanya langsung ke loket 区役所 tempat kamu terdaftar, bukan ke distrik sebelah.\n## Slide 7 · CTA\nBanyak dukungan level distrik di Jepang bukannya nggak ada — cuma nggak pernah diumumkan ke orang asing.\nKomen \"NAFKAH\" kalau mau aku cek distrik mana lagi yang punya program serupa.\n———\n## Caption\nLyns Archive : Family Support\nDi Jepang, kesepakatan nafkah anak secara lisan itu nggak bisa dipaksakan. Yang bisa cuma 公正証書 — akta notaris yang kekuatannya setara putusan pengadilan, jadi kalau nggak dibayar bisa langsung dieksekusi.\nMasalahnya biaya. Bikin aktanya bayar, eksekusinya bayar lagi, dan buat banyak orang jumlahnya lebih besar dari nafkah yang mau ditagih. Di titik itu kebanyakan orang berhenti.\nSetagaya-ku menanggung dua-duanya: biaya 公正証書 sampai ¥49.000, dan untuk eksekusi paksa 着手金 sampai ¥100.000 plus 実費 sampai ¥50.000.\nCatatan pentingnya: ada syarat pendapatan dan domisili, isinya bisa berubah tiap tahun fiskal, dan aku belum memastikan distrik lain punya program yang sama. Jadi kalau ini relevan, tanya ke 区役所 tempat kamu terdaftar.\nSumber: portal resmi ひとり親家庭支援 Pemerintah Metropolitan Tokyo + halaman resmi Setagaya-ku.\nKomen \"NAFKAH\" kalau mau aku cek distrik lain.\n#tinggaldijepang #hukumjepang #ortutunggal #jepang #hakanak #lynsarchive\n———\n## Catatan desain Canva\n- Format 1080×1350, 7 slide.\n- Cover: ilustrasi flat — dokumen bersegel + tangan (jangan wajah). Nada lembut, jangan dramatis; topiknya sensitif. Logo bunga \"Lyns\" pink di pojok.\n- Latar Cream White #FFF9F6. Judul Montserrat Bold Charcoal Ink #33292B.\n- Slide 4–5: ❌ Dusty Rose #D98BA0, ✅ Muted Gold #D8B589. Kalimat ❌ di sini bukan menyalahkan pembaca — tulis sebagai anggapan umum, bukan tuduhan.\n- Angka ¥49.000 / ¥100.000 / ¥50.000 dibikin blok besar terpisah dengan latar Blush Pink #F6D9DE.\n- Slide 6: latar Soft Lavender-Sky #B7C4E3 sebagai penanda \"catatan penting\".\n- Hindari ikon palu pengadilan atau borgol — terlalu keras dan bikin kesan konflik. Pakai ikon dokumen, stempel, atau perisai."
     },
     {
       "notion_id": "393828a0607e81e3ad92eca52db8f601",
@@ -236,7 +253,8 @@
       "catatan": "📝 CATATAN: Framing netral (bukan mengadu/merendahkan) sesuai prinsip hindari konflik.",
       "dibuat": "2026-07-04T12:46:00.000Z",
       "diubah": "2026-07-04T12:46:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": "## Isi slide (6)\n- Slide 1 (cover): \"Kerja di Marunouchi = image elit? 🏙️ Ini 'image' distrik-distrik Tokyo\"\n- Slide 2: Konsep: tiap area punya 'image' di benak orang — menarik, bukan menghakimi\n- Slide 3: Marunouchi/Otemachi → image korporat elit\n- Slide 4: Azabu/Hiroo → high-class residensial\n- Slide 5: Shimokitazawa/Koenji → kreatif & anak muda\n- Slide 6 (CTA): \"Menurutmu area mana yang paling elit? Daerahmu image-nya apa? 👇\"\n## Caption\nTau nggak, di Jepang tiap distrik punya 'image'-nya sendiri di benak orang 🏙️\nMisalnya kerja di Marunouchi identik kesan korporat elit, tinggal di Azabu identik high-class, Shimokitazawa punya vibe kreatif anak muda.\nIni bukan soal siapa lebih baik ya — cuma seru ngeliat gimana persepsi terbentuk 😄 Menurut kamu area mana yang paling 'elit'? Daerahmu image-nya apa? 👇\n#tokyo #tinggaldijepang #jepang #東京 #hidupdijepang #infojepang\n## Prompt Canva\n> Carousel 1080×1350, sophisticated editorial. Paper white #FAF7F2, deep red #D62828 headers, gold #E9C46A tags. District slides: big Montserrat name, small gold 'image tag' pill (e.g. 'Korporat • Elit'), one-line note Poppins. Subtle line-art buildings. Elegant, no people."
     },
     {
       "notion_id": "3a3828a0607e817f8ff7f7a76fa593ef",
@@ -249,7 +267,8 @@
       "catatan": "📝 CATATAN: Sumber asal: riset proaktif BAGIAN 0 (2026-07-20), Log Materi Mingguan entri sento 23-ku. Arc: Formula Arc 8-slide. Data resmi city.ota.tokyo.jp & city.taito.lg.jp + 東京都浴場組合. Jangan tulis jumlah sento Ota sebagai angka pasti — bervariasi per tahun/sumber.",
       "dibuat": "2026-07-20T09:59:00.000Z",
       "diubah": "2026-07-20T09:59:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": "## Data & sumber (cek sebelum tayang)\n- Ota-ku: sento terbanyak di 23-ku (halaman resmi 大田区 judulnya sendiri: 「都内最多！」). Jumlah bervariasi per sumber & tahun — 東京都浴場組合 mencatat 33 軒 (2020) dan 35 軒 (akhir 2021). Di slide tulis \"sekitar 30-an\", jangan angka pasti. Sumber: city.ota.tokyo.jp/sangyo/sento/about_sento.html\n- Ota juga distrik TERLUAS di 23-ku (~61 km²) — ini yang bikin sento-nya tersebar.\n- Taito-ku: sekitar 20–23 軒 (fluktuatif), tapi rasio per luas & per penduduk tertinggi se-Tokyo — 2,37 軒/km² dan 1,181 軒/10.000 jiwa. Diklaim di halaman resmi 台東区: 「人口及び面積に対する軒数の割合は、東京都の自治体のなかで最も高い」. Sumber: city.taito.lg.jp/kusei/shisetsu/life/publicbath.html\n- 黒湯 (kuro-yu) Ota: air berwarna cokelat-kehitaman karena asam humat dari tumbuhan purba yang terurai. Sumbernya air laut purba (~500.000 tahun) yang terperangkap di lapisan pasir — onsen tipe 化石海水 (fossil seawater), non-vulkanik. Sumber: Wikipedia JA 大田区の黒湯温泉 + unique-ota.city.ota.tokyo.jp\n———\n## Slide 1 · Cover / Hook\nTebak dulu sebelum swipe →\n> Distrik dengan pemandian umum terbanyak se-Tokyo, justru bukan tempat yang paling gampang buat nemu satu.\nSub kecil: Lyns Archive : Tokyo Wards\n## Slide 2 · Pain point\nWaktu cari tempat tinggal di Tokyo, yang dicek biasanya cuma dua: harga sewa dan jarak ke stasiun.\nPadahal yang bikin sebuah lingkungan kerasa \"enak ditinggali\" itu hal-hal kecil yang kepakai tiap minggu. Sento salah satunya — dan sebarannya jauh lebih timpang dari yang kebayang.\n## Slide 3 · Preview\nDua distrik. Dua cara baca angka yang sama. Hasilnya kebalikan.\n## Slide 4 · Ota-ku\n❌ Terbanyak = paling gampang diakses\n✅ Ota-ku memang juaranya jumlah — sekitar 30-an sento, terbanyak di antara 23 distrik. Halaman resmi distriknya sendiri pakai judul 「都内最多」.\nTapi Ota juga distrik terluas di 23-ku (~61 km²). Angka besar itu tersebar di wilayah yang besar juga.\n## Slide 5 · Taito-ku\n✅ Taito-ku cuma punya sekitar 20-an sento — separuhnya Ota.\nTapi karena wilayahnya kecil dan padat, rasionya jadi 2,37 sento per km² dan 1,18 sento per 10.000 penduduk — tertinggi di seluruh Tokyo, dan itu klaim resmi dari kantor distriknya sendiri.\nJalan kaki 10 menit di Taito, kemungkinan besar kamu lewat sento.\n## Slide 6 · Payoff / bonus\nDan Ota punya sesuatu yang nggak dipunya distrik lain: 黒湯 (kuro-yu) — air pemandiannya berwarna cokelat pekat sampai hitam.\nItu bukan kotor. Warnanya datang dari asam humat, sisa tumbuhan purba yang terurai. Sumber airnya air laut yang terperangkap di lapisan pasir ratusan ribu tahun lalu — jadi ini onsen tanpa gunung berapi sama sekali, di tengah Tokyo.\n## Slide 7 · Proof\nSetelah 11 tahun di Jepang dan 5 kali pindah rumah, yang paling sering bikin aku salah nilai sebuah daerah bukan datanya — tapi angka yang aku baca tanpa pembaginya.\n\"Paling banyak\" dan \"paling gampang dijangkau\" itu dua pertanyaan berbeda. Nyaris semua ranking distrik jebakannya di situ.\n## Slide 8 · CTA\nDaerahmu sendiri gimana — banyak sento, atau harus naik kereta dulu?\nKomen \"SENTO\" kalau mau aku bikin ranking sento per distrik lengkap 23-ku.\n———\n## Caption\nLyns Archive : Tokyo Wards\nOta-ku punya sento terbanyak di Tokyo — sekitar 30-an, dan distriknya sendiri yang mengklaim itu di halaman resmi mereka.\nTapi Ota juga distrik terluas di 23-ku. Jadi kalau pertanyaannya \"di mana sento paling gampang ditemui\", jawabannya pindah ke Taito-ku: cuma sekitar 20-an sento, tapi rasio per luas wilayah dan per penduduknya tertinggi di seluruh Tokyo.\nSatu hal lagi soal Ota yang jarang dibahas: 黒湯. Air pemandiannya hitam kecokelatan karena asam humat dari tumbuhan purba, bersumber dari air laut yang terjebak di lapisan pasir ratusan ribu tahun. Onsen, tapi tanpa gunung berapi.\nData dari halaman resmi 大田区 & 台東区, plus 東京都浴場組合. Jumlah sento berubah tiap tahun, jadi angka di sini pakai kisaran.\nDaerahmu masuk yang mana?\nKomen \"SENTO\" kalau mau versi lengkap 23 distrik.\n#tokyo #jepang #tinggaldijepang #sento #銭湯 #distriktokyo #lynsarchive\n———\n## Catatan desain Canva\n- Format 1080×1350, 8 slide.\n- Cover: foto dari belakang/samping — siluet orang jalan di gang shitamachi sore hari, atau ilustrasi flat noren (暖簾) pemandian + ikon ♨. Jangan wajah penuh. Logo bunga \"Lyns\" pink di pojok kanan bawah (pakai logo yang sudah ada, jangan bikin baru).\n- Latar: Cream White #FFF9F6. Judul Montserrat Bold, Charcoal Ink #33292B.\n- Slide 4: baris ❌ pakai Dusty Rose #D98BA0. Slide 4–5 baris ✅ pakai Muted Gold #D8B589.\n- Slide 5: bikin blok angka besar \"2,37 / km²\" dengan latar Blush Pink #F6D9DE.\n- Slide 6 (黒湯): satu-satunya slide yang boleh pakai aksen gelap — blok Charcoal Ink dengan teks Cream White, biar kontras \"air hitam\"-nya kerasa.\n- Slide 8: kotak CTA Soft Lavender-Sky #B7C4E3, kata \"SENTO\" di-bold.\n- Mark \"Lyns Archive : Tokyo Wards\" kecil di header tiap slide, Poppins 12pt."
     },
     {
       "notion_id": "394828a0607e8179ad2ffd138554c5e5",
@@ -262,7 +281,8 @@
       "catatan": "📝 CATATAN: Sumber: Log Materi Mingguan 2026-07-05. Data: Chiyoda #1 jumlah kampus (14, dr total 100 di 23-ku), Bunkyo #2, Shinjuku #3 — tapi ranking PENDUDUK mahasiswa kebalik: Setagaya #1 (38.713), Nerima #2 (25.278), Ota #3 (19.243), Chiyoda malah paling sedikit. Insight: mahasiswa komuter dari daerah sewa lebih murah ke kampus di pusat kota. Bisa tambahkan fakta pendukung: Shinjuku (rumah Waseda/Takadanobaba) py subsidi sewa resmi ¥10rb/bln x 3th utk single 18-28th (city.shinjuku.lg.jp) — gambaran nyata gimana daerah kampus coba ‘tarik’ mahasiswa tinggal di situ.",
       "dibuat": "2026-07-05T01:48:00.000Z",
       "diubah": "2026-07-05T01:48:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": ""
     },
     {
       "notion_id": "3a8828a0607e81878351d7c5d44b2e2a",
@@ -275,7 +295,8 @@
       "catatan": "📝 CATATAN: Riset proaktif BAGIAN 0 minggu ini (distrik baru: Toshima, belum pernah dibahas). Fakta terverifikasi via web search JP: 2014 Toshima satu-satunya dari 23-ku yg masuk daftar 消滅可能性都市 (laporan 増田/日本創成会議) krn proyeksi perempuan 20-39 th turun >50% dalam 30 th; balik arah dgn kebijakan pro-anak/perempuan (待機児童 nol 2017, 保育園 52→115 pada 2024, penduduk tembus 290rb 2018 pertama dlm 40 th); 24 Apr 2024 resmi keluar dari daftar. Sumber: TOKYO MX+ (mxtv.jp), city.toshima.lg.jp, diamond.jp. Arc: Formula Arc 8-slide.",
       "dibuat": "2026-07-25T12:23:00.000Z",
       "diubah": "2026-07-25T12:23:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": "## Data & sumber (terverifikasi)\n- 2014: Toshima jadi satu-satunya dari 23 distrik Tokyo yang masuk daftar 消滅可能性都市 (\"kota berpotensi punah\") — dari laporan 日本創成会議 (laporan Masuda).\n- Definisinya: distrik yang diproyeksikan kehilangan lebih dari 50% perempuan usia 20–39 tahun dalam 30 tahun (kelompok ini dipakai karena merekalah yang melahirkan generasi berikutnya).\n- Ini terjadi walau Toshima punya Ikebukuro — salah satu hub tersibuk Tokyo.\n- Balik arah: kebijakan digeser ke \"ramah anak & perempuan\". Hasil: 待機児童 (antre daftar penitipan) nol pada 2017; jumlah 保育園 naik 52 → 115 (2014→2024); penduduk tembus 290.000 pada 2018 — pertama kali dalam 40 tahun.\n- 24 April 2024: Toshima resmi dinyatakan keluar dari status \"berpotensi punah\".\nSumber: TOKYO MX+ (s.mxtv.jp), city.toshima.lg.jp, diamond.jp (ranking arus masuk penduduk).\n———\n## Slide 1 · Cover / Hook\nTebak dulu sebelum swipe →\n> Salah satu distrik tersibuk Tokyo pernah masuk daftar \"kota yang bisa punah\". Beneran.\nSub: Lyns Archive : About Tokyo\n## Slide 2 · Pain point / curiosity\nKita otomatis mikir: kota besar = aman, ramai = sehat.\nTapi ada satu distrik Tokyo — yang punya Ikebukuro, stasiun yang tiap hari dilewati jutaan orang — yang di 2014 justru dicap \"berpotensi punah\". Gimana bisa?\n## Slide 3 · Preview\nTiga hal: apa arti \"kota berpotensi punah\" itu sebenarnya, kenapa justru Toshima yang kena, dan gimana dia balik dalam 10 tahun.\n## Slide 4 · Apa artinya\n❌ \"Punah = penduduknya habis.\"\n✅ Definisinya spesifik: perempuan usia 20–39 tahun diproyeksikan turun lebih dari setengah dalam 30 tahun.\nKenapa kelompok itu? Karena merekalah yang paling menentukan kelahiran generasi berikutnya. Di 2014, Toshima satu-satunya dari 23 distrik Tokyo yang masuk daftar ini.\n## Slide 5 · Kenapa Toshima\n❌ \"Berarti Ikebukuro sepi.\"\n✅ Justru ramai — tapi ramai buat singgah, bukan buat menetap.\nBanyak anak muda tinggal di Toshima pas single, lalu pindah keluar begitu mau berkeluarga: sewa mahal, dulu fasilitas anak minim. Ramai di siang hari nggak sama dengan keluarga yang bertahan.\n## Slide 6 · Cara balik arah\n✅ Toshima ganti fokus total ke anak & perempuan:\n- Antre daftar penitipan (待機児童) ditekan sampai nol pada 2017.\n- Jumlah penitipan anak naik dari 52 jadi 115.\n- Taman, toilet umum, dan ruang publik dibenahi biar ramah keluarga.\nHasilnya: penduduk tembus 290.000 pada 2018 — pertama kali dalam 40 tahun.\n## Slide 7 · Proof & insight\nApril 2024, Toshima resmi dinyatakan keluar dari daftar \"berpotensi punah\".\nPelajarannya: angka \"punah\" bukan soal seberapa ramai sebuah kota hari ini — tapi soal siapa yang mau bertahan buat generasi berikutnya. Dan itu bisa dibalik, kalau kebijakannya nyasar ke orang yang tepat.\nSumber: laporan 日本創成会議 (2014) + pengumuman Toshima & TOKYO MX (2024).\n## Slide 8 · CTA\nDistrik yang keliatan \"pasti aman\" ternyata punya cerita yang beda banget di balik datanya.\nKomen \"TOSHIMA\" — atau sebut distrik yang mau aku bedah berikutnya.\n———\n## Caption\nLyns Archive : About Tokyo\nDi 2014, dari 23 distrik Tokyo, cuma satu yang masuk daftar \"kota berpotensi punah\" (消滅可能性都市) — dan itu Toshima, distrik yang punya Ikebukuro.\nBukan berarti Ikebukuro sepi. Justru ramai — tapi buat singgah, bukan menetap. Banyak anak muda tinggal pas single lalu pindah keluar begitu mau berkeluarga. \"Kota berpotensi punah\" itu diukur dari proyeksi perempuan usia 20–39 tahun turun lebih dari setengah dalam 30 tahun, karena kelompok itu yang paling nentuin generasi berikutnya.\nToshima balik arah dengan fokus ke anak & perempuan: antre penitipan ditekan jadi nol (2017), jumlah penitipan naik 52 → 115, penduduk tembus 290.000 pada 2018 (pertama dalam 40 tahun). April 2024, resmi keluar dari daftar.\nAngka \"punah\" bukan soal seramai apa kota itu hari ini — tapi siapa yang bertahan buat generasi berikutnya.\nSumber: laporan 日本創成会議 (2014), pengumuman Toshima-ku & TOKYO MX (2024).\nKomen \"TOSHIMA\" kalau mau distrik lain dibedah.\n#tokyo #tinggaldijepang #jepang #toshima #ikebukuro #lynsarchive\n———\n## Catatan desain Canva\n- Format 1080×1350, 8 slide.\n- Cover: foto/ilustrasi flat skyline Ikebukuro (Sunshine 60) dari kejauhan atau dari belakang — kontras sama teks \"bisa punah\". Bukan wajah. Logo bunga \"Lyns\" pink di pojok.\n- Latar Cream White #FFF9F6, judul Montserrat Bold Charcoal Ink #33292B, isi Poppins.\n- Slide 4–5: baris ❌ Dusty Rose #D98BA0, baris ✅ Muted Gold #D8B589.\n- Slide 6: pakai tiga angka besar (0 待機児童 / 52→115 / 290.000) sebagai grafik sederhana, highlight Muted Gold.\n- Slide 7: latar Soft Lavender-Sky #B7C4E3 buat nuansa \"insight/penutup\".\n- Mark \"Lyns Archive : About Tokyo\" kecil di header tiap slide."
     },
     {
       "notion_id": "393828a0607e81378886e3f19b3e5439",
@@ -288,7 +309,8 @@
       "catatan": "📝 CATATAN: Catat sambil nonton, verifikasi sebelum posting.",
       "dibuat": "2026-07-04T12:46:00.000Z",
       "diubah": "2026-07-04T12:46:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": "## Konsep\n1 fakta menarik & jarang dibahas dari acara 珍百景 atau 池上解説, ditulis ulang dengan bahasamu."
     },
     {
       "notion_id": "393828a0607e8193b00dd47f797b1a6e",
@@ -301,7 +323,8 @@
       "catatan": "📝 CATATAN: Video estetik + fakta musim.",
       "dibuat": "2026-07-04T12:46:00.000Z",
       "diubah": "2026-07-04T12:46:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": "## Konsep\nVideo raw golden hour + 1 fakta tentang musim/cuaca Jepang sebagai overlay."
     },
     {
       "notion_id": "393828a0607e810e97fdd8eb3e4fa06d",
@@ -314,7 +337,8 @@
       "catatan": "📝 CATATAN: Versi ringan dari keahlian HR/tokutei ginou. Mesin network.",
       "dibuat": "2026-07-04T12:46:00.000Z",
       "diubah": "2026-07-04T12:46:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": "## Konsep\nTips ringan & akurat soal tinggal/kerja di Jepang untuk orang asing (dari keahlian HR, tokutei ginou, hukum ketenagakerjaan). Undang pertanyaan untuk membangun network."
     },
     {
       "notion_id": "394828a0607e8162b689f3992c5e1ee3",
@@ -327,7 +351,8 @@
       "catatan": "📝 CATATAN: Bagian Seri Distrik Budget Pekerja Muda (2026-07-05, urutan #2). BELUM ADA riset sama sekali — perlu riset penuh pakai protokol 6-field (sewa 1 org, sewa keluarga, transport, layanan pemda, banding Saitama). Lihat 09_Seri_Distrik_Budget_Pekerja_Muda.md.",
       "dibuat": "2026-07-05T16:58:00.000Z",
       "diubah": "2026-07-05T16:58:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": ""
     },
     {
       "notion_id": "3aa828a0607e81c39b48d3a63d4ef104",
@@ -340,7 +365,8 @@
       "catatan": "📝 CATATAN: 🤖 Usulan otomatis dari Log Materi — review & verifikasi sumber dulu. Sumber materi: Log Materi Mingguan 'Syarat unik Chiyoda: wajib masuk 町会 buat dapat subsidi sewa' (Minggu 2026-07-20, Pilar 3, Perlu Verifikasi: tidak). Referensi di Log: halaman resmi 次世代育成住宅助成 (Chiyoda). Angle: 'Aturan Jepang yg bikin bantuan pemerintah hangus kalau kamu gak tau'.",
       "dibuat": "2026-07-27T02:06:00.000Z",
       "diubah": "2026-07-27T02:06:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": "## Draft Skeleton — Carousel\nSlide 1 — Hook\nSubsidi sewa ini nggak hangus karena gajimu ketinggian. Hangusnya karena kamu telat ngurus & nggak kenal satu istilah: 町会.\nSlide 2 — Poin 1: Apa itu 町会 (chōkai)?\n町会 / 町内会 = asosiasi warga tingkat lingkungan, mirip RT/RW di Indonesia. Hampir semua orang asing nggak sadar ini ada — padahal di beberapa distrik ia jadi syarat administratif.\nSlide 3 — Poin 2: Syarat unik Chiyoda\nUntuk program subsidi sewa 次世代育成住宅助成, pendaftar WAJIB gabung 町会 di alamat baru. Bukan sekadar imbauan — ini syarat. [perlu verifikasi cakupan syarat & tahun berlaku di halaman resmi]\nSlide 4 — Poin 3: Jebakan timing\nWajib 仮申請 (pra-pendaftaran) SEBELUM tanda tangan kontrak sewa. Telat sedikit = permohonan bisa hangus total. Banyak orang baru sadar setelah kontrak diteken — dan saat itu sudah terlambat. [perlu verifikasi alur & tenggat]\nSlide 5 — Poin 4: Pelajaran umumnya\nBanyak bantuan di Jepang bukan soal 'layak atau tidak', tapi soal 'tahu urutannya atau tidak'. Aturan seperti ini jarang diterjemahkan ke bahasa asing.\nSlide 6 — Proof / langkah aman\nSebelum tanda tangan kontrak apa pun: cek halaman resmi distrik (kata kunci 次世代育成住宅助成 + nama ku), tanya soal 仮申請, dan pastikan status 町会 di alamat tujuan. [verifikasi ke sumber resmi terbaru]\nSlide 7 — CTA\nTag teman yang lagi hunting rumah di Tokyo. Satu aturan kecil ini bisa nyelametin ratusan ribu yen.\n———\n### Draf Caption\nDi Jepang, 'nggak dapat bantuan' sering bukan karena kamu nggak memenuhi syarat — tapi karena kamu nggak tahu urutan ngurusnya. Contohnya subsidi sewa Chiyoda yang mensyaratkan gabung 町会 dan pra-pendaftaran SEBELUM teken kontrak. Simpan & bagikan sebelum kamu (atau temanmu) pindah. 👇\nCatatan produksi: konfirmasi detail syarat, alur 仮申請, dan tahun berlaku dari halaman resmi Chiyoda sebelum tayang."
     },
     {
       "notion_id": "394828a0607e81218787e27905f8c577",
@@ -353,7 +379,8 @@
       "catatan": "📝 CATATAN: Mark: \"Lyns Archive : Tokyo 23-ku\". Draf awal dibuat AI lain (Gemini) lalu DIVERIFIKASI ULANG via web search resmi 2026-07-05 — lihat detail lengkap + tabel koreksi di 05b_Jilid1_Minato_Shinjuku_Shibuya.md. Koreksi penting: Minato babysitter subsidy BUKAN ¥250/jam (draf asli salah) tapi ¥2.500-3.500/jam. Shibuya \"subsidi sewa anak muda\" TIDAK ditemukan/kemungkinan fabrikasi — diganti dgn detail program startup (Shikikin Free, bunga 0,1%) yg justru sudah terverifikasi lebih kuat. Minato subsidi lahiran ¥810rb dan Shinjuku subsidi sewa keluarga ¥30rb/bln keduanya terverifikasi BENAR dari situs resmi.",
       "dibuat": "2026-07-05T16:36:00.000Z",
       "diubah": "2026-07-05T16:36:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": "## Isi Slide (versi terverifikasi)\n1. Cover: \"Beda Distrik, Beda Keuntungan. Cek Ke Mana Uang Pajak Penduduk (Juminzei) Kamu Dikembalikan.\" / Bedah Subsidi Resmi Pemda Tokyo 23-ku (Jilid 1: Minato, Shinjuku, Shibuya)\n2. Minato-ku: Subsidi melahirkan ✅ maks ¥810.000/anak (¥1,29jt kembar, ¥1,77jt kembar tiga), berlaku sejak kelahiran 1 Apr 2023. Babysitter ✅ (dikoreksi) subsidi ¥2.500/jam (7pagi-10malam) / ¥3.500/jam (10malam-7pagi), maks 144 jam/th/anak.\n3. Shinjuku-ku: Subsidi sewa keluarga ✅ ¥30.000/bulan maks 5 tahun (rumah tangga dgn anak blm lulus SMP). Konsultasi kerja multi-bahasa ⚠️ ditulis general (detail integrasi Hello Work belum terverifikasi).\n4. Shibuya-ku: Dukungan startup ✅ (diperkaya) — Shibuya Shikikin Free (kantor tanpa deposit), pinjaman modal bunga 0,1%, konsultasi hukum/akuntansi, networking. Klaim \"subsidi sewa anak muda\" ❌ dihapus (tidak ditemukan, kemungkinan fabrikasi).\n5. Expert insight: Juminzei semua ~10% pendapatan, bedanya di efisiensi pengembalian — Shibuya cocok single/gakusei mau usaha, Minato cocok yang fokus menikah & melahirkan.\n6. CTA: \"Di antara subsidi di atas — mana yang paling relevan buat kamu sekarang? Komen 👇\" + teaser Jilid 2 (Setagaya/Ota/Edogawa).\n## Sumber resmi terverifikasi\n- Minato subsidi lahiran: city.minato.tokyo.jp/kodomokyufu/kenko/ninshin/shussan/jose.html\n- Minato babysitter: city.minato.tokyo.jp/kodomokatei/babysitter.html\n- Shinjuku subsidi sewa keluarga: city.shinjuku.lg.jp (民間賃貸住宅家賃助成, versi 子育てファミリー世帯向け)\n- Shibuya startup: city.shibuya.tokyo.jp/jigyosha/shoko-rodo-sodan/startup/\nDetail lengkap + tabel before/after koreksi ada di file lokal 05b_Jilid1_Minato_Shinjuku_Shibuya.md."
     },
     {
       "notion_id": "393828a0607e818eacefc27e667b4283",
@@ -366,7 +393,8 @@
       "catatan": "📝 CATATAN: Framing netral & informatif.",
       "dibuat": "2026-07-04T12:46:00.000Z",
       "diubah": "2026-07-04T12:46:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": "## Konsep\nBandingkan 'image' populer sebuah distrik dengan realita sehari-hari (dari pengalaman & data). Netral, menambah pengetahuan."
     },
     {
       "notion_id": "393828a0607e818c83f9e26cb0f70270",
@@ -379,7 +407,8 @@
       "catatan": "📝 CATATAN: Dari チコちゃん — versi hook lebih tajam dari draft lama. 5-6 slide, ringan.",
       "dibuat": "2026-07-04T22:43:00.000Z",
       "diubah": "2026-07-04T22:43:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": "Hook: \"Tau nggak, di Jepang… selama ini kamu mungkin salah sebut satu warna ini.\"\nPayoff: Jawaban singkat + sejarah linguistiknya (1-2 kalimat).\nCTA: \"Baru tau juga? Komen 'BARU TAU' 👇\"\nPilar 2 — cukup 5-6 slide, skip preview/proof panjang."
     },
     {
       "notion_id": "394828a0607e81a282f8f6fb5ba18722",
@@ -392,7 +421,8 @@
       "catatan": "📝 CATATAN: Dari 30-ide eksternal (2026-07-05). Terkait konsep tanjakan/privacy yg sudah ada, tapi angle beda (fokus psikologi privasi bukan topografi) — belum diriset spesifik.",
       "dibuat": "2026-07-05T16:50:00.000Z",
       "diubah": "2026-07-05T16:50:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": ""
     },
     {
       "notion_id": "3aa828a0607e81d79629fc35f3261e07",
@@ -405,7 +435,8 @@
       "catatan": "📝 CATATAN: 🤖 Usulan otomatis dari Log Materi — review & verifikasi sumber dulu. Sumber materi: Log Materi Mingguan 'Kenapa area elit Tokyo banyak tanjakan/dataran tinggi' (Minggu 2026-07-05, Pilar 1, Perlu Verifikasi: tidak). Referensi di Log: note.com/bunkyouniv, livable.co.jp. Catatan Log: paling kuat digabung dengan materi ranking area selebriti jadi 1 post utuh.",
       "dibuat": "2026-07-27T02:06:00.000Z",
       "diubah": "2026-07-27T02:06:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": "## Draft Skeleton — Carousel\nSlide 1 — Hook\nKenapa orang kaya Tokyo tinggal di ATAS bukit? Bukan soal pemandangan. Polanya dipasang 400 tahun lalu.\nSlide 2 — Poin 1: Tanah tinggi = tanah aman\nHistorisnya dataran tinggi (台地) lebih stabil: drainase lebih baik, risiko banjir kecil. Dataran rendah dekat sungai lebih rawan. [perlu verifikasi detail geologis]\nSlide 3 — Poin 2: Warisan zaman Edo\nArea tinggi dulunya lahan tempat tinggal daimyo & samurai (kelas atas). Dataran rendah (下町 / shitamachi) untuk pedagang & pekerja. Struktur kelas ini masih 'ketinggalan' di harga tanah hari ini. [perlu verifikasi klaim historis]\nSlide 4 — Poin 3: Tanjakan = privasi\nJalan menanjak + posisi tinggi bikin area lebih tenang: peredam suara alami, lebih jauh dari keramaian & polusi kota. Nilai jual 'ketenangan' inilah yang bikin premium.\nSlide 5 — Poin 4: Cara baca peta sendiri\nNama tempat sering kasih petunjuk: akhiran seperti '-dai' (台, dataran tinggi) atau '-yama' (山) cenderung area atas; nama ber-'-shita' / dekat sungai cenderung rendah. Bukan aturan mutlak, tapi pola yang enak dicek sendiri. [perlu verifikasi]\nSlide 6 — Proof / Data\nContoh area 'atas' yang identik dengan elit: Shoto, Hiroo (Shibuya), Shirokane (Minato). Gabungkan dengan ranking area selebriti untuk memperkuat (lihat materi terkait di Log).\nSlide 7 — CTA\nDistrikmu 'yamanote' (dataran tinggi) atau 'shitamachi' (dataran rendah)? Komen di bawah — nanti aku bedah karakter tiap area.\n———\n### Draf Caption\nDi Tokyo, ketinggian tanah dan isi dompet ternyata berkorelasi — dan alasannya berumur 400 tahun. Dari daimyo zaman Edo sampai harga sewa hari ini, ini pola yang jarang dijelaskan ke orang asing. Simpan buat referensi cari rumah. Distrikmu di atas bukit atau di dataran rendah? 👇\nCatatan produksi: verifikasi klaim historis & geologis sebelum tayang; jangan sajikan sebagai fakta pasti tanpa sumber solid."
     },
     {
       "notion_id": "393828a0607e81fb9e14c90630675b26",
@@ -418,7 +449,8 @@
       "catatan": "📝 CATATAN: Refinement dari Post 5 draft lama — tambahkan device ❌/✅.",
       "dibuat": "2026-07-04T22:43:00.000Z",
       "diubah": "2026-07-04T22:43:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": "Hook: \"Image 'elit' itu sebagian besar cuma persepsi — ini buktinya.\"\nPain: Banyak orang stres milih tempat kerja/tinggal demi gengsi area.\nPreview: 3 area, persepsi vs kenyataan.\nPoin 1-3: ❌ persepsi umum vs ✅ fakta/karakter asli — Marunouchi (korporat elit vs realita jam kerja), Azabu (high-class vs realita biaya harian), Shimokitazawa (dianggap kurang keren vs realita komunitas kreatif yang dicari ekspat).\nProof: Observasi langsung dari pengalaman dinas & tinggal di berbagai area.\nCTA: \"Menurutmu area mana yang paling 'elit'? Komen daerahmu.\""
     },
     {
       "notion_id": "394828a0607e813d860eed99728bab76",
@@ -431,7 +463,8 @@
       "catatan": "📝 CATATAN: Pakai Relatable/Manifesto Arc (dari analisis @ibupedia_id).",
       "dibuat": "2026-07-05T00:12:00.000Z",
       "diubah": "2026-07-05T00:12:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": "Hook: \"Kenapa di momen paling bahagia sekalipun di luar negeri, suka ada rasa sepi yang nyelip?\"\nNama-in tekanan: Nggak ada nenek/kakek buat bantu jaga anak, momen keluarga tanpa keluarga besar, sakit sendirian ngurus anak tanpa bantuan siapa-siapa.\nTwist: Udah punya circle baru di sini, tapi tetap ada momen kangen yang nggak tergantikan — sampai sempat mikir 'aku yang pilih ini sendiri, kok masih ngerasa sedih'.\nReframe: Kesepian itu bukan tanda salah pilih jalan — itu tanda kamu berani ambil jalan yang nggak semua orang berani ambil.\nInsight: Dari rasa itu justru koneksi baru (circle sesama perantau) jadi lebih berarti dari yang dikira.\nPenutup manifesto: \"Jauh dari rumah bukan berarti kehilangan rumah. Kadang itu cara kita nemuin rumah yang baru.\""
     },
     {
       "notion_id": "394828a0607e81b1a81edeae9755952f",
@@ -444,7 +477,8 @@
       "catatan": "📝 CATATAN: Bagian Seri Distrik Budget Pekerja Muda (2026-07-05, urutan #7). BELUM ADA riset sama sekali.",
       "dibuat": "2026-07-05T16:58:00.000Z",
       "diubah": "2026-07-05T16:58:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": ""
     },
     {
       "notion_id": "394828a0607e81e0ab52f9cbfd08141f",
@@ -457,7 +491,8 @@
       "catatan": "📝 CATATAN: Sumber: Log Materi Mingguan 2026-07-05. Hachioji-shi (Tama, luar 23-ku): 21 kampus di dalam kota (25 dgn partner luar kota), ~100.000 mahasiswa, dijuluki resmi '学園都市' (Gakuen Toshi), kota berkolaborasi dgn kampus utk machizukuri. Tama scr keseluruhan 50+ universitas, terbanyak ke-3 se-Jepang. Bagus dipasangkan sbg 'part 2' setelah konsep Chiyoda/Setagaya di atas — memperluas scope dr 23-ku ke seluruh Tokyo, konsisten dgn pola 'ternyata bukan yang kamu kira' yg sudah jalan (mis. konsep Okutama).",
       "dibuat": "2026-07-05T01:48:00.000Z",
       "diubah": "2026-07-05T01:48:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": ""
     },
     {
       "notion_id": "393828a0607e81a3b107cf5541bcd225",
@@ -470,7 +505,8 @@
       "catatan": "📝 CATATAN: Format kuis interaktif; naikkan engagement komentar.",
       "dibuat": "2026-07-04T12:46:00.000Z",
       "diubah": "2026-07-04T12:46:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": "## Konsep\nKuis pengetahuan Jepang ala ネプリーグ. Slide pertanyaan → audiens jawab di komen → jawaban di post/story berikutnya."
     },
     {
       "notion_id": "393828a0607e8160957af98ceec97101",
@@ -483,7 +519,8 @@
       "catatan": "📝 CATATAN: Format baru, coba ukur engagement dulu.",
       "dibuat": "2026-07-04T22:43:00.000Z",
       "diubah": "2026-07-04T22:43:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": "Hook: Format kuis interaktif — polling/tebak di slide, bukan cuma info satu arah.\nIsi: 3-4 pertanyaan kuis ringan seputar geografi/istilah Jepang, jawaban di slide berikutnya.\nCTA: \"Skor kamu berapa? Share ke story ya.\""
     },
     {
       "notion_id": "394828a0607e81ff9512eddd7c50c20f",
@@ -496,7 +533,8 @@
       "catatan": "📝 CATATAN: Dari 30-ide eksternal (2026-07-05), belum ada riset baru.",
       "dibuat": "2026-07-05T16:50:00.000Z",
       "diubah": "2026-07-05T16:50:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": ""
     },
     {
       "notion_id": "394828a0607e81c18f15c484ce84fbe4",
@@ -509,7 +547,8 @@
       "catatan": "📝 CATATAN: Dari 30-ide eksternal (2026-07-05), belum ada riset baru. Sudah py: data selebriti (Nakameguro). Perlu digali: citra area, tipe penghuni, sewa, family-friendliness.",
       "dibuat": "2026-07-05T16:50:00.000Z",
       "diubah": "2026-07-05T16:50:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": ""
     },
     {
       "notion_id": "3aa828a0607e81cc8754df05b213cbc0",
@@ -522,7 +561,8 @@
       "catatan": "📝 CATATAN: 🤖 Usulan otomatis dari Log Materi — review & verifikasi sumber dulu. Sumber materi: Log Materi Mingguan 'Taito-ku: subsidi biaya melahirkan ¥50.000 FLAT utk SEMUA warga' (Minggu 2026-07-26, Pilar 3, Perlu Verifikasi: tidak). Referensi di Log: halaman resmi city.taito.lg.jp (出産費用助成, berlaku sejak 1 Apr 2024).",
       "dibuat": "2026-07-27T02:06:00.000Z",
       "diubah": "2026-07-27T02:06:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": "## Draft Skeleton — Carousel\nSlide 1 — Hook\n'Bantuan lahiran kan cuma buat yang nggak mampu.' Keyakinan ini bikin warga Taito-ku kelewatan ¥50.000 yang sebenarnya hak semua orang.\nSlide 2 — Poin 1: Faktanya\nDi Taito-ku ada 出産費用助成: subsidi biaya melahirkan ¥50.000 untuk SEMUA warga yang melahirkan — tanpa syarat batas pendapatan. Bukan program prasejahtera. [angka & syarat: verifikasi ke halaman resmi]\nSlide 3 — Poin 2: Kenapa banyak yang lewat\nKarena namanya terdengar seperti 'bantuan sosial', banyak keluarga kelas menengah mengira mereka nggak berhak — jadi nggak pernah apply.\nSlide 4 — Poin 3: Cara klaim\nAjukan lewat aplikasi 'Taito Oyako Techo' dalam waktu 1 tahun setelah melahirkan. Konkret, digital, dan gampang dicek sendiri. [verifikasi nama app, tenggat 1 tahun, dan mekanisme terbaru]\nSlide 5 — Poin 4: Pelajaran umumnya\nSubsidi tingkat distrik (区) di Tokyo sering 'universal', bukan berbasis pendapatan. Selalu cek halaman resmi ku tempat tinggalmu — jangan berasumsi kamu nggak berhak.\nSlide 6 — Proof / Data\nSumber: halaman resmi city.taito.lg.jp (出産費用助成), tercatat berlaku sejak 1 April 2024. Selalu cek versi terbaru sebelum apply. [verifikasi status aktif di tahun berjalan]\nSlide 7 — CTA\nKamu tinggal di distrik mana? Komen di bawah — nanti aku cek apakah ada bantuan serupa di daerahmu.\n———\n### Draf Caption\nSalah satu 'bantuan yang paling sering dilewatkan' di Tokyo bukan karena susah didapat — tapi karena orang mengira mereka nggak berhak. Taito-ku kasih ¥50.000 untuk semua warga yang melahirkan, tanpa cek pendapatan. Simpan & bagikan buat yang lagi menanti anak. 👇\nCatatan produksi: verifikasi nominal, syarat, nama aplikasi, dan status aktif program ke halaman resmi Taito-ku sebelum tayang."
     },
     {
       "notion_id": "394828a0607e819fb435d1acebfcc70c",
@@ -535,7 +575,8 @@
       "catatan": "📝 CATATAN: Bagian Seri Distrik Budget Pekerja Muda (2026-07-05, urutan #3). BELUM ADA riset sama sekali. Bisa digabung dgn konsep 'Shinjuku vs Nakano' yg sudah ada di Content Bank.",
       "dibuat": "2026-07-05T16:58:00.000Z",
       "diubah": "2026-07-05T16:58:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": ""
     },
     {
       "notion_id": "394828a0607e81b9aaa7f05627804579",
@@ -548,7 +589,8 @@
       "catatan": "📝 CATATAN: Dari 30-ide eksternal (2026-07-05) — salah satu dari 5 rekomendasi seri terkuat. Pattern geografis sudah dikenal (Ota berbatasan Kawasaki via Sungai Tama) tapi angka sewa Kawasaki/Yokohama BELUM diriset — perlu web search baru sebelum discript.",
       "dibuat": "2026-07-05T16:50:00.000Z",
       "diubah": "2026-07-05T16:50:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": ""
     },
     {
       "notion_id": "393828a0607e81fb8c50fe8f80164f71",
@@ -561,7 +603,8 @@
       "catatan": "📝 CATATAN: Kumpulkan pertanyaan via story sticker, jawab di post/story. Bangun komunitas.",
       "dibuat": "2026-07-04T12:46:00.000Z",
       "diubah": "2026-07-04T12:46:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": "## Konsep\nBuka sesi tanya-jawab (story question sticker), lalu jawab pertanyaan terpilih. Memperkuat kedekatan & network."
     },
     {
       "notion_id": "393828a0607e819cbfcfca5346be8d34",
@@ -574,7 +617,8 @@
       "catatan": "📝 CATATAN: Wajib verifikasi e-Stat/statistik resmi kota sebelum posting.",
       "dibuat": "2026-07-04T22:43:00.000Z",
       "diubah": "2026-07-04T22:43:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": "Hook: Area yang dianggap paling aman oleh rumor, ternyata beda jauh dari data resminya.\nPain: Orang tua asing sering pilih tempat tinggal berdasar kabar, bukan data.\nPreview: \"3 area yang datanya beda jauh dari reputasinya.\"\nPoin 1-3: ❌ rumor/persepsi vs ✅ data e-Stat/statistik resmi (akses RS anak, taman, kepadatan).\nProof: Sudut pandang sebagai ibu yang mempertimbangkan ini saat pindah.\nCTA: \"Komen 'AMAN' buat cek data lengkapnya.\""
     },
     {
       "notion_id": "393828a0607e811f8d3cf58d7a728b11",
@@ -587,7 +631,8 @@
       "catatan": "📝 CATATAN: Data jumlah jalur/stasiun. Cantumkan sumber.",
       "dibuat": "2026-07-04T12:46:00.000Z",
       "diubah": "2026-07-04T12:46:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": "## Konsep\nRanking distrik Tokyo berdasarkan akses transportasi (jumlah jalur, konektivitas). Berbasis data."
     },
     {
       "notion_id": "393828a0607e81a0a80ef5a34bdb50bb",
@@ -600,7 +645,8 @@
       "catatan": "📝 CATATAN: Verifikasi angka yen dari SUUMO/LIFULL HOME'S. Urutan wilayah termahal stabil: Minato, Chiyoda, Chuo, Shibuya, Meguro, Shinjuku.",
       "dibuat": "2026-07-04T12:46:00.000Z",
       "diubah": "2026-07-04T12:46:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": "## Isi slide (6)\n- Slide 1 (cover): \"23 Distrik Tokyo — Mana yang Sewanya PALING Mahal? 🏙️\" + \"Tebak dulu sebelum swipe →\"\n- Slide 2: \"Sewa rata-rata 1LDK/bulan. Data: [sumber]\"\n- Slide 3: Peringkat 5–4 → Shinjuku, Meguro + 1 kalimat karakter\n- Slide 4: Peringkat 3–2 → Shibuya, Chuo\n- Slide 5: Peringkat 1 → Minato/Chiyoda (Roppongi, Azabu) + alasan\n- Slide 6 (CTA): \"Daerahmu masuk ranking berapa? 👇\" + sumber\n## Caption\nTau nggak, di Jepang — sewa apartemen di Tokyo bisa beda 2–3 kali lipat cuma beda distrik 😳\nAku rangkum distrik dengan sewa termahal di Tokyo (data di slide terakhir). Swipe sampai habis, terus jawab di komen 👇 Daerah kamu — atau daerah impianmu — masuk ranking berapa?\nSimpan buat referensi kalau lagi cari tempat tinggal ya ✔️\n#tinggaldijepang #jepang #tokyo #hidupdijepang #東京 #infojepang\n## Prompt Canva\n> Instagram carousel 1080×1350, minimalist Japanese editorial. Background paper white #FAF7F2, accent Japan red #D62828 & warm gold #E9C46A, text ink black #1A1A1A. Bold Montserrat headline, Poppins body. Cover: title + subtle Tokyo skyline line-art. Ranking slides: big rank number in red circle, district name bold, one-line description. Whitespace-heavy, no people."
     },
     {
       "notion_id": "393828a0607e8164ba3ee10b68595437",
@@ -613,7 +659,8 @@
       "catatan": "📝 CATATAN: Pakai data resmi (mis. survei kenyamanan/kelayakan hidup). Cantumkan sumber.",
       "dibuat": "2026-07-04T12:46:00.000Z",
       "diubah": "2026-07-04T12:46:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": "## Konsep\nRanking prefektur berbasis data kenyamanan untuk keluarga (biaya hidup, fasilitas anak, dll). Selalu sertakan sumber di slide akhir."
     },
     {
       "notion_id": "394828a0607e817ba8fec057c9e8f0c2",
@@ -626,7 +673,8 @@
       "catatan": "📝 CATATAN: Pakai Relatable/Manifesto Arc (dari analisis @ibupedia_id), bukan Formula Arc — tujuannya validasi perasaan, bukan ajarin solusi. Ilustrasi flat, bukan foto.",
       "dibuat": "2026-07-05T00:12:00.000Z",
       "diubah": "2026-07-05T00:12:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": "Hook: \"Kenapa kita ngerasa lebih bersalah kerja di luar negeri, dibanding kerja di kampung sendiri?\"\nNama-in tekanan: Titip anak ke hoikuen dari pagi, ngerasa 'kurang' dibanding ibu yang kerja deket rumah/keluarga besar, nggak ada yang bisa dimintai tolong dadakan.\nTwist: Walau kerja penting buat masa depan keluarga, tetap muncul suara 'kok tega titip anak lama-lama', 'ibu macam apa yang ninggalin anak buat kerja'.\nReframe: Bekerja bukan berarti nggak hadir — anak belajar dari ibu yang punya purpose, bukan cuma dari jam yang dihabiskan berdua.\nInsight: Anak belajar dari cara ibu menjalani hidupnya, bukan dari berapa jam ibu ada di sampingnya.\nPenutup manifesto: \"Ibu yang bahagia dengan pilihannya, mendidik lebih banyak dari ibu yang menyerah demi rasa bersalah orang lain.\""
     },
     {
       "notion_id": "393828a0607e8113b9b5c19aa1c3d022",
@@ -639,7 +687,8 @@
       "catatan": "📝 CATATAN: Post hari ke-30. Sambut follower baru dengan konten terbaik.",
       "dibuat": "2026-07-04T12:46:00.000Z",
       "diubah": "2026-07-04T12:46:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": "## Konsep\nRangkum 3 post paling disukai bulan ini untuk menyambut follower baru dan mengarahkan mereka ke konten terbaik."
     },
     {
       "notion_id": "394828a0607e81129b7fd6a137e4006a",
@@ -652,7 +701,8 @@
       "catatan": "📝 CATATAN: v2 (2026-07-05): dirombak jadi 3 post oleh AI lain, gaya storytelling flow. Post 0a 'Tokyo yang Mana?' (multiverse city, aman tanpa angka), Post 0b 'Rahasia Kuasa 23-Ku' (special ward, terverifikasi konsisten dgn riset 1943/1947), Post 0c 'Menembus Batas 23-Ku' (Tama & Izu/Ogasawara, terverifikasi). SATU KOREKSI PENTING di Post 0c: klaim asli 'Mitaka & Musashino konsisten top-3 se-Jepang' TERBUKTI BERLEBIHAN saat dicek — yang benar, Kichijoji (Musashino) #1 ranking Tokyo 6-7 tahun berturut-turut (bukan 'top-3 se-Jepang'), sementara Mitaka sendiri pernah di peringkat #27. Sudah diganti ke versi akurat. Detail lengkap + skrip penuh 3 post di 04_Draft_Postingan_Batch1.md.",
       "dibuat": "2026-07-05T08:49:00.000Z",
       "diubah": "2026-07-05T08:50:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": "## Isi Slide (Formula Arc 8-slide)\n1. Cover/Hook: \"Ini masih TOKYO: naik kapal 24 jam, 1.000 km dari Shibuya 🗼⛴️\" + \"Tebak dulu sebelum swipe →\"\n2. Pain point: Selama ini kita mikir \"Tokyo\" ya cuma Shinjuku, Shibuya, Harajuku — padahal itu cuma secuil dari apa yang secara resmi disebut Tokyo.\n3. Preview: \"Ternyata Tokyo itu punya 3 wajah yang beda banget satu sama lain\"\n4. Poin 1: ❌ \"Tokyo itu 1 kota besar\" → ✅ \"Tokyo itu 1 PREFEKTUR (東京都) — gabungan wilayah beda administrasi\"\n5. Poin 2: ❌ \"23-ku itu cuma distrik biasa\" → ✅ \"23-ku DULU resmi 'Kota Tokyo' (東京市) — dihapus 1943 buat sentralisasi masa perang. Sejak 1947, tiap ku py pemerintahan sendiri (walikota & dewan ku)\"\n6. Poin 3: ❌ \"Di luar 23-ku bukan 'Tokyo penting'\" → ✅ \"Tama (Hachioji, Mitaka, dst) DAN pulau Ogasawara (1.000km, kapal 24 jam, no bandara) tetap sah bagian Tokyo\"\n7. Proof: 23-ku ~618 km² (~28% luas Tokyo-to ~2.190 km²) tapi ~9,57 juta jiwa (~70% dari total ~13,82 juta populasi). Kepadatan ~15.000/km² — ~50× rata-rata nasional Jepang. (cek ulang angka terbaru sebelum posting)\n8. CTA: \"Kamu kira Tokyo itu apa sebelum baca ini? Komen 'TOKYO' kalau kamu juga baru tau 👇\"\n## Caption\n```\nLyns Archive : About Tokyo\n\nKapal berangkat jam 11 siang dari Tokyo, sampainya besok jam 11 siang juga. 24 jam di laut, 1.000 km dari Shibuya — dan itu MASIH Tokyo.\n\nIya, aku juga kaget pertama kali tau ini.\n\nSelama ini kita mikir Tokyo itu ya Shinjuku, Shibuya, Harajuku — padahal itu cuma secuil dari apa yang secara resmi disebut \"Tokyo\".\n\nTernyata Tokyo itu punya 3 wajah yang beda banget satu sama lain (swipe →)\n\n23-ku doang udah isinya 9,57 juta jiwa — 70% penduduk Tokyo numpuk di cuma 28% luas wilayahnya. Padet banget. Dan itu belum termasuk Tama sama pulau-pulau tadi.\n\nKamu kira Tokyo itu apa sebelum baca ini? Komen \"TOKYO\" kalau kamu juga baru tau 👇\n\n#tokyo #tinggaldijepang #jepang #hidupdijepang #東京 #infojepang #japantravel\n```\n## Prompt Canva\n> Instagram carousel 1080×1350, soft romantic-editorial style. Background blush pink #F6D9DE and cream white #FFF9F6, accent dusty rose #D98BA0 (❌) and muted gold #D8B589 (✅), text charcoal ink #33292B. Montserrat headline + Poppins body. Small pink floral \"Lyns\" logo watermark. Cover: ferry/boat + Tokyo skyline line-art. Data slide: big numbers + small map icon showing 23-ku vs Tama vs islands. No photos of people.\nSumber riset: 東京市 廃止 1943 (Wikipedia 東京都区部, jacar.go.jp), populasi/luas 23-ku vs Tokyo-to (teikokushoin.co.jp, region-case.com), akses Ogasawara (travelroad.co.jp, ogasawara-channel.com) — semua dicek 2026-07-05."
     },
     {
       "notion_id": "394828a0607e819cbcfed44f8ab5b6e8",
@@ -665,7 +715,8 @@
       "catatan": "📝 CATATAN: Formula Arc atau listicle, 7-8 slide. Data: Sangenjaya/Shimokitazawa (muda-kreatif) 2LDK+ ~18-25man; Futako-tamagawa & Seijo (keluarga-mewah) 2LDK+ ~22.9man+; Kyodo/Chitosekarasuyama (keluarga tenang) rata2 ~16.5man. Setagaya = penduduk terbanyak se-23-ku, 90% zona perumahan.",
       "dibuat": "2026-07-05T01:13:00.000Z",
       "diubah": "2026-07-05T01:13:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": ""
     },
     {
       "notion_id": "39c828a0607e81958baff501bee8e803",
@@ -678,7 +729,8 @@
       "catatan": "📝 CATATAN: Sumber: 3 item Log Materi Mingguan (2026-07-06), semua dari city.shinjuku.lg.jp resmi, Perlu Verifikasi=NO. Arc: Formula Arc 8-slide (Pilar 1 penuh). Angle 'distrik yang reward loyalitas/lama tinggal' — BEDA dari post Jilid 1 (Minato/Shinjuku/Shibuya) yg cuma sebut subsidi sewa ¥30rb/bln sekilas; di sini digali lebih dalam (durasi 5 thn, beasiswa jadi hibah, subsidi smartphone lansia). Cek kuota/undian sebelum tayang krn program tahunan (R8).",
       "dibuat": "2026-07-13T12:05:00.000Z",
       "diubah": "2026-07-13T12:05:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": "Mark: Lyns Archive : Tokyo Wards  ·  Badge cover: 🏙️ Distrik & Ranking  ·  Signature opener: \"Tebak dulu sebelum swipe →\"\nArc: Formula Arc (8 slide) · Pilar 1 · Carousel 1080×1350\n———\n## Slide 1 — Cover / Hook (Contrarian)\nTebak dulu sebelum swipe →\n\"Shinjuku itu cuma buat orang tajir?\"\nSalah. Distrik ini diam-diam \"balikin\" uang ke penduduknya — 3 cara yang jarang banget dibahas orang luar. 👀\n(Visual faceless: foto Shinjuku dari belakang / skyline malam. Logo bunga \"Lyns\" pink di pojok. Badge 🏙️.)\n## Slide 2 — Pain point\nWaktu milih tempat tinggal, orang biasanya cuma ngitung: sewa berapa, deket stasiun apa nggak.\nYang hampir nggak pernah dihitung: distriknya ngasih balik apa ke kamu. Padahal di sinilah beda distrik itu kerasa — bukan cuma di harga sewa depan.\n## Slide 3 — Preview\nShinjuku punya 3 program yang bikin \"tinggal lama di sini\" jadi worth it. Bukan diskon receh — ini yang bikin aku sendiri kaget pas ngecek satu-satu.\n## Slide 4 — Poin 1: Subsidi sewa keluarga\n❌ Anggapan: \"Subsidi sewa Tokyo cuma buat lansia atau rumah tangga susah.\"\n✅ Faktanya: Shinjuku kasih ¥30.000/bulan, sampai 5 TAHUN, buat keluarga yang punya anak (belum lulus SMP). Total bisa tembus ¥1,8 juta — salah satu subsidi sewa terpanjang di 23-ku.\n💡 Realistisnya: kuota cuma 50 keluarga/tahun & pakai undian (tahun lalu pelamar 2,2× lipat kuota). Syarat: sewa ≤¥220rb, penghasilan rumah tangga ≤¥5,2jt. WNA visa permanen/teijū bisa ikut.\n## Slide 5 — Poin 2: Beasiswa yang bisa \"lunas sendiri\"\n❌ Anggapan: \"Beasiswa ya utang — tetap harus dibalikin.\"\n✅ Faktanya: Beasiswa masuk SMA Shinjuku (¥200rb negeri / ¥500rb swasta, tanpa bunga) bisa dihapus 100% — salah satunya kalau kamu tetap tinggal di Shinjuku ≥3 tahun & bayar pajak ≥2 tahun setelah lulus.\n💡 Polanya menarik: \"pinjaman yang berubah jadi hibah kalau kamu loyal sama distriknya.\" Ada juga jalur hapus utang kalau kerja jadi guru/perawat/kaigo di dalam Shinjuku.\n## Slide 6 — Poin 3: Distrik yang \"maksa halus\" lansia melek digital\n❌ Anggapan: \"Bantuan lansia paling soal kesehatan doang.\"\n✅ Faktanya: Shinjuku bayarin lansia 65+ buat beli smartphone PERTAMA mereka — maksimal ¥30.000, sekali seumur hidup.\n💡 Twist-nya bukan cuma dikasih uang: syaratnya wajib ikut kelas smartphone di toko + daftar aplikasi resmi Tokyo & LINE Tokyo. Cara distrik dorong lansia biar nggak ketinggalan digital.\n## Slide 7 — Proof\nSemua ini aku ambil dari situs resmi Shinjuku-ku (city.shinjuku.lg.jp), update 2026 — bukan katanya-katanya.\nAku ngecek satu-satu karena angka subsidi tiap distrik beda, dan gampang ketuker sama program nasional yang sebenernya sama di semua kota. Sehari-hari aku ngurus HR & aturan buat orang asing di Jepang, jadi ngecek sumber resmi udah jadi kebiasaan.\n## Slide 8 — CTA\nDistrik kamu di Tokyo kasih \"uang balik\" apa? 🤔\nKomen 'DISTRIK' — aku lagi kumpulin program subsidi tersembunyi per ward, satu-satu, biar kamu nggak salah pilih tempat tinggal.\n———\n## Caption\nTebak dulu sebelum swipe → Shinjuku itu cuma buat orang tajir? Ternyata nggak sesederhana itu.\nWaktu orang milih distrik, yang dihitung biasanya cuma sewa sama akses stasiun. Yang kelewat: apa yang distriknya balikin ke kamu. Dan Shinjuku diam-diam ngasih 3 hal yang jarang dibahas —\n- Subsidi sewa keluarga ¥30.000/bulan sampai 5 tahun (total bisa ¥1,8 juta)\n- Beasiswa SMA yang bisa dihapus 100% kalau kamu tetap tinggal & bayar pajak di sana\n- Subsidi smartphone pertama buat lansia 65+ (asal mau ikut kelasnya)\nSemua dari situs resmi Shinjuku-ku, update 2026. Bukannya semua orang bakal dapet — ada kuota, ada undian, ada syarat. Tapi tau programnya ada aja udah beda.\nDistrikmu kasih apa? Komen 'DISTRIK', aku lagi ngumpulin daftar subsidi tersembunyi per ward. 🏙️\n#TokyoLife #TinggalDiJepang #Shinjuku #HidupDiJepang #JepangIndonesia #LynsArchive\n———\n## Catatan desain Canva\n- Format 1080×1350. Logo bunga \"Lyns\" pink (yang sudah ada) di tiap slide, pojok konsisten.\n- Palet: Blush Pink #F6D9DE (background), Cream White #FFF9F6, Charcoal Ink #33292B (teks). Device ❌ = Dusty Rose #D98BA0; ✅ = Muted Gold #D8B589.\n- Font: Montserrat (judul/angka besar) + Poppins (isi). Highlight color-block cuma di frasa kunci (angka ¥, \"5 TAHUN\", \"dihapus 100%\"), bukan 1 kalimat penuh.\n- Cover: foto faceless (Shinjuku dari belakang/skyline malam) + overlay teks; badge 🏙️ Distrik & Ranking; mark \"Lyns Archive : Tokyo Wards\".\n- Slide 4–6 pakai layout ❌ atas / ✅ bawah + baris 💡 payoff kecil di bawahnya."
     },
     {
       "notion_id": "394828a0607e8119ac0ff41a355e105b",
@@ -691,7 +743,8 @@
       "catatan": "📝 CATATAN: Dari 30-ide eksternal (2026-07-05). Nakano-ku SAMA SEKALI belum diriset (masih 'Belum diriset' di tracker harian pemda, urutan #14) — tunggu giliran riset harian atau riset manual dulu.",
       "dibuat": "2026-07-05T16:50:00.000Z",
       "diubah": "2026-07-05T16:50:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": ""
     },
     {
       "notion_id": "393828a0607e819a9fd6dbed1de1116e",
@@ -704,7 +757,8 @@
       "catatan": "📝 CATATAN: Sampaikan sbg insight umum, JANGAN bocorkan data spesifik individu/perusahaan manapun.",
       "dibuat": "2026-07-04T22:43:00.000Z",
       "diubah": "2026-07-04T22:43:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": "Hook: Klaim tegas dari sisi perekrut — kesalahan kecil di CV yang bikin auto-tersingkir.\nPain: Banyak pelamar ditolak bukan karena kualifikasi, tapi cara penyampaian.\nPreview: \"Ternyata cuma soal 3 kesalahan yang hampir semua orang lakuin.\"\nPoin 1-3: ❌ contoh kalimat CV/cover letter lemah vs ✅ versi lebih kuat (observasi umum proses rekrutmen).\nProof: Sudut pandang sebagai HR leader (insight umum, bukan kasus spesifik).\nCTA: \"Komen 'CV' — aku kirim checklist sebelum kirim lamaran.\""
     },
     {
       "notion_id": "393828a0607e81899f51ca6cfcac2105",
@@ -717,7 +771,8 @@
       "catatan": "📝 CATATAN: Perlu data sewa SUUMO/LIFULL sebelum posting. Pakai formula arc 8-slide.",
       "dibuat": "2026-07-04T22:43:00.000Z",
       "diubah": "2026-07-04T22:43:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": "Hook (cover): Banyak yang pindah/pilih apato cuma karena feed IG bagus, bukan karena cocok buat hidup sehari-hari.\nPain: Estetik ≠ layak huni.\nPreview: \"Ternyata cuma soal 3 hal yang orang lupa cek.\"\nPoin 1: ❌ Pilih krn sering muncul di feed traveler vs ✅ Cek harga sewa riil (data SUUMO/LIFULL)\nPoin 2: ❌ Ikut rekomendasi krn \"kelihatan Tokyo banget\" vs ✅ Cek akses transportasi\nPoin 3: ❌ Pilih sendiri tanpa mikir fase hidup vs ✅ Sesuaikan kebutuhan (single/keluarga)\nProof: Pengalaman pribadi pindah 5× — 1 area estetik yang ternyata gak cocok.\nCTA: \"Komen 'DISTRIK' — aku kirim ranking lengkap 23 ward + catatan realistisnya.\""
     },
     {
       "notion_id": "3a3828a0607e8192802cfe9aa52d4af1",
@@ -730,7 +785,8 @@
       "catatan": "📝 CATATAN: Sumber asal: Log Materi Mingguan — Setagaya ひとり親世帯家賃低廉化 (14 Jul), Meguro ファミリー世帯家賃助成 (13 Jul), Shinjuku 民間賃貸住宅家賃助成 (7 Jul). Semua Perlu Verifikasi = tidak. Arc: Formula Arc 8-slide. Total kumulatif = hitungan plafon maksimum, WAJIB ditulis sebagai 'kalau dapat penuh', bukan janji.",
       "dibuat": "2026-07-20T09:59:00.000Z",
       "diubah": "2026-07-25T12:21:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": "## Data & sumber (cek sebelum tayang)\nSumber: halaman resmi city.meguro / city.shinjuku.lg.jp / city.setagaya.lg.jp / city.chiyoda.lg.jp (次世代育成住宅助成, update 1 Jul 2026) + portal resmi Tokyo single-ouen-navi.metro.tokyo.lg.jp.\nPeringatan wajib masuk slide: semua angka ini plafon maksimum, bukan jaminan. Unit terbatas, ada batas pendapatan, sebagian pakai undian, Setagaya minta sudah tinggal ≥1 tahun di distrik itu. Chiyoda: ¥80.000 itu plafon tahun pertama; nominalnya turun ~10% tiap tahun & tergantung jumlah anggota rumah tangga — jangan tulis ¥80.000 sebagai angka semua orang. Cek tahun fiskal berjalan sebelum tayang.\nKoreksi angka: catatan awal menyebut ¥88.000 — angka resmi terbaru adalah plafon ¥80.000/bln* (world×¥10.000, +¥20.000 utk 親元近居, dibatasi ¥80.000). Pakai ¥80.000.\n———\n## Slide 1 · Cover / Hook\nTebak dulu sebelum swipe →\n> Subsidi sewa ¥20.000 sebulan bisa berakhir lebih besar dari yang ¥30.000. Tergantung distriknya.\nSub kecil: Lyns Archive : Housing Support\n## Slide 2 · Pain point\nSewa itu pengeluaran terbesar keluarga di Tokyo. Jadi wajar kalau orang membandingkan bantuan sewa antar-distrik dari angka bulanannya.\nMasalahnya, angka bulanan cuma setengah cerita. Setengahnya lagi jarang ditulis di headline: berapa lama bantuan itu jalan — dan siapa yang sebenarnya boleh dapat.\n## Slide 3 · Preview\nEmpat distrik, empat program bantuan sewa. Tiga yang pertama ngajarin satu hal soal durasi. Yang keempat bikin kamu mikir ulang siapa yang \"berhak\" dibantu.\n## Slide 4 · Meguro\n❌ \"¥20.000 sebulan, kecil banget\"\n✅ Meguro — ファミリー世帯家賃助成. ¥20.000/bulan untuk rumah tangga dengan anak di bawah 18 tahun, maksimal 3 tahun.\nKalau dapat penuh: sekitar ¥720.000.\nBukan cuma orang tua tunggal — ini untuk keluarga umum, dan banyak keluarga asing nggak tahu bantuan level distrik seperti ini ada.\n## Slide 5 · Shinjuku\n❌ \"Berarti yang ¥30.000 paling untung\"\n✅ Shinjuku — 民間賃貸住宅家賃助成. ¥30.000/bulan untuk keluarga dengan anak, maksimal 5 tahun.\nKalau dapat penuh: sekitar ¥1.800.000.\nNominalnya cuma 1,5× Meguro. Totalnya 2,5×. Yang menggandakan bukan nominal — durasi.\n## Slide 6 · Setagaya\n✅ Setagaya — ひとり親世帯家賃低廉化. Sampai ¥40.000/bulan untuk rumah tangga orang tua tunggal berpenghasilan rendah dengan anak di bawah 18 tahun.\nDurasinya: sampai 10 tahun.\nKalau berjalan penuh: sekitar ¥4.800.000 — hampir tujuh kali lipat Meguro, dari nominal bulanan yang cuma dua kali lipat.\n## Slide 7 · Chiyoda (plot twist)\nSampai sini ceritanya soal durasi. Distrik terakhir ini soal siapa.\n✅ Chiyoda — 次世代育成住宅助成. Sampai ¥80.000/bulan di tahun pertama, bisa jalan 8 tahun (nominalnya turun sekitar 10% tiap tahun).\nYang bikin kaget: plafon pendapatannya tinggi — rumah tangga 4 orang sampai sekitar ¥11,1 juta/tahun masih boleh. Jadi ini bukan cuma buat yang berpenghasilan rendah.\nDan ini Chiyoda — distrik yang orang kira \"isinya kantor doang, nggak ada yang tinggal\". Justru dia yang bayarin sewa paling gede, ke kelompok yang paling nggak kamu sangka.\n## Slide 8 · Proof & syarat\nSemua angka di atas dari halaman resmi masing-masing distrik dan portal resmi Pemerintah Metropolitan Tokyo — bukan hitungan agen properti.\nTapi ini plafon maksimum, bukan janji. Kuotanya terbatas, ada batas pendapatan, sebagian lewat undian, Setagaya minta sudah tinggal minimal 1 tahun, dan Chiyoda nominalnya turun tiap tahun + ada syarat administratif yang ketat. Program begini juga bisa berubah tiap tahun fiskal.\nJadi cara pakainya: bukan \"pindah ke Chiyoda sekarang\", tapi \"cek dulu distrik yang lagi kamu tinggali punya apa\".\n## Slide 9 · CTA\nDistrik tempat kamu tinggal punya bantuan sewa nggak? Banyak yang punya, tapi nggak dipromosikan.\nKomen \"SEWA\" kalau mau aku bandingkan bantuan sewa di 23 distrik.\n———\n## Caption\nLyns Archive : Housing Support\nMeguro ¥20.000/bulan. Shinjuku ¥30.000/bulan. Setagaya sampai ¥40.000/bulan. Chiyoda sampai ¥80.000/bulan.\nDari nominal bulanan, Setagaya cuma dua kali lipat Meguro. Tapi durasinya beda jauh — 3 tahun, 5 tahun, 10 tahun — jadi kalau semua berjalan penuh, totalnya ¥720.000 vs ¥1,8 juta vs ¥4,8 juta. Itu kenapa aku selalu baca durasi dulu sebelum nominal.\nTerus ada Chiyoda. Distrik yang katanya \"isinya kantor, nggak ada yang tinggal\" malah kasih plafon ¥80.000/bulan sampai 8 tahun, dan batas pendapatannya tinggi — bukan cuma buat yang berpenghasilan pas-pasan.\nSatu hal penting: semua ini plafon maksimum, bukan jaminan. Kuota terbatas, ada batas pendapatan, sebagian undian, Setagaya minta sudah tinggal setahun, dan Chiyoda nominalnya turun tiap tahun. Program level distrik juga berubah tiap tahun fiskal — selalu cek halaman resmi 区役所 tempat kamu tinggal.\nSumber: halaman resmi Meguro, Shinjuku, Setagaya, Chiyoda + portal ひとり親家庭支援 Pemerintah Metropolitan Tokyo.\nKomen \"SEWA\" kalau mau versi 23 distrik.\n#tinggaldijepang #tokyo #sewarumah #jepang #keluargadijepang #lynsarchive\n———\n## Catatan desain Canva\n- Format 1080×1350, 9 slide.\n- Cover: ilustrasi flat — siluet gedung apartemen Jepang + kunci, ATAU foto dari belakang orang berdiri di depan pintu apato. Bukan wajah penuh. Logo bunga \"Lyns\" pink di pojok.\n- Latar Cream White #FFF9F6, judul Montserrat Bold Charcoal Ink #33292B, isi Poppins.\n- Slide 4–5: baris ❌ Dusty Rose #D98BA0, baris ✅ Muted Gold #D8B589.\n- Slide 4/5/6/7: bikin \"kartu distrik\" seragam — nama distrik besar, nominal/bln, durasi, lalu total dengan font paling besar. Latar kartu Blush Pink #F6D9DE, total di-highlight Muted Gold.\n- Slide 6 (Setagaya): kartu 10–15% lebih besar biar kontras totalnya kelihatan.\n- Slide 7 (Chiyoda): kasih badge kecil \"PLOT TWIST\" di pojok kartu (aksen Soft Lavender-Sky #B7C4E3) biar kebaca sebagai kejutan, bukan sekadar distrik ke-4.\n- Slide 8: latar Soft Lavender-Sky #B7C4E3 — beda warna supaya kebaca sebagai \"peringatan\", bukan promosi.\n- Mark \"Lyns Archive : Housing Support\" kecil di header tiap slide."
     },
     {
       "notion_id": "394828a0607e810fa4e2fed7af1bac47",
@@ -743,7 +799,8 @@
       "catatan": "📝 CATATAN: Bagian Seri Distrik Budget Pekerja Muda (2026-07-05). Belum diriset.",
       "dibuat": "2026-07-05T16:58:00.000Z",
       "diubah": "2026-07-05T16:58:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": ""
     },
     {
       "notion_id": "394828a0607e8199b7f4fb98beae311e",
@@ -756,7 +813,8 @@
       "catatan": "📝 CATATAN: Bagian Seri Distrik Budget Pekerja Muda (2026-07-05, urutan #5). BELUM ADA riset sama sekali.",
       "dibuat": "2026-07-05T16:58:00.000Z",
       "diubah": "2026-07-05T16:58:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": ""
     },
     {
       "notion_id": "393828a0607e8112bf70c41fa9934b19",
@@ -769,7 +827,8 @@
       "catatan": "📝 CATATAN: Video mentah (stasiun/jalan/musim); boleh sosok dari belakang/samping/masker. Tambah teks fakta.",
       "dibuat": "2026-07-04T12:46:00.000Z",
       "diubah": "2026-07-04T12:46:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": "## Konsep\nVideo mentah pemandangan Jepang + 1 fakta lokal sebagai teks di layar.\n## Teks overlay\n- 0–2s: \"Tempat biasa di Jepang… tapi tau nggak?\"\n- 2–6s: [1 fakta tentang tempat/musim itu]\n- akhir: \"Follow buat fakta Jepang tiap hari 🇯🇵\"\n## Caption\nPemandangan biasa di Jepang — tapi ada cerita kecil di baliknya ✨\n[1–2 kalimat fakta lokal]\nPernah ke tempat kayak gini? 👇 Save buat mood board Jepang kamu ✔️\n#jepang #japanvibes #tinggaldijepang #東京 #japanaesthetic #faktajepang\n## Prompt Canva (teks overlay)\n> Vertical video text overlay 1080×1920. Semi-transparent ink black band bottom third, white Poppins text with warm gold #E9C46A keyword highlight, small red accent line. Clean, unobtrusive, subtle fade-in."
     },
     {
       "notion_id": "393828a0607e811d97ecfd7a00a1fbf8",
@@ -782,7 +841,8 @@
       "catatan": "📝 CATATAN: Video raw suasana + 1 豆知識 tempat itu.",
       "dibuat": "2026-07-04T12:46:00.000Z",
       "diubah": "2026-07-04T12:46:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": "## Konsep\nSuasana stasiun/kota + fakta lokal singkat sebagai overlay teks. Format sama seperti template video raw."
     },
     {
       "notion_id": "393828a0607e814680cdc615f8911620",
@@ -795,7 +855,8 @@
       "catatan": "📝 CATATAN: Ambil 1 fakta dari catatan nonton チコちゃん. Tulis ulang dengan bahasamu, pastikan akurat.",
       "dibuat": "2026-07-04T12:46:00.000Z",
       "diubah": "2026-07-04T12:46:00.000Z",
-      "source": "content-bank"
+      "source": "content-bank",
+      "naskah": "## Isi slide (3)\n- Slide 1: \"Tau nggak, di Jepang… 🤔\" + pertanyaan pemicu\n- Slide 2: Jawaban singkat + kenapa (1–2 kalimat)\n- Slide 3: \"Follow buat fakta Jepang tiap hari 🇯🇵\" + ajakan komen\n## Caption\nTau nggak, di Jepang… [pertanyaan pemicu] 🤔\n[Jawaban singkat + alasannya, 2–3 kalimat]\nFakta receh tapi bikin \"ooh gitu\" ya 😄 Kamu baru tahu juga? Komen \"baru tau\" 👇\n#faktajepang #jepang #zatsugaku #豆知識 #infojepang #belajarbahasajepang\n## Prompt Canva\n> Single post 1080×1350, paper white #FAF7F2, one bold question in Montserrat ink black, warm gold #E9C46A underline, tiny red torii/question-mark icon corner. Minimalist, high whitespace, no people. Answer slide same template, Poppins body."
     }
   ]
 }
