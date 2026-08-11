@@ -18,6 +18,7 @@ const DATABASES = [
   { file: 'impor-notion-content-bank.json',      id: '4848cfba98ca44438d7b1d60462aed50', source: 'content-bank', nama: '📚 Content Bank' },
   { file: 'impor-notion-trivia-tambahan.json',   id: 'b30d31f33d954b82b6879256db9be53b', source: 'trivia',       nama: 'Content Bank (arsip trivia)', arsipTrivia: true },
   { file: 'impor-notion-log-mingguan.json',      id: '59a7905eccdc4d85a5d5fe06b66908b2', source: 'log-mingguan', nama: '📝 Log Materi Mingguan' },
+  { file: 'impor-notion-riset-distrik.json',     id: '3a42f4b9ccd147b1a522dbdb2cd99338', source: 'riset-distrik', nama: '🏛️ Riset Layanan Pemda per Distrik', risetDistrik: true },
 ];
 
 /* ── Pemetaan nilai Notion → nilai yang dipakai aplikasi ─────────────────── */
@@ -52,7 +53,9 @@ function teks(p) {
 }
 /** Ambil properti pertama yang cocok dari beberapa kemungkinan nama. */
 function ambil(props, ...nama) {
-  for (const n of nama) if (props[n]) return teks(props[n]);
+  // <br> kadang ikut terbawa dari teks Notion — ubah jadi baris baru sungguhan,
+  // kalau tidak akan tampil mentah sebagai "<br>" di kartu Bank Materi.
+  for (const n of nama) if (props[n]) return teks(props[n]).replace(/<br\s*\/?>/gi, '\n');
   return '';
 }
 function judulDari(props) {
@@ -90,6 +93,39 @@ function keItem(page, db) {
   const p = page.properties || {};
   const judul = judulDari(p);
   if (!judul.trim()) return null;                       // baris kosong di Notion — lewati
+
+  // ── Riset Layanan Pemda per Distrik: satu baris = satu distrik, isinya rangkuman
+  //    panjang. Judulnya diberi awalan supaya jelas ini bahan riset, bukan ide post. ──
+  if (db.risetDistrik) {
+    const ringkasan = ambil(p, 'Ringkasan Dukungan');
+    if (!ringkasan.trim()) return null;                 // distrik yang belum diriset — lewati
+    const conf = ambil(p, 'Confidence');
+    const bagianR = [];
+    // Confidence apa pun yang bukan "Solid…" berarti belum tentu dari sumber resmi.
+    if (conf && !/^solid/i.test(conf)) bagianR.push('⚠️ PERLU VERIFIKASI — tingkat keyakinan di Notion: ' + conf);
+    else if (conf) bagianR.push('🔒 Keyakinan: ' + conf);
+    const tgl = ambil(p, 'Tanggal Riset');
+    const kat = ambil(p, 'Kategori');
+    if (tgl || kat) bagianR.push([tgl && ('🗓️ Tanggal riset: ' + tgl), kat && ('🏷️ Kategori: ' + kat)].filter(Boolean).join(' · '));
+    bagianR.push('📋 RINGKASAN DUKUNGAN\n' + ringkasan);
+    const sumber = ambil(p, 'Sumber');
+    if (sumber) bagianR.push('🔗 SUMBER\n' + sumber);
+    if (ambil(p, 'Sudah Masuk Content Bank') === 'YA') bagianR.push('✅ Di Notion sudah ditandai masuk Content Bank.');
+
+    return {
+      notion_id: String(page.id || '').replace(/-/g, ''),
+      judul: 'Riset distrik: ' + judul.trim(),
+      pilar: 'Pilar 1 · Distrik & Ranking',
+      status: 'Ide',
+      format: 'Carousel',
+      prioritas: 'Sedang',
+      hook: '',
+      catatan: bagianR.join('\n\n'),
+      dibuat: page.created_time || '',
+      diubah: page.last_edited_time || '',
+      source: db.source,
+    };
+  }
 
   const bagian = [];
   const perluVerifikasi = ambil(p, 'Perlu Verifikasi') === 'YA';
