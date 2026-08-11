@@ -965,6 +965,13 @@
             </select>
           </div>
           <div>
+            <label>Bahasa Aplikasi / App Language</label>
+            <select id="setUiLang" onchange="setUiLang(this.value)">
+              <option value="id">Bahasa Indonesia</option>
+              <option value="en">English</option>
+            </select>
+          </div>
+          <div>
             <label>Bahasa Output Konten</label>
             <select id="setLang">
               <option value="Indonesia">Bahasa Indonesia</option>
@@ -3441,6 +3448,237 @@ loadSettings(); loadProfile(); renderVoice(); renderDesignProfile(); renderPerso
 $('calDate').value = new Date().toISOString().slice(0,10);
 $('jrDate').value = new Date().toISOString().slice(0,10);
 </script>
+<script>
+/* ═══════════════════ BAHASA ANTARMUKA (ID ⇄ EN) ═══════════════════
+   Aplikasi ini ditulis dalam bahasa Indonesia. Untuk mode English, teks di
+   layar diterjemahkan langsung di DOM memakai kamus di bawah — jadi tidak perlu
+   menulis ulang seluruh halaman, dan bagian baru yang dirender JS (kartu Bank
+   Materi, dsb.) ikut diterjemahkan lewat MutationObserver.
+   Kembali ke Indonesia = muat ulang halaman (paling aman, tanpa tebak-tebakan).
+   Catatan jujur: yang diterjemahkan adalah ANTARMUKA. Isi buatan AI mengikuti
+   "Bahasa Output Konten", dan materi dari Notion tetap apa adanya. */
+const UI_EN = {
+  // ── Menu samping ──
+  "Dashboard":"Dashboard","Tes Kepribadian":"Personality Test","Analisis Tulisan":"Writing Analysis",
+  "Profil Kepribadian":"Personality Profile","Layanan Tes Resmi":"Official Test Services",
+  "Jurnal Refleksi":"Reflection Journal","Profil Brand":"Brand Profile","Suara Brand":"Brand Voice",
+  "Generator Konten":"Content Generator","Analisis Post":"Post Analysis","Analisis Akun IG":"IG Account Analysis",
+  "Studio Desain":"Design Studio","Bank Materi":"Content Bank","Kalender Konten":"Content Calendar",
+  "Otomatisasi":"Automation","Asisten AI":"AI Assistant","Kelola Akun":"Manage Accounts",
+  "Akun Saya":"My Account","Pengaturan":"Settings","Halaman Utama":"Home Page",
+  // ── Judul halaman ──
+  "Selamat datang 👋":"Welcome 👋","👤 Profil Brand":"👤 Brand Profile",
+  "🎙️ Suara Brand (Voice Learning)":"🎙️ Brand Voice (Voice Learning)","✨ Generator Konten":"✨ Content Generator",
+  "🔍 Analisis Post":"🔍 Post Analysis","📱 Analisis Akun IG":"📱 IG Account Analysis",
+  "🎨 Studio Desain":"🎨 Design Studio","💬 Tes Kepribadian":"💬 Personality Test",
+  "✍️ Analisis Tulisan":"✍️ Writing Analysis","🧬 Profil Kepribadian":"🧬 Personality Profile",
+  "🌐 Layanan Tes Resmi":"🌐 Official Test Services","📓 Jurnal Refleksi":"📓 Reflection Journal",
+  "📅 Kalender Konten":"📅 Content Calendar","💬 Asisten Branding":"💬 Branding Assistant",
+  "⚡ Otomatisasi Publikasi":"⚡ Publishing Automation","👤 Akun Saya":"👤 My Account",
+  "📚 Bank Materi":"📚 Content Bank","🗂️ Kelola Akun":"🗂️ Manage Accounts","⚙️ Pengaturan":"⚙️ Settings",
+  // ── Judul bagian ──
+  "✅ Checklist memulai":"✅ Getting-started checklist","📌 Konten 7 hari ke depan":"📌 Content for the next 7 days",
+  "🧬 Profil Suara Kamu":"🧬 Your Voice Profile","1️⃣ Analisis Akun Baru":"1️⃣ Analyze a New Account",
+  "2️⃣ Akun yang Sudah Dianalisis":"2️⃣ Accounts Already Analyzed",
+  "3️⃣ ✨ Buat Postingan Mirip — dengan Temaku":"3️⃣ ✨ Create a Similar Post — With My Own Topic",
+  "📚 Pustaka Template Canva":"📚 Canva Template Library",
+  "1️⃣ Upload & Bandingkan Contoh Desain":"1️⃣ Upload & Compare Design Samples",
+  "🧬 DNA Desain Kamu":"🧬 Your Design DNA","2️⃣ Rekomendasi Desain Post":"2️⃣ Post Design Recommendation",
+  "🔗 Cara Menyambungkan ke Canva":"🔗 How to Connect to Canva",
+  "🧬 Lab Kepribadian Pro — Asesmen Lengkap ala HR":"🧬 Personality Lab Pro — Full HR-Style Assessments",
+  "💬 Tes Interaktif (12 Pertanyaan Adaptif)":"💬 Interactive Test (12 Adaptive Questions)",
+  "✍️ Deteksi dari Tulisan":"✍️ Detect From Your Writing","🧬 Profil Kepribadian Kamu":"🧬 Your Personality Profile",
+  "🌐 Layanan Tes Resmi (pembanding)":"🌐 Official Test Services (for comparison)",
+  "✏️ Tulis Entri Baru":"✏️ Write a New Entry","📚 Entri Jurnal":"📚 Journal Entries",
+  "➕ Tambah rencana konten":"➕ Add a content plan","🔗 Webhook":"🔗 Webhook",
+  "📤 Konten siap kirim":"📤 Content ready to send","🔄 Sinkron ke Notion (Content Bank)":"🔄 Sync to Notion (Content Bank)",
+  "📦 Ekspor":"📦 Export","🔀 Impor Content Bank (gabung, aman)":"🔀 Import Content Bank (merge, safe)",
+  "🌱 Status: Jelajah Bebas":"🌱 Status: Free Exploration","✨ Daftar Gratis":"✨ Sign Up Free",
+  "Kenapa mendaftar?":"Why sign up?","📍 Akun Aktif":"📍 Active Account","➕ Buat Akun Baru":"➕ Create New Account",
+  "📋 Daftar Akun":"📋 Account List","☁️ Sinkron Cloud (antar perangkat)":"☁️ Cloud Sync (across devices)",
+  "🧠 Memori Asisten":"🧠 Assistant Memory","⚠️ Zona Berbahaya":"⚠️ Danger Zone",
+  "🔐 Perlindungan API Key":"🔐 API Key Protection",
+  // ── Label formulir ──
+  "Nama / Nama Brand":"Name / Brand Name","Niche / Bidang":"Niche / Field","Target Audiens":"Target Audience",
+  "Platform Utama":"Main Platform","Pilar Konten (3-5 topik utama, pisahkan dengan koma)":"Content Pillars (3–5 main topics, comma-separated)",
+  "Tujuan Personal Branding":"Personal Branding Goal","Gaya / Tone yang diinginkan":"Desired Style / Tone",
+  "Postingan lama kamu — pisahkan tiap post dengan baris berisi ---":"Your old posts — separate each post with a line containing ---",
+  "Jenis Konten":"Content Type","Topik":"Topic","Catatan tambahan (opsional)":"Additional notes (optional)",
+  "Teks post yang mau dianalisis":"Post text to analyze","Link akun Instagram":"Instagram account link",
+  "Caption post-nya (opsional, tempel 1-3 caption — bantu AI membaca gaya menulisnya)":"Its post captions (optional, paste 1–3 captions — helps the AI read the writing style)",
+  "Pakai pola akun":"Use account pattern","Jenis konten":"Content type","Topik (dari temamu)":"Topic (from your own theme)",
+  "Nama template":"Template name","Link Canva (edit)":"Canva link (edit)","Emoji sampul (opsional)":"Cover emoji (optional)",
+  "Topik / Isi Post":"Topic / Post Content","Format & Platform":"Format & Platform","Subjek Analisis":"Analysis Subject",
+  "Konteks tulisan (opsional)":"Writing context (optional)","Tempel tulisan di sini":"Paste your writing here",
+  "Isi jurnal":"Journal content","Tanggal":"Date","Platform":"Platform","Jenis":"Type","Topik / Judul":"Topic / Title",
+  "URL Webhook":"Webhook URL","Auto-kirim konten \"siap\" yang jatuh tempo (saat aplikasi terbuka)":"Auto-send \"ready\" content that is due (while the app is open)",
+  "Nama":"Name","Email":"Email","Platform SNS Utama":"Main Social Platform",
+  "Username / Handle SNS (opsional)":"Social Username / Handle (optional)",
+  "Niche / bidang yang kamu tekuni (opsional)":"Niche / field you focus on (optional)",
+  "Saya bersedia menerima email dari LYNSBrand: tips berkarya sesuai kepribadian, update fitur, dan penawaran. Bisa berhenti berlangganan kapan saja.":"I agree to receive emails from LYNSBrand: tips for creating in line with your personality, feature updates, and offers. You can unsubscribe at any time.",
+  "Pilar":"Pillar","Status":"Status","Prioritas":"Priority","Jenis Materi":"Material Type","Urutkan":"Sort by",
+  "Cari":"Search","Judul":"Title","Format":"Format","Hook / CTA":"Hook / CTA","Catatan riset":"Research notes",
+  "Nama akun / brand":"Account / brand name","Anthropic API Key":"Anthropic API Key","Model":"Model",
+  "Bahasa Output Konten":"Content Output Language","Bahasa Aplikasi / App Language":"Bahasa Aplikasi / App Language",
+  "Kode Sinkron (rahasia, min. 6 karakter — WAJIB diingat)":"Sync Code (secret, min. 6 characters — MUST be remembered)",
+  "Kode Sinkron":"Sync Code","Naskah materi":"Material script","Format desain":"Design format",
+  "Buka template Canva":"Open Canva template",
+  // ── Tombol ──
+  "Masuk Aplikasi →":"Enter the App →","🧠 Kenali Diriku Sekarang":"🧠 Get to Know Myself Now","Lihat Dulu":"Just Looking",
+  "🌸 Mulai Perjalananmu — Semua di Perangkatmu":"🌸 Start Your Journey — Everything Stays on Your Device",
+  "💾 Simpan Profil":"💾 Save Profile","🧠 Pelajari Suara Saya":"🧠 Learn My Voice","Simpan Perubahan":"Save Changes",
+  "✨ Buat Konten":"✨ Create Content","🔄 Variasi Lain":"🔄 Another Variation","📅 Kirim ke Kalender":"📅 Send to Calendar",
+  "📋 Salin":"📋 Copy","🔬 Analisis":"🔬 Analyze","🖼️ Unggah Screenshot":"🖼️ Upload Screenshot",
+  "🔬 Analisis Akun Ini":"🔬 Analyze This Account","✨ Buat Postingan":"✨ Create Post","Simpan Template":"Save Template",
+  "🖼️ Pilih Gambar":"🖼️ Choose Images","🔬 Analisis & Bandingkan Desain":"🔬 Analyze & Compare Designs",
+  "✨ Buat Rekomendasi Desain":"✨ Create Design Recommendation","🪄 Salin Prompt Canva Magic Design":"🪄 Copy Canva Magic Design Prompt",
+  "🎨 Buka Canva":"🎨 Open Canva","📋 Salin Semua":"📋 Copy All","⚡ Kirim ke Webhook":"⚡ Send to Webhook",
+  "🧬 Buka Lab Kepribadian Pro":"🧬 Open Personality Lab Pro","▾ Tutup Lab Kepribadian Pro":"▾ Close Personality Lab Pro",
+  "▶️ Mulai Tes":"▶️ Start Test","Kirim":"Send","💾 Simpan sebagai Profil Kepribadian":"💾 Save as Personality Profile",
+  "🔬 Analisis Kepribadian":"🔬 Analyze Personality","✨ Rekomendasi Branding dari Kepribadianku":"✨ Branding Recommendations From My Personality",
+  "🎙️ Terapkan Arahan Persona ke Suara Brand":"🎙️ Apply Persona Guidance to Brand Voice",
+  "📋 Salin Arahan Persona":"📋 Copy Persona Guidance","🎲 Beri Aku Prompt Jurnal":"🎲 Give Me a Journal Prompt",
+  "💾 Simpan Entri":"💾 Save Entry","➕ Tambah":"➕ Add","🤖 Buatkan Rencana 7 Hari Otomatis":"🤖 Generate a 7-Day Plan Automatically",
+  "🗑️ Bersihkan Chat":"🗑️ Clear Chat","🧠 Simpan Insight ke Memori":"🧠 Save Insight to Memory","🧪 Kirim Tes":"🧪 Send Test",
+  "🔄 Sinkron Semua ke Notion":"🔄 Sync Everything to Notion","✨ Sinkron yang Ada Draft/Perubahan Saja":"✨ Sync Only Drafts/Changes",
+  "Ekspor JSON":"Export JSON","Ekspor CSV (untuk Buffer/spreadsheet)":"Export CSV (for Buffer/spreadsheet)",
+  "💾 Backup Semua Data":"💾 Back Up All Data","📥 Pulihkan Backup":"📥 Restore Backup",
+  "🔀 Pilih File & Gabungkan":"🔀 Choose File & Merge","🔄 Sinkron dari Notion":"🔄 Sync From Notion",
+  "↕️ Hapus urutan manual":"↕️ Clear manual order","Simpan Materi":"Save Material",
+  "➕ Buat & Pindah ke Akun Ini":"➕ Create & Switch to This Account","💾 Simpan":"💾 Save","🧪 Tes Koneksi":"🧪 Test Connection",
+  "🗑️ Hapus API Key":"🗑️ Delete API Key","☁️ Aktifkan & Unggah":"☁️ Enable & Upload","🔄 Sinkron Sekarang":"🔄 Sync Now",
+  "Matikan di perangkat ini":"Turn off on this device","⬇️ Pulihkan dari Cloud":"⬇️ Restore From Cloud",
+  "Simpan Memori":"Save Memory","Hapus Semua Data":"Delete All Data","✅ Simpan & Tes Koneksi":"✅ Save & Test Connection",
+  "Nanti Saja":"Maybe Later","💾 Simpan Perubahan":"💾 Save Changes",
+  // ── Tombol pada kartu Bank Materi (dirender JS) ──
+  "📅 Ke Kalender":"📅 To Calendar","✕ Hapus":"✕ Delete","✏️ Tulis & Edit":"✏️ Write & Edit",
+  "✏️ Tulis & Edit ✅":"✏️ Write & Edit ✅","🤖 Analisis AI":"🤖 AI Analysis","🤖 Analisis AI ✅":"🤖 AI Analysis ✅",
+  "🎨 Studio Desain ✅":"🎨 Design Studio ✅","✔ Selesai":"✔ Done","Buat":"Create","Publish":"Publish",
+  "Tutup":"Close","📋 Salin Brief":"📋 Copy Brief","🪄 Salin Prompt Canva":"🪄 Copy Canva Prompt",
+  "✕ Hapus Brief":"✕ Delete Brief","✕ Hapus Analisis":"✕ Delete Analysis","📝 Jadikan Naskah":"📝 Make It the Script",
+  "🤖 Analisis Otomatis":"🤖 Analyze Automatically","🤖 Analisis Ulang":"🤖 Re-analyze",
+  "🎨 Buat Brief Desain":"🎨 Create Design Brief","🖌️ Buka Template di Canva":"🖌️ Open Template in Canva",
+  "📝 Catatan riset":"📝 Research notes","🎨 Buka di Canva":"🎨 Open in Canva","Aktifkan":"Activate",
+  // ── Pilihan dropdown ──
+  "💡 10 Ide Konten":"💡 10 Content Ideas","🪝 5 Hook / Kalimat Pembuka":"🪝 5 Hooks / Opening Lines",
+  "📸 Caption Instagram":"📸 Instagram Caption","🎬 Script Video Pendek (TikTok/Reels)":"🎬 Short Video Script (TikTok/Reels)",
+  "🧵 Thread X (Twitter)":"🧵 X (Twitter) Thread","💼 Post LinkedIn":"💼 LinkedIn Post",
+  "🎠 Outline Carousel (slide per slide)":"🎠 Carousel Outline (slide by slide)",
+  "— analisis akun dulu di atas —":"— analyze an account above first —","Carousel (outline slide)":"Carousel (slide outline)",
+  "Caption":"Caption","Script Reel":"Reel Script","Script Video":"Video Script","Thread":"Thread","Post LinkedIn":"LinkedIn Post",
+  "Saya sendiri (disimpan sebagai Profil Kepribadian)":"Myself (saved as Personality Profile)",
+  "Orang lain (hanya analisis, tidak disimpan)":"Someone else (analysis only, not saved)",
+  "— belum ada / rahasia —":"— none yet / private —","Semua pilar":"All pillars","Semua status":"All statuses",
+  "Semua prioritas":"All priorities","Semua jenis":"All types","Ide":"Idea","Draft":"Draft","Siap":"Ready",
+  "Terjadwal":"Scheduled","Tayang":"Published","Tinggi":"High","Sedang":"Medium","Rendah":"Low",
+  "Video / Reel":"Video / Reel","Single":"Single","Carousel":"Carousel",
+  "✍️ Antrean pembuatan (1, 2, 3…)":"✍️ Creation queue (1, 2, 3…)","📤 Antrean publish (1, 2, 3…)":"📤 Publish queue (1, 2, 3…)",
+  "Pilar → prioritas → judul (bawaan)":"Pillar → priority → title (default)","🆕 Terbaru dulu":"🆕 Newest first",
+  "🕰️ Terlama dulu":"🕰️ Oldest first","🔥 Prioritas tertinggi dulu":"🔥 Highest priority first",
+  "🎬 Jenis materi":"🎬 Material type","🔤 Judul A–Z":"🔤 Title A–Z","⠿ Urutan sendiri (hasil seret)":"⠿ Custom order (from dragging)",
+  "Claude Opus 4.8 (terbaik, disarankan)":"Claude Opus 4.8 (best, recommended)",
+  "Claude Sonnet 5 (cepat & hemat)":"Claude Sonnet 5 (fast & economical)","Claude Haiku 4.5 (paling hemat)":"Claude Haiku 4.5 (most economical)",
+  "Bahasa Indonesia":"Bahasa Indonesia","日本語 (Jepang)":"日本語 (Japanese)",
+  "Pilar 1 · Distrik & Ranking":"Pillar 1 · Districts & Rankings","Pilar 2 · 雑学 / 豆知識":"Pillar 2 · 雑学 / Trivia",
+  "Pilar 3 · Hidup & Kerja":"Pillar 3 · Living & Working",
+  // ── Ringkasan / details ──
+  "Edit manual (JSON)":"Edit manually (JSON)","➕ Tambah template sendiri":"➕ Add your own template",
+  "➕ Tambah materi manual":"➕ Add material manually",
+  // ── Placeholder ──
+  "cth: Kemal — Coach Produktivitas":"e.g. Kemal — Productivity Coach",
+  "cth: produktivitas, bisnis online, kuliner":"e.g. productivity, online business, food",
+  "cth: profesional muda 25-35 tahun yang ingin membangun side-hustle":"e.g. young professionals aged 25–35 who want to build a side hustle",
+  "cth: tips produktivitas, cerita di balik layar, studi kasus klien, mindset":"e.g. productivity tips, behind-the-scenes stories, client case studies, mindset",
+  "cth: dikenal sebagai ahli produktivitas, menarik klien coaching, membangun audience 10k dalam 6 bulan":"e.g. be known as a productivity expert, attract coaching clients, build a 10k audience in 6 months",
+  "cth: santai tapi berbobot, banyak humor, tanpa jargon":"e.g. relaxed but substantial, plenty of humour, no jargon",
+  "cth: cara bangun pagi tanpa alarm":"e.g. how to wake up early without an alarm",
+  "cth: sertakan CTA follow, panjang maksimal 150 kata, sebutkan produk X":"e.g. include a follow CTA, max 150 words, mention product X",
+  "Tempel caption/script/thread di sini...":"Paste a caption/script/thread here...",
+  "Tempel caption post akun itu di sini (boleh kosong kalau sudah terlihat di screenshot)":"Paste that account's post captions here (may be left empty if already visible in the screenshot)",
+  "cth: subsidi sewa distrik Tokyo":"e.g. Tokyo ward rent subsidies","cth: Carousel Ranking Distrik":"e.g. District Ranking Carousel",
+  "cth: 📚 🗼 🌸":"e.g. 📚 🗼 🌸","cth: 3 kesalahan orang saat mulai side-hustle":"e.g. 3 mistakes people make when starting a side hustle",
+  "Jawab dengan jujur & spontan... (Enter untuk kirim)":"Answer honestly & spontaneously... (Enter to send)",
+  "cth: chat sehari-hari, caption IG, email kerja":"e.g. everyday chats, IG captions, work emails",
+  "Tempelkan beberapa contoh tulisan... boleh dicampur (chat + caption + email), pisahkan dengan --- jika perlu.":"Paste a few writing samples... you may mix them (chat + caption + email), separate with --- if needed.",
+  "Tulis bebas... perasaan hari ini, ide yang muncul, hal yang mengganjal, pelajaran, mimpi. Tidak ada format yang salah.":"Write freely... how you feel today, ideas that came up, what's bothering you, lessons, dreams. There is no wrong format.",
+  "Ketik pesan... (Enter untuk kirim, Shift+Enter baris baru)":"Type a message... (Enter to send, Shift+Enter for a new line)",
+  "Nama panggilanmu":"Your nickname","email@kamu.com":"email@you.com","@akunkamu":"@youraccount",
+  "cth: buku & literasi, kuliner, produktivitas":"e.g. books & literacy, food, productivity",
+  "cari judul, hook, atau catatan...":"search titles, hooks, or notes...","Judul ide":"Idea title",
+  "Hook pembuka / CTA":"Opening hook / CTA","Catatan, data, sumber...":"Notes, data, sources...",
+  "cth: Brand Resep Sehat":"e.g. Healthy Recipes Brand",
+  "mis. kalimat rahasia yang mudah kamu ingat":"e.g. a secret phrase you can easily remember",
+  "Kode Sinkron dari perangkat pertama":"Sync Code from your first device",
+  "Tulis naskah lengkapnya di sini...":"Write the full script here...",
+  // ── Potongan teks di dalam kartu (label pendek & lencana) ──
+  "Pilar 1":"Pillar 1","Pilar 2":"Pillar 2","Pilar 3":"Pillar 3",
+  "✍️ Buat":"✍️ Create","📤 Publish":"📤 Publish","📝 Naskah materi":"📝 Material script",
+  "Semua materi":"All materials","materi":"materials","Antrean:":"Queue:",
+  "lihat urut":"view order","kosongkan":"clear",
+};
+// Kalimat yang isinya berubah-ubah: cocokkan awalannya, sisanya ikut diterjemahkan bila ada.
+const UI_EN_AWALAN = [
+  ["Prioritas: ","Priority: "], ["Tersimpan: ","Saved: "], ["Dianalisis: ","Analyzed: "],
+  ["Brief dibuat: ","Brief created: "], ["Format asli: ","Original format: "],
+  ["Pilar: ","Pillar: "], ["Status: ","Status: "],
+];
+let uiLang = (function(){ try{ return localStorage.getItem('bp_uilang') || 'id'; }catch(e){ return 'id'; } })();
+const TR_LEWATI = new Set(['SCRIPT','STYLE','TEXTAREA','CODE','PRE']);
+function _trTeks(t){
+  const k = (t||'').trim(); if(!k) return null;
+  const en = UI_EN[k];
+  if(en) return t.replace(k, en);
+  for(const [awal, ganti] of UI_EN_AWALAN){
+    if(k.startsWith(awal)){
+      const sisa = k.slice(awal.length);
+      return t.replace(k, ganti + (UI_EN[sisa] || sisa));
+    }
+  }
+  return null;
+}
+function terjemahkanDOM(root){
+  if(uiLang !== 'en' || !root) return;
+  try{
+    if(root.nodeType === 1){
+      const els = [root].concat(Array.from(root.querySelectorAll('[placeholder],[title]')));
+      els.forEach(el=>{
+        ['placeholder','title'].forEach(a=>{
+          const v = el.getAttribute && el.getAttribute(a);
+          if(v){ const b = _trTeks(v); if(b) el.setAttribute(a, b); }
+        });
+      });
+    }
+    const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode: n => (n.parentNode && TR_LEWATI.has(n.parentNode.nodeName)) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT
+    });
+    const daftar = []; let n;
+    while((n = w.nextNode())) daftar.push(n);
+    daftar.forEach(t=>{ const b = _trTeks(t.nodeValue); if(b !== null) t.nodeValue = b; });
+  }catch(e){}
+}
+// Bagian yang dirender ulang oleh JS ikut diterjemahkan begitu muncul.
+let _trTimer = null, _trAntre = [];
+new MutationObserver(muts=>{
+  if(uiLang !== 'en') return;
+  muts.forEach(m=> m.addedNodes.forEach(n=>{ if(n.nodeType===1 || n.nodeType===3) _trAntre.push(n); }));
+  if(_trAntre.length){
+    clearTimeout(_trTimer);
+    _trTimer = setTimeout(()=>{ const a = _trAntre; _trAntre = []; a.forEach(terjemahkanDOM); }, 60);
+  }
+}).observe(document.body, {childList:true, subtree:true});
+function setUiLang(v){
+  uiLang = v;
+  try{ localStorage.setItem('bp_uilang', v); }catch(e){}
+  if(v === 'en'){ terjemahkanDOM(document.body); toast('🌐 Interface language: English'); }
+  else location.reload();   // kembali ke Indonesia: muat ulang, paling aman
+}
+(function initUiLang(){
+  const sel = document.getElementById('setUiLang');
+  if(sel) sel.value = uiLang;
+  if(uiLang === 'en') terjemahkanDOM(document.body);
+})();
+</script>
+
 <!-- ══════════ LAB KEPRIBADIAN PRO (menyatu di halaman ini) ══════════
      Dulu halaman terpisah yang dimuat lewat iframe. Sekarang tampil langsung di
      menu Tes Kepribadian. Tampilannya dibungkus Shadow DOM supaya CSS-nya (yang
