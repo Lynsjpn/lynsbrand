@@ -3622,6 +3622,117 @@ const UI_EN_AWALAN = [
   ["Brief dibuat: ","Brief created: "], ["Format asli: ","Original format: "],
   ["Pilar: ","Pillar: "], ["Status: ","Status: "],
 ];
+/* Paragraf penjelasan panjang diterjemahkan per-BLOK (isi HTML utuh), bukan per
+   potongan teks, karena di dalamnya ada <b>, <a>, <code> yang memecah teks jadi
+   banyak simpul. Kunci = innerHTML asli (spasi dirapatkan), nilai = versi Inggris
+   dengan markup, id, href & onclick yang SAMA PERSIS supaya tetap berfungsi. */
+const UI_EN_BLOK = {
+[`<b>🧭 Self-Discovery</b> — pahami kepribadianmu dulu → <b>🎨 Self-Expression</b> — tuangkan idemu lewat berkarya: jurnal refleksi, atau konten &amp; personal branding di media sosial.`]:
+`<b>🧭 Self-Discovery</b> — understand your personality first → <b>🎨 Self-Expression</b> — pour your ideas into work: a reflection journal, or content &amp; personal branding on social media.`,
+[`Fondasi personal branding kamu. Semua konten yang dihasilkan AI akan mengacu ke profil ini.`]:
+`The foundation of your personal branding. Every piece of content the AI produces will refer to this profile.`,
+[`Tempelkan 3–10 postingan terbaikmu (caption, script, thread). AI akan mempelajari gaya bahasamu supaya semua konten terdengar otentik — bukan generik.`]:
+`Paste 3–10 of your best posts (captions, scripts, threads). The AI will learn your language style so all content sounds authentic — not generic.`,
+[`Buat konten dengan suara brand-mu sendiri. Hasil bisa langsung dikirim ke kalender.`]:
+`Create content in your own brand voice. Results can be sent straight to the calendar.`,
+[`Tempelkan teks post/caption/script apa pun (milikmu atau kompetitor). AI membedah hook, struktur, CTA, dan alasan post itu berhasil — plus saran versi lebih baik dengan suaramu.`]:
+`Paste any post/caption/script text (yours or a competitor's). The AI dissects the hook, structure, CTA, and why that post worked — plus a better version in your own voice.`,
+[`Pelajari akun Instagram yang kamu kagumi: AI membedah pola hook, formula konten, gaya caption &amp; visualnya — lalu satu klik untuk membuat postingan <b>serupa polanya, tapi dengan tema &amp; suaramu sendiri</b> (meniru pola, bukan menjiplak).`]:
+`Study an Instagram account you admire: the AI dissects its hook patterns, content formula, caption &amp; visual style — then one click creates a post <b>with a similar pattern, but your own topic &amp; voice</b> (imitating the pattern, not copying).`,
+[`Mulai dari template brand-mu, atau ekstrak "DNA desain" dari referensi lalu buat rekomendasi desain siap eksekusi di Canva.`]:
+`Start from your brand templates, or extract a "design DNA" from references and generate a design recommendation ready to execute in Canva.`,
+[`Dua jalur: <b>🧬 Lab Kepribadian Pro</b> (bank soal lengkap ala asesmen HR — tanpa API key, hasil detail + riwayat tersimpan) dan <b>💬 Tes Interaktif AI</b> (12 pertanyaan adaptif).<br> <span style="font-size:12px; color:var(--warn)">⚠️ Alat refleksi &amp; pengembangan diri, bukan diagnosis psikologis profesional.</span>`]:
+`Two paths: <b>🧬 Personality Lab Pro</b> (a full HR-style question bank — no API key, detailed results + saved history) and <b>💬 Interactive AI Test</b> (12 adaptive questions).<br> <span style="font-size:12px; color:var(--warn)">⚠️ A tool for reflection &amp; self-development, not a professional psychological diagnosis.</span>`,
+[`<b>Psycho-Stylometric Profiler</b> — analisis berbasis bukti dari tulisanmu dengan 3 kerangka tervalidasi: <b>Big Five (OCEAN)</b>, <b>RIASEC/Holland Codes</b> (pemetaan bakat &amp; minat), dan <b>Stylometric DNA</b> (4 variabel LIWC: Analytical Thinking, Clout, Authenticity, Emotional Tone). Setiap kesimpulan disertai kutipan bukti dari teksmu, dan hasilnya termasuk <b>Arahan Persona</b> — panduan suara brand siap-pakai. Bisa untuk dirimu sendiri maupun memahami orang lain.<br> <span style="font-size:12px; color:var(--warn)">⚠️ Alat refleksi &amp; pemahaman diri, bukan diagnosis psikologis profesional.</span>`]:
+`<b>Psycho-Stylometric Profiler</b> — evidence-based analysis of your writing using 3 validated frameworks: <b>Big Five (OCEAN)</b>, <b>RIASEC/Holland Codes</b> (talent &amp; interest mapping), and <b>Stylometric DNA</b> (4 LIWC variables: Analytical Thinking, Clout, Authenticity, Emotional Tone). Every conclusion comes with quoted evidence from your text, and the result includes <b>Persona Guidance</b> — a ready-to-use brand voice guide. Works for yourself or for understanding other people.<br> <span style="font-size:12px; color:var(--warn)">⚠️ A tool for reflection &amp; self-understanding, not a professional psychological diagnosis.</span>`,
+[`Hasil Self-Discovery-mu terangkum di sini — dan otomatis dipakai semua fitur lain (jurnal, generator konten, asisten AI) supaya semuanya selaras dengan dirimu yang asli.`]:
+`Your Self-Discovery results are summarised here — and used automatically by every other feature (journal, content generator, AI assistant) so everything stays true to who you really are.`,
+[`Layanan tes kepribadian populer sebagai pembanding hasil analisis LYNSBrand — gratis atau freemium.`]:
+`Popular personality test services to compare against LYNSBrand's analysis — free or freemium.`,
+[`Menuangkan isi kepala tanpa harus bermain media sosial. Tulis bebas, dapatkan refleksi AI yang memahami kepribadianmu — dan kalau suatu saat mau, satu klik mengubah jurnal jadi ide konten.`]:
+`Pour out what's on your mind without going near social media. Write freely, get AI reflection that understands your personality — and whenever you like, one click turns a journal entry into content ideas.`,
+[`Rencanakan dan lacak konten. Status: <span class="badge ide">ide</span> → <span class="badge draft">draft</span> → <span class="badge siap">siap</span> → <span class="badge terbit">terbit</span>`]:
+`Plan and track your content. Status: <span class="badge ide">idea</span> → <span class="badge draft">draft</span> → <span class="badge siap">ready</span> → <span class="badge terbit">published</span>`,
+[`Konsultan personal branding pribadimu — sudah tahu profil, suara brand, dan memorimu. Tanyakan strategi, minta brainstorm, atau minta review konten.`]:
+`Your personal branding consultant — it already knows your profile, brand voice, and memory. Ask for strategy, brainstorming, or a content review.`,
+[`Hubungkan ke <b>Make.com / Zapier / n8n</b> lewat webhook untuk memposting otomatis ke SNS, atau ekspor konten untuk dijadwalkan di Buffer/Meta Business Suite.`]:
+`Connect to <b>Make.com / Zapier / n8n</b> via webhook to post automatically to social media, or export content to schedule in Buffer/Meta Business Suite.`,
+[`Daftarkan dirimu (gratis) supaya perjalananmu tercatat — dan dapatkan tips berkarya sesuai kepribadianmu, update fitur, serta penawaran khusus langsung ke emailmu.`]:
+`Sign up (free) so your journey is recorded — and get tips for creating in line with your personality, feature updates, and special offers straight to your inbox.`,
+[`Semua ide postingan dari Content Bank Notion-mu, terkumpul di satu tempat. Tiap materi punya tiga alat sendiri: <b>✏️ Tulis &amp; Edit</b> (naskah lengkap, tersimpan permanen), <b>🤖 Analisis AI</b> (sudut, hook, struktur slide, caption, hashtag), dan <b>🎨 Studio Desain</b> (brief desain + prompt Canva, hasilnya kembali ke materi ini). Saring per pilar/status, lalu <b>kirim ke Kalender</b> saat siap dijadwalkan.`]:
+`Every post idea from your Notion Content Bank, gathered in one place. Each material has three tools of its own: <b>✏️ Write &amp; Edit</b> (full script, saved permanently), <b>🤖 AI Analysis</b> (angle, hooks, slide structure, caption, hashtags), and <b>🎨 Design Studio</b> (design brief + Canva prompt, saved back to this material). Filter by pillar/status, then <b>send to the Calendar</b> when it's ready to schedule.`,
+[`Kamu pengatur utama di sini. Kelola beberapa akun/brand SNS dari satu tempat — tiap akun punya <b>profil, suara, desain, kalender &amp; konten sendiri-sendiri</b>. API key &amp; pengaturan dipakai bersama semua akun (cukup diisi sekali).`]:
+`You're the one in charge here. Manage several social accounts/brands from one place — each account has <b>its own profile, voice, design, calendar &amp; content</b>. The API key &amp; settings are shared across all accounts (entered just once).`,
+[`Aplikasi ini memanggil Claude API langsung dari browser-mu. API key hanya disimpan di browser ini (localStorage) dan tidak dikirim ke mana pun selain api.anthropic.com.`]:
+`This app calls the Claude API directly from your browser. Your API key is stored only in this browser (localStorage) and is never sent anywhere except api.anthropic.com.`,
+[`Belum ada konten terjadwal minggu ini. Buka <b>Kalender Konten</b> → tombol 🤖 untuk rencana otomatis.`]:
+`No content scheduled this week. Open <b>Content Calendar</b> → the 🤖 button for an automatic plan.`,
+[`ℹ️ Instagram memblokir pengambilan data otomatis, jadi aplikasi tidak bisa membuka link ini sendiri. Caranya: buka akunnya di HP/browser → <b>screenshot</b> profil/grid &amp; 2–5 post terbaiknya → unggah di bawah. Makin banyak contoh, makin akurat analisisnya.`]:
+`ℹ️ Instagram blocks automated data fetching, so the app can't open this link itself. Here's how: open the account on your phone/browser → <b>screenshot</b> the profile/grid &amp; its 2–5 best posts → upload them below. The more samples, the more accurate the analysis.`,
+[`Analisis tersimpan di sini sebagai "bahan baku". Klik ✨ untuk membuat postingan bergaya akun itu — dengan tema &amp; suara brand-mu.`]:
+`Analyses are stored here as "raw material". Click ✨ to create a post in that account's style — with your own topic &amp; brand voice.`,
+[`Belum ada akun yang dianalisis.`]:`No accounts analyzed yet.`,
+[`Template brand <b>Lyn's Library</b> milikmu, siap pakai. Klik untuk membuka &amp; mengedit langsung di Canva. 💡 <b>Tips:</b> di Canva, <i>duplikat dulu</i> (File → Buat salinan) sebelum mengubah teks, supaya template aslimu tetap utuh untuk dipakai lagi minggu depan.`]:
+`Your own <b>Lyn's Library</b> brand templates, ready to use. Click to open &amp; edit directly in Canva. 💡 <b>Tip:</b> in Canva, <i>duplicate it first</i> (File → Make a copy) before changing any text, so your original template stays intact for next week.`,
+[`Screenshot 2–6 desain post (JPG/PNG). Bisa dari feed kamu sendiri, kompetitor, atau referensi mana pun. Gambar dikompres otomatis dan hanya dikirim ke api.anthropic.com.`]:
+`Screenshot 2–6 post designs (JPG/PNG). They can be from your own feed, a competitor, or any reference. Images are compressed automatically and only sent to api.anthropic.com.`,
+[`Diekstrak dari perbandingan di atas. Dipakai otomatis oleh rekomendasi desain &amp; asisten AI.`]:
+`Extracted from the comparison above. Used automatically by the design recommendations &amp; AI assistant.`,
+[`5 asesmen standar dengan skoring psikometri baku (tanpa AI, tanpa API key): <b>MBTI 60 soal</b> (16 tipe + fungsi kognitif + ranking populasi + profesi per tipe), <b>Big Five/OCEAN 50 soal</b>, <b>DISC 28 soal</b>, <b>RIASEC/Holland 36 soal</b>, dan <b>EQ 20 soal</b>. Setiap hasil otomatis terarsip ke riwayat permanen, hasil tes online (16Personalities, SPI, dll.) juga bisa dicatat, dan semuanya bisa digabung menjadi laporan siap cetak/PDF.`]:
+`5 standard assessments with proper psychometric scoring (no AI, no API key): <b>MBTI, 60 questions</b> (16 types + cognitive functions + population ranking + careers per type), <b>Big Five/OCEAN, 50 questions</b>, <b>DISC, 28 questions</b>, <b>RIASEC/Holland, 36 questions</b>, and <b>EQ, 20 questions</b>. Every result is archived automatically to a permanent history, results from online tests (16Personalities, SPI, etc.) can be recorded too, and everything can be combined into a print/PDF-ready report.`,
+[`Jawab dengan jujur &amp; spontan — tidak ada jawaban benar/salah. Di akhir, hasil bisa disimpan sebagai Profil Kepribadian.`]:
+`Answer honestly &amp; spontaneously — there are no right or wrong answers. At the end, the result can be saved as your Personality Profile.`,
+[`Metode ala LIWC/Crystal: kepribadian terbaca dari pola bahasa — kata fungsi, nada emosi, dan pola sosial dalam tulisan. Tempelkan tulisan bebas apa pun: chat panjang, caption, email, jurnal, esai (min. 150 kata; makin banyak &amp; makin spontan tulisannya, makin akurat).`]:
+`A LIWC/Crystal-style method: personality shows through language patterns — function words, emotional tone, and social patterns in writing. Paste any free-form writing: long chats, captions, emails, journals, essays (min. 150 words; the more you write and the more spontaneous it is, the more accurate).`,
+[`Belum ada profil kepribadian. Jalankan <b>💬 Tes Kepribadian</b> atau <b>✍️ Analisis Tulisan</b> (pilih subjek "Saya sendiri") untuk membuatnya.`]:
+`No personality profile yet. Run the <b>💬 Personality Test</b> or <b>✍️ Writing Analysis</b> (choose the subject "Myself") to create one.`,
+[`Untuk pembanding hasil, coba layanan populer ini — lalu tempel hasilnya di kolom "Deteksi dari Tulisan" atau edit JSON profil agar tergabung:`]:
+`To compare results, try these popular services — then paste the outcome into the "Detect From Your Writing" box or edit the profile JSON to merge it in:`,
+[`Belum ada entri. Mulailah dari yang kecil — tiga kalimat pun cukup.`]:
+`No entries yet. Start small — even three sentences is enough.`,
+[`💡 Jurnalmu adalah bahan emas untuk <b>✍️ Analisis Tulisan</b> — makin banyak menulis, makin akurat profil kepribadianmu. Semua entri tersimpan lokal di browser ini (ikut ter-backup lewat menu Otomatisasi → Backup).`]:
+`💡 Your journal is gold for <b>✍️ Writing Analysis</b> — the more you write, the more accurate your personality profile. All entries are stored locally in this browser (and included in Automation → Backup).`,
+[`Kalender masih kosong. Tambahkan rencana di atas, atau pakai tombol 🤖 untuk rencana otomatis 7 hari.`]:
+`The calendar is still empty. Add a plan above, or use the 🤖 button for an automatic 7-day plan.`,
+[`Buat skenario di Make/Zapier dengan trigger "Webhook", lalu sambungkan ke modul Instagram/TikTok/X/LinkedIn. Tempel URL webhook-nya di sini. Setiap konten berstatus <b>siap</b> yang jatuh tempo akan dikirim sebagai JSON: <code>{judul, platform, jenis, tanggal, konten}</code>.`]:
+`Create a scenario in Make/Zapier with a "Webhook" trigger, then connect it to the Instagram/TikTok/X/LinkedIn module. Paste the webhook URL here. Every <b>ready</b> item that falls due will be sent as JSON: <code>{judul, platform, jenis, tanggal, konten}</code>.`,
+[`Belum ada konten berstatus "siap". Ubah status konten di Kalender menjadi <b>siap</b> agar muncul di sini.`]:
+`No content marked "ready" yet. Change an item's status in the Calendar to <b>ready</b> for it to appear here.`,
+[`Kirim status &amp; draft dari kalender ini kembali ke database <b>📚 Content Bank</b> di Notion, lewat webhook Make yang sama. Item hasil impor membawa <code>notion_id</code>, jadi Make <b>memperbarui</b> baris yang ada (bukan bikin duplikat). Payload: <code>{tipe:"notion_sync", notion_id, judul, status, tanggal, platform, jenis, catatan_riset, draft_ai}</code>. Skenario Make-nya perlu dibuat sekali — lihat <b>PANDUAN-SINKRON-NOTION.md</b>.`]:
+`Send statuses &amp; drafts from this calendar back to the <b>📚 Content Bank</b> database in Notion, through the same Make webhook. Imported items carry a <code>notion_id</code>, so Make <b>updates</b> the existing row (instead of creating duplicates). Payload: <code>{tipe:"notion_sync", notion_id, judul, status, tanggal, platform, jenis, catatan_riset, draft_ai}</code>. The Make scenario needs to be built once — see <b>PANDUAN-SINKRON-NOTION.md</b>.`,
+[`⚠️ Tiap item = 1 operasi Make. "Sinkron Semua" atas 52 item = 52 operasi — perhatikan kuota bulanan paket gratis Make (1.000 ops). Karena webhook dikirim <i>no-cors</i>, browser tidak bisa membaca balasan: aplikasi hanya melaporkan "terkirim", bukan "berhasil disimpan di Notion". Cek riwayat eksekusi di Make untuk memastikan.`]:
+`⚠️ Each item = 1 Make operation. "Sync Everything" over 52 items = 52 operations — mind the monthly quota on Make's free plan (1,000 ops). Because the webhook is sent <i>no-cors</i>, the browser cannot read the reply: the app only reports "sent", not "saved successfully in Notion". Check the execution history in Make to be sure.`,
+[`⚠️ <b>Pulihkan Backup</b> menimpa SEMUA data. Untuk sekadar <b>menambah</b> ide dari Content Bank tanpa menghapus yang ada, pakai tombol di bawah.`]:
+`⚠️ <b>Restore Backup</b> overwrites ALL data. To simply <b>add</b> ideas from the Content Bank without deleting what you have, use the button below.`,
+[`Tambahkan ide dari file Content Bank Notion ke kalendermu <b>tanpa menimpa</b> apa pun. Menerima <code>impor-notion-kalender.json</code> (52 ide aktif) maupun <code>impor-notion-trivia-tambahan.json</code> (30 ide trivia). Item yang topiknya sudah ada dilewati otomatis, jadi aman dijalankan berkali-kali — bisa muat kedua file sekaligus.`]:
+`Add ideas from a Notion Content Bank file to your calendar <b>without overwriting</b> anything. Accepts <code>impor-notion-kalender.json</code> (52 active ideas) and <code>impor-notion-trivia-tambahan.json</code> (30 trivia ideas). Items whose topic already exists are skipped automatically, so it's safe to run repeatedly — you can load both files at once.`,
+[`Bank materi masih kosong. Cukup klik <b>🔄 Sinkron dari Notion</b> di atas — semua idemu (±88) akan tertarik otomatis, tanpa buka folder.`]:
+`The content bank is still empty. Just click <b>🔄 Sync From Notion</b> above — all your ideas (±88) will be pulled in automatically, without opening any folder.`,
+[`Semua yang kamu buat (profil, konten, kalender, template) tersimpan di akun yang sedang aktif. Ganti akun dengan tombol <b>Aktifkan</b> di daftar bawah — halaman akan dimuat ulang membawa data akun itu.`]:
+`Everything you create (profile, content, calendar, templates) is saved in the currently active account. Switch accounts with the <b>Activate</b> button in the list below — the page reloads carrying that account's data.`,
+[`Akun baru mulai kosong (bersih), siap kamu isi profil &amp; kontennya sendiri. Cocok untuk brand kedua, akun eksperimen, atau memisahkan niche.`]:
+`A new account starts empty (clean), ready for you to fill in its own profile &amp; content. Good for a second brand, an experimental account, or separating niches.`,
+[`Belum punya? Buat di <a href="https://platform.claude.com/" target="_blank">platform.claude.com</a> → API Keys.`]:
+`Don't have one? Create it at <a href="https://platform.claude.com/" target="_blank">platform.claude.com</a> → API Keys.`,
+[`🔒 Cukup dimasukkan <b>sekali</b>: key tersimpan berlapis di browser ini dan otomatis dipakai terus — tidak perlu diisi ulang tiap buka, dan tidak hilang saat aplikasi diperbarui. Agar tetap ingat, gunakan <b>satu alamat yang sama</b> (situs live-mu, bukan file lokal) di browser yang sama. Tombol <b>💾 Backup Semua Data</b> di menu Otomatisasi juga menyimpan key ini.`]:
+`🔒 Entered just <b>once</b>: the key is stored in layers in this browser and reused automatically — no need to re-enter it each visit, and it survives app updates. To keep it remembered, always use <b>the same address</b> (your live site, not a local file) in the same browser. The <b>💾 Back Up All Data</b> button under Automation saves this key too.`,
+[`Key disalin otomatis ke beberapa tempat penyimpanan di perangkat ini, dan dipulihkan sendiri kalau salah satunya hilang. Yang <b>tetap</b> bisa menghapusnya: kamu membersihkan data situs lewat pengaturan browser, memakai mode penyamaran, atau berpindah ke <b>alamat situs / browser / perangkat lain</b> (penyimpanan browser selalu terikat pada satu alamat). Untuk kasus itu, jaring pengamannya adalah <b>☁️ Sinkron Cloud</b> di bawah.`]:
+`The key is copied automatically to several storage places on this device, and restores itself if one of them is lost. What can <b>still</b> erase it: clearing site data in your browser settings, using private/incognito mode, or moving to <b>a different site address / browser / device</b> (browser storage is always tied to one address). For those cases, the safety net is <b>☁️ Cloud Sync</b> below.`,
+[`Simpan API key + semua akun, kalender, bank materi &amp; template secara online supaya bisa dibuka di <b>PC lain atau HP</b> tanpa memasukkan ulang. Datamu <b>dienkripsi di perangkat ini</b> dengan Kode Sinkron rahasiamu sebelum dikirim — server hanya menyimpan versi teracak dan tidak bisa membacanya. Perubahan tersimpan otomatis ke cloud.`]:
+`Store your API key + all accounts, calendar, content bank &amp; templates online so they can be opened on <b>another PC or your phone</b> without re-entering anything. Your data is <b>encrypted on this device</b> with your secret Sync Code before being sent — the server only keeps a scrambled version and cannot read it. Changes are saved to the cloud automatically.`,
+[`⚠️ Kalau lupa Kode Sinkron ini, data di cloud tidak bisa dibuka lagi (tidak ada cara memulihkannya — itulah yang membuatnya aman). Simpan di tempat aman.`]:
+`⚠️ If you forget this Sync Code, the cloud data can never be opened again (there is no recovery — that is exactly what makes it safe). Keep it somewhere secure.`,
+[`<b>Di perangkat baru (PC lain / HP)?</b> Masukkan Kode Sinkron yang sama, lalu klik Pulihkan — semua data (termasuk API key) akan tertarik otomatis. ⚠️ Ini menimpa data di perangkat ini.`]:
+`<b>On a new device (another PC / your phone)?</b> Enter the same Sync Code, then click Restore — all data (including the API key) is pulled in automatically. ⚠️ This overwrites the data on this device.`,
+[`Catatan yang selalu diingat asisten di semua percakapan (tujuan, keputusan, pelajaran).`]:
+`Notes the assistant always remembers across every conversation (goals, decisions, lessons).`,
+[`LYNSBrand memakai model <b>BYOK (Bring Your Own Key)</b>: kamu memakai API key Anthropic milikmu sendiri. Key hanya disimpan di browser ini dan hanya dikirim ke api.anthropic.com — tidak ada server perantara, dan biayanya kamu bayar langsung ke Anthropic sesuai pemakaian (tanpa langganan).`]:
+`LYNSBrand uses the <b>BYOK (Bring Your Own Key)</b> model: you use your own Anthropic API key. The key is stored only in this browser and sent only to api.anthropic.com — there is no middleman server, and you pay Anthropic directly for what you use (no subscription).`,
+[`🔒 Jangan pernah membagikan API key-mu kepada siapa pun — termasuk penyedia aplikasi ini.`]:
+`🔒 Never share your API key with anyone — including the provider of this app.`,
+[`<b>Sudah pernah pakai di perangkat lain?</b> Masukkan <b>Kode Sinkron</b>-mu untuk memulihkan API key + semua data sekaligus (tanpa ketik ulang):`]:
+`<b>Used this on another device before?</b> Enter your <b>Sync Code</b> to restore the API key + all your data at once (no retyping):`,
+};
 let uiLang = (function(){ try{ return localStorage.getItem('bp_uilang') || 'id'; }catch(e){ return 'id'; } })();
 const TR_LEWATI = new Set(['SCRIPT','STYLE','TEXTAREA','CODE','PRE']);
 function _trTeks(t){
@@ -3656,6 +3767,18 @@ function terjemahkanDOM(root){
     daftar.forEach(t=>{ const b = _trTeks(t.nodeValue); if(b !== null) t.nodeValue = b; });
   }catch(e){}
 }
+// Paragraf panjang diganti utuh (innerHTML). Ditandai data-tren supaya tidak diulang.
+function terjemahkanBlok(){
+  if(uiLang !== 'en') return;
+  try{
+    document.querySelectorAll('p.sub, p.hint').forEach(el=>{
+      if(el.dataset.tren) return;
+      const kunci = el.innerHTML.replace(/\s+/g,' ').trim();
+      const en = UI_EN_BLOK[kunci];
+      if(en){ el.innerHTML = en; el.dataset.tren = '1'; }
+    });
+  }catch(e){}
+}
 // Bagian yang dirender ulang oleh JS ikut diterjemahkan begitu muncul.
 let _trTimer = null, _trAntre = [];
 new MutationObserver(muts=>{
@@ -3663,19 +3786,19 @@ new MutationObserver(muts=>{
   muts.forEach(m=> m.addedNodes.forEach(n=>{ if(n.nodeType===1 || n.nodeType===3) _trAntre.push(n); }));
   if(_trAntre.length){
     clearTimeout(_trTimer);
-    _trTimer = setTimeout(()=>{ const a = _trAntre; _trAntre = []; a.forEach(terjemahkanDOM); }, 60);
+    _trTimer = setTimeout(()=>{ const a = _trAntre; _trAntre = []; a.forEach(terjemahkanDOM); terjemahkanBlok(); }, 60);
   }
 }).observe(document.body, {childList:true, subtree:true});
 function setUiLang(v){
   uiLang = v;
   try{ localStorage.setItem('bp_uilang', v); }catch(e){}
-  if(v === 'en'){ terjemahkanDOM(document.body); toast('🌐 Interface language: English'); }
+  if(v === 'en'){ terjemahkanBlok(); terjemahkanDOM(document.body); toast('🌐 Interface language: English'); }
   else location.reload();   // kembali ke Indonesia: muat ulang, paling aman
 }
 (function initUiLang(){
   const sel = document.getElementById('setUiLang');
   if(sel) sel.value = uiLang;
-  if(uiLang === 'en') terjemahkanDOM(document.body);
+  if(uiLang === 'en'){ terjemahkanBlok(); terjemahkanDOM(document.body); }
 })();
 </script>
 
